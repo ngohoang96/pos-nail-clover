@@ -3,12 +3,18 @@
 buildscript {
     ext {
         buildToolsVersion = "28.0.3"
-        minSdkVersion = 16
+        minSdkVersion = 21
         compileSdkVersion = 28
         targetSdkVersion = 28
+        supportLibVersion = "28.0.0"
+        googlePlayServicesVersion = "16.0.0"
+        
+        androidMapsUtilsVersion = "0.5+"
     }
     repositories {
         google()
+        mavenLocal()
+        mavenCentral()
         jcenter()
     }
     dependencies {
@@ -36,3 +42,43 @@ allprojects {
         maven { url 'https://jitpack.io' }
     }
 }
+subprojects { subproject ->
+    afterEvaluate {
+        if ((subproject.plugins.hasPlugin('android') || subproject.plugins.hasPlugin('android-library'))) {
+            android {
+                compileSdkVersion rootProject.ext.compileSdkVersion
+                buildToolsVersion rootProject.ext.buildToolsVersion
+
+                variantFilter { variant ->
+                    def names = variant.flavors*.name
+                    if (
+                        names.contains("reactNative51") || 
+                        names.contains("reactNative55") || 
+                        names.contains("reactNative56") ||
+                        names.contains("reactNative57") ||
+                        names.contains("reactNative57_5") ||
+                        names.contains("reactNative60") 
+                    ) {
+                        setIgnore(true)
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// subprojects { subproject ->
+//     afterEvaluate {
+//         if ((subproject.plugins.hasPlugin('android') || subproject.plugins.hasPlugin('android-library'))) {
+//             android {
+//                 variantFilter { variant ->
+//                     def names = variant.flavors*.name
+//                     if (names.contains("reactNative51") || names.contains("reactNative55")) {
+//                         setIgnore(true)
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
