@@ -28,3 +28,12 @@ export const items = [
   { code: "#3C7ECD" },
   { code: "#4E4845" },
 ];
+export const items1 = [
+  { code: "#4E4845" },
+  { code: "#B52988" },
+  { code: "#4F276F" },
+  { code: "#00DAFE" },
+  { code: "#070E3A" },
+  { code: "#C49F1C" },
+  { code: "#DEDDDE" },
+];

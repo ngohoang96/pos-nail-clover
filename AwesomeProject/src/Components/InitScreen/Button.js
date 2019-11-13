@@ -2,25 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 import themes from '../../config/themes';
+import {normalize} from '../../Utils/scales'
 const styles = StyleSheet.create({
   text: {
     color: 'black',
-    fontSize: 12,
+    fontSize: 8, 
+
   },
   button: {
     backgroundColor: 'white',
-    height: 30,
-    width: (themes.width * 1) / 16 - 5,
+    width: "23%",
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
+    padding : 1
   },
 });
 
 export function Button({Textstyle, lable, bg, ...props}) {
   return (
     <TouchableOpacity {...props} style={[styles.button, {backgroundColor : bg}]}>
-      <Text style={[styles.text, Textstyle]}>{lable}</Text>
+      <Text style={[styles.text, Textstyle , {fontSize : normalize(4)}]}>{lable}</Text>
     </TouchableOpacity>
   );
 }

@@ -2,10 +2,10 @@ import {StyleSheet} from 'react-native';
 import themes from '../../config/themes'
 export const styles = StyleSheet.create({
   renderItemGridList: {
-    width: (((themes.width * 3) / 4.2) * 0.8) / 5,
+    width: "95%",
     height: (themes.height * 1) / 9,
     backgroundColor: '#F5F5F5',
-    marginHorizontal: 5,
+    marginRight: 10,
     borderRadius: 3,
     borderWidth: 1,
     borderColor: 'gray',
@@ -31,15 +31,15 @@ export const styles = StyleSheet.create({
   bgWhite_flex1: {flex: 1, backgroundColor: 'white'},
   containerView1: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     marginTop: 5,
   },
-  container2: {flexDirection: 'row', justifyContent: 'space-between', flex: 1},
+  container2: {flexDirection: 'row', justifyContent: 'space-around', flex: 1},
   textIpCoupon: {
-    width: 120,
+    width: "60%",
     borderWidth: 0.5,
     borderColor: '#BEBEBE',
-    paddingVertical: -3,
+    height : '50%'
   },
   text2: {
     fontSize: 14,
@@ -49,10 +49,10 @@ export const styles = StyleSheet.create({
     textAlign: 'right',
   },
   textIpBasic: {
-    width: 60,
+    width: "100%",
     borderWidth: 0.5,
     borderColor: '#BEBEBE',
-    paddingVertical: -3,
+    paddingVertical: -5
   },
   text3: {
     fontSize: 14,
@@ -72,10 +72,10 @@ export const styles = StyleSheet.create({
   btn1: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: 60,
-    height: 28,
+    width: "70%",
     borderWidth: 0.5,
     borderColor: '#BEBEBE',
+    padding : 1
   },
   view1: {flex: 1, borderBottomColor: '#99CC00', borderBottomWidth: 1},
 });
