@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {Text, StyleSheet, TouchableOpacity, View, Image} from 'react-native';
 import themes from '../../config/themes';
-const WIDTH_COMPOENT_TECH = '100%';
+import ScaleTextLibrary from '../../Utils/ScaleTextLibrary';
 
 const H1 = 16;
 const H2 = 14;
 const H3 = 12;
+const H5 = 8;
 
 import {TextScale} from '../../Utils/TextScale';
 export default class ItemTech extends Component {
@@ -20,18 +21,22 @@ export default class ItemTech extends Component {
           borderWidth: 1,
           marginTop: 10,
           width: '100%',
-          height: (themes.height * 1) / 7,
+          height: themes.width*3/3.9*0.9/3.8*0.75
         }}>
         <View style={styl.container}>
-          <TextScale
-            Textstyle={styl.textName}
-            font={5}
-            lable="Nguyen Minh Hieu Bon"></TextScale>
+          <ScaleTextLibrary
+            styl={styl.textName}
+            font={H5}
+            text="Nguyen Minh Hieu Bon"></ScaleTextLibrary>
         </View>
         <View style={styl.container1}>
           <View style={styl.containerImg}>
             <Image
-              style={{width: '80%', height: '70%', borderRadius: 50}}
+              style={{
+                width: themes.width*3/3.9*0.9/3.8*0.3,
+                height: themes.width*3/3.9*0.9/3.8*0.3,
+                borderRadius: 50,
+              }}
               source={{
                 uri:
                   'https://i.a4vn.com/2018/11/27/tong-hop-hinh-anh-cac-hotgirl-xinh-hot-nhat-nam-2018-7b8685.jpg',
@@ -48,18 +53,31 @@ export default class ItemTech extends Component {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              <TextScale
-                font={5}
-                lable="12h34 Am"
-                Textstyle={{alignItems: 'center', color: 'black'}}></TextScale>
+              <ScaleTextLibrary
+                styl={{alignItems: 'center', color: 'black'}}
+                font={H5 - 1}
+                text="12h34 Am"></ScaleTextLibrary>
             </View>
             <View
               style={{
                 flex: 1,
                 borderBottomWidth: 1,
                 borderBottomColor: '#99CC00',
-              }}></View>
-            <View style={{flex: 1}}></View>
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <ScaleTextLibrary
+                styl={{alignItems: 'center', color: 'black'}}
+                font={H5 - 1}
+                text="c:=0"></ScaleTextLibrary>
+            </View>
+            <View
+              style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+              <ScaleTextLibrary
+                styl={{alignItems: 'center', color: 'black'}}
+                font={H5 - 1}
+                text="Today Appt:=0"></ScaleTextLibrary>
+            </View>
           </View>
         </View>
       </View>
@@ -69,7 +87,7 @@ export default class ItemTech extends Component {
 
 const styl = StyleSheet.create({
   container: {
-    backgroundColor: '#99CC00',
+    backgroundColor: '#6004BA',
     justifyContent: 'center',
     paddingLeft: 3,
     flex: 1,

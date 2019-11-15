@@ -1,17 +1,16 @@
 import {StyleSheet} from 'react-native';
-import themes from '../../config/themes'
+import themes from '../../config/themes';
 export const styles = StyleSheet.create({
   renderItemGridList: {
-    width: "95%",
-    height: (themes.height * 1) / 9,
-    backgroundColor: '#F5F5F5',
-    marginRight: 10,
+    width: '100%',
+    height: themes.width*3/3.9*1/3.8*0.3,
+    backgroundColor: '#EDEDED',
     borderRadius: 3,
     borderWidth: 1,
-    borderColor: 'gray',
-    marginVertical: 5,
+    borderColor: '#BEBEBE',
     alignItems: 'center',
     justifyContent: 'center',
+    padding : 3 , 
   },
   container: {
     flex: 1,
@@ -20,26 +19,32 @@ export const styles = StyleSheet.create({
   },
   text1: {fontSize: 14, alignItems: 'center', color: '#383E44'},
   viewService: {
-    flex: 0.8,
+    flex: 0.6,
     backgroundColor: '#F5F5F5',
     borderBottomWidth: 1,
     borderBottomColor: '#878787',
     padding: 3,
+    justifyContent: 'center',
   },
   textService: {fontSize: 18, alignItems: 'center', color: '#383E44'},
-  textPaymentCart: {fontSize: 20, alignItems: 'center', color: '#383E44'},
-  bgWhite_flex1: {flex: 1, backgroundColor: 'white'},
+  textPaymentCart: {
+    fontSize: 20,
+    alignItems: 'center',
+    color: '#383E44',
+    fontWeight: 'bold',
+  },
+  bgWhite_flex1: {flex: 0.65, backgroundColor: 'white'},
   containerView1: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: 5,
+    marginTop: 1,
   },
-  container2: {flexDirection: 'row', justifyContent: 'space-around', flex: 1},
+  container2: {flexDirection: 'row', justifyContent: 'space-between', flex: 1},
   textIpCoupon: {
-    width: "60%",
+    width: '60%',
     borderWidth: 0.5,
     borderColor: '#BEBEBE',
-    height : '50%'
+    height: '50%',
   },
   text2: {
     fontSize: 14,
@@ -49,10 +54,10 @@ export const styles = StyleSheet.create({
     textAlign: 'right',
   },
   textIpBasic: {
-    width: "100%",
+    width: '100%',
     borderWidth: 0.5,
     borderColor: '#BEBEBE',
-    paddingVertical: -5
+    paddingVertical: -5,
   },
   text3: {
     fontSize: 14,
@@ -72,10 +77,10 @@ export const styles = StyleSheet.create({
   btn1: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: "70%",
+    width: '70%',
     borderWidth: 0.5,
     borderColor: '#BEBEBE',
-    padding : 1
+    padding: 1,
   },
   view1: {flex: 1, borderBottomColor: '#99CC00', borderBottomWidth: 1},
 });

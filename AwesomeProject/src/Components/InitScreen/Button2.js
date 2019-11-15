@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 import themes from '../../config/themes';
 import {normalize} from '../../Utils/scales'
+
+import ScaleTextLibrary from '../../Utils/ScaleTextLibrary'
 const styles = StyleSheet.create({
   text: {
     color: 'black',
@@ -22,7 +24,7 @@ const styles = StyleSheet.create({
     borderRightColor: '#383E44',
     borderRightWidth: 1,
     borderBottomColor: '#383E44',
-    borderBottomWidth: 1,
+    borderBottomWidth: 1
   },
 });
 
@@ -37,9 +39,8 @@ export default class Button2 extends Component {
           styles.button,
           {borderLeftWidth: 4, ... this.props.style_button},
         ]}>
-        <Text style={[styles.text, this.props.Textstyle , {fontSize : normalize(4)}]}>
-          {this.props.lable}
-        </Text>
+   
+        <ScaleTextLibrary styl = {[styles.text, this.props.Textstyle ]} font = {7} text ={this.props.lable}></ScaleTextLibrary>
       </TouchableOpacity>
     );
   }

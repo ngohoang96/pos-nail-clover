@@ -4,6 +4,9 @@ import themes from '../../config/themes';
 const styles = StyleSheet.create({});
 import {normalize} from '../../Utils/scales';
 import {TextScale} from '../../Utils/TextScale';
+
+import ScaleTextLibrary from '../../Utils/ScaleTextLibrary';
+const H5 = 6;
 export default class ItemCustomer extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +17,7 @@ export default class ItemCustomer extends Component {
         style={{
           marginTop: 10,
           width: '100%',
-          height: (themes.height * 1) / 5,
+          height:  themes.width*3/3.9*1/3.8*0.75,
           flexDirection: 'row',
           backgroundColor: '#F5F5F5',
         }}>
@@ -26,14 +29,14 @@ export default class ItemCustomer extends Component {
               paddingLeft: 3,
               flex: 1,
             }}>
-            <TextScale
-              Textstyle={{
+            <ScaleTextLibrary
+              styl={{
                 alignItems: 'center',
                 color: 'white',
                 fontWeight: 'bold',
               }}
-              lable="#100672"
-              font={4}></TextScale>
+              font={H5 - 1}
+              text="#100672"></ScaleTextLibrary>
           </View>
           <View
             style={{
@@ -45,20 +48,20 @@ export default class ItemCustomer extends Component {
               borderColor: '#F7BD61',
             }}>
             <Image
-              style={{width: '50%', height: '50%', borderRadius: 10}}
+              style={{width: themes.width*3/3.9*1/3.8*0.2, height: themes.width*3/3.9*1/3.8*0.2, borderRadius: 3}}
               source={{
                 uri:
                   'https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg',
               }}></Image>
-            <View style={{alignItems: 'center', justifyContent: 'center'}}>
-              <TextScale
-                font={5}
-                lable="Van Hoang"
-                Textstyle={{
+            <View style={{alignItems: 'center', justifyContent: 'center' , paddingLeft : 3}}>
+              <ScaleTextLibrary
+                styl={{
                   alignItems: 'center',
                   color: '#939393',
-                  textAlign: 'center',
-                }}></TextScale>
+                  textAlign: 'left',
+                }}
+                font={H5+2}
+                text="Van Hoang"></ScaleTextLibrary>
             </View>
           </View>
         </View>
@@ -71,14 +74,14 @@ export default class ItemCustomer extends Component {
               paddingLeft: 3,
               flex: 1,
             }}>
-            <TextScale
-              lable="Frequent Customer"
-              font={5}
-              Textstyle={{
+            <ScaleTextLibrary
+              styl={{
                 alignItems: 'center',
                 color: 'white',
                 fontWeight: 'bold',
-              }}></TextScale>
+              }}
+              font={H5}
+              text="Frequent Customer"></ScaleTextLibrary>
           </View>
           <View
             style={{
@@ -96,34 +99,49 @@ export default class ItemCustomer extends Component {
                   borderTopColor: '#F7BD61',
                   flex: 1,
                   flexDirection: 'row',
-                  paddingLeft : 1
+                  paddingHorizontal: 1,
+                  alignItems : 'center'
                 }}>
-                <TextScale
-                  Textstyle={{alignItems: 'center', color: 'black'}}
-                  font={4}
-                  lable="12h57 AM"></TextScale>
+                  <ScaleTextLibrary
+                  styl={{alignItems: 'center', color: 'black', marginLeft: 3,}}
+                  font={H5}
+                  text="SignIn:"></ScaleTextLibrary>
+                <ScaleTextLibrary
+                  styl={{alignItems: 'center', color: 'black'}}
+                  font={H5}
+                  text="12h57 AM"></ScaleTextLibrary>
               </View>
               <View
-                style={{borderTopWidth: 1, borderTopColor: '#F7BD61', flex: 1,
-                paddingLeft : 1}}>
-                <TextScale
-                  font={4}
-                  lable="Walk in"
-                  Textstyle={{
+                style={{
+                  borderTopWidth: 1,
+                  borderTopColor: '#F7BD61',
+                  flex: 1,
+                  paddingLeft: 1,
+                  justifyContent : 'center'
+                }}>
+                <ScaleTextLibrary
+                  styl={{
                     alignItems: 'center',
-                    color: 'black',
-                  }}></TextScale>
+                    color: 'black', marginLeft: 3,
+                  }}
+                  font={H5}
+                  text="Walk in"></ScaleTextLibrary>
               </View>
               <View
-                style={{borderTopWidth: 1, borderTopColor: '#F7BD61', flex: 1,
-                paddingLeft : 1}}>
-                <TextScale
-                  font={4}
-                  lable="Calling gei"
-                  Textstyle={{
+                style={{
+                  borderTopWidth: 1,
+                  borderTopColor: '#F7BD61',
+                  flex: 1,
+                  paddingLeft: 1,
+                  justifyContent : 'center'
+                }}>
+                <ScaleTextLibrary
+                  styl={{
                     alignItems: 'center',
-                    color: 'black',
-                  }}></TextScale>
+                    color: '#383E44', marginLeft: 3,
+                  }}
+                  font={H5}
+                  text="Calling gei"></ScaleTextLibrary>
               </View>
 
               <View
@@ -131,16 +149,17 @@ export default class ItemCustomer extends Component {
                   borderTopWidth: 1,
                   flexDirection: 'row',
                   borderTopColor: '#F7BD61',
-                  paddingLeft : 1,
+                  paddingLeft: 1,
                   flex: 1,
+                  alignItems : 'center'
                 }}>
-                <TextScale
-                  font={4}
-                  lable="Any nail"
-                  Textstyle={{
+                <ScaleTextLibrary
+                  styl={{
                     alignItems: 'center',
-                    color: 'black',
-                  }}></TextScale>
+                    color: 'black', marginLeft: 3,
+                  }}
+                  font={H5}
+                  text="Any nail"></ScaleTextLibrary>
               </View>
             </View>
             <View style={{flex: 1.8}}>
@@ -155,15 +174,15 @@ export default class ItemCustomer extends Component {
                   flex: 2,
                   borderLeftWidth: 1,
                   borderLeftColor: '#F7BD61',
-                  paddingLeft : 1,
+                  paddingLeft: 1,
                 }}>
-                <TextScale
-                  font={4}
-                  lable="Waiting list"
-                  Textstyle={{
+                <ScaleTextLibrary
+                  styl={{
                     alignItems: 'center',
-                    color: '#939393',
-                  }}></TextScale>
+                    color: '#939393', marginLeft: 3,
+                  }}
+                  font={H5-1}
+                  text="Waiting list"></ScaleTextLibrary>
               </View>
               <View
                 style={{
@@ -175,15 +194,15 @@ export default class ItemCustomer extends Component {
                   flex: 1,
                   borderLeftWidth: 1,
                   borderLeftColor: '#F7BD61',
-                  paddingLeft : 1,
+                  paddingLeft: 1,
                 }}>
-                <TextScale
-                  font={4}
-                  lable="Quick"
-                  Textstyle={{
+                <ScaleTextLibrary
+                  styl={{
                     alignItems: 'flex-start',
-                    color: 'black',
-                  }}></TextScale>
+                    color: 'black', marginLeft: 3,
+                  }}
+                  font={H5-1}
+                  text="Quick"></ScaleTextLibrary>
               </View>
               <View
                 style={{
@@ -196,15 +215,15 @@ export default class ItemCustomer extends Component {
                   flex: 1,
                   borderLeftWidth: 1,
                   borderLeftColor: '#F7BD61',
-                  paddingLeft : 1,
+                  paddingLeft: 1,
                 }}>
-                <TextScale
-                  font={4}
-                  lable="Remove"
-                  Textstyle={{
+                <ScaleTextLibrary
+                  styl={{
                     alignItems: 'center',
-                    color: 'black',
-                  }}></TextScale>
+                    color: 'black', marginLeft: 3,
+                  }}
+                  font = {H5-1} text = "Remove">
+                </ScaleTextLibrary>
               </View>
             </View>
           </View>

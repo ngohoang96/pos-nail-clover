@@ -5011,6 +5011,11 @@ react-native-navigation@^3.5.1:
     react-lifecycles-compat "2.0.0"
     tslib "1.9.3"
 
+react-native-text@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-text/-/react-native-text-0.2.0.tgz#96e69831a8fa441765f0e20fd48b1234a150cde0"
+  integrity sha512-bR7GFoF2sgXP9gHHW5TiBn0DYKEaE/Kh/dlw/Vm5bzlfUGC79csJnN72bRz2FlFHusXQWw20eYtn+fxwWpOw6w==
+
 react-native-vector-icons@^6.6.0:
   version "6.6.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-6.6.0.tgz#66cf004918eb05d90778d64bd42077c1800d481b"

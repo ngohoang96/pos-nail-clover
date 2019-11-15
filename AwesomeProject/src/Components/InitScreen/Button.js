@@ -2,27 +2,34 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 import themes from '../../config/themes';
-import {normalize} from '../../Utils/scales'
+import {normalize} from '../../Utils/scales';
+import ScaleTextLibrary from '../../Utils/ScaleTextLibrary';
 const styles = StyleSheet.create({
   text: {
-    color: 'black',
-    fontSize: 8, 
-
+    textAlign: 'center',
   },
   button: {
     backgroundColor: 'white',
-    width: "23%",
-    borderRadius: 10,
+    width: '22%',
+    borderRadius: 2,
     alignItems: 'center',
     justifyContent: 'center',
-    padding : 1
+    height: '85%',
   },
 });
 
 export function Button({Textstyle, lable, bg, ...props}) {
   return (
-    <TouchableOpacity {...props} style={[styles.button, {backgroundColor : bg}]}>
-      <Text style={[styles.text, Textstyle , {fontSize : normalize(4)}]}>{lable}</Text>
+    <TouchableOpacity
+      {...props}
+      style={[
+        styles.button,
+        {backgroundColor: bg, borderWidth: 0.3, borderColor: '#383E44', padding : 2},
+      ]}>
+      <ScaleTextLibrary
+        styl={[styles.text, Textstyle]}
+        font={5.5}
+        text={lable}></ScaleTextLibrary>
     </TouchableOpacity>
   );
 }

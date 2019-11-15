@@ -10,7 +10,7 @@ export const data = [
   {id: '1', icon: 'ios-bookmark', lable: 'Dashboard'},
 ];
 export const items = [
-  { code: "#4E4845" },
+  { code: "#4E48454E4845" },
   { code: "#B52988" },
   { code: "#4F276F" },
   { code: "#00DAFE" },
@@ -29,11 +29,13 @@ export const items = [
   { code: "#4E4845" },
 ];
 export const items1 = [
-  { code: "#4E4845" },
-  { code: "#B52988" },
-  { code: "#4F276F" },
-  { code: "#00DAFE" },
-  { code: "#070E3A" },
-  { code: "#C49F1C" },
-  { code: "#DEDDDE" },
+  { code: "#4E4845", lable : 'MainCure' },
+  { code: "#F85400" , lable : 'Pedicure'},
+  { code: "#4F276F" , lable : 'Full set'},
+  { code: "#00DAFE" , lable : 'Refill'},
+  { code: "#070E3A" , lable : 'Wax'},
+  { code: "#F1164B" , lable : 'Facial'},
+  { code: "#DEDDDE" , lable : 'Eyelashes'},
+  { code: "#C49F1C" , lable : 'Manicure and Pedicure'},
+  { code: "#DEDDDE", lable : 'order' },
 ];
