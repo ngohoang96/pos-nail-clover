@@ -17,8 +17,8 @@ export default class ItemTech extends Component {
     return (
       <View
         style={{
-          borderColor: '#99CC00',
-          borderWidth: 1,
+          borderBottomColor: '#9BAB6A',
+          borderBottomWidth: 0.5,
           marginTop: 10,
           width: '100%',
           height: themes.width*3/3.9*0.9/3.8*0.75
@@ -27,7 +27,7 @@ export default class ItemTech extends Component {
           <ScaleTextLibrary
             styl={styl.textName}
             font={H5}
-            text="Nguyen Minh Hieu Bon"></ScaleTextLibrary>
+            text={this.props.nameTechnician}></ScaleTextLibrary>
         </View>
         <View style={styl.container1}>
           <View style={styl.containerImg}>
@@ -46,12 +46,14 @@ export default class ItemTech extends Component {
             <View
               style={{
                 flex: 1,
-                borderBottomColor: '#99CC00',
+                borderBottomColor: '#9BAB6A',
                 flexDirection: 'row',
                 paddingHorizontal: 3,
-                borderBottomWidth: 1,
+                borderBottomWidth: 0.5,
                 alignItems: 'center',
                 justifyContent: 'center',
+                borderRightWidth : 0.5 , 
+                borderRightColor : '#9BAB6A'
               }}>
               <ScaleTextLibrary
                 styl={{alignItems: 'center', color: 'black'}}
@@ -61,10 +63,12 @@ export default class ItemTech extends Component {
             <View
               style={{
                 flex: 1,
-                borderBottomWidth: 1,
-                borderBottomColor: '#99CC00',
+                borderBottomWidth: 0.5,
+                borderBottomColor: '#9BAB6A',
                 alignItems: 'center',
                 justifyContent: 'center',
+                borderRightWidth : 0.5 , 
+                borderRightColor : '#9BAB6A'
               }}>
               <ScaleTextLibrary
                 styl={{alignItems: 'center', color: 'black'}}
@@ -72,7 +76,9 @@ export default class ItemTech extends Component {
                 text="c:=0"></ScaleTextLibrary>
             </View>
             <View
-              style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+              style={{flex: 1, alignItems: 'center', justifyContent: 'center',
+              borderRightWidth : 0.5 , 
+              borderRightColor : '#9BAB6A'}}>
               <ScaleTextLibrary
                 styl={{alignItems: 'center', color: 'black'}}
                 font={H5 - 1}
@@ -87,7 +93,7 @@ export default class ItemTech extends Component {
 
 const styl = StyleSheet.create({
   container: {
-    backgroundColor: '#6004BA',
+    backgroundColor: '#5F1AB7',
     justifyContent: 'center',
     paddingLeft: 3,
     flex: 1,
@@ -107,7 +113,9 @@ const styl = StyleSheet.create({
     backgroundColor: '#F5F5F5',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRightWidth: 1,
-    borderRightColor: '#99CC00',
+    borderRightWidth: 0.5,
+    borderRightColor: '#9BAB6A',
+    borderLeftWidth : 0.5 , 
+    borderLeftColor : '#9BAB6A'
   },
 });

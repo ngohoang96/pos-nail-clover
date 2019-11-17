@@ -7,6 +7,7 @@ import ScaleTextLibrary from '../../Utils/ScaleTextLibrary';
 const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
+    
   },
   button: {
     backgroundColor: 'white',

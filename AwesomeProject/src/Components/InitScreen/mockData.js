@@ -29,13 +29,33 @@ export const items = [
   { code: "#4E4845" },
 ];
 export const items1 = [
-  { code: "#4E4845", lable : 'MainCure' },
-  { code: "#F85400" , lable : 'Pedicure'},
-  { code: "#4F276F" , lable : 'Full set'},
-  { code: "#00DAFE" , lable : 'Refill'},
-  { code: "#070E3A" , lable : 'Wax'},
-  { code: "#F1164B" , lable : 'Facial'},
-  { code: "#DEDDDE" , lable : 'Eyelashes'},
-  { code: "#C49F1C" , lable : 'Manicure and Pedicure'},
-  { code: "#DEDDDE", lable : 'order' },
+  { code: "#2DFFFE", lable : 'MainCure' },
+  { code: "#0303FF" , lable : 'Pedicure'},
+  { code: "#FF67B3" , lable : 'Full set'},
+  { code: "#6394EB" , lable : 'Refill'},
+  { code: "#008000" , lable : 'Wax'},
+  { code: "#2DFFFE" , lable : 'Facial'},
+  { code: "#6394EB" , lable : 'Eyelashes'},
+  { code: "#2DFFFE" , lable : 'Manicure and Pedicure'},
+  { code: "#FF67B3", lable : 'order' },
+];
+export const items2 = [
+  { code: "#6394EB", lable : 'MAINCURE' , backgroundColor : '#DFF0D8' },
+  { code: "#6394EB" , lable : 'PEDICURE', backgroundColor : 'white'},
+  { code: "#2DFFFE" , lable : 'WAX', backgroundColor : 'white'},
+  { code: "#6394EB" , lable : 'Refill', backgroundColor : 'white'},
+  { code: "#008000" , lable : 'Wax', backgroundColor : 'white'},
+  { code: "#2DFFFE" , lable : 'Facial', backgroundColor : 'white'},
+  { code: "#0000FF" , lable : 'Eyelashes', backgroundColor : 'white'},
+  { code: "#008000" , lable : 'Manicure and Pedicure', backgroundColor : 'white'},
+  { code: "#FF0000", lable : 'order', backgroundColor : 'white' },
+];
+export const dataService = [
+  {id: '1', name: 'Nguyen Van A'},
+  {id: '2', name: 'Nguyen Van B'},
+  {id: '3', name: 'Nguyen Van C'}
+];
+export const dataTechnician = [
+  {id: '1', name: 'Nguyen Thi A'},
+  {id: '2', name: 'Nguyen Thi B'},
 ];

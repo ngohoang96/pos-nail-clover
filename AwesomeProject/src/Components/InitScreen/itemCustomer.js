@@ -28,6 +28,8 @@ export default class ItemCustomer extends Component {
               justifyContent: 'center',
               paddingLeft: 3,
               flex: 1,
+              borderRightWidth : 0.5 , 
+              borderRightColor : '#F5B550'
             }}>
             <ScaleTextLibrary
               styl={{
@@ -44,8 +46,8 @@ export default class ItemCustomer extends Component {
               justifyContent: 'center',
               flex: 3,
               backgroundColor: '#F5F5F5',
-              borderWidth: 1,
-              borderColor: '#F7BD61',
+              borderWidth: 0.5,
+              borderColor: '#F5B550',
             }}>
             <Image
               style={{width: themes.width*3/3.9*1/3.8*0.2, height: themes.width*3/3.9*1/3.8*0.2, borderRadius: 3}}
@@ -89,13 +91,13 @@ export default class ItemCustomer extends Component {
               flexDirection: 'row',
               justifyContent: 'center',
               flex: 3,
-              borderBottomWidth: 1,
+              borderBottomWidth: 0.5,
               borderBottomColor: '#F7BD61',
             }}>
             <View style={{flex: 3}}>
               <View
                 style={{
-                  borderTopWidth: 1,
+                  borderTopWidth: 0.5,
                   borderTopColor: '#F7BD61',
                   flex: 1,
                   flexDirection: 'row',
@@ -113,7 +115,7 @@ export default class ItemCustomer extends Component {
               </View>
               <View
                 style={{
-                  borderTopWidth: 1,
+                  borderTopWidth: 0.5,
                   borderTopColor: '#F7BD61',
                   flex: 1,
                   paddingLeft: 1,
@@ -129,7 +131,7 @@ export default class ItemCustomer extends Component {
               </View>
               <View
                 style={{
-                  borderTopWidth: 1,
+                  borderTopWidth: 0.5,
                   borderTopColor: '#F7BD61',
                   flex: 1,
                   paddingLeft: 1,
@@ -146,7 +148,7 @@ export default class ItemCustomer extends Component {
 
               <View
                 style={{
-                  borderTopWidth: 1,
+                  borderTopWidth: 0.5,
                   flexDirection: 'row',
                   borderTopColor: '#F7BD61',
                   paddingLeft: 1,
@@ -165,14 +167,14 @@ export default class ItemCustomer extends Component {
             <View style={{flex: 1.8}}>
               <View
                 style={{
-                  borderTopWidth: 1,
-                  borderRightWidth: 1,
+                  borderTopWidth: 0.5,
+                  borderRightWidth: 0.5,
                   borderRightColor: '#F7BD61',
                   alignItems: 'flex-start',
                   justifyContent: 'center',
                   borderTopColor: '#F7BD61',
                   flex: 2,
-                  borderLeftWidth: 1,
+                  borderLeftWidth: 0.5,
                   borderLeftColor: '#F7BD61',
                   paddingLeft: 1,
                 }}>
@@ -186,13 +188,13 @@ export default class ItemCustomer extends Component {
               </View>
               <View
                 style={{
-                  borderTopWidth: 1,
-                  borderRightWidth: 1,
+                  borderTopWidth: 0.5,
+                  borderRightWidth: 0.5,
                   borderRightColor: '#F7BD61',
                   justifyContent: 'center',
                   borderTopColor: '#F7BD61',
                   flex: 1,
-                  borderLeftWidth: 1,
+                  borderLeftWidth: 0.5,
                   borderLeftColor: '#F7BD61',
                   paddingLeft: 1,
                 }}>
@@ -206,14 +208,14 @@ export default class ItemCustomer extends Component {
               </View>
               <View
                 style={{
-                  borderTopWidth: 1,
-                  borderRightWidth: 1,
+                  borderTopWidth: 0.5,
+                  borderRightWidth: 0.5,
                   borderRightColor: '#F7BD61',
                   alignItems: 'flex-start',
                   justifyContent: 'center',
                   borderTopColor: '#F7BD61',
                   flex: 1,
-                  borderLeftWidth: 1,
+                  borderLeftWidth: 0.5,
                   borderLeftColor: '#F7BD61',
                   paddingLeft: 1,
                 }}>
