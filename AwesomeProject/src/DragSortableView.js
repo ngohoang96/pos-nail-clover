@@ -45,33 +45,14 @@ export default class DragSortableView extends Component {
         this.isMovePanResponder,
       onMoveShouldSetPanResponderCapture: (evt, gestureState) =>
         this.isMovePanResponder,
-
-      onPanResponderGrant: (evt, gestureState) => {},
       onPanResponderMove: (evt, gestureState) =>
         this.moveTouch(evt, gestureState),
       onPanResponderRelease: (evt, gestureState) => this.endTouch(evt),
-
-      onPanResponderTerminationRequest: (evt, gestureState) => false,
-      onShouldBlockNativeResponder: (evt, gestureState) => false,
     });
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.dataSource != nextProps.dataSource) {
-      this.reComplexDataSource(false, nextProps);
-    }
-  }
-
   startTouch(touchIndex) {
-    const fixedItems = this.props.fixedItems;
-    if (fixedItems.length > 0 && fixedItems.includes(touchIndex)) {
-      return;
-    }
-
     this.isHasMove = false;
-
-    if (!this.props.sortable) return;
-
     if (this.sortRefs.has(touchIndex)) {
       if (this.props.onDragStart) {
         this.props.onDragStart(touchIndex);
@@ -100,33 +81,12 @@ export default class DragSortableView extends Component {
       let dy = gestureState.dy;
       console.log('gestureState ' + gestureState.dx + gestureState.dy);
 
-      const rowNum = parseInt(this.props.parentWidth / this.itemWidth);
-      const maxWidth = this.props.parentWidth - this.itemWidth;
-      const maxHeight =
-        this.itemHeight * Math.ceil(this.state.dataSource.length / rowNum) -
-        this.itemHeight;
-
-      // Is it free to drag
-      if (!this.props.isDragFreely) {
-        // Maximum or minimum after out of bounds
-        if (this.touchCurItem.originLeft + dx < 0) {
-          dx = -this.touchCurItem.originLeft;
-        } else if (this.touchCurItem.originLeft + dx > maxWidth) {
-          dx = maxWidth - this.touchCurItem.originLeft;
-        }
-        if (this.touchCurItem.originTop + dy < 0) {
-          dy = -this.touchCurItem.originTop;
-        } else if (this.touchCurItem.originTop + dy > maxHeight) {
-          dy = maxHeight - this.touchCurItem.originTop;
-        }
-      }
-
       let left = this.touchCurItem.originLeft + dx;
       let top = this.touchCurItem.originTop + dy;
 
       this.touchCurItem.ref.setNativeProps({
         style: {
-          zIndex: touchZIndex,
+          zIndex: 100000,
         },
       });
 
@@ -137,28 +97,6 @@ export default class DragSortableView extends Component {
 
       if (this.props.onDragging) {
         this.props.onDragging(gestureState, left, top);
-      }
-
-      let moveToIndex = 0;
-      let moveXNum = dx / this.itemWidth;
-      let moveYNum = dy / this.itemHeight;
-      if (moveXNum > 0) {
-        moveXNum = parseInt(moveXNum + 0.5);
-      } else if (moveXNum < 0) {
-        moveXNum = parseInt(moveXNum - 0.5);
-      }
-      if (moveYNum > 0) {
-        moveYNum = parseInt(moveYNum + 0.5);
-      } else if (moveYNum < 0) {
-        moveYNum = parseInt(moveYNum - 0.5);
-      }
-
-      moveToIndex = this.touchCurItem.index + moveXNum + moveYNum * rowNum;
-
-      if (moveToIndex > this.state.dataSource.length - 1) {
-        moveToIndex = this.state.dataSource.length - 1;
-      } else if (moveToIndex < 0) {
-        moveToIndex = 0;
       }
     }
   }
@@ -184,20 +122,13 @@ export default class DragSortableView extends Component {
           zIndex: defaultZIndex,
         },
       });
+      //trở về vị trí ban đầu
       this.changePosition(
         this.touchCurItem.index,
         this.touchCurItem.moveToIndex,
       );
       this.touchCurItem = null;
     }
-  }
-
-  onPressOut() {
-    this.isScaleRecovery = setTimeout(() => {
-      if (this.isMovePanResponder && !this.isHasMove) {
-        this.endTouch();
-      }
-    }, 220);
   }
 
   changePosition(startIndex, endIndex) {
@@ -253,9 +184,6 @@ export default class DragSortableView extends Component {
         dataSource: newDataSource,
       },
       () => {
-        if (this.props.onDataChange) {
-          this.props.onDataChange(this.getOriginalData());
-        }
         // Prevent RN from drawing the beginning and end
         const startItem = this.state.dataSource[startIndex];
         this.state.dataSource[startIndex].position.setValue({
@@ -303,27 +231,8 @@ export default class DragSortableView extends Component {
     }
   }
 
-  getOriginalData() {
-    return this.state.dataSource.map((item, index) => item.data);
-  }
-
   render() {
-    return (
-      <View
-        //ref={(ref)=>this.sortParentRef=ref}
-        style={[
-          styles.container,
-          {
-            width: this.props.parentWidth,
-            height: this.state.height,
-            backgroundColor: 'green',
-          },
-        ]}
-        //onLayout={()=> {}}
-      >
-        {this._renderItemView()}
-      </View>
-    );
+    return this._renderItemView();
   }
 
   _renderItemView = () => {
@@ -339,10 +248,10 @@ export default class DragSortableView extends Component {
           style={[
             styles.item,
             {
-              marginTop: this.props.marginChildrenTop,
-              marginBottom: this.props.marginChildrenBottom,
-              marginLeft: this.props.marginChildrenLeft,
-              marginRight: this.props.marginChildrenRight,
+              // marginTop: this.props.marginChildrenTop,
+              // marginBottom: this.props.marginChildrenBottom,
+              // marginLeft: this.props.marginChildrenLeft,
+              // marginRight: this.props.marginChildrenRight,
               left: item.position.x,
               top: item.position.y,
               opacity: item.scaleValue.interpolate({
@@ -353,21 +262,18 @@ export default class DragSortableView extends Component {
             },
           ]}>
           <TouchableOpacity
-            activeOpacity={1}
+            activeOpacity={0.9}
             delayLongPress={this.props.delayLongPress}
-            onPressOut={() => this.onPressOut()}
             onLongPress={() => this.startTouch(index)}
-            onPress = {()=>{alert('onLongPress')}}>
+            onPress={() => {
+              alert('onLongPress');
+            }}>
             {this.props.renderItem(item.data, index)}
           </TouchableOpacity>
         </Animated.View>
       );
     });
   };
-
-  componentWillUnmount() {
-    if (this.isScaleRecovery) clearTimeout(this.isScaleRecovery);
-  }
 }
 
 DragSortableView.propTypes = {
@@ -375,18 +281,13 @@ DragSortableView.propTypes = {
   parentWidth: PropTypes.number,
   childrenHeight: PropTypes.number.isRequired,
   childrenWidth: PropTypes.number.isRequired,
-
   marginChildrenTop: PropTypes.number,
   marginChildrenBottom: PropTypes.number,
   marginChildrenLeft: PropTypes.number,
   marginChildrenRight: PropTypes.number,
-
-  sortable: PropTypes.bool,
-
   onClickItem: PropTypes.func,
   onDragStart: PropTypes.func,
   onDragEnd: PropTypes.func,
-  onDataChange: PropTypes.func,
   renderItem: PropTypes.func.isRequired,
   scaleStatus: PropTypes.oneOf(['scale', 'scaleX', 'scaleY']),
   fixedItems: PropTypes.array,
@@ -406,7 +307,6 @@ DragSortableView.defaultProps = {
   marginChildrenLeft: 0,
   marginChildrenRight: 0,
   parentWidth: width,
-  sortable: true,
   scaleStatus: 'scale',
   fixedItems: [],
   isDragFreely: false,
@@ -414,6 +314,7 @@ DragSortableView.defaultProps = {
   minOpacity: 0.8,
   scaleDuration: 100,
   slideDuration: 300,
+  delayLongPress: 0.5,
 };
 
 const styles = StyleSheet.create({

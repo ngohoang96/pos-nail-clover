@@ -109,6 +109,6 @@ const styles = StyleSheet.create({
     borderColor: '#BEBEBE',
     paddingVertical: -10,
     height: '100%',
-    fontSize: normalize(H6),
+    fontSize: normalize(H6-2),
   },
 });

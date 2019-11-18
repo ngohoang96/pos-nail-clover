@@ -21,12 +21,13 @@ export default class ItemTech extends Component {
           borderBottomWidth: 0.5,
           marginTop: 10,
           width: '100%',
-          height: themes.width*3/3.9*0.9/3.8*0.75
+          height: themes.width*3/3.9*0.9/3.8*0.75 , 
+          backgroundColor : 'white'
         }}>
         <View style={styl.container}>
           <ScaleTextLibrary
             styl={styl.textName}
-            font={H5}
+            font={H5-1}
             text={this.props.nameTechnician}></ScaleTextLibrary>
         </View>
         <View style={styl.container1}>

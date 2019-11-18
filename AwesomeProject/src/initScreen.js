@@ -440,7 +440,7 @@ class InitScreen extends Component {
   };
   _renderCustomer = () => {
     return (
-      <View style={{flex: 1, paddingLeft: 2 , zIndex : 1}}>
+      <View style={{flex: 1, paddingLeft: 2  }}>
         <View
           style={{
             height: themes.height / 20,
@@ -579,6 +579,7 @@ class InitScreen extends Component {
           flex: 0.65,
           borderTopWidth: 1,
           borderTopColor: '#C1C1C1',
+          zIndex : -1
         }}>
         <ScrollView horizontal={true} style={{flex: 1, padding: 5}}>
           {data.map(item => {

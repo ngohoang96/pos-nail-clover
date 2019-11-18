@@ -42,21 +42,7 @@ export default class DragDeletePage extends Component {
             onDragging={this.onDragging}
             onDragStart={this.onDragStart}
             onDragEnd={this.onDragEnd}
-            onDataChange={data => {
-              if (this.deleteIndex != null) {
-                const deleteIndex = this.deleteIndex;
-                this.deleteIndex = null;
-                const newData = [...data];
-                newData.splice(deleteIndex, 1);
-                this.setState({
-                  data: newData,
-                });
-              } else if (data.length != this.state.data.length) {
-                this.setState({
-                  data: data,
-                });
-              }
-            }}
+           height = {1000}
             keyExtractor={(item, index) => item.txt} 
             renderItem={this.renderItem}
           />
