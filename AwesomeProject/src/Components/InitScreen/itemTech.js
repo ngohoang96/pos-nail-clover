@@ -19,16 +19,16 @@ export default class ItemTech extends Component {
         style={{
           borderBottomColor: '#9BAB6A',
           borderBottomWidth: 0.5,
-          marginTop: 10,
           width: '100%',
-          height: themes.width*3/3.9*0.9/3.8*0.75 , 
-          backgroundColor : 'white'
+          height: (((themes.width * 3) / 3.9) * 0.8) / 3.9*0.75 ,
+          backgroundColor : 'pink'  , 
+          position : 'relative' , 
         }}>
         <View style={styl.container}>
           <ScaleTextLibrary
             styl={styl.textName}
             font={H5-1}
-            text={this.props.nameTechnician}></ScaleTextLibrary>
+            text={this.props.nameTechnician || "tên"}></ScaleTextLibrary>
         </View>
         <View style={styl.container1}>
           <View style={styl.containerImg}>

@@ -25,26 +25,28 @@ import {
   Easing,
 } from 'react-native';
 import themes from './config/themes';
-import {data, items, items1, items2 , dataService , dataTechnician} from './Components/InitScreen/mockData';
+import {
+  data,
+  items,
+  items1,
+  items2,
+  dataService,
+  dataTechnician,
+} from './Components/InitScreen/mockData';
 import {Button} from './Components/InitScreen';
 import Button2 from './Components/InitScreen/Button2';
-import ItemTech from './Components/InitScreen/itemTech';
 import ItemCustomer from './Components/InitScreen/itemCustomer';
 import ItemService from './Components/InitScreen/ItemService';
 import {styles} from './Components/InitScreen/styles';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import GridList from 'react-native-grid-list';
 import {normalize} from './Utils/scales';
-import {TextScale} from './Utils/TextScale';
 
 import ScaleTextLibrary from './Utils/ScaleTextLibrary';
 import {scaleText} from 'react-native-text';
-import DragPage from './DragDeletePage'
-const sty = scaleText({
-  deviceBaseWidth: 375,
-  fontSize: 10,
-  lineHeight: 14 * 1.2,
-}); //
+
+import TechnicianRepander from './Components/InitScreen/TechnicianRepander'
+
 
 const H5 = 7;
 const H6 = 5;
@@ -55,7 +57,7 @@ class InitScreen extends Component {
     this.state = {
       data: items,
       scrollEnabled: true,
-      dataService : dataService
+      dataService: dataService,
     };
   }
   ///
@@ -424,23 +426,19 @@ class InitScreen extends Component {
             font={H5 + 1}
             text="Technician Turn"></ScaleTextLibrary>
         </View>
-        
-        <DragPage  data = {dataTechnician}  ></DragPage>
-        {/* <ScrollView style={{flex: 1}}>
-          {[1].map(item => {
-            return (
-              <View style={{}}>
-                <ItemTech></ItemTech>
-              </View>
-            );
+
+        <ScrollView style={{flex: 1, width: themes.width, zIndex: 10}}>
+          {dataTechnician.map(item => {
+            return <TechnicianRepander name={item.name}></TechnicianRepander>;
           })}
-        </ScrollView> */}
+        </ScrollView> 
+       
       </View>
     );
   };
   _renderCustomer = () => {
     return (
-      <View style={{flex: 1, paddingLeft: 2  }}>
+      <View style={{flex: 1, paddingLeft: 2}}>
         <View
           style={{
             height: themes.height / 20,
@@ -503,7 +501,7 @@ class InitScreen extends Component {
                     borderLeftColor: item.code,
                     width: '100%',
                     height: ((((themes.width * 3) / 3.8) * 0.5) / 3.9) * 0.3,
-                    backgroundColor: "white",
+                    backgroundColor: 'white',
                   }}
                   lable={item.lable}></Button2>
               );
@@ -579,7 +577,8 @@ class InitScreen extends Component {
           flex: 0.65,
           borderTopWidth: 1,
           borderTopColor: '#C1C1C1',
-          zIndex : -1
+          backgroundColor: 'white',
+          zIndex : -1000
         }}>
         <ScrollView horizontal={true} style={{flex: 1, padding: 5}}>
           {data.map(item => {
@@ -598,7 +597,7 @@ class InitScreen extends Component {
                   marginVertical: 1,
                   paddingVertical: 1.5,
                   marginRight: 10,
-                  backgroundColor : 'white'
+                  backgroundColor: 'white',
                 }}>
                 <IonIcon name={item.icon} color={'#444444'} size={12}></IonIcon>
                 <View style={{alignItems: 'center', justifyContent: 'center'}}>
@@ -636,7 +635,7 @@ class InitScreen extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <View
-          style={{flex: 0.8, borderRightWidth: 1, borderRightColor: '#878787'}}>
+          style={{flex: 0.8, borderRightWidth: 1, borderRightColor: '#878787', zIndex : -11}}>
           {/* <KeyboardAvoidingView style = {{flex : 1}}  behavior= 'height'> */}
           {this._renderPayment()}
           <View
@@ -645,12 +644,13 @@ class InitScreen extends Component {
               backgroundColor: 'white',
               paddingHorizontal: 3,
               paddingVertical: 1,
+              zIndex: -1,
             }}>
             <View style={{flex: 4}}>
               {/* Payment */}
               <ScrollView style={{flex: 1}}>
                 {this.state.dataService.map(item => {
-                  return <ItemService name = {item.name}></ItemService>;
+                  return <ItemService name={item.name}></ItemService>;
                 })}
               </ScrollView>
               <View style={{flex: 1}}>
@@ -670,7 +670,7 @@ class InitScreen extends Component {
                 {this._renderListButton()}
               </View>
             </View>
-          </View>
+          </View> 
         </View>
         <View style={{flex: 3, backgroundColor: 'white'}}>
           <View

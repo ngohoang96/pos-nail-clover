@@ -53,9 +53,25 @@ export const items2 = [
 export const dataService = [
   {id: '1', name: 'Nguyen Van A'},
   {id: '2', name: 'Nguyen Van B'},
-  {id: '3', name: 'Nguyen Van C'}
+
 ];
 export const dataTechnician = [
   {id: '1', name: 'Nguyen Thi A'},
   {id: '2', name: 'Nguyen Thi B'},
+  {id: '3', name: 'Nguyen Van C'},
+  {id: '133', name: 'Nguyen Van D'},
+  {id: '233', name: 'Nguyen Van F'},  
+
+  {id: '13', name: 'Nguyen Van 1'},
+  {id: '111', name: 'Nguyen Van 2'},
+  {id: '12', name: 'Nguyen Van 3'},
+  {id: '113', name: 'Nguyen Van 4'},
+  {id: '1ư1', name: 'Nguyen Van 5'},
+  {id: '12', name: 'Nguyen Van 6'},
+  {id: '113', name: 'Nguyen Van 7'},
+  {id: '1ư1', name: 'Nguyen Van 8'},
+  {id: '1ư1', name: 'Nguyen Van 9'},
+  {id: '12', name: 'Nguyen Van 10'},
+  {id: '113', name: 'Nguyen Van 11'},
+  {id: '1ư1', name: 'Nguyen Van 12'}
 ];

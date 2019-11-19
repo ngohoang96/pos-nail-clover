@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
     color: '#383E44',
     fontWeight: 'bold',
   },
-  bgWhite_flex1: {flex: 0.65, backgroundColor: 'white'},
+  bgWhite_flex1: {flex: 0.65, backgroundColor: 'white',overflow : 'hidden'},
   containerView1: {
     flexDirection: 'row',
     justifyContent: 'space-around',
