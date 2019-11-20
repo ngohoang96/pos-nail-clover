@@ -94,8 +94,6 @@ export default class TechnicianRepander extends Component {
                 backgroundColor: '#1abc9c',
                 width: '100%',
                 height:  '100%',
-                position: 'absolute',
-                zIndex : 100 
               },
             ]}>
                 <ItemTech nameTechnician = {this.props.name}></ItemTech>

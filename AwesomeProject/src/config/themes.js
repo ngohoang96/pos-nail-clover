@@ -69,7 +69,8 @@ const colors = {
 };
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
-
+const H5 = 7;
+const H6 = 5;
 const sizes = {
   imageHeight: 90,
   base: 16,
@@ -112,4 +113,4 @@ const sizes = {
   NAVBAR_HEIGHT: 100,
 };
 
-export default {colors, sizes, width, height};
+export default {colors, sizes, width, height, H5, H6};

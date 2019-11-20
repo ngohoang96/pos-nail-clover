@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import themes from '../../config/themes';
-export const styles = StyleSheet.create({
+export const styles_home = StyleSheet.create({
   renderItemGridList: {
     width: '100%',
     height: ((((themes.width * 3) / 3.9) * 1) / 3.8) * 0.3,
