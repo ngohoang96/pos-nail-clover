@@ -1,18 +1,7 @@
 import React, {Component} from 'react';
-import {
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  Image,
-  TextInput,
-  ScrollView,
-} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import themes from '../../../../config/themes';
-import ScaleTextLibrary from '../../../../Utils/ScaleTextLibrary';
-import {normalize} from '../../../../Utils/scales';
-import {styles_home} from '../../styles-home';
-import Button2 from '../../../../Components/InitScreen/Button2';
+import ScaleTextLibrary from '../../../../utils/ScaleTextLibrary';
 import {items} from '../../../../Components/InitScreen/mockData';
 
 import GridList from 'react-native-grid-list';

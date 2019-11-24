@@ -7,51 +7,23 @@
  */
 
 import React, {Component} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  TextInput,
-  TouchableOpacity,
-  Image,
-  Dimensions,
-  Platform,
-  PixelRatio,
-  KeyboardAvoidingView,
-  Animated,
-  Easing,
-  FlatList,
-} from 'react-native';
-import themes from './config/themes';
-import {
-  data,
-  items,
-  items1,
-  items2,
-  dataService,
-  dataTechnician,
-} from './Components/InitScreen/mockData';
-import {Button} from './Components/InitScreen';
-import Button2 from './Components/InitScreen/Button2';
-import ItemCustomer from './Components/InitScreen/itemCustomer';
-import ItemService from './Components/InitScreen/ItemService';
+import {SafeAreaView, StyleSheet, View, ScrollView} from 'react-native';
 import {styles_home} from './screens/home/styles-home';
-import IonIcon from 'react-native-vector-icons/Ionicons';
-import GridList from 'react-native-grid-list';
-import {normalize} from './Utils/scales';
-
-import ScaleTextLibrary from './Utils/ScaleTextLibrary';
-import {scaleText} from 'react-native-text';
-
-import TechnicianRepander from './Components/InitScreen/TechnicianRepander';
 import PaymentContainer from './screens/home/payment-container/payment-screen';
 import ScrollBottom from './screens/home/scroll-bottm/index';
 import ScrollScreen from './screens/home/scroll-container/scroll-screen';
 
+import TechnicianRepander from './Components/InitScreen/TechnicianRepander';
+import themes from './config/themes';
 class InitScreen extends Component {
+  static options(passprops) {
+    return {
+      topBar: {
+        visible: false,
+        drawBehind: true,
+      },
+    };
+  }
   constructor(props) {
     super();
     this.state = {};
@@ -64,6 +36,16 @@ class InitScreen extends Component {
           <ScrollScreen></ScrollScreen>
           <ScrollBottom></ScrollBottom>
         </View>
+     
+       {/* <ScrollView
+       horizontal = {false}
+          style={{
+            position: 'absolute',
+          }}>
+          {[1, 2, 3, 4, 5, 5, 6, 6,4].map((item, index) => {
+            return <TechnicianRepander name="test"></TechnicianRepander>;
+          })}
+        </ScrollView> */}
       </SafeAreaView>
     );
   }

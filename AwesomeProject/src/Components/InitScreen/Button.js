@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 import themes from '../../config/themes';
-import {normalize} from '../../Utils/scales';
-import ScaleTextLibrary from '../../Utils/ScaleTextLibrary';
+import {normalize} from '../../utils/scales';
+import ScaleTextLibrary from '../../utils/ScaleTextLibrary';
 const styles = StyleSheet.create({
   text: {
     textAlign: 'center',

@@ -8,8 +8,8 @@ import {
   TextInput,
 } from 'react-native';
 import themes from '../../../../config/themes';
-import ScaleTextLibrary from '../../../../Utils/ScaleTextLibrary';
-import {normalize} from '../../../../Utils/scales';
+import ScaleTextLibrary from '../../../../utils/ScaleTextLibrary';
+import {normalize} from '../../../../utils/scales';
 import {styles_home} from '../../styles-home';
 export default class PaymentCoupon extends Component {
   constructor(props) {

@@ -9,8 +9,8 @@ import {
   ScrollView,
 } from 'react-native';
 import themes from '../../../../config/themes';
-import ScaleTextLibrary from '../../../../Utils/ScaleTextLibrary';
-import {normalize} from '../../../../Utils/scales';
+import ScaleTextLibrary from '../../../../utils/ScaleTextLibrary';
+import {normalize} from '../../../../utils/scales';
 import {styles_home} from '../../styles-home';
 import {items2} from '../../../../Components/InitScreen/mockData'
 import Button2 from '../../../../Components/InitScreen/Button2';
@@ -41,17 +41,7 @@ export default class PaymentCoupon extends Component {
         <View style={styles.containerScroll}>
           <ScrollView style={styles.width100}>
             {items2.map(item => {
-              console.log(item.code)
               return (
-                // <Button2
-                //   Textstyle={styles.colorBlack}
-                //   style_button={{
-                //     borderLeftColor: item.code,
-                //     width: '100%',
-                //     height: ((((themes.width * 3) / 3.8) * 0.5) / 3.9) * 0.3,
-                //     backgroundColor: item.backgroundColor,
-                //   }}
-                //   lable={'Machine'}></Button2>
                   <ItemScrollView code = {item.code}></ItemScrollView>
               );
             })}

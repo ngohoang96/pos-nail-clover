@@ -8,8 +8,8 @@ import {
   TextInput,
 } from 'react-native';
 import themes from '../../../../config/themes';
-import ScaleTextLibrary from '../../../../Utils/ScaleTextLibrary';
-import {normalize} from '../../../../Utils/scales';
+import ScaleTextLibrary from '../../../../utils/ScaleTextLibrary';
+import {normalize} from '../../../../utils/scales';
 export default class ItemService extends Component {
   constructor(props) {
     super(props);

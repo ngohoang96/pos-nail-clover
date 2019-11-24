@@ -9,8 +9,8 @@ import {
   ScrollView
 } from 'react-native';
 import themes from '../../../../config/themes';
-import ScaleTextLibrary from '../../../../Utils/ScaleTextLibrary';
-import {normalize} from '../../../../Utils/scales';
+import ScaleTextLibrary from '../../../../utils/ScaleTextLibrary';
+import {normalize} from '../../../../utils/scales';
 import {styles_home} from '../../styles-home';
 import TechnicianRepander from '../../../../Components/InitScreen/TechnicianRepander';
 import {dataTechnician} from '../../../../Components/InitScreen/mockData'
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     position: 'absolute',
   },
-  fx09: {flex: 0.9},
+  fx09: {flex: 0.9 , overflow :'scroll'},
   txtCenter: {
     alignItems: 'center',
     color: '#383E44',

@@ -4,7 +4,7 @@ import {styles_home} from '../styles-home';
 import themes from '../../../config/themes';
 import ItemService from './payment-service/item-service';
 import {dataService} from '../../../Components/InitScreen/mockData';
-import ScaleTextLibrary from '../../../Utils/ScaleTextLibrary';
+import ScaleTextLibrary from '../../../utils/ScaleTextLibrary';
 import PaymentCoupon from './payment-coupon/index';
 import PaymentGiftCart from './payment-giftcart/index';
 import PaymentTips from './payment-tips/index';

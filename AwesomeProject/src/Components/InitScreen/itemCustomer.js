@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import {Text, StyleSheet, TouchableOpacity, View, Image} from 'react-native';
 import themes from '../../config/themes';
 const styles = StyleSheet.create({});
-import {normalize} from '../../Utils/scales';
-import {TextScale} from '../../Utils/TextScale';
+import {normalize} from '../../utils/scales';
+import {TextScale} from '../../utils/TextScale';
 
-import ScaleTextLibrary from '../../Utils/ScaleTextLibrary';
+import ScaleTextLibrary from '../../utils/ScaleTextLibrary';
 const H5 = 6;
 export default class ItemCustomer extends Component {
   constructor(props) {
@@ -37,7 +37,7 @@ export default class ItemCustomer extends Component {
                 color: 'white',
                 fontWeight: 'bold',
               }}
-              font={H5 - 1}
+              font={H5}
               text="#100672"></ScaleTextLibrary>
           </View>
           <View

@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import {Text, StyleSheet, TouchableOpacity, View, Image} from 'react-native';
 import themes from '../../config/themes';
-import ScaleTextLibrary from '../../Utils/ScaleTextLibrary';
+import ScaleTextLibrary from '../../utils/ScaleTextLibrary';
 
 const H1 = 16;
 const H2 = 14;
 const H3 = 12;
 const H5 = 8;
 
-import {TextScale} from '../../Utils/TextScale';
+import {TextScale} from '../../utils/TextScale';
 export default class ItemTech extends Component {
   constructor(props) {
     super(props);

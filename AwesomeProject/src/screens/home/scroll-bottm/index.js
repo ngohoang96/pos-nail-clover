@@ -9,8 +9,8 @@ import {
   ScrollView,
 } from 'react-native';
 import themes from '../../../config/themes';
-import ScaleTextLibrary from '../../../Utils/ScaleTextLibrary';
-import {normalize} from '../../../Utils/scales';
+import ScaleTextLibrary from '../../../utils/ScaleTextLibrary';
+import {normalize} from '../../../utils/scales';
 import {styles_home} from '../styles-home';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import {data} from '../../../Components/InitScreen/mockData';
@@ -45,7 +45,7 @@ export default class PaymentTips extends Component {
 
 const styles = StyleSheet.create({
   containerTouch: {
-    height: '95%',
+    minHeight: '40%',
     borderWidth: 1,
     borderColor: '#C1C1C1',
     marginHorizontal: 3,
@@ -53,9 +53,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 3,
     marginVertical: 1,
-    paddingVertical: 1.5,
     marginRight: 10,
     backgroundColor: 'white',
+    paddingVertical : 10
   },
   fx1P5: {flex: 1, padding: 5},
   center: {alignItems: 'center', justifyContent: 'center'},
@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: '#C1C1C1',
     backgroundColor: 'white',
-    zIndex: 1,
     bottom: 0,
   },
 });

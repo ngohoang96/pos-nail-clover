@@ -9,8 +9,8 @@ import {
   ScrollView,
 } from 'react-native';
 import themes from '../../../../config/themes';
-import ScaleTextLibrary from '../../../../Utils/ScaleTextLibrary';
-import {normalize} from '../../../../Utils/scales';
+import ScaleTextLibrary from '../../../../utils/ScaleTextLibrary';
+import {normalize} from '../../../../utils/scales';
 import {styles_home} from '../../styles-home';
 import Button2 from '../../../../Components/InitScreen/Button2';
 import {items1} from '../../../../Components/InitScreen/mockData'
