@@ -25,13 +25,13 @@ export default class WelcomeScreen extends Component {
   render() {
     return (
       <SafeAreaView style={styles.containerWelcomeScreen}>
-        <WelcomeHour></WelcomeHour>
-        <WelcomeLogoLabel></WelcomeLogoLabel>
-        <WelcomClick></WelcomClick>
+        <WelcomeHour/>
+        <WelcomeLogoLabel/>
+        <WelcomClick/>
         <View style={styles.containerDownload}>
-          <DownloadCustomer></DownloadCustomer>
-          <CheckInList></CheckInList>
-          <NailsTechniciansApp></NailsTechniciansApp>
+          <DownloadCustomer/>
+          <CheckInList/>
+          <NailsTechniciansApp/>
         </View>
       </SafeAreaView>
     );
