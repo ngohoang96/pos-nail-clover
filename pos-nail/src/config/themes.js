@@ -67,8 +67,7 @@ const colors = {
   iconSelected: '#c0392b',
   iconDefaultColor: '#ffffff',
 };
-let width = Dimensions.get('window').width;
-let height = Dimensions.get('window').height;
+let {width , height} = Dimensions.get('window');
 const H5 = 7;
 const H6 = 5;
 const sizes = {

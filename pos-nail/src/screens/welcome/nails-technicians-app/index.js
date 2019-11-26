@@ -12,6 +12,7 @@ import themes from '../../../config/themes';
 import {Colors} from '../../../themes';
 import {normalize} from '../../../utils/FontSize';
 import {TextCmp} from '../../../common-components/index';
+import {demoImg} from '../../../assets';
 export default class NailsTechnicianApp extends Component {
   render() {
     return (
@@ -19,12 +20,13 @@ export default class NailsTechnicianApp extends Component {
         <TextCmp style={styles.txtnailsTech}>Nails Technicians APP</TextCmp>
         <View style={styles.containerImageNails}>
           <Image
-            resizeMode="stretch"
-            style={styles.imageNailTech}
             source={{
-              uri:
-                'http://pngimg.com/uploads/qr_code/qr_code_PNG2.png',
-            }}></Image>
+              uri: `https://facebook.github.io/react/logo-og.png`,
+            }}
+            // source={demoImg.img}
+            resizeMode="contain"
+            style={{width: 100, height: 100}}
+          />
         </View>
       </View>
     );
@@ -38,14 +40,18 @@ const styles = StyleSheet.create({
     padding: 5,
     alignItems: 'flex-end',
   },
-  txtnailsTech: {fontSize: normalize(8), color: 'gray', textAlign: 'right',marginRight : 10},
+  txtnailsTech: {
+    fontSize: normalize(8),
+    color: 'gray',
+    textAlign: 'right',
+    marginRight: 10,
+  },
   containerImageNails: {
-    height: ((themes.height * 2) / 6.5) * 0.7,
-    width: ((themes.height * 2) / 6.5) * 0.7,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 5,
-    marginRight: '10%',
+    backgroundColor: 'red',
+    // marginRight: '10%',
   },
-  imageNailTech: {height: '100%', width: '100%', overflow: 'hidden'},
+  imageNailTech: {width: 50, height: 50},
 });
