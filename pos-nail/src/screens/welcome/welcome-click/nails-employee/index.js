@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     height: '20%',
     width: '50%',
     backgroundColor: 'white',
-    marginTop: 20,
+    marginTop: 10,
     flexDirection: 'row',
   },
 });

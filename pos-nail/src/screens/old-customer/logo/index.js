@@ -21,7 +21,7 @@ export default class LogoOld extends Component {
           resizeMode="stretch"
           style={styles.imagelogo}
           source={{
-            uri: 'http://pngimg.com/uploads/google/google_PNG19644.png',
+            uri: 'https://static.adweek.com/adweek.com-prod/wp-content/uploads/2019/01/mastercard-new-logo-content-2019.jpg',
           }}></Image>
       </View>
     );

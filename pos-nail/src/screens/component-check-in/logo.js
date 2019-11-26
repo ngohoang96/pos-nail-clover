@@ -13,7 +13,7 @@ export default (props = {}) => {
         resizeMode="stretch"
         style={[styles.imagelogo , props.imageStyles]}
         source={{
-          uri: 'http://pngimg.com/uploads/google/google_PNG19644.png',
+          uri: 'https://static.adweek.com/adweek.com-prod/wp-content/uploads/2019/01/mastercard-new-logo-content-2019.jpg',
         }}></Image>
     </View>
   );
@@ -21,7 +21,7 @@ export default (props = {}) => {
 
 const styles = StyleSheet.create({
   containerImage: {
-    flex: 2,
+    flex: 3,
     backgroundColor: 'white',
     justifyContent: 'flex-end',
     paddingLeft: '10%',

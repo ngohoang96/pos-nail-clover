@@ -15,9 +15,9 @@ import {TextCmp} from '../../../../common-components/index';
 export default class Customer extends Component {
   render() {
     return (
-      <View style={styles.containerReviewUs}>
+      <TouchableOpacity onPress = {()=>{alert(themes.height + " so sánh " + themes.width)}} style={styles.containerReviewUs}>
         <TextCmp style={styles.txtReviewUs}>Review Us</TextCmp>
-      </View>
+      </TouchableOpacity>
     );
   }
 }
@@ -27,9 +27,9 @@ const styles = StyleSheet.create({
     height: '20%',
     width: '50%',
     backgroundColor: '#F48210',
-    marginTop: 10,
+    marginTop: 5,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  txtReviewUs: {fontSize: normalize(8), color: 'white'},
+  txtReviewUs: {fontSize: normalize(10), color: 'white'},
 });

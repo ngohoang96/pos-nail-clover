@@ -36,7 +36,7 @@ export default class YesNo extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={{height: '20%'}}></View>
+        <View style={{height: '18%'}}></View>
         <View style={styles.containerYes}>
           <TouchableOpacity
           
@@ -57,9 +57,10 @@ export default class YesNo extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {flex: 4, backgroundColor: 'white'},
+  container: {flex: 4, backgroundColor: 'white', 
+  marginBottom : 10},
   containerYes: {
-    height: '25%',
+    height: '28%',
     width: '100%',
     backgroundColor: 'white',
     flexDirection: 'row',

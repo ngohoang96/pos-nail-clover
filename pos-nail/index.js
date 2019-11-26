@@ -27,31 +27,32 @@ Navigation.registerComponent(
   () => ConfirmAppointmentTiem,
 );
 
+let defautOptions = null
 Navigation.events().registerAppLaunchedListener(() => {
-  Navigation.setDefaultOptions({
-    // Title
-    navBarTextColor: '#fff',
-    navBarTextFontSize: 17,
+  // Navigation.setDefaultOptions(defautOptions,{
+  //   // Title
+  //   navBarTextColor: '#fff',
+  //   navBarTextFontSize: 17,
 
-    navBarButtonColor: '#fff',
-    navBarHidden: true,
-    screenBackgroundColor: 'transparent',
+  //   navBarButtonColor: '#fff',
+  //   navBarHidden: true,
+  //   screenBackgroundColor: 'transparent',
 
-    drawUnderTabBar: false,
-    // orientation: ['landscape'], // Force orientation
+  //   drawUnderTabBar: false,
+  //   // orientation: ['landscape'], // Force orientation
 
-    // iOS only
-    // Do not allow user to swipe back on iOS
-    disabledBackGesture: true,
+  //   // iOS only
+  //   // Do not allow user to swipe back on iOS
+  //   disabledBackGesture: true,
 
-    // Android only
-    statusBarColor: 'white',
-    navBarTitleTextCentered: true,
-    // Center the title on Android (default align left)
-    layout: {
-      orientation: ['landscape'], // An array of supported orientations
-    },
-  });
+  //   // Android only
+  //   statusBarColor: 'white',
+  //   navBarTitleTextCentered: true,
+  //   // Center the title on Android (default align left)
+  //   layout: {
+  //     orientation: ['landscape'], // An array of supported orientations
+  //   },
+  // });
   Navigation.setRoot({
     root: {
       stack: {
@@ -177,13 +178,16 @@ Navigation.events().registerAppLaunchedListener(() => {
       },
     };
 
-    const defautOptions = {
+    defautOptions = {
       animations: {
         push: pushAnimations,
         pop: popAnimations,
       },
+      layout: {
+        orientation: ['landscape'], // An array of supported orientations
+      },
     };
 
-    // Navigation.setDefaultOptions(defautOptions);
+    Navigation.setDefaultOptions(defautOptions);
   }
 });

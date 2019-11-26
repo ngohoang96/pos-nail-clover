@@ -37,7 +37,7 @@ export default class ConfirmAppointmentTime extends Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <Logo_></Logo_>
+        <Logo_ containerStyles = {{flex : 3}}></Logo_>
         <Label_
           labelStyle={styles.labelStyle}
           containerStyle={styles.containerStyle}

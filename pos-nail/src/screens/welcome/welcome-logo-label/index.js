@@ -21,7 +21,7 @@ export default class WelcomeScreen extends Component {
             resizeMode="stretch"
             style={styles.logo}
             source={{
-              uri: 'http://pngimg.com/uploads/google/google_PNG19644.png',
+              uri: 'https://static.adweek.com/adweek.com-prod/wp-content/uploads/2019/01/mastercard-new-logo-content-2019.jpg',
             }}></Image>
         </View>
         <View style={styles.containerLabel}>
@@ -35,12 +35,12 @@ export default class WelcomeScreen extends Component {
 const styles = StyleSheet.create({
   containerfx1: {flex: 1, backgroundColor: 'white', flexDirection: 'row'},
   containerLogo: {
-    flex: 0.7,
+    flex: 0.6,
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  logo: {height: '85%', width: '50%', overflow: 'hidden' , backgroundColor : 'white'},
+  logo: {height: '85%', width: '50%' , backgroundColor : 'white'},
   containerLabel: {flex: 1, justifyContent: 'center'},
-  label: {fontSize: normalize(10), color: 'gray'},
+  label: {fontSize: normalize(13), color: 'gray'},
 });

@@ -54,7 +54,7 @@ export default class YesNo extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {flex: 4, backgroundColor: 'white'},
+  container: {flex: 5, backgroundColor: 'white'},
   containerYes: {
     height: '25%',
     width: '100%',

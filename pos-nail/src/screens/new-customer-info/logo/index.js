@@ -22,7 +22,7 @@ export default (props = {}) => {
           resizeMode="stretch"
           style={styles.img}
           source={{
-            uri: 'http://pngimg.com/uploads/google/google_PNG19644.png',
+            uri: 'https://static.adweek.com/adweek.com-prod/wp-content/uploads/2019/01/mastercard-new-logo-content-2019.jpg',
           }}></Image>
       </View>
       <View style={styles.ctxt}>

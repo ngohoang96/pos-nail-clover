@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'center',
     paddingLeft: '10%',
-    justifyContent : 'center' , alignItems : 'center'
+    justifyContent : 'center' , alignItems : 'center' 
   },
   imagelogo: {
     height: '70%',

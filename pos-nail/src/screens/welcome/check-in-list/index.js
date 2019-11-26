@@ -37,5 +37,5 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     marginBottom : 20
   },
-  txtCheck: {fontSize: normalize(10), color: 'gray'},
+  txtCheck: {fontSize: normalize(8), color: 'gray'},
 });

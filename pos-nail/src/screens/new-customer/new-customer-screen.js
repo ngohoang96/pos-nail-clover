@@ -34,7 +34,7 @@ export default class NewCustomer extends Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <Logo></Logo>
+        <Logo containerStyles = {{flex : 3}}></Logo>
         <Label
           labelStyle={styles.labelStyle}
           containerStyle={styles.containerStyle}
@@ -47,7 +47,7 @@ export default class NewCustomer extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {flex: 1, backgroundColor: 'white', paddingBottom: 20},
+  container: {flex: 1, backgroundColor: 'white'},
   labelStyle: {
     color: 'black',
     fontSize: normalize(12),
