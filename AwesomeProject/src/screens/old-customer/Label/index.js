@@ -18,7 +18,7 @@ export default class Label extends Component {
     return (
       <View style={styles.containerLabel}>
         <View style={{alignItems: 'center'}}>
-          <TextCmp style={{fontSize: 24}}>
+          <TextCmp style={{fontSize: normalize(10)}}>
             Please type in your phone number!
           </TextCmp>
         </View>

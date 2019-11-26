@@ -24,7 +24,7 @@ export default (props = {}) => {
               placeholder="Phone (*)"
               style={styles.txtInp}></TextInput>
           </View>
-          <View style={[styles.cInp, {marginLeft: 5}]}>
+          <View style={[styles.cInp, {marginLeft: 4}]}>
             <TextInput
               placeholder="Referal code"
               style={styles.txtInp}></TextInput>
@@ -51,7 +51,7 @@ export default (props = {}) => {
                 style={styles.txtInp}></TextInput>
             </View>
           </View>
-          <View style={styles.cInpAddress}>
+          <View style={[styles.cInpAddress , {marginLeft :4}]}>
             <TextInput
               placeholder="Email Address"
               style={styles.txtInp}></TextInput>
@@ -101,6 +101,7 @@ export default (props = {}) => {
             <View style={styles.cInpDate1}>
               <TextInput
                 placeholderTextColor="black"
+              
                 placeholder="Date"
                 style={styles.txtInp}></TextInput>
             </View>
@@ -128,7 +129,8 @@ const styles = StyleSheet.create({
   txtInp: {
     paddingHorizontal: 10,
     flex: 1,
-    fontSize: normalize(7),
+    fontSize: normalize(6),
+    paddingVertical : 3
   },
   cL2: {
     flex: 1,

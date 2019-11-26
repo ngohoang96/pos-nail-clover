@@ -46,5 +46,5 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     paddingBottom: 5,
   },
-  txt: {color: 'white', fontSize: 32},
+  txt: {color: 'white', fontSize: normalize(15)},
 });

@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   container: {flex: 1, backgroundColor: 'white', justifyContent: 'center'},
   txtBack: {
     color: 'white',
-    fontSize: 18,
+    fontSize: normalize(10),
   },
   btnBack: {
     height: '85%',

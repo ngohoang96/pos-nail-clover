@@ -41,6 +41,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   logo: {height: '85%', width: '50%', overflow: 'hidden' , backgroundColor : 'white'},
-  containerLabel: {flex: 1, alignItems: 'center', justifyContent: 'center'},
-  label: {fontSize: 18, color: 'gray'},
+  containerLabel: {flex: 1, justifyContent: 'center'},
+  label: {fontSize: normalize(10), color: 'gray'},
 });

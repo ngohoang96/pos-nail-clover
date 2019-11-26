@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  txtYes: {color: 'white', fontSize: 24},
+  txtYes: {color: 'white', fontSize: normalize(10)},
   btnNo: {
     backgroundColor: Colors.blue,
     flex: 1,
@@ -78,5 +78,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: 5,
   },
-  txtNo: {color: 'white', fontSize: 24},
+  txtNo: {color: 'white', fontSize: normalize(10)},
 });

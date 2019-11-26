@@ -14,24 +14,24 @@ import {normalize} from '../../../utils/FontSize';
 import {TextCmp} from '../../../common-components/index';
 
 export default (props = {}) => {
-    return (
-      <TouchableOpacity
-        onPress={props.onPress}
-        activeOpacity={0.7}
-        {...props}
-        style={[styles.btn, props.style]}>
-          <TextCmp style={styles.txt}>{props.label}</TextCmp>
-      </TouchableOpacity>
-   
-    );
-}
-
+  return (
+    <TouchableOpacity
+      {...props}
+      style={[styles.containerBtn, props.containerStyle]}>
+      <TextCmp style={[styles.txt, props.textStyles]}>{props.text}</TextCmp>
+    </TouchableOpacity>
+  );
+};
 const styles = StyleSheet.create({
-btn : {
-    flex: 1,
-    backgroundColor: Colors.darkBlue,
+  containerBtn: {
+    width: '15%',
+    height: '100%',
+    backgroundColor: '#174B47',
+    borderRadius: 5,
+    borderWidth: 0.5,
+    borderColor: '#308A85',
     alignItems: 'center',
     justifyContent: 'center',
-} , 
-txt : {color: 'white', fontSize: normalize(10)}
+  },
+  txt: {color: 'white', fontSize: normalize(10)},
 });

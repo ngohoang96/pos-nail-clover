@@ -26,7 +26,7 @@ export default class CheckInList extends Component {
 
 const styles = StyleSheet.create({
   containerCheckIn: {
-    flex: 0.8,
+    flex: 0.5,
     backgroundColor: 'white',
     justifyContent: 'flex-end',
     marginBottom: 10,
@@ -37,5 +37,5 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     marginBottom : 20
   },
-  txtCheck: {fontSize: 18, color: 'gray'},
+  txtCheck: {fontSize: normalize(10), color: 'gray'},
 });

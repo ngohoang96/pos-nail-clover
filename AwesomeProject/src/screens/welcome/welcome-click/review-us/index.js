@@ -31,5 +31,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  txtReviewUs: {fontSize: 18, color: 'white'},
+  txtReviewUs: {fontSize: normalize(8), color: 'white'},
 });

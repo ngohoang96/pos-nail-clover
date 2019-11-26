@@ -46,5 +46,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  txtCus: {fontSize: 28, color: 'white'},
+  txtCus: {fontSize: normalize(10), color: 'white'},
 });

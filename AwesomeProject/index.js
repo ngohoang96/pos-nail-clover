@@ -26,21 +26,43 @@ Navigation.registerComponent(
   `ConfirmAppointmentTimeScreen`,
   () => ConfirmAppointmentTiem,
 );
+
 Navigation.events().registerAppLaunchedListener(() => {
+  Navigation.setDefaultOptions({
+    // Title
+    navBarTextColor: '#fff',
+    navBarTextFontSize: 17,
+
+    navBarButtonColor: '#fff',
+    navBarHidden: true,
+    screenBackgroundColor: 'transparent',
+
+    drawUnderTabBar: false,
+    orientation: 'landscape', // Force orientation
+
+    // iOS only
+    // Do not allow user to swipe back on iOS
+    disabledBackGesture: true,
+
+    // Android only
+    statusBarColor: 'white',
+    navBarTitleTextCentered: true, // Center the title on Android (default align left)
+  });
   Navigation.setRoot({
     root: {
       stack: {
         children: [
-          {component: {
-            id: 'AppScreen',
-            name: 'AppScreen',
-            options: {
-              topBar: {
-                visible: false,
-                drawBehind: true,
+          {
+            component: {
+              id: 'AppScreen',
+              name: 'AppScreen',
+              options: {
+                topBar: {
+                  visible: false,
+                  drawBehind: true,
+                },
               },
             },
-          },
             component: {
               id: 'CustomerInfoScreen',
               name: 'CustomerInfoScreen',

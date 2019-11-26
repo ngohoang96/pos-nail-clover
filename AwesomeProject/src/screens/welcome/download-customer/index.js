@@ -35,10 +35,10 @@ export default class DownloadCustomer extends Component {
 
 const styles = StyleSheet.create({
   containerDownloadCus: {flex: 1, backgroundColor: 'white', padding: 5},
-  txtDownloadCus: {fontSize: 18, color: 'gray', marginLeft : 10},
+  txtDownloadCus: {fontSize: normalize(8), color: 'gray', marginLeft : 10},
   containerImagedownload: {
-    height: ((themes.height * 2) / 6.5) * 0.7,
-    width: ((themes.height * 2) / 6.5) * 0.7,
+    height: ((themes.height * 2) / 6.5) * 0.6,
+    width: ((themes.height * 2) / 6.5) * 0.6,
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: '10%',

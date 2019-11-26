@@ -61,5 +61,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  labelStyle: {color: 'black', fontSize: 28},
+  labelStyle: {color: 'black', fontSize: normalize(10)},
 });

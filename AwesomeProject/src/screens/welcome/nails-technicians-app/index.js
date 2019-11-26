@@ -38,10 +38,10 @@ const styles = StyleSheet.create({
     padding: 5,
     alignItems: 'flex-end',
   },
-  txtnailsTech: {fontSize: 18, color: 'gray', textAlign: 'right',marginRight : 10},
+  txtnailsTech: {fontSize: normalize(8), color: 'gray', textAlign: 'right',marginRight : 10},
   containerImageNails: {
-    height: ((themes.height * 2) / 6.5) * 0.7,
-    width: ((themes.height * 2) / 6.5) * 0.7,
+    height: ((themes.height * 2) / 6.5) * 0.6,
+    width: ((themes.height * 2) / 6.5) * 0.6,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 5,

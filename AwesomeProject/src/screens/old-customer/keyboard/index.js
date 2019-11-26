@@ -13,14 +13,14 @@ import {Colors} from '../../../themes';
 import {normalize} from '../../../utils/FontSize';
 import {TextCmp} from '../../../common-components/index';
 import InputPhone from '../InputPhone/index';
-
+import Number from './button';
 export default class Label extends Component {
   render() {
     return (
       <View
         style={{
           flex: 2,
-          backgroundColor: 'red',
+          backgroundColor: 'white',
           marginHorizontal: 10,
         }}>
         <InputPhone></InputPhone>
@@ -30,109 +30,29 @@ export default class Label extends Component {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-            <View style = {{flex : 1}}></View>
-          <View style={{flexDirection: 'row', flex: 1 }}>
-            <TouchableOpacity
-              style={{
-                width: '15%',
-                height: '100%',
-                backgroundColor: 'white',
-                borderRadius: 5,
-              }}></TouchableOpacity>
-            <TouchableOpacity
-              style={{
-                width: '15%',
-                height: '100%',
-                backgroundColor: 'white',
-                borderRadius: 5,
-                marginLeft : 5
-              }}></TouchableOpacity>
-            <TouchableOpacity
-              style={{
-                width: '15%',
-                height: '100%',
-                backgroundColor: 'white',
-                borderRadius: 5,
-                marginLeft : 5
-              }}></TouchableOpacity>
+          <View style={{flex: 1}}></View>
+          <View style={{flexDirection: 'row', flex: 1}}>
+            <Number text="1"></Number>
+            <Number text="2" containerStyle = {{marginLeft : 5}}></Number>
+            <Number text="3" containerStyle = {{marginLeft : 4}}></Number>
           </View>
 
-          <View style={{flexDirection: 'row', flex: 1 , marginTop : 5}}>
-            <TouchableOpacity
-              style={{
-                width: '15%',
-                height: '100%',
-                backgroundColor: 'white',
-                borderRadius: 5,
-              }}></TouchableOpacity>
-            <TouchableOpacity
-              style={{
-                width: '15%',
-                height: '100%',
-                backgroundColor: 'white',
-                borderRadius: 5,
-                marginLeft : 5
-              }}></TouchableOpacity>
-            <TouchableOpacity
-              style={{
-                width: '15%',
-                height: '100%',
-                backgroundColor: 'white',
-                borderRadius: 5,
-                marginLeft : 5  
-              }}></TouchableOpacity>
+          <View style={{flexDirection: 'row', flex: 1, marginTop: 5}}>
+          <Number text="4"></Number>
+            <Number text="5" containerStyle = {{marginLeft : 5}}></Number>
+            <Number text="6" containerStyle = {{marginLeft : 4}}></Number>
           </View>
-          <View style={{flexDirection: 'row', flex: 1 , marginTop : 5}}>
-            <TouchableOpacity
-              style={{
-                width: '15%',
-                height: '100%',
-                backgroundColor: 'white',
-                borderRadius: 5,
-              }}></TouchableOpacity>
-            <TouchableOpacity
-              style={{
-                width: '15%',
-                height: '100%',
-                backgroundColor: 'white',
-                borderRadius: 5,
-                marginLeft : 5
-              }}></TouchableOpacity>
-            <TouchableOpacity
-              style={{
-                width: '15%',
-                height: '100%',
-                backgroundColor: 'white',
-                borderRadius: 5,
-                marginLeft : 5
-              }}></TouchableOpacity>
+          <View style={{flexDirection: 'row', flex: 1, marginTop: 5}}>
+          <Number text="7"></Number>
+            <Number text="8" containerStyle = {{marginLeft : 5}}></Number>
+            <Number text="9" containerStyle = {{marginLeft : 4}}></Number>
           </View>
-          <View style={{flexDirection: 'row', flex: 1 , marginTop : 5}}>
-            <TouchableOpacity
-              style={{
-                width: '15%',
-                height: '100%',
-                backgroundColor: 'white',
-                borderRadius: 5,
-              }}></TouchableOpacity>
-            <TouchableOpacity
-              style={{
-                width: '15%',
-                height: '100%',
-                backgroundColor: 'white',
-                borderRadius: 5,
-                marginLeft : 5
-              }}></TouchableOpacity>
-            <TouchableOpacity
-              style={{
-                width: '15%',
-                height: '100%',
-                backgroundColor: 'white',
-                borderRadius: 5,
-                marginLeft : 5
-              }}></TouchableOpacity>
+          <View style={{flexDirection: 'row', flex: 1, marginTop: 5}}>
+          <Number text="X"></Number>
+            <Number text="0" containerStyle = {{marginLeft : 5}}></Number>
+            <Number text="<<" containerStyle = {{marginLeft : 4}}></Number>
           </View>
-            <View style = {{flex : 1}}></View>
+          <View style={{flex: 1}}></View>
         </View>
       </View>
     );

@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   container: {flex: 1, backgroundColor: 'white', paddingBottom: 20},
   labelStyle: {
     color: 'black',
-    fontSize: 28,
+    fontSize: normalize(12),
   },
   containerStyle: {
     flex: 1,

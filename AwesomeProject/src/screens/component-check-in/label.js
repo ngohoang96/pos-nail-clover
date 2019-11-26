@@ -22,5 +22,5 @@ export default (props = {}) => {
 };
 const styles = StyleSheet.create({
   containerLabel: {flex: 1, backgroundColor: 'white'},
-  txt: {fontSize: 24},
+  txt: {fontSize: normalize(10)},
 });

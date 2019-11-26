@@ -20,6 +20,6 @@ const styles = StyleSheet.create({
   text: {
     color: Colors.text,
     fontFamily: 'Jura-DemiBold',
-    fontSize: normalize(10),
+    fontSize: normalize(15),
   },
 });

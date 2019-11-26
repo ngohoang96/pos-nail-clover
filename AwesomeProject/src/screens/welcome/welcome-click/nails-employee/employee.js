@@ -41,5 +41,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  txtEmployee: {fontSize: 24, color: 'white'},
+  txtEmployee: {fontSize: normalize(8), color: 'white'},
 });

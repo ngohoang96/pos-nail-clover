@@ -39,6 +39,6 @@ const styles = StyleSheet.create({
   },
   txtLabel : {
     color : 'black' , 
-    fontSize : 28
+    fontSize : normalize(12)
   }
 });
