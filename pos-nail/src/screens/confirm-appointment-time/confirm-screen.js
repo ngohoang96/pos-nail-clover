@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   btnPedicure: {backgroundColor: Colors.orange, marginTop: 10},
   labelStyle : {
     color: 'black',
-    fontSize: normalize(12),
+    fontSize: normalize(themes.H10),
   } , 
   containerStyle : {
     flex: 2,

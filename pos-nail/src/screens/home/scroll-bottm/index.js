@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     paddingVertical : 10
   },
   fx1P5: {flex: 1, padding: 5},
-  center: {alignItems: 'center', justifyContent: 'center'},
+  center: {alignItems: 'center', justifyContent: 'center' , marginTop : 2},
   txtLabel: {
     color: 'black',
     textAlign: 'center',

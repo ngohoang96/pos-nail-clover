@@ -17,7 +17,7 @@ import Logo from './logo/index';
 import Label from './Label/index';
 import YesNo from './yes-no/index';
 import ButtonBottom from '../component-check-in/button-bottom';
-export default class NewCustomer extends Component {
+export default class ConfirmAp extends Component {
   static options(passprops) {
     return {
       topBar: {

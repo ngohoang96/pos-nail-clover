@@ -40,5 +40,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  txtNailTech: { color: 'white' , fontWeight : '400', fontSize : normalize(10)},
+  txtNailTech: { color: 'white' , fontWeight : '400', fontSize : normalize(themes.H8)},
 });

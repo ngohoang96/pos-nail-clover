@@ -6,5 +6,13 @@
  * @flow
  */
 export default {
-  Home: 'screen.Home',
+  Init: 'screen.Init',
+  Welcome: 'screen.Welcome',
+  NewCustomer : 'screen.NewCustomer' , 
+  OldCustomer : 'screen.OldCustomer' , 
+  Confirm : 'screen.Confirm' , 
+  ConfirmAppointmentTime : 'screen.ConfirmAppointmentTime' ,
+  YourNailsTech : 'screen.YourNailsTech' , 
+  YourService : 'screen.YourService' , 
+  CustomerInfo : 'screen.CustomerInfo'
 };

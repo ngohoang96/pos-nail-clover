@@ -33,5 +33,5 @@ btn : {
     alignItems: 'center',
     justifyContent: 'center',
 } , 
-txt : {color: 'white', fontSize: normalize(10)}
+txt : {color: 'white', fontSize: normalize(themes.H5)}
 });

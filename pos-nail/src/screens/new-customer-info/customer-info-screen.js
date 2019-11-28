@@ -16,7 +16,7 @@ import {TextCmp} from '../../common-components/index';
 import ButtonBottom from '../component-check-in/button-bottom';
 import Label from './logo/index';
 import Input from './input/index';
-export default class YourService extends Component {
+export default class CustomerInfo extends Component {
   static options(passprops) {
     return {
       topBar: {

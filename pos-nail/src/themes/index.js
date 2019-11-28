@@ -6,6 +6,8 @@
  */
 import Colors from './Colors';
 import Fonts from './Fonts';
+import Metrics from './Metrics'
+import * as Styles from './Styles'
 // More theme items here...
 
-export { Colors, Fonts};
+export { Colors, Fonts , Metrics , Styles};

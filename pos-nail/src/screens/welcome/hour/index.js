@@ -29,5 +29,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-end',
   },
-  txtHour: {color: 'black' ,fontSize : normalize(10)},
+  txtHour: {color: 'black' ,fontSize : normalize(themes.H8)},
 });
