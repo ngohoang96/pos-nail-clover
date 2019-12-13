@@ -5,18 +5,10 @@
  *
  */
 import {combineReducers} from 'redux';
-import {persistCombineReducers} from 'redux-persist';
-// old
-// import storage from 'redux-persist/lib/storage';
-//new
-import AsyncStorage from '@react-native-community/async-storage';
 
 import {testReducer, testTypes, testActions, testSelectors} from './test';
-const config = {
-  key: 'test',
-  storage: AsyncStorage,
-};
-const rootReducer = persistCombineReducers(config, {
+
+const rootReducer = combineReducers({
   test: testReducer,
 });
 

@@ -8,14 +8,14 @@ import {
   TextInput,
   ScrollView,
 } from 'react-native';
+
 import themes from '../../../../config/themes';
-import ScaleTextLibrary from '../../../../utils/ScaleTextLibrary';
-import {normalize} from '../../../../utils/scales';
-import {styles_home} from '../../styles-home';
-import {items2} from '../../../../Components/InitScreen/mockData'
+import {normalize} from '../../../../themes/FontSize';
+import TextCmp from '../../../../themes/TextCmp';
+import {items2} from '../../../../Components/InitScreen/mockData';
 import Button2 from '../../../../Components/InitScreen/Button2';
 import IonIcon from 'react-native-vector-icons/Ionicons';
-import ItemScrollView from './itemScrollView'
+import ItemScrollView from './itemScrollView';
 export default class PaymentCoupon extends Component {
   constructor(props) {
     super(props);
@@ -25,15 +25,12 @@ export default class PaymentCoupon extends Component {
       <View style={styles.fx05MGH10}>
         <View style={styles.fxD_row}>
           <View style={styles.containerLabel}>
-            <ScaleTextLibrary
-              styl={styles.txtLabel}
-              font={themes.H5 + 1}
-              text="Full Menu"></ScaleTextLibrary>
+            <TextCmp style={styles.txtLabel}>Full Menu</TextCmp>
           </View>
           <View style={styles.containerIconMenu}>
             <IonIcon
               name="ios-menu"
-              size={18}
+              size={normalize(6)}
               color="black"
               style={{}}></IonIcon>
           </View>
@@ -41,9 +38,7 @@ export default class PaymentCoupon extends Component {
         <View style={styles.containerScroll}>
           <ScrollView style={styles.width100}>
             {items2.map(item => {
-              return (
-                  <ItemScrollView code = {item.code}></ItemScrollView>
-              );
+              return <ItemScrollView code={item.code}></ItemScrollView>;
             })}
           </ScrollView>
         </View>
@@ -56,6 +51,7 @@ const styles = StyleSheet.create({
   fx05MGH10: {
     marginHorizontal: 10,
     flex: 0.5,
+    zIndex : -1
   },
   fxD_row: {
     flexDirection: 'row',
@@ -68,6 +64,7 @@ const styles = StyleSheet.create({
   txtLabel: {
     alignItems: 'center',
     color: '#383E44',
+    fontSize : normalize(5)
   },
   containerIconMenu: {alignItems: 'center', justifyContent: 'center'},
   containerScroll: {
@@ -78,5 +75,4 @@ const styles = StyleSheet.create({
   },
   width100: {width: '100%'},
   colorBlack: {color: 'black'},
-
 });

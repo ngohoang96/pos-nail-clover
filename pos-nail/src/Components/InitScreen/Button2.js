@@ -2,13 +2,12 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 import themes from '../../config/themes';
-import {normalize} from '../../utils/scales'
-
-import ScaleTextLibrary from '../../utils/ScaleTextLibrary'
+import {normalize} from '../../themes/FontSize';
+import TextCmp from '../../themes/TextCmp';
 const styles = StyleSheet.create({
   text: {
     color: 'black',
-    fontSize: 12,
+    fontSize: normalize(4),
     fontWeight: 'bold',
   },
   button: {
@@ -25,7 +24,7 @@ const styles = StyleSheet.create({
     borderRightColor: '#383E44',
     borderRightWidth: 1,
     borderBottomColor: '#383E44',
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
   },
 });
 
@@ -38,10 +37,11 @@ export default class Button2 extends Component {
       <TouchableOpacity
         style={[
           styles.button,
-          {borderLeftWidth: 4, ... this.props.style_button},
+          {borderLeftWidth: 4, ...this.props.style_button},
         ]}>
-   
-        <ScaleTextLibrary styl = {[styles.text, this.props.Textstyle ]} font = {7} text ={this.props.lable}></ScaleTextLibrary>
+        <TextCmp style={[styles.text, this.props.Textstyle]}>
+          {this.props.lable}
+        </TextCmp>
       </TouchableOpacity>
     );
   }

@@ -9,6 +9,8 @@ import {
   Dimensions,
 } from 'react-native';
 import themes from '../../config/themes';
+import {normalize} from '../../themes/FontSize';
+import TextCmp from '../../themes/TextCmp';
 import ItemTech from '../../Components/InitScreen/itemTech';
 export default class TechnicianRepander extends Component {
   constructor(props) {
@@ -24,15 +26,13 @@ export default class TechnicianRepander extends Component {
 
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
-      onPanResponderMove: Animated.event(
-        [
-          null,
-          {
-            dx: this.state.pan.x,
-            dy: this.state.pan.y,
-          }
-        ]
-      ),
+      onPanResponderMove: Animated.event([
+        null,
+        {
+          dx: this.state.pan.x,
+          dy: this.state.pan.y,
+        },
+      ]),
       onPanResponderRelease: (e, gesture) => {
         if (this.isDropZone(gesture)) {
           this.setState({
@@ -53,6 +53,7 @@ export default class TechnicianRepander extends Component {
     //     posX : gesture.moveX ,
     //     posY : gesture.moveY
     // })
+
     if (gesture.moveX < (themes.width * 0.9) / 3.9 / 2) {
       alert('posX ' + gesture.moveX + '  ' + 'ok ' + this.props.name);
     }
@@ -69,8 +70,8 @@ export default class TechnicianRepander extends Component {
     return (
       <View
         style={{
-          width: (((themes.width * 3) / 3.9) * 0.8) / 3.9,
-          height: ((((themes.width * 3) / 3.9) * 0.8) / 3.9) * 0.75,
+          width: themes.width*0.9/5.6-10,
+          height: themes.width*0.9/5.6*0.65,
           marginTop: 10,
         }}>
         <View onLayout={this.setDropZoneValues.bind(this)}></View>
@@ -81,7 +82,7 @@ export default class TechnicianRepander extends Component {
             {
               backgroundColor: '#1abc9c',
               width: '100%',
-              height: '100%',
+              height: '100%'
             },
           ]}>
           <ItemTech nameTechnician={this.props.name}></ItemTech>

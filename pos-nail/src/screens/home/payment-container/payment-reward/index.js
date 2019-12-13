@@ -7,9 +7,10 @@ import {
   Image,
   TextInput,
 } from 'react-native';
+
 import themes from '../../../../config/themes';
-import ScaleTextLibrary from '../../../../utils/ScaleTextLibrary';
-import {normalize} from '../../../../utils/scales';
+import {normalize} from '../../../../themes/FontSize';
+import TextCmp from '../../../../themes/TextCmp';
 import {styles_home} from '../../styles-home';
 export default class PaymentReward extends Component {
   constructor(props) {
@@ -25,14 +26,15 @@ export default class PaymentReward extends Component {
           flex: 1,
         }}>
         <View style={[styles_home.container2, {paddingRight: 10, flex: 1}]}>
-          <ScaleTextLibrary
-            styl={{
+          <TextCmp
+            style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
               flex: 1,
-            }}
-            font={themes.H5}
-            text="Reward"></ScaleTextLibrary>
+              fontSize : normalize(3.5)
+            }}>
+            Reward
+          </TextCmp>
 
           <TouchableOpacity
             activeOpacity={0.8}
@@ -48,10 +50,8 @@ export default class PaymentReward extends Component {
               flex: 0.8,
               marginLeft: 3,
             }}>
-            <ScaleTextLibrary
-              styl={{color: 'black'}}
-              font={themes.H5}
-              text="($0.00)"></ScaleTextLibrary>
+            <TextCmp style={{color: 'black',
+            fontSize : normalize(3.5)}}>($0.00)</TextCmp>
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={0.8}
@@ -67,18 +67,16 @@ export default class PaymentReward extends Component {
               flex: 0.8,
               width: '75%',
             }}>
-            <ScaleTextLibrary
-              styl={{}}
-              font={themes.H5}
-              text="Redoom"></ScaleTextLibrary>
+            <TextCmp style={{
+              fontSize : normalize(3.5)}}>Redoom</TextCmp>
           </TouchableOpacity>
         </View>
 
         <View style={{flex: 0.3}}>
-          <ScaleTextLibrary
-            styl={{color: '#383E44', textAlign: 'right'}}
-            font={themes.H5}
-            text="($0.00)"></ScaleTextLibrary>
+          <TextCmp style={{color: '#383E44', textAlign: 'right',
+          fontSize : normalize(3.5)}}>
+            ($0.00)
+          </TextCmp>
         </View>
       </View>
     );

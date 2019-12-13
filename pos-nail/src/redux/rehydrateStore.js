@@ -1,13 +1,13 @@
 /**
- * @author: thai.nguyen
- * @date: 2018-11-29 16:30:37
- *
- *
+ * @author: thai.nguyen 
+ * @date: 2018-11-29 16:30:37 
+ *  
+ * 
  */
-import {AsyncStorage as storage} from 'react-native';
-import {persistStore} from 'redux-persist';
+import { AsyncStorage as storage, } from 'react-native';
+import { persistStore, } from 'redux-persist';
 
-import {Logg} from '../utils';
+import { Logg, } from '../utils';
 
 const blacklist = [
   'home',
@@ -23,8 +23,8 @@ const blacklist = [
  * This method take in the redux store and rehydrate it (READ: MODIFY)
  * The method return the promise, allow the the caller to wait until the process is complete
  */
-const rehydrateStore = store => {
-  if (!store) throw new Error("Can't start the redux without input store");
+const rehydrateStore = (store) => {
+  if (!store) throw new Error('Can\'t start the redux without input store');
 
   return new Promise((resolve, reject) => {
     try {
@@ -39,7 +39,7 @@ const rehydrateStore = store => {
           storage,
           blacklist,
         },
-        callback,
+        callback
       );
     } catch (e) {
       Logg.error(e);

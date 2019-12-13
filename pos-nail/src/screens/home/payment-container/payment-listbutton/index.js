@@ -7,10 +7,10 @@ import {
   Image,
   TextInput,
 } from 'react-native';
+
 import themes from '../../../../config/themes';
-import ScaleTextLibrary from '../../../../utils/ScaleTextLibrary';
-import {normalize} from '../../../../utils/scales';
-import {styles_home} from '../../styles-home';
+import {normalize} from '../../../../themes/FontSize';
+import TextCmp from '../../../../themes/TextCmp';
 import {Button} from '../../../../Components/InitScreen/Button';
 export default class PaymentListButton extends Component {
   constructor(props) {
@@ -35,11 +35,11 @@ export default class PaymentListButton extends Component {
             lable={'$65.00'}
             bg={'white'}></Button>
           <Button
-            Textstyle={{color: 'white'}}
+            Textstyle={{color: 'black'}}
             lable={'$70.00'}
             bg={'white'}></Button>
           <Button
-            Textstyle={{color: '#EEEEEE'}}
+            Textstyle={{color: 'black'}}
             lable={'Custom Price'}
             bg={'#EEEEEE'}></Button>
         </View>
@@ -87,10 +87,8 @@ export default class PaymentListButton extends Component {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <ScaleTextLibrary
-              styl={{color: '#383E44'}}
-              font={themes.H5 - 1}
-              text="Cancel"></ScaleTextLibrary>
+            <TextCmp style={{color: '#383E44',
+            fontSize : normalize(3.5)}}>Cancel</TextCmp>
           </TouchableOpacity>
           <TouchableOpacity
             style={{
@@ -102,10 +100,8 @@ export default class PaymentListButton extends Component {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <ScaleTextLibrary
-              styl={{color: '#383E44'}}
-              font={themes.H5 - 1}
-              text="Service"></ScaleTextLibrary>
+            <TextCmp style={{color: '#383E44',
+            fontSize : normalize(3.5)}}>Service</TextCmp>
           </TouchableOpacity>
         </View>
       </View>

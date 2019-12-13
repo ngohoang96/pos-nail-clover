@@ -1,3 +1,10 @@
+/**
+ * @author: thai.nguyen 
+ * @date: 2018-06-26 13:44:13 
+ *
+ * Contain common styles
+ */
+
 import {
   StyleSheet,
 } from 'react-native';

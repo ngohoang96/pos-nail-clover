@@ -1,12 +1,8 @@
 import React, {Component} from 'react';
 import {Text, StyleSheet, TouchableOpacity, View, Image} from 'react-native';
 import themes from '../../config/themes';
-const styles = StyleSheet.create({});
-import {normalize} from '../../utils/scales';
-import {TextScale} from '../../utils/TextScale';
-
-import ScaleTextLibrary from '../../utils/ScaleTextLibrary';
-const H5 = 6;
+import {normalize} from '../../themes/FontSize';
+import TextCmp from '../../themes/TextCmp';
 export default class ItemCustomer extends Component {
   constructor(props) {
     super(props);
@@ -16,8 +12,8 @@ export default class ItemCustomer extends Component {
       <View
         style={{
           marginTop: 10,
-          width: '100%',
-          height:  themes.width*3/3.9*1/3.8*0.75,
+          width: themes.width*1.1/5.6,
+          height: themes.width*1.1/5.6*0.75,
           flexDirection: 'row',
           backgroundColor: '#F5F5F5',
         }}>
@@ -28,17 +24,18 @@ export default class ItemCustomer extends Component {
               justifyContent: 'center',
               paddingLeft: 3,
               flex: 1,
-              borderRightWidth : 0.5 , 
-              borderRightColor : '#F5B550'
+              borderRightWidth: 0.5,
+              borderRightColor: '#F5B550',
             }}>
-            <ScaleTextLibrary
-              styl={{
+            <TextCmp
+              style={{
                 alignItems: 'center',
                 color: 'white',
                 fontWeight: 'bold',
-              }}
-              font={H5}
-              text="#100672"></ScaleTextLibrary>
+                fontSize : normalize(4)
+              }}>
+              #100672
+            </TextCmp>
           </View>
           <View
             style={{
@@ -50,20 +47,30 @@ export default class ItemCustomer extends Component {
               borderColor: '#F5B550',
             }}>
             <Image
-              style={{width: themes.width*3/3.9*1/3.8*0.2, height: themes.width*3/3.9*1/3.8*0.2, borderRadius: 3}}
+              style={{
+                width: (themes.width*1.1/5.6)*0.2,
+                height: (themes.width*1.1/5.6)*0.2,
+                borderRadius: 3,
+              }}
               source={{
                 uri:
                   'https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg',
               }}></Image>
-            <View style={{alignItems: 'center', justifyContent: 'center' , paddingLeft : 3}}>
-              <ScaleTextLibrary
-                styl={{
+            <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                paddingLeft: 3,
+              }}>
+              <TextCmp
+                style={{
                   alignItems: 'center',
                   color: '#939393',
                   textAlign: 'left',
-                }}
-                font={H5+2}
-                text="Van Hoang"></ScaleTextLibrary>
+                  fontSize : normalize(5)
+                }}>
+                Van Hoang
+              </TextCmp>
             </View>
           </View>
         </View>
@@ -76,14 +83,15 @@ export default class ItemCustomer extends Component {
               paddingLeft: 3,
               flex: 1,
             }}>
-            <ScaleTextLibrary
-              styl={{
+            <TextCmp
+              style={{
                 alignItems: 'center',
                 color: 'white',
                 fontWeight: 'bold',
-              }}
-              font={H5}
-              text="Frequent Customer"></ScaleTextLibrary>
+                fontSize : normalize(5)
+              }}>
+              Frequent Customer
+            </TextCmp>
           </View>
           <View
             style={{
@@ -102,16 +110,17 @@ export default class ItemCustomer extends Component {
                   flex: 1,
                   flexDirection: 'row',
                   paddingHorizontal: 1,
-                  alignItems : 'center'
+                  alignItems: 'center',
                 }}>
-                  <ScaleTextLibrary
-                  styl={{alignItems: 'center', color: 'black', marginLeft: 3,}}
-                  font={H5}
-                  text="SignIn:"></ScaleTextLibrary>
-                <ScaleTextLibrary
-                  styl={{alignItems: 'center', color: 'black'}}
-                  font={H5}
-                  text="12h57 AM"></ScaleTextLibrary>
+                <TextCmp
+                  style={{alignItems: 'center', color: 'black', marginLeft: 3,
+                  fontSize : normalize(3.5)}}>
+                  SignIn:
+                </TextCmp>
+                <TextCmp style={{alignItems: 'center', color: 'black',
+                fontSize : normalize(4)}}>
+                  12h57 AM
+                </TextCmp>
               </View>
               <View
                 style={{
@@ -119,15 +128,17 @@ export default class ItemCustomer extends Component {
                   borderTopColor: '#F7BD61',
                   flex: 1,
                   paddingLeft: 1,
-                  justifyContent : 'center'
+                  justifyContent: 'center',
                 }}>
-                <ScaleTextLibrary
-                  styl={{
+                <TextCmp
+                  style={{
                     alignItems: 'center',
-                    color: 'black', marginLeft: 3,
-                  }}
-                  font={H5}
-                  text="Walk in"></ScaleTextLibrary>
+                    color: 'black',
+                    marginLeft: 3,
+                    fontSize : normalize(4)
+                  }}>
+                  Walk in
+                </TextCmp>
               </View>
               <View
                 style={{
@@ -135,15 +146,17 @@ export default class ItemCustomer extends Component {
                   borderTopColor: '#F7BD61',
                   flex: 1,
                   paddingLeft: 1,
-                  justifyContent : 'center'
+                  justifyContent: 'center',
                 }}>
-                <ScaleTextLibrary
-                  styl={{
+                <TextCmp
+                  style={{
                     alignItems: 'center',
-                    color: '#383E44', marginLeft: 3,
-                  }}
-                  font={H5}
-                  text="Calling gei"></ScaleTextLibrary>
+                    color: '#383E44',
+                    marginLeft: 3,
+                    fontSize : normalize(4)
+                  }}>
+                  Calling gei
+                </TextCmp>
               </View>
 
               <View
@@ -153,15 +166,17 @@ export default class ItemCustomer extends Component {
                   borderTopColor: '#F7BD61',
                   paddingLeft: 1,
                   flex: 1,
-                  alignItems : 'center'
+                  alignItems: 'center',
                 }}>
-                <ScaleTextLibrary
-                  styl={{
+                <TextCmp
+                  style={{
                     alignItems: 'center',
-                    color: 'black', marginLeft: 3,
-                  }}
-                  font={H5}
-                  text="Any nail"></ScaleTextLibrary>
+                    color: 'black',
+                    marginLeft: 3,
+                    fontSize : normalize(4)
+                  }}>
+                  Any nail
+                </TextCmp>
               </View>
             </View>
             <View style={{flex: 1.8}}>
@@ -178,13 +193,15 @@ export default class ItemCustomer extends Component {
                   borderLeftColor: '#F7BD61',
                   paddingLeft: 1,
                 }}>
-                <ScaleTextLibrary
-                  styl={{
+                <TextCmp
+                  style={{
                     alignItems: 'center',
-                    color: '#939393', marginLeft: 3,
-                  }}
-                  font={H5-1}
-                  text="Waiting list"></ScaleTextLibrary>
+                    color: '#939393',
+                    marginLeft: 3,
+                    fontSize : normalize(4)
+                  }}>
+                  Waiting list
+                </TextCmp>
               </View>
               <View
                 style={{
@@ -198,13 +215,15 @@ export default class ItemCustomer extends Component {
                   borderLeftColor: '#F7BD61',
                   paddingLeft: 1,
                 }}>
-                <ScaleTextLibrary
-                  styl={{
+                <TextCmp
+                  style={{
                     alignItems: 'flex-start',
-                    color: 'black', marginLeft: 3,
-                  }}
-                  font={H5-1}
-                  text="Quick"></ScaleTextLibrary>
+                    color: 'black',
+                    marginLeft: 3,
+                    fontSize : normalize(4)
+                  }}>
+                  Quick
+                </TextCmp>
               </View>
               <View
                 style={{
@@ -219,13 +238,15 @@ export default class ItemCustomer extends Component {
                   borderLeftColor: '#F7BD61',
                   paddingLeft: 1,
                 }}>
-                <ScaleTextLibrary
-                  styl={{
+                <TextCmp
+                  style={{
                     alignItems: 'center',
-                    color: 'black', marginLeft: 3,
-                  }}
-                  font = {H5-1} text = "Remove">
-                </ScaleTextLibrary>
+                    color: 'black',
+                    marginLeft: 3,
+                    fontSize : normalize(4)
+                  }}>
+                  Remove
+                </TextCmp>
               </View>
             </View>
           </View>

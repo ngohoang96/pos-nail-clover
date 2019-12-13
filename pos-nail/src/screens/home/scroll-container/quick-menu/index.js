@@ -8,12 +8,12 @@ import {
   TextInput,
   ScrollView,
 } from 'react-native';
+
 import themes from '../../../../config/themes';
-import ScaleTextLibrary from '../../../../utils/ScaleTextLibrary';
-import {normalize} from '../../../../utils/scales';
-import {styles_home} from '../../styles-home';
+import {normalize} from '../../../../themes/FontSize';
+import TextCmp from '../../../../themes/TextCmp';
 import Button2 from '../../../../Components/InitScreen/Button2';
-import {items1} from '../../../../Components/InitScreen/mockData'
+import {items1} from '../../../../Components/InitScreen/mockData';
 export default class PaymentCoupon extends Component {
   constructor(props) {
     super(props);
@@ -22,10 +22,7 @@ export default class PaymentCoupon extends Component {
     return (
       <View style={styles.fx05MGH10}>
         <View style={styles.containerTxt}>
-          <ScaleTextLibrary
-            styl={styles.txt}
-            font={themes.H5 + 1}
-            text="Quick Menu"></ScaleTextLibrary>
+          <TextCmp style={styles.txt}>Quick Menu</TextCmp>
         </View>
 
         <View style={styles.containerScroll}>
@@ -54,6 +51,7 @@ const styles = StyleSheet.create({
   fx05MGH10: {
     marginHorizontal: 10,
     flex: 0.5,
+    zIndex : -1
   },
   containerTxt: {
     height: themes.height / 20,
@@ -63,6 +61,7 @@ const styles = StyleSheet.create({
   txt: {
     alignItems: 'center',
     color: '#383E44',
+    fontSize : normalize(5)
   },
   containerScroll: {
     justifyContent: 'center',

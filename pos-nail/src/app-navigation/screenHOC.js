@@ -4,7 +4,7 @@
  *  
  * 
  */
-import React from 'react';
+import React, { Component } from 'react';
 import R from 'ramda';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 import { DefaultStyle, } from './NavigatorStyles';
@@ -26,7 +26,7 @@ const screenHOC = (WrappedComponent) => {
   // Get component style or use a default if it doesn't have one
   const navigatorStyle = getNavigatorStyle(WrappedComponent);
 
-  class Wrapper extends React.Component {
+  class Wrapper extends Component {
     static navigatorStyle = navigatorStyle;
 
     constructor(props) {

@@ -8,10 +8,10 @@ import {
   TextInput,
   ScrollView,
 } from 'react-native';
+
 import themes from '../../../config/themes';
-import ScaleTextLibrary from '../../../utils/ScaleTextLibrary';
-import {normalize} from '../../../utils/scales';
-import {styles_home} from '../styles-home';
+import {normalize} from '../../../themes/FontSize';
+import TextCmp from '../../../themes/TextCmp';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import {data} from '../../../Components/InitScreen/mockData';
 export default class PaymentTips extends Component {
@@ -27,12 +27,9 @@ export default class PaymentTips extends Component {
               <TouchableOpacity
                 activeOpacity={0.7}
                 style={styles.containerTouch}>
-                <IonIcon name={item.icon} color={'#444444'} size={12}></IonIcon>
+                <IonIcon name={item.icon} color={'#444444'} size={normalize(5)}></IonIcon>
                 <View style={styles.center}>
-                  <ScaleTextLibrary
-                    styl={styles.txtLabel}
-                    font={themes.H5 - 1}
-                    text={item.lable}></ScaleTextLibrary>
+                  <TextCmp style={styles.txtLabel}>{item.lable}</TextCmp>
                 </View>
               </TouchableOpacity>
             );
@@ -55,20 +52,23 @@ const styles = StyleSheet.create({
     marginVertical: 1,
     marginRight: 10,
     backgroundColor: 'white',
-    paddingVertical : 10
+    paddingVertical: 7,
   },
   fx1P5: {flex: 1, padding: 5},
-  center: {alignItems: 'center', justifyContent: 'center' , marginTop : 2},
+  center: {alignItems: 'center', justifyContent: 'center'},
   txtLabel: {
     color: 'black',
     textAlign: 'center',
     paddingHorizontal: 3,
+    fontSize : normalize(4)
   },
   containerFx065: {
-    flex: 0.65,
     borderTopWidth: 1,
     borderTopColor: '#C1C1C1',
     backgroundColor: 'white',
     bottom: 0,
+    position : 'absolute' ,
+    right: 0,
+    left : themes.width*1.2/5.6
   },
 });

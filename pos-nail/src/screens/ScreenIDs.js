@@ -1,18 +1,9 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
+ * @author: thai.nguyen
+ * @date: 2018-11-29 16:53:13
  *
- * @format
- * @flow
+ *
  */
 export default {
-  Init: 'screen.Init',
-  Welcome: 'screen.Welcome',
-  NewCustomer : 'screen.NewCustomer' , 
-  OldCustomer : 'screen.OldCustomer' , 
-  Confirm : 'screen.Confirm' , 
-  ConfirmAppointmentTime : 'screen.ConfirmAppointmentTime' ,
-  YourNailsTech : 'screen.YourNailsTech' , 
-  YourService : 'screen.YourService' , 
-  CustomerInfo : 'screen.CustomerInfo'
+  Home: 'screen.Home',
 };

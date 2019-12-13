@@ -1,13 +1,13 @@
 /**
  * @author: thai.nguyen
- * @date: 2018-11-29 16:32:07
+ * @date: 2018-06-25 17:24:27
  *
  *
  */
 import Logg from './Logg';
 import * as Helper from './Helper';
-import * as FiFetch from './FiFetch';
+import * as Navigator from './Navigator';
+import FetchHelper from './FetchHelper';
 import * as SnackBar from './SnackBar';
-import * as round from './Round';
-
-export { Logg, Helper, FiFetch, SnackBar, round };
+import * as FiFetch from './FiFetch';
+export {Logg, Helper, Navigator, FetchHelper, SnackBar, FiFetch};

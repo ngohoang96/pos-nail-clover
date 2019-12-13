@@ -7,10 +7,10 @@ import {
   Image,
   TextInput,
 } from 'react-native';
+
 import themes from '../../../../config/themes';
-import ScaleTextLibrary from '../../../../utils/ScaleTextLibrary';
-import {normalize} from '../../../../utils/scales';
-import {styles_home} from '../../styles-home';
+import {normalize} from '../../../../themes/FontSize';
+import TextCmp from '../../../../themes/TextCmp';
 export default class PaymentSubtotal extends Component {
   constructor(props) {
     super(props);
@@ -23,18 +23,25 @@ export default class PaymentSubtotal extends Component {
           justifyContent: 'space-between',
           flex: 1,
         }}>
-        <ScaleTextLibrary
-          styl={{ alignItems: 'center', color: '#383E44', flex: 1}}
-          font={themes.H5}
-          text="Subtotal"></ScaleTextLibrary>
-        <ScaleTextLibrary
-          styl={{
+        <TextCmp
+          style={{
+            alignItems: 'center',
+            color: '#383E44',
+            flex: 1,
+            fontSize: normalize(3.5),
+          }}>
+          Subtotal
+        </TextCmp>
+
+        <TextCmp
+          style={{
             color: '#383E44',
             flex: 0.3,
             textAlign: 'right',
-          }}
-          font={themes.H5}
-          text="($0.00)"></ScaleTextLibrary>
+            fontSize: normalize(3.5),
+          }}>
+          ($0.00)
+        </TextCmp>
       </View>
     );
   }

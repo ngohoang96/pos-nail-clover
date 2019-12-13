@@ -14,7 +14,7 @@ export const styles_home = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: 'rgb(72, 63, 73)',
+    backgroundColor: 'white',
     flexDirection: 'row',
   },
   text1: {fontSize: 14, alignItems: 'center', color: '#383E44'},

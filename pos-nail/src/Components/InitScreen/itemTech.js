@@ -1,14 +1,8 @@
 import React, {Component} from 'react';
 import {Text, StyleSheet, TouchableOpacity, View, Image} from 'react-native';
 import themes from '../../config/themes';
-import ScaleTextLibrary from '../../utils/ScaleTextLibrary';
-
-const H1 = 16;
-const H2 = 14;
-const H3 = 12;
-const H5 = 8;
-
-import {TextScale} from '../../utils/TextScale';
+import {normalize} from '../../themes/FontSize';
+import TextCmp from '../../themes/TextCmp';
 export default class ItemTech extends Component {
   constructor(props) {
     super(props);
@@ -19,23 +13,20 @@ export default class ItemTech extends Component {
         style={{
           borderBottomColor: '#9BAB6A',
           borderBottomWidth: 0.5,
-          width: '100%',
-          height: (((themes.width * 3) / 3.9) * 0.8) / 3.9*0.75 ,
-          backgroundColor : 'pink'  , 
-          position : 'relative' , 
+          width: themes.width*0.9/5.6-10,
+          height: themes.width*0.9/5.6*0.65
         }}>
         <View style={styl.container}>
-          <ScaleTextLibrary
-            styl={styl.textName}
-            font={H5-1}
-            text={this.props.nameTechnician || "tên"}></ScaleTextLibrary>
+          <TextCmp style={styl.textName}>
+            {this.props.nameTechnician || 'tên'}
+          </TextCmp>
         </View>
         <View style={styl.container1}>
           <View style={styl.containerImg}>
             <Image
               style={{
-                width: themes.width*3/3.9*0.9/3.8*0.3,
-                height: themes.width*3/3.9*0.9/3.8*0.3,
+                width: (themes.width *0.9/ 5.6) * 0.3,
+                height: (themes.width *0.9/ 5.6) * 0.3,
                 borderRadius: 50,
               }}
               source={{
@@ -53,13 +44,17 @@ export default class ItemTech extends Component {
                 borderBottomWidth: 0.5,
                 alignItems: 'center',
                 justifyContent: 'center',
-                borderRightWidth : 0.5 , 
-                borderRightColor : '#9BAB6A'
+                borderRightWidth: 0.5,
+                borderRightColor: '#9BAB6A',
               }}>
-              <ScaleTextLibrary
-                styl={{alignItems: 'center', color: 'black'}}
-                font={H5 - 1}
-                text="12h34 Am"></ScaleTextLibrary>
+              <TextCmp
+                style={{
+                  alignItems: 'center',
+                  color: 'black',
+                  fontSize: normalize(4),
+                }}>
+                12h34 Am
+              </TextCmp>
             </View>
             <View
               style={{
@@ -68,22 +63,34 @@ export default class ItemTech extends Component {
                 borderBottomColor: '#9BAB6A',
                 alignItems: 'center',
                 justifyContent: 'center',
-                borderRightWidth : 0.5 , 
-                borderRightColor : '#9BAB6A'
+                borderRightWidth: 0.5,
+                borderRightColor: '#9BAB6A',
               }}>
-              <ScaleTextLibrary
-                styl={{alignItems: 'center', color: 'black'}}
-                font={H5 - 1}
-                text="c:=0"></ScaleTextLibrary>
+              <TextCmp
+                style={{
+                  alignItems: 'center',
+                  color: 'black',
+                  fontSize: normalize(4),
+                }}>
+                c:=0
+              </TextCmp>
             </View>
             <View
-              style={{flex: 1, alignItems: 'center', justifyContent: 'center',
-              borderRightWidth : 0.5 , 
-              borderRightColor : '#9BAB6A'}}>
-              <ScaleTextLibrary
-                styl={{alignItems: 'center', color: 'black'}}
-                font={H5 - 1}
-                text="Today Appt:=0"></ScaleTextLibrary>
+              style={{
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRightWidth: 0.5,
+                borderRightColor: '#9BAB6A',
+              }}>
+              <TextCmp
+                style={{
+                  alignItems: 'center',
+                  color: 'black',
+                  fontSize: normalize(4),
+                }}>
+                Today Appt:=0
+              </TextCmp>
             </View>
           </View>
         </View>
@@ -103,6 +110,7 @@ const styl = StyleSheet.create({
     alignItems: 'center',
     color: 'white',
     fontWeight: 'bold',
+    fontSize: normalize(5),
   },
   container1: {
     backgroundColor: '#F5F5F5',
@@ -116,7 +124,7 @@ const styl = StyleSheet.create({
     justifyContent: 'center',
     borderRightWidth: 0.5,
     borderRightColor: '#9BAB6A',
-    borderLeftWidth : 0.5 , 
-    borderLeftColor : '#9BAB6A'
+    borderLeftWidth: 0.5,
+    borderLeftColor: '#9BAB6A',
   },
 });

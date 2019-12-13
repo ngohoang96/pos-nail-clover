@@ -7,9 +7,11 @@ import {
   Image,
   TextInput,
 } from 'react-native';
+
 import themes from '../../../../config/themes';
-import ScaleTextLibrary from '../../../../utils/ScaleTextLibrary';
-import {normalize} from '../../../../utils/scales';
+import {normalize} from '../../../../themes/FontSize';
+import TextCmp from '../../../../themes/TextCmp';
+import {testsIcons} from '../../../../assets'
 export default class ItemService extends Component {
   constructor(props) {
     super(props);
@@ -23,37 +25,30 @@ export default class ItemService extends Component {
             justifyContent: 'center',
           }}>
           <View style={{flex: 1, justifyContent: 'flex-end'}}>
-            <ScaleTextLibrary font={themes.H5 - 1} text="Organic"></ScaleTextLibrary>
+            <TextCmp style={{
+              fontSize : normalize(3.5)}}>Organic</TextCmp>
           </View>
           <View style={{flex: 1, justifyContent: 'center'}}>
-            <ScaleTextLibrary
-              font={themes.H5 - 1}
-              text="Rejuventation"></ScaleTextLibrary>
+            <TextCmp style={{fontSize : normalize(3.5)}}>Rejuventation</TextCmp>
           </View>
           <TouchableOpacity style={{flex: 1, justifyContent: 'flex-start'}}>
             <Image
               resizeMethod="scale"
-              source={require('../../../../assets/images/trash.png')}
+              source={testsIcons.trashIcon}
               style={{
-                width: normalize(themes.H5),
-                height: normalize(themes.H5),
+                width: normalize(5),
+                height: normalize(5),
                 tintColor: 'gray',
               }}></Image>
           </TouchableOpacity>
         </View>
         <View style={styles.containerBtnName}>
           <TouchableOpacity style={styles.btnName}>
-            <ScaleTextLibrary
-              styl={styles.txtName}
-              font={themes.H5 - 2.5}
-              text={this.props.name}></ScaleTextLibrary>
+            <TextCmp style={styles.txtName}>{this.props.name}</TextCmp>
           </TouchableOpacity>
         </View>
         <View style={{flex: 0.8}}>
-          <ScaleTextLibrary
-            styl={{marginLeft: 1}}
-            font={themes.H5 - 1}
-            text="Guest  x1"></ScaleTextLibrary>
+          <TextCmp style={{marginLeft: 1,fontSize : normalize(3.5)}}>Guest x1</TextCmp>
         </View>
         <View style={styles.containerTp}>
           <TextInput style={styles.styInput}></TextInput>
@@ -98,6 +93,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
+    fontSize : normalize(3)
   },
   styInput: {
     width: '48%',
@@ -105,6 +101,6 @@ const styles = StyleSheet.create({
     borderColor: '#BEBEBE',
     paddingVertical: -10,
     height: '100%',
-    fontSize: normalize(themes.H6 - 2),
+    fontSize : normalize(3)
   },
 });

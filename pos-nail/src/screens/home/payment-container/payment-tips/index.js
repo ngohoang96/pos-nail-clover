@@ -7,10 +7,10 @@ import {
   Image,
   TextInput,
 } from 'react-native';
+
 import themes from '../../../../config/themes';
-import ScaleTextLibrary from '../../../../utils/ScaleTextLibrary';
-import {normalize} from '../../../../utils/scales';
-import {styles_home} from '../../styles-home';
+import {normalize} from '../../../../themes/FontSize';
+import TextCmp from '../../../../themes/TextCmp';
 export default class PaymentTips extends Component {
   constructor(props) {
     super(props);
@@ -32,14 +32,15 @@ export default class PaymentTips extends Component {
             flex: 1,
             paddingRight: 10,
           }}>
-          <ScaleTextLibrary
-            styl={{
+          <TextCmp
+            style={{
               alignItems: 'center',
               color: '#383E44',
               flex: 1,
-            }}
-            font={themes.H5}
-            text="Tips"></ScaleTextLibrary>
+              fontSize : normalize(3.5)
+            }}>
+            Tips
+          </TextCmp>
 
           <TextInput
             style={{
@@ -48,18 +49,19 @@ export default class PaymentTips extends Component {
               borderColor: '#BEBEBE',
               paddingVertical: -5,
               flex: 1,
-              fontSize: normalize(themes.H6),
+              fontSize : normalize(3.5),
               marginHorizontal: 2,
             }}></TextInput>
 
-          <ScaleTextLibrary
-            styl={{
+          <TextCmp
+            style={{
               alignItems: 'center',
               color: '#383E44',
               flex: 1.2,
-            }}
-            font={themes.H5}
-            text="Ticket"></ScaleTextLibrary>
+              fontSize : normalize(3.5)
+            }}>
+            Ticket
+          </TextCmp>
           <TextInput
             style={{
               width: '100%',
@@ -67,19 +69,20 @@ export default class PaymentTips extends Component {
               borderColor: '#BEBEBE',
               paddingVertical: -5,
               flex: 2,
-              fontSize: normalize(themes.H6),
+              fontSize : normalize(3.5),
               marginLeft: 2,
             }}></TextInput>
         </View>
         <View style={{flex: 0.3}}>
-          <ScaleTextLibrary
-            styl={{
+          <TextCmp
+            style={{
               alignItems: 'center',
               color: '#383E44',
               textAlign: 'right',
-            }}
-            font={themes.H5}
-            text="($0.00)"></ScaleTextLibrary>
+              fontSize : normalize(3.5)
+            }}>
+            ($0.00)
+          </TextCmp>
         </View>
       </View>
     );

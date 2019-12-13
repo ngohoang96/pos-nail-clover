@@ -90,9 +90,9 @@ export const CallApi = ({ api, method = 'GET', body, fullapi, }) => {
       fetch(fullapi ? `${fullapi}` : `${API_URL}${api}`, {
         method,
         ...(body
-          ? {
+          ?{
             body: JSON.stringify(body),
-          }
+          } 
           : {}),
         headers: {
           'Content-Type': 'application/json',

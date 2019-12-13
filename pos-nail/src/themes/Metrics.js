@@ -1,8 +1,8 @@
 /**
  * @author: thai.nguyen 
- * @date: 2018-11-29 17:15:06 
+ * @date: 2018-06-25 23:42:33 
+ *
  *  
- * 
  */
 import { Dimensions, Platform, StatusBar, } from 'react-native';
 

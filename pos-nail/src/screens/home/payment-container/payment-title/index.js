@@ -7,10 +7,10 @@ import {
   Image,
   TextInput,
 } from 'react-native';
+
 import themes from '../../../../config/themes';
-import ScaleTextLibrary from '../../../../utils/ScaleTextLibrary';
-import {normalize} from '../../../../utils/scales';
-import {styles_home} from '../../styles-home';
+import {normalize} from '../../../../themes/FontSize';
+import TextCmp from '../../../../themes/TextCmp';
 export default class PaymentTitle extends Component {
   constructor(props) {
     super(props);
@@ -26,14 +26,15 @@ export default class PaymentTitle extends Component {
             padding: 3,
             justifyContent: 'center',
           }}>
-          <ScaleTextLibrary
-            styl={{
+          <TextCmp
+            style={{
               alignItems: 'center',
               color: '#383E44',
               fontWeight: 'bold',
-            }}
-            font={themes.H5+1}
-            text="Payment Cart"></ScaleTextLibrary>
+              fontSize : normalize(5)
+            }}>
+            Payment Cart
+          </TextCmp>
         </View>
         <View
           style={{
@@ -44,10 +45,10 @@ export default class PaymentTitle extends Component {
             padding: 3,
             justifyContent: 'center',
           }}>
-          <ScaleTextLibrary
-            styl={{alignItems: 'center', color: '#383E44'}}
-            font={themes.H5 + 1}
-            text="Service"></ScaleTextLibrary>
+          <TextCmp style={{alignItems: 'center', color: '#383E44',
+          fontSize : normalize(4)}}>
+            Service
+          </TextCmp>
         </View>
       </View>
     );

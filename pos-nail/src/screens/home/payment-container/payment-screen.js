@@ -1,10 +1,17 @@
 import React, {Component} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet,ScrollView} from 'react-native';
-import {styles_home} from '../styles-home';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  ScrollView,
+} from 'react-native';
+
 import themes from '../../../config/themes';
+import {normalize} from '../../../themes/FontSize';
+import TextCmp from '../../../themes/TextCmp';
 import ItemService from './payment-service/item-service';
 import {dataService} from '../../../Components/InitScreen/mockData';
-import ScaleTextLibrary from '../../../utils/ScaleTextLibrary';
 import PaymentCoupon from './payment-coupon/index';
 import PaymentGiftCart from './payment-giftcart/index';
 import PaymentTips from './payment-tips/index';
@@ -42,10 +49,8 @@ export default class PaymentScreen extends Component {
               <PaymentReward></PaymentReward>
               <PaymentTotal></PaymentTotal>
               <View style={styles.fx1FlexStart}>
-                <ScaleTextLibrary
-                  styl={{color: '#383E44'}}
-                  font={themes.H5}
-                  text="Fast With Cash"></ScaleTextLibrary>
+                <TextCmp style={{color: '#383E44',
+                fontSize : normalize(5)}}>Fast With Cash</TextCmp>
               </View>
               <PaymentListButton></PaymentListButton>
             </View>
@@ -58,7 +63,8 @@ export default class PaymentScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.8,
+    // flex: 0.8,
+    flex: 1,
     borderRightWidth: 1,
     borderRightColor: '#878787',
   },
@@ -69,6 +75,6 @@ const styles = StyleSheet.create({
     paddingVertical: 1,
   },
   fx4: {flex: 4},
-  fx1: {flex: 1},
+  fx1: {flex: 1 },
   fx1FlexStart: {alignItems: 'flex-start', flex: 1},
 });

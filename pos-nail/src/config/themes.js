@@ -67,11 +67,10 @@ const colors = {
   iconSelected: '#c0392b',
   iconDefaultColor: '#ffffff',
 };
-let {width , height} = Dimensions.get('window');
+let width = Dimensions.get('window').width;
+let height = Dimensions.get('window').height;
 const H5 = 7;
 const H6 = 5;
-const H8 = 8 ; 
-const H10 = 10
 const sizes = {
   imageHeight: 90,
   base: 16,
@@ -114,4 +113,4 @@ const sizes = {
   NAVBAR_HEIGHT: 100,
 };
 
-export default {colors, sizes, width, height, H5, H6 , H8 , H10};
+export default {colors, sizes, width, height, H5, H6};

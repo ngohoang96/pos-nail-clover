@@ -1,10 +1,10 @@
 /**
- * @author: thai.nguyen
- * @date: 2018-11-29 17:16:35
- *
- *
+ * @author: thai.nguyen 
+ * @date: 2018-11-29 17:16:35 
+ *  
+ * 
  */
-import {Colors, Metrics, Fonts} from '../themes';
+import { Colors, Metrics, Fonts, } from '../themes';
 
 export const DefaultStyle = {
   // Title
@@ -18,10 +18,7 @@ export const DefaultStyle = {
   screenBackgroundColor: 'transparent',
 
   drawUnderTabBar: false,
-  // orientation: 'portrait', // Force orientation
-  layout: {
-    orientation: ['landscape'], // An array of supported orientations
-  },
+  orientation: 'portrait', // Force orientation
   statusBarTextColorScheme: Colors.statusBarTextColors.dark,
 
   // iOS only
@@ -68,3 +65,4 @@ export const CommonOptions = {
     },
   },
 };
+

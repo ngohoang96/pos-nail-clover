@@ -1,10 +1,10 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
+ * @author: thai.nguyen
+ * @date: 2018-11-29 17:29:22
  *
- * @format
- * @flow
+ *
  */
+
 import {Navigation} from 'react-native-navigation';
 
 import ScreenIDs from './screens/ScreenIDs';
@@ -15,88 +15,8 @@ export const startHome = () => {
         children: [
           {
             component: {
-              id: 'InitId',
-              name: ScreenIDs.Init,
-              options: {
-                topBar: {
-                  visible: false,
-                  drawBehind: true,
-                },
-              },
-            },
-            component: {
-              id: 'CustomerInfoId',
-              name: ScreenIDs.CustomerInfo,
-              options: {
-                topBar: {
-                  visible: false,
-                  drawBehind: true,
-                },
-              },
-            },
-            component: {
-              id: 'YourServiceId',
-              name: ScreenIDs.YourService,
-              options: {
-                topBar: {
-                  visible: false,
-                  drawBehind: true,
-                },
-              },
-            },
-            component: {
-              id: 'YourNailsTechId',
-              name: ScreenIDs.YourNailsTech,
-              options: {
-                topBar: {
-                  visible: false,
-                  drawBehind: true,
-                },
-              },
-            },
-            component: {
-              id: 'ConfirmApTimeId',
-              name: ScreenIDs.ConfirmAppointmentTime,
-              options: {
-                topBar: {
-                  visible: false,
-                  drawBehind: true,
-                },
-              },
-            },
-            component: {
-              id: 'ConfirmId',
-              name: ScreenIDs.Confirm,
-              options: {
-                topBar: {
-                  visible: false,
-                  drawBehind: true,
-                },
-              },
-            },
-            component: {
-              id: 'OldCustomerId',
-              name: ScreenIDs.OldCustomer,
-              options: {
-                topBar: {
-                  visible: false,
-                  drawBehind: true,
-                },
-              },
-            },
-            component: {
-              id: 'NewCustomerId',
-              name: ScreenIDs.NewCustomer,
-              options: {
-                topBar: {
-                  visible: false,
-                  drawBehind: true,
-                },
-              },
-            },
-            component: {
-              id: 'welcomeId',
-              name: ScreenIDs.Welcome,
+              id: ScreenIDs.Home + 'id',
+              name: ScreenIDs.Home,
               options: {
                 topBar: {
                   visible: false,

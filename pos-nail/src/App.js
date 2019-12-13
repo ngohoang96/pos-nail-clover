@@ -20,9 +20,13 @@ const startApp = async () => {
   await rehydrateStore(store);
   // store.dispatch(actions.account.setUserData(null));
   // set authorize for FiFetch
+  // const userData = selectors.account.getUserData(store.getState());
+  // if (userData && userData.token) {
+  //   FiFetch.setToken(userData.token);
+  // }
+  AppNavigation.setDefaultOptions();
 
-  // AppNavigation.setDefaultOptions();
-
+  startSaga();
   AppsController.startHome();
 };
 

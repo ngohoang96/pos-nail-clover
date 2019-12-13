@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 import themes from '../../config/themes';
-import {normalize} from '../../utils/scales';
-import ScaleTextLibrary from '../../utils/ScaleTextLibrary';
+import {normalize} from '../../themes/FontSize';
+import TextCmp from '../../themes/TextCmp';
 const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
-    
+    fontSize : normalize(3.5)
   },
   button: {
     backgroundColor: 'white',
@@ -25,12 +25,14 @@ export function Button({Textstyle, lable, bg, ...props}) {
       {...props}
       style={[
         styles.button,
-        {backgroundColor: bg, borderWidth: 0.3, borderColor: '#383E44', padding : 2},
+        {
+          backgroundColor: bg,
+          borderWidth: 0.3,
+          borderColor: '#383E44',
+          padding: 2,
+        },
       ]}>
-      <ScaleTextLibrary
-        styl={[styles.text, Textstyle]}
-        font={5.5}
-        text={lable}></ScaleTextLibrary>
+      <TextCmp style={[ styles.text,Textstyle]}>{lable}</TextCmp>
     </TouchableOpacity>
   );
 }

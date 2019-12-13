@@ -8,27 +8,10 @@
 import {StatusBar} from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import IDs from './ScreenIDs';
-import HomeScreen from './home/home-screen';
-import WelcomeScreen from './welcome/welcome-screen';
-import NewCustomerScreen from './new-customer/new-customer-screen' ; 
-import OldCustomerScreen from './old-customer/old-customer-screen' ; 
-import ConfirmScreen from './confirm-apppointment/confirm-appointment-screen';
-import ConfirmApScreen from './confirm-appointment-time/confirm-screen';
-import YourNailsScreen from './your-nails-tech/your-nails-tech-screen';
-import YourServiceScreen from './your-prefer-service/your-service-screen';
-import CustomerInfoScreen from './new-customer-info/customer-info-screen';
+import HomeScreen from './home/initScreen';
 
 const screens = {
-  [IDs.Init]: HomeScreen,
-  [IDs.Welcome] : WelcomeScreen , 
-  [IDs.NewCustomer] : NewCustomerScreen , 
-  [IDs.OldCustomer] : OldCustomerScreen , 
-  [IDs.Confirm] : ConfirmScreen , 
-  [IDs.ConfirmAppointmentTime] : ConfirmApScreen , 
-  [IDs.YourNailsTech] : YourNailsScreen , 
-  [IDs.YourService] : YourServiceScreen , 
-  [IDs.CustomerInfo] : CustomerInfoScreen , 
-
+  [IDs.Home]: HomeScreen,
 };
 
 const registerScreens = (

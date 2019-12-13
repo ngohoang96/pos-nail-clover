@@ -1,8 +1,8 @@
 /**
- * @author: thai.nguyen 
- * @date: 2018-12-13 00:27:44 
- *  
- * 
+ * @author: thai.nguyen
+ * @date: 2018-09-27 00:01:26
+ *
+ *
  */
 import SnackBar from 'react-native-snackbar';
 

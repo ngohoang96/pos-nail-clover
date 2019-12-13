@@ -4,11 +4,10 @@
  *
  *
  */
-import {Navigation} from 'react-native-navigation';
-import {Platform} from 'react-native';
-import {IDs} from '../screens';
-import {Fonts, Colors} from '../themes';
-import {CommonIcons} from '../assets';
+import { Navigation, } from 'react-native-navigation';
+
+import { IDs, } from '../screens';
+import { Fonts, Colors, } from '../themes';
 
 const showCommonDialog = ({
   title,
@@ -46,11 +45,11 @@ const showCommonDialog = ({
   });
 };
 
-const dismissOverlay = componentID => {
+const dismissOverlay = (componentID) => {
   Navigation.dismissOverlay(componentID);
 };
 
-const showModal = params => {
+const showModal = (params) => {
   Navigation.showModal({
     stack: {
       children: [
@@ -69,11 +68,11 @@ const showModal = params => {
   });
 };
 
-const dismissModal = componentID => {
+const dismissModal = (componentID) => {
   Navigation.dismissModal(componentID);
 };
 
-const changeTab = tabIndex => {
+const changeTab = (tabIndex) => {
   Navigation.mergeOptions('BottomTabsId', {
     bottomTabs: {
       currentTabIndex: tabIndex,
@@ -82,46 +81,41 @@ const changeTab = tabIndex => {
 };
 
 const setDefaultOptions = () => {
-  if (Platform.OS !== 'ios') {
-    const pushAnimations = {
-      content: {
-        x: {
-          from: 1000,
-          to: 0,
-          duration: 400,
-        },
+  Navigation.setDefaultOptions({
+    statusBar: {
+      visible: true,
+      style: 'light',
+    },
+    topBar: {
+      buttonColor: Colors.text,
+      visible: true,
+      height: 50,
+      background: {
+        color: Colors.backgroundL1,
       },
-    };
-
-    const popAnimations = {
-      content: {
-        x: {
-          from: 0,
-          to: 1000,
-          duration: 400,
-          interpolation: 'accelerate',
-        },
+      title: {
+        color: Colors.text,
+        fontFamily: Fonts.Default.bold,
       },
-    };
-
-    defautOptions = {
-      animations: {
-        push: pushAnimations,
-        pop: popAnimations,
+      backButton: {
+        color: Colors.text,
       },
-      layout: {
-        orientation: ['landscape'], // An array of supported orientations
-      },
-    };
-    Navigation.setDefaultOptions(defautOptions);
-  }
+    },
+    layout: {
+      backgroundColor: Colors.backgroundL3,
+    },
+    bottomTab: {
+      iconColor: Colors.blurWhite,
+      textColor: Colors.blurWhite,
+      selectedTextColor: Colors.selectedColor,
+      fontFamily: Fonts.Default.regular,
+    },
+    bottomTabs: {
+      backgroundColor: Colors.backgroundL1,
+      animate: false,
+      drawBehind: false,
+    },
+  });
 };
 
-export {
-  showCommonDialog,
-  dismissOverlay,
-  showModal,
-  dismissModal,
-  changeTab,
-  setDefaultOptions,
-};
+export { showCommonDialog, dismissOverlay, showModal, dismissModal, changeTab, setDefaultOptions };

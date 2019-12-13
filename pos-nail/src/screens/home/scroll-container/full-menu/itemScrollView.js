@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import {
   StyleSheet,
 } from 'react-native';
-import themes from '../../../../config/themes';
 import Button2 from '../../../../Components/InitScreen/Button2';
+import themes from '../../../../config/themes';
+import {normalize} from '../../../../themes/FontSize';
+import TextCmp from '../../../../themes/TextCmp';
 export default class PaymentCoupon extends Component {
   constructor(props) {
     super(props);
@@ -23,5 +25,6 @@ export default class PaymentCoupon extends Component {
 }
 
 const styles = StyleSheet.create({
-  colorBlack: {color: 'black'},
+  colorBlack: {color: 'black',
+  fontSize : normalize(4)},
 });
