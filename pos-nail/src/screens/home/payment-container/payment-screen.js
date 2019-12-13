@@ -11,7 +11,7 @@ import themes from '../../../config/themes';
 import {normalize} from '../../../themes/FontSize';
 import TextCmp from '../../../themes/TextCmp';
 import ItemService from './payment-service/item-service';
-import {dataService} from '../../../Components/InitScreen/mockData';
+// import {dataService} from '../../../Components/InitScreen/mockData';
 import PaymentCoupon from './payment-coupon/index';
 import PaymentGiftCart from './payment-giftcart/index';
 import PaymentTips from './payment-tips/index';
@@ -25,10 +25,14 @@ export default class PaymentScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dataService,
+      // _dataService: dataService,
     };
   }
-
+  componentDidMount() {
+ 
+    console.log('get data service ---- ' + this.props.dataService);
+    
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -36,7 +40,7 @@ export default class PaymentScreen extends Component {
         <View style={styles.containerfx6}>
           <View style={styles.fx4}>
             <ScrollView style={styles.fx1}>
-              {this.state.dataService.map(item => {
+              {this.props.dataService.map(item => {
                 return <ItemService name={item.name}></ItemService>;
               })}
             </ScrollView>
@@ -49,8 +53,9 @@ export default class PaymentScreen extends Component {
               <PaymentReward></PaymentReward>
               <PaymentTotal></PaymentTotal>
               <View style={styles.fx1FlexStart}>
-                <TextCmp style={{color: '#383E44',
-                fontSize : normalize(5)}}>Fast With Cash</TextCmp>
+                <TextCmp style={{color: '#383E44', fontSize: normalize(5)}}>
+                  Fast With Cash
+                </TextCmp>
               </View>
               <PaymentListButton></PaymentListButton>
             </View>
@@ -75,6 +80,6 @@ const styles = StyleSheet.create({
     paddingVertical: 1,
   },
   fx4: {flex: 4},
-  fx1: {flex: 1 },
+  fx1: {flex: 1},
   fx1FlexStart: {alignItems: 'flex-start', flex: 1},
 });

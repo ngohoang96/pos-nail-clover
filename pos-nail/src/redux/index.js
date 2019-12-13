@@ -10,6 +10,9 @@ import { autoRehydrate, } from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 
+// Logger with default options
+import logger from 'redux-logger'
+
 import rootSagas from '../sagas';
 import { rootReducer, } from '../stores';
 import rehydrateStore from './rehydrateStore';
@@ -18,7 +21,7 @@ import rehydrateStore from './rehydrateStore';
 const sagaMiddleware = createSagaMiddleware();
 const middlewares = [thunk, sagaMiddleware,];
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const enhancer = composeEnhancers(applyMiddleware(...middlewares), autoRehydrate());
+const enhancer = composeEnhancers(applyMiddleware(...middlewares ,logger), autoRehydrate());
 
 // Create store (not rehydrate yet)
 const store = createStore(rootReducer, enhancer);

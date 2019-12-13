@@ -1,21 +1,16 @@
-/**
- * @author: thai.nguyen 
- * @date: 2018-11-29 16:34:14 
- *  
- * 
- */
-import { Types, } from './actions';
-import { Helper, } from '../../utils';
-
+import {Types} from './actions';
+import {Helper} from '../../utils';
+import {dataService} from '../../Components/InitScreen/mockData';
 const initialState = {
-  testData: null,
-}
+  dataService: dataService,
+};
 
-const reducer =  Helper.createReducer(initialState, {
+const reducer = Helper.createReducer(initialState, {
   //worker
-  [Types.TEST]: ({ state, }) => {
+  [Types.UPDATE_DATA_SERVICE]: ({action, state}) => {
     return {
       ...state,
+      dataService: state.dataService.push(action.payload),
     };
   },
 });

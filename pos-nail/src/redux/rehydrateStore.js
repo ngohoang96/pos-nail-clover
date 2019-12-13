@@ -16,6 +16,7 @@ const blacklist = [
   'other',
   'history',
   'market',
+  'test'
   // Any sub-store that shouldn't be store between run time go here...
 ];
 

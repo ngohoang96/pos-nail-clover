@@ -9,7 +9,7 @@
 import React, {Component} from 'react';
 import {SafeAreaView, StyleSheet, View, ScrollView} from 'react-native';
 import {styles_home} from './styles-home';
-import PaymentContainer from './payment-container/payment-screen';
+import PaymentContainer from './payment-container';
 import ScrollBottom from './scroll-bottm/index';
 import ScrollScreen from './scroll-container/scroll-screen';
 

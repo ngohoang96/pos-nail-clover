@@ -1,20 +1,13 @@
-/**
- * @author: thai.nguyen 
- * @date: 2018-11-29 16:34:07 
- *  
- * 
- */
 const Types = {
-  // worker
-  TEST: 'test@TEST',
+  UPDATE_DATA_SERVICE: 'UPDATE_DATA_SERVICE@TEST',
 };
 
 const Actions = {
   //worker
-  testAction: (data) => ({ 
-    type: Types.TEST, 
+  updateDataService: data => ({
+    type: Types.UPDATE_DATA_SERVICE,
     payload: data,
   }),
 };
 
-export { Types, Actions };
+export {Types, Actions};
