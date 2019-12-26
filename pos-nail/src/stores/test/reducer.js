@@ -98,6 +98,16 @@ const reducer = Helper.createReducer(initialState, {
       listFinish: action.payload,
     };
   },
+  [Types.UPDATE_ISSELECTED_SELECT_TECHNICIAN]: ({state, action}) => {
+    let data = _.clone(state.listFinish);
+    let _index = data.findIndex(e => e.id === action.payload);
+    data[_index].isSelected = !data[_index].isSelected;
+
+    return {
+      ...state,
+      listFinish: data,
+    };
+  },
   [Types.UPDATE_LIST_SELECT_SERVICE]: ({state, action}) => {
     return {
       ...state,

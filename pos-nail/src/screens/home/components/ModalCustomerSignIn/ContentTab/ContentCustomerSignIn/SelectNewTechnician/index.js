@@ -24,6 +24,7 @@ import ItemScroll from './container/ItemScrollViewModal';
 import {Logg} from '../../../../../../../utils';
 import RenderMain from './RenderMain';
 let data_ = [];
+let data_tmp = [];
 class index extends Component {
   constructor(props) {
     super(props);
@@ -35,11 +36,19 @@ class index extends Component {
       dataFinish: [],
     };
   }
+  // shouldComponentUpdate({listFinish: mListFinish}) {
+  //   return mListFinish != this.props.list;
+  // }
   componentDidMount() {
-    this.setState({
-      dataStaffs: this.props.listFinish,
-    });
-    console.log('tao đang test ' + this.state.dataStaffs);
+    // this.setState(
+    //   {
+    //     dataStaffs: this.props.listFinish,
+    //   },
+    //   () =>
+    //     console.log('tao đang test ' + JSON.stringify(this.state.dataStaffs)),
+    // );
+    console.log('tao đang test ne huhu' + this.props.listFinish);
+    // console.log('tao đang test ' + this.state.dataStaffs);
   }
   _onPressClose = () => {
     this.setState({
@@ -47,47 +56,54 @@ class index extends Component {
     });
   };
   _onPressFinish = () => {
-    const {dataStaffs} = this.state;
-    if (dataStaffs && dataStaffs.length > 0) {
-      this.props.updateList(dataStaffs);
-    }
+    // const {listFinish} = this.props;
+    // if (listFinish && listFinish.length > 0) {
+    //   this.props.updateList(listFinish);
+    // }v
+    data_ = this.props.listFinish;
     this._onPressClose();
     // alert();
   };
-  _renderMain = () => {
-    return (
-      <View style={styles.containerMain}>
-        <TextCmp style={styles.txtMain}>
-          Please Select Perfer Nails Technician
-        </TextCmp>
-        <TouchableOpacity
-          activeOpacity={0.9}
-          onPress={() => {
-            this.setState({
-              ModalVisiable: !this.state.ModalVisiable,
-            });
-          }}
-          style={styles.btnMain}
-        />
-      </View>
-    );
-  };
+  // _renderMain = () => {
+  //   return (
+  //     <View style={styles.containerMain}>
+  //       <TextCmp style={styles.txtMain}>
+  //         Please Select Perfer Nails Technician
+  //       </TextCmp>
+  //       <TouchableOpacity
+  //         activeOpacity={0.9}
+  //         onPress={() => {
+  //           this.setState({
+  //             ModalVisiable: !this.state.ModalVisiable,
+  //           });
+  //         }}
+  //         style={styles.btnMain}
+  //       />
+  //     </View>
+  //   );
+  // };
 
   _onPressItem = _itemStaffs => {
-    const {dataStaffs} = this.state;
-    let _index = dataStaffs.findIndex(e => e.id === _itemStaffs.id);
-    dataStaffs[_index].isSelected = !dataStaffs[_index].isSelected;
-    this.setState({
-      dataStaffs,
-    });
+    // const {dataStaffs} = this.state;
+    // debugger;
+    // let _index = dataStaffs.findIndex(e => e.id === _itemStaffs.id);
+    // dataStaffs[_index].isSelected = !dataStaffs[_index].isSelected;
+    // this.setState({
+    //   dataStaffs,
+    // });
+    // data_tmp.push({_itemStaffs});
+    this.props.updateIsSelectedTechnician(_itemStaffs.id);
 
     console.log(
       '_itemStaffs ' +
         JSON.stringify(_itemStaffs) +
         '\n' +
-        JSON.stringify(dataStaffs),
+        JSON.stringify(this.props.listFinish),
     );
   };
+  componentWillUnmount() {
+    // console.log(data_tmp);
+  }
   render() {
     return (
       <View style={{flex: 1}}>
@@ -103,7 +119,7 @@ class index extends Component {
               <Header onPress={this._onPressClose} />
               <ScrollView style={styles.centerModalScrollview}>
                 <View style={styles.contanerScrollView}>
-                  {this.state.dataStaffs.map((item, index) => {
+                  {this.props.listFinish.map((item, index) => {
                     return (
                       <ItemScroll
                         key={index + ' '}
@@ -121,10 +137,7 @@ class index extends Component {
             </View>
           </View>
         </Modal>
-        <RenderMain
-          // dataSelected={this.props.listFinish}
-          onPressClose={this._onPressClose}
-        />
+        <RenderMain dataSelected={data_} onPressClose={this._onPressClose} />
       </View>
     );
   }
@@ -139,8 +152,12 @@ const mapDispatchToProps = dispatch => {
   const updateList = list => {
     dispatch(actions.test.updateListFinish(list));
   };
+  const updateIsSelectedTechnician = id => {
+    dispatch(actions.test.updateIsSelectedTechnician(id));
+  };
   return {
     updateList,
+    updateIsSelectedTechnician,
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(index);

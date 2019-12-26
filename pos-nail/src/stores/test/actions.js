@@ -15,6 +15,8 @@ const Types = {
 
   UPDATE_LIST_FINISH: 'test@UPDATE_LIST_FINISH',
   UPDATE_LIST_SELECT_SERVICE: 'test@UPDATE_LIST_SELECT_SERVICE',
+  UPDATE_ISSELECTED_SELECT_TECHNICIAN:
+    'test@UPDATE_ISSELECTED_SELECT_TECHNICIAN',
 };
 
 const Actions = {
@@ -45,6 +47,10 @@ const Actions = {
     payload: data,
   }),
 
+  updateIsSelectedTechnician: id => ({
+    type: Types.UPDATE_ISSELECTED_SELECT_TECHNICIAN,
+    payload: id,
+  }),
   //gán data services
   updateListSelectService: data => ({
     type: Types.UPDATE_LIST_SELECT_SERVICE,
