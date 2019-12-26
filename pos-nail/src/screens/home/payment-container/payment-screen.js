@@ -22,6 +22,9 @@ import PaymentSubtotal from './payment-subtotal/index';
 import PaymentListButton from './payment-listbutton/index';
 import PaymentTitle from './payment-title/index';
 export default class PaymentScreen extends Component {
+  shouldComponentUpdate({dataService: newDataService}) {
+    if (newDataService !== this.props.dataService) return true;
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -29,19 +32,27 @@ export default class PaymentScreen extends Component {
     };
   }
   componentDidMount() {
- 
-    console.log('get data service ---- ' + this.props.dataService);
-    
+    // console.log('get data service ---- ' + this.props.dataService);
+    // this.props.updateDataService
+    // this.props.getHistory();
   }
   render() {
+    const {update} = this.props;
+
     return (
       <View style={styles.container}>
         <PaymentTitle></PaymentTitle>
+
         <View style={styles.containerfx6}>
           <View style={styles.fx4}>
             <ScrollView style={styles.fx1}>
-              {this.props.dataService.map(item => {
-                return <ItemService name={item.name}></ItemService>;
+              {this.props.dataService.map((item, index) => {
+                return (
+                  <ItemService
+                    key={index}
+                    id={item.id}
+                    name={item.name}></ItemService>
+                );
               })}
             </ScrollView>
             <View style={styles.fx1}>

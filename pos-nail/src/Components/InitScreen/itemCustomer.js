@@ -13,7 +13,7 @@ export default class ItemCustomer extends Component {
         style={{
           marginTop: 10,
           width: themes.width*1.1/5.6,
-          height: themes.width*1.1/5.6*0.75,
+          height: themes.width*1.1/5.6*0.65,
           flexDirection: 'row',
           backgroundColor: '#F5F5F5',
         }}>

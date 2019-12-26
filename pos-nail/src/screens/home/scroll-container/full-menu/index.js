@@ -37,8 +37,10 @@ export default class PaymentCoupon extends Component {
         </View>
         <View style={styles.containerScroll}>
           <ScrollView style={styles.width100}>
-            {items2.map(item => {
-              return <ItemScrollView code={item.code}></ItemScrollView>;
+            {items2.map((item, index) => {
+              return (
+                <ItemScrollView key={index} code={item.code}></ItemScrollView>
+              );
             })}
           </ScrollView>
         </View>
@@ -51,7 +53,7 @@ const styles = StyleSheet.create({
   fx05MGH10: {
     marginHorizontal: 10,
     flex: 0.5,
-    zIndex : -1
+    zIndex: -1,
   },
   fxD_row: {
     flexDirection: 'row',
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
   txtLabel: {
     alignItems: 'center',
     color: '#383E44',
-    fontSize : normalize(5)
+    fontSize: normalize(5),
   },
   containerIconMenu: {alignItems: 'center', justifyContent: 'center'},
   containerScroll: {

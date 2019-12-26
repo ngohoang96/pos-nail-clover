@@ -24,8 +24,8 @@ export default class PaymentCoupon extends Component {
           <TextCmp style={styles.txtLabel}>Customer</TextCmp>
         </View>
         <ScrollView style={styles.fx1}>
-          {[1, 2].map(item => {
-            return <ItemCustomer></ItemCustomer>;
+          {[1, 2].map((item, index) => {
+            return <ItemCustomer key={index}></ItemCustomer>;
           })}
         </ScrollView>
       </View>
@@ -34,8 +34,7 @@ export default class PaymentCoupon extends Component {
 }
 
 const styles = StyleSheet.create({
-  fx1PL2: {flex: 1, paddingLeft: 2,
-    zIndex : -1 },
+  fx1PL2: {flex: 1, paddingLeft: 2, zIndex: -1},
   containerTxt: {
     height: themes.height / 20,
     width: '100%',
@@ -45,7 +44,7 @@ const styles = StyleSheet.create({
   txtLabel: {
     alignItems: 'center',
     color: '#383E44',
-    fontSize : normalize(5)
+    fontSize: normalize(5),
   },
   fx1: {flex: 1},
 });

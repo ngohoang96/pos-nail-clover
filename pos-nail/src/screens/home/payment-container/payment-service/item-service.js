@@ -7,29 +7,37 @@ import {
   Image,
   TextInput,
 } from 'react-native';
-
+import {connect} from 'react-redux';
+import {actions, selectors} from '../../../../stores';
 import themes from '../../../../config/themes';
 import {normalize} from '../../../../themes/FontSize';
 import TextCmp from '../../../../themes/TextCmp';
-import {testsIcons} from '../../../../assets'
-export default class ItemService extends Component {
+import {testsIcons} from '../../../../assets';
+class ItemService extends Component {
   constructor(props) {
     super(props);
   }
+  componentDidMount() {
+    // this.props.fetchGainer();
+  }
   render() {
     return (
-      <View style={styles.container}>
+      <View key={this.props.name} style={styles.container}>
         <View
           style={{
             flex: 1,
             justifyContent: 'center',
           }}>
           <View style={{flex: 1, justifyContent: 'flex-end'}}>
-            <TextCmp style={{
-              fontSize : normalize(3.5)}}>Organic</TextCmp>
+            <TextCmp
+              style={{
+                fontSize: normalize(3.5),
+              }}>
+              Organic
+            </TextCmp>
           </View>
           <View style={{flex: 1, justifyContent: 'center'}}>
-            <TextCmp style={{fontSize : normalize(3.5)}}>Rejuventation</TextCmp>
+            <TextCmp style={{fontSize: normalize(3.5)}}>Rejuventation</TextCmp>
           </View>
           <TouchableOpacity style={{flex: 1, justifyContent: 'flex-start'}}>
             <Image
@@ -43,12 +51,19 @@ export default class ItemService extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.containerBtnName}>
-          <TouchableOpacity style={styles.btnName}>
-            <TextCmp style={styles.txtName}>{this.props.name}</TextCmp>
+          <TouchableOpacity
+            onPress={() => {
+              console.log(this.props.id + ' bấm vô ' + this.props.name);
+              this.props.deleteDataService(this.props.id);
+            }}
+            style={styles.btnName}>
+            <TextCmp style={styles.txtName}>{this.props.name || 'Tên'}</TextCmp>
           </TouchableOpacity>
         </View>
         <View style={{flex: 0.8}}>
-          <TextCmp style={{marginLeft: 1,fontSize : normalize(3.5)}}>Guest x1</TextCmp>
+          <TextCmp style={{marginLeft: 1, fontSize: normalize(3.5)}}>
+            Guest x1
+          </TextCmp>
         </View>
         <View style={styles.containerTp}>
           <TextInput style={styles.styInput}></TextInput>
@@ -58,6 +73,21 @@ export default class ItemService extends Component {
     );
   }
 }
+const mapDispatchToProps = dispatch => {
+  const deleteDataService = id => {
+    dispatch(actions.test.dDataService(id));
+  };
+  const fetchGainer = () => {
+    dispatch(actions.test.fetchGainer());
+  };
+  return {deleteDataService, fetchGainer};
+};
+
+const mapStateToProps = state => ({
+  // dataService: selectors.test.getDataService(state),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ItemService);
 
 const styles = StyleSheet.create({
   container: {
@@ -93,7 +123,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
-    fontSize : normalize(3)
+    fontSize: normalize(3),
   },
   styInput: {
     width: '48%',
@@ -101,6 +131,6 @@ const styles = StyleSheet.create({
     borderColor: '#BEBEBE',
     paddingVertical: -10,
     height: '100%',
-    fontSize : normalize(3)
+    fontSize: normalize(3),
   },
 });

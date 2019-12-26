@@ -4,9 +4,9 @@ import com.facebook.react.ReactPackage;
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
 import com.reactnativenavigation.react.ReactGateway;
-
-import com.azendoo.reactnativesnackbar.SnackbarPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
+
+import com.entria.views.RNViewOverflowPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,8 +35,9 @@ public class MainApplication extends NavigationApplication {
             // Add additional packages you require here
             // No need to add RnnPackage and MainReactPackage
             return Arrays.<ReactPackage>asList(
-                new SnackbarPackage(),
-                new AsyncStoragePackage()
+                // new SnackbarPackage(),
+               new AsyncStoragePackage(),
+               new RNViewOverflowPackage()
             // eg. new VectorIconsPackage()
             );
         }

@@ -81,8 +81,8 @@ project.ext.react = [
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
-def jscFlavor = 'org.webkit:android-jsc:+'
-def enableHermes = project.ext.react.get("enableHermes", false);
+ def jscFlavor = 'org.webkit:android-jsc:+'
+// def enableHermes = project.ext.react.get("enableHermes", false);
 /**
  * Set this to true to create two separate APKs instead of one:
  *   - An APK that only works on ARM devices
@@ -106,12 +106,12 @@ def enableProguardInReleaseBuilds = false
  *
  * The international variant includes ICU i18n library and necessary data
  * allowing to use e.g. `Date.toLocaleString` and `String.localeCompare` that
- * give correct results when using with locales other than en-US.  Note that
+ * give correct results when using with locales otherv than en-US.  Note that
  * this variant is about 6MiB larger per architecture than default.
 //  */
 // def jscFlavor = 'org.webkit:android-jsc:+'
 
-/**
+/** 
  * Whether to enable the Hermes VM.
  *
  * This should be set on project.ext.react and mirrored here.  If it is not set
@@ -120,6 +120,7 @@ def enableProguardInReleaseBuilds = false
 //  */
 // def enableHermes = project.ext.react.get("enableHermes", false);
 
+def enableHermes = project.ext.react.get("enableHermes", false);
 def useIntlJsc = false
 android {
     // compileSdkVersion rootProject.ext.compileSdkVersion
@@ -201,8 +202,8 @@ configurations.all {
 }
 
 dependencies {
-    implementation project(':@react-native-community_async-storage')
-    implementation project(':react-native-snackbar')
+    implementation project(':react-native-view-overflow')
+   implementation project(':@react-native-community_async-storage')
     implementation project(':react-native-vector-icons')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
@@ -213,6 +214,7 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
 
     implementation jscFlavor
+
 
 }
 

@@ -11,84 +11,236 @@ import {
   Animated,
   Easing,
   PanResponder,
+  TouchableHighlight,
+  Alert,
 } from 'react-native';
-
+import {iconsScroll} from '../../../../assets';
 import themes from '../../../../config/themes';
 import {normalize} from '../../../../themes/FontSize';
 import TextCmp from '../../../../themes/TextCmp';
 import TechnicianRepander from '../../../../Components/InitScreen/TechnicianRepander';
 import {dataTechnician} from '../../../../Components/InitScreen/mockData';
-import ItemTech from '../../../../Components/InitScreen/itemTech';
-// import Draggable from 'react-native-draggable';
+import {ToastLib} from '../../../../utils';
 export default class PaymentCoupon extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      showDraggable: true,
-      dropZoneValues: null,
-      pan: new Animated.ValueXY(),
-      posX: null,
-      posY: null,
+      indexMap: 0,
+      indexMapEnd: 4,
+      dataMap: [],
+      isAdd: true,
+      isReduction: false,
     };
-
-    this.panResponder = PanResponder.create({
-      onStartShouldSetPanResponder: () => true,
-      onPanResponderMove: Animated.event([
-        null,
-        {
-          dx: this.state.pan.x,
-          dy: this.state.pan.y,
-        },
-      ]),
-      onPanResponderRelease: (e, gesture) => {
-        if (this.isDropZone(gesture)) {
-          this.setState({
-            showDraggable: false,
-          });
-        } else {
-          Animated.spring(this.state.pan, {toValue: {x: 0, y: 0}}).start();
-        }
-      },
-    });
   }
+  // _renderMap = (data, index, indexMapEnd, isAdd) => {
+  //   if (indexMapEnd - 1 === data.length) {
+  //     indexMapEnd = data.length;
+  //   }
+  //   if (data.length - index > 4) {
+  //     data = data.slice(index, indexMapEnd);
 
-  isDropZone(gesture) {
-    var dz = this.state.dropZoneValues;
-    console.log('ok ' + dz);
-    console.log('gesture ' + gesture.moveY + '   ' + gesture.moveX);
-    // this.setState({
-    //     posX : gesture.moveX ,
-    //     posY : gesture.moveY
-    // })
+  //     // alert('a ' + index + ' b ' + indexMapEnd + JSON.stringify(data));
+  //   } else {
+  //     data = data.slice(index, indexMapEnd);
+  //     // alert('aaa ' + index + ' b ' + indexMapEnd + data);
+  //   }
 
-    if (gesture.moveX < (themes.width * 0.9) / 3.9 / 2) {
-      alert('posX ' + gesture.moveX + '  ' + 'ok ' + this.props.name);
-    }
-    return gesture.moveY > dz.y && gesture.moveY < dz.y + dz.height;
-  }
+  //   return data.map((item, index) => {
+  //     return (
+  //       <View
+  //         key={index}
+  //         style={{
+  //           width: (themes.width * 0.9) / 5.6,
+  //           height: ((themes.width * 0.9) / 5.6) * 0.65,
+  //           marginBottom: 10,
+  //         }}>
+  //         <TechnicianRepander id={item.id} name={item.name} />
+  //       </View>
+  //     );
+  //   });
+  // };
 
-  setDropZoneValues(event) {
-    this.setState({
-      dropZoneValues: true,
-    });
-  }
   render() {
+    const {indexMap, indexMapEnd, isAdd, isReduction} = this.state;
     return (
       <View style={styles.fx09}>
         <View style={styles.container}>
           <TextCmp style={styles.txtCenter}>Technician Turn</TextCmp>
-        </View> 
+        </View>
+        <ScrollView style={styles.fx1}>
+          {dataTechnician.map(item => {
+            return (
+              <TechnicianRepander
+                id={item.id}
+                name={item.name}></TechnicianRepander>
+            );
+          })}
+        </ScrollView>
 
-        <FlatList
+        {/*
+
+
+
+           <View style={{flex: 1, backgroundColor: '#fff'}}>
+          {isReduction ? (
+            <View
+              style={{
+                backgroundColor: '#F5F5F5',
+                width: (themes.width * 0.9) / 5.6,
+                height: 30,
+                opacity: 0.5,
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+              }}>
+              <TouchableOpacity
+                onPress={() => {
+                  if (indexMap > 0) {
+                    this.setState({
+                      indexMapEnd: indexMap,
+                      indexMap: indexMap - 4,
+                    });
+                    // alert(indexMap + '   ' + indexMapEnd);
+                  }
+                  if (dataTechnician.length - indexMapEnd < 0) {
+                    this.setState({
+                      isAdd: true,
+                    });
+                  }
+                  if (indexMap < 5) {
+                    this.setState({
+                      isReduction: false,
+                    });
+                  }
+                }}
+                style={{
+                  height: '100%',
+                  width: '100%',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <Image
+                  style={{height: 30, width: 30}}
+                  source={iconsScroll.uparrow}
+                />
+              </TouchableOpacity>
+            </View>
+          ) : null}
+          <View style={{flex: 1}}>
+            {this._renderMap(dataTechnician, indexMap, indexMapEnd)}
+          </View>
+          {isAdd ? (
+            <View
+              style={{
+                backgroundColor: '#F5F5F5',
+                width: (themes.width * 0.9) / 5.6,
+                height: 30,
+                opacity: 0.5,
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+              }}>
+              <TouchableOpacity
+                style={{
+                  height: '100%',
+                  width: '100%',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                onPress={() => {
+                  if (dataTechnician.length - indexMapEnd > 0) {
+                    if (dataTechnician.length - indexMapEnd > 4) {
+                      this.setState({
+                        indexMapEnd: indexMapEnd + 4,
+                        isAdd: true,
+                      });
+                      // alert('a');
+                    } else {
+                      this.setState({
+                        indexMapEnd: dataTechnician.length + 1,
+                        isAdd: false,
+                      });
+                      // alert('b');
+                    }
+                    if (indexMapEnd > 3) {
+                      this.setState({
+                        isReduction: true,
+                      });
+                    } else {
+                      this.setState({
+                        isReduction: false,
+                      });
+                    }
+                    this.setState({
+                      indexMap: indexMapEnd,
+                    });
+                  }
+                  // alert(
+                  //   indexMap +
+                  //     ' ' +
+                  //     indexMapEnd +
+                  //     ' ' +
+                  //     isAdd +
+                  //     ' ' +
+                  //     isReduction +
+                  //     dataTechnician.length +
+                  //     indexMapEnd,
+                  // );
+                }}>
+                <Image
+                  style={{height: 30, width: 30}}
+                  source={iconsScroll.downarrow}
+                />
+              </TouchableOpacity>
+            </View>
+          ) : null}
+        </View>
+
+
+
+
+
+
+          {dataTechnician && (
+            <Swiper autoplay={false} horizontal={false}>
+              {this._renderBaner()}
+            </Swiper>
+          )}
+           <ScrollView style={{flex: 1, backgroundColor: '#fff'}}>
+          <View style={{flex: 1}}>
+            {dataTechnician.map(({item , index}) => {
+              return (
+                <TechnicianRepander
+                  id={item.id}
+                  name={item.name}></TechnicianRepander>
+              );
+            })}
+          </View>
+        </ScrollView>
+
+
+
+
+           <FlatList
+          data={dataTechnician}
+          renderItem={({item, index}) => {
+            return (
+              <TechnicianRepander
+                id={item.id}
+                name={item.name}></TechnicianRepander>
+            );
+          }}
+          style={{flex: 1, backgroundColor: '#fff'}}
+        />
+                  <GridList
+          data={dataTechnician}
+          numColumns={1}
+          renderItem={this.renderItem}></GridList>
+ <FlatList
           data={[1, 2, 3, 4, 5, 2, 3, 4, 5]}
           renderItem={() => {
             return <TechnicianRepander name={'item.name'}></TechnicianRepander>;
           }}
           style={{flex: 1, backgroundColor: '#fff'}}
         />
-        {/*
-
            <View
           style={{
             width: '100%',
@@ -183,6 +335,7 @@ const styles = StyleSheet.create({
     flex: 1,
     overflow: 'scroll',
     backgroundColor: 'white',
+    marginBottom: themes.height / 12,
   },
   txtCenter: {
     alignItems: 'center',

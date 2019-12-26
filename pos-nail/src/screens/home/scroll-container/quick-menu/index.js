@@ -27,9 +27,10 @@ export default class PaymentCoupon extends Component {
 
         <View style={styles.containerScroll}>
           <ScrollView style={styles.width100}>
-            {items1.map(item => {
+            {items1.map((item, index) => {
               return (
                 <Button2
+                  key={index}
                   Textstyle={{color: 'black'}}
                   style_button={{
                     borderLeftColor: item.code,
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
   fx05MGH10: {
     marginHorizontal: 10,
     flex: 0.5,
-    zIndex : -1
+    zIndex: -1,
   },
   containerTxt: {
     height: themes.height / 20,
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
   txt: {
     alignItems: 'center',
     color: '#383E44',
-    fontSize : normalize(5)
+    fontSize: normalize(5),
   },
   containerScroll: {
     justifyContent: 'center',

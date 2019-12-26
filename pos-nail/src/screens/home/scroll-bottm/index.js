@@ -25,9 +25,14 @@ export default class PaymentTips extends Component {
           {data.map(item => {
             return (
               <TouchableOpacity
+                onPress={() => this.props.onPressItem(item.lable)}
+                key={item.id}
                 activeOpacity={0.7}
                 style={styles.containerTouch}>
-                <IonIcon name={item.icon} color={'#444444'} size={normalize(5)}></IonIcon>
+                <IonIcon
+                  name={item.icon}
+                  color={'#444444'}
+                  size={normalize(5)}></IonIcon>
                 <View style={styles.center}>
                   <TextCmp style={styles.txtLabel}>{item.lable}</TextCmp>
                 </View>
@@ -60,15 +65,17 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
     paddingHorizontal: 3,
-    fontSize : normalize(4)
+    fontSize: normalize(4),
   },
   containerFx065: {
     borderTopWidth: 1,
     borderTopColor: '#C1C1C1',
     backgroundColor: 'white',
     bottom: 0,
-    position : 'absolute' ,
+    position: 'absolute',
     right: 0,
-    left : themes.width*1.2/5.6
+    left: (themes.width * 1.2) / 5.6,
+    minHeight: themes.height / 12,
+    maxHeight: themes.height / 12,
   },
 });

@@ -4,7 +4,12 @@
  *
  *
  */
-export const API_URL = 'https://api.kryptoniex.com/';
+// export const API_URL = 'https://api.kryptoniex.com/';
 export const SIGNALR_URL = 'https://websocket.kryptoniex.com/';
 export const HOME_COIN = 'BTC';
 export const market = ['USDT', 'BTC', 'ETH', 'USDC',];
+
+
+
+
+export const API_URL = 'http://95.217.32.253/'

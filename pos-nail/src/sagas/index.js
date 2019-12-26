@@ -5,7 +5,7 @@
 import {all} from 'redux-saga/effects';
 
 // More sagas go here...
-import testSagas from './testSaga'
+import testSagas from './testSaga';
 
 export default function*() {
   yield all([

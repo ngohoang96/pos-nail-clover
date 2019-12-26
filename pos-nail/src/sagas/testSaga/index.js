@@ -1,10 +1,13 @@
-import {takeLatest} from 'redux-saga/effects';
+import {takeLatest, takeEvery} from 'redux-saga/effects';
 
-import updateDataService from './updateDataService';
-
+import fetchGainer from './fetchGainer';
+import fetchHistoryWithDraw from './fetchHistoryWithDraw';
 import {types} from '../../stores';
 
-function* watchFetchDataService() {
-  yield takeLatest(types.test.UPDATE_DATA_SERVICE, updateDataService);
+function* watchFetchGainer() {
+  yield takeLatest(types.test.GET_GAINER_DATA, fetchGainer);
 }
-export default [watchFetchDataService()];
+function* watchFetchWithDrawHistory() {
+  yield takeLatest(types.test.FETCH_HISTORY_WITHDRAW, fetchHistoryWithDraw);
+}
+export default [watchFetchGainer(), watchFetchWithDrawHistory()];

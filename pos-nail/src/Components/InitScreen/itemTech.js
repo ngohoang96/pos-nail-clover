@@ -3,6 +3,7 @@ import {Text, StyleSheet, TouchableOpacity, View, Image} from 'react-native';
 import themes from '../../config/themes';
 import {normalize} from '../../themes/FontSize';
 import TextCmp from '../../themes/TextCmp';
+// import ViewOverflow from 'react-native-view-overflow';
 export default class ItemTech extends Component {
   constructor(props) {
     super(props);
@@ -10,12 +11,15 @@ export default class ItemTech extends Component {
   render() {
     return (
       <View
-        style={{
-          borderBottomColor: '#9BAB6A',
-          borderBottomWidth: 0.5,
-          width: themes.width*0.9/5.6-10,
-          height: themes.width*0.9/5.6*0.65
-        }}>
+        style={[
+          {
+            borderBottomColor: '#9BAB6A',
+            borderBottomWidth: 0.5,
+            width: (themes.width * 0.9) / 5.6 - 5,
+            height: ((themes.width * 0.9) / 5.6) * 0.65,
+          },
+          this.props.containerStyle,
+        ]}>
         <View style={styl.container}>
           <TextCmp style={styl.textName}>
             {this.props.nameTechnician || 'tên'}
@@ -25,8 +29,8 @@ export default class ItemTech extends Component {
           <View style={styl.containerImg}>
             <Image
               style={{
-                width: (themes.width *0.9/ 5.6) * 0.3,
-                height: (themes.width *0.9/ 5.6) * 0.3,
+                width: ((themes.width * 0.9) / 5.6) * 0.3,
+                height: ((themes.width * 0.9) / 5.6) * 0.3,
                 borderRadius: 50,
               }}
               source={{
