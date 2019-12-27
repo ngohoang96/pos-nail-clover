@@ -92,26 +92,31 @@ const reducer = Helper.createReducer(initialState, {
       isLoadingHistoryWithdraw: action.payload,
     };
   },
+  // gán data Technician Staffs
   [Types.UPDATE_LIST_FINISH]: ({state, action}) => {
     return {
       ...state,
       listFinish: action.payload,
     };
   },
-  [Types.UPDATE_ISSELECTED_SELECT_TECHNICIAN]: ({state, action}) => {
-    let data = _.clone(state.listFinish);
-    let _index = data.findIndex(e => e.id === action.payload);
-    data[_index].isSelected = !data[_index].isSelected;
-
-    return {
-      ...state,
-      listFinish: data,
-    };
-  },
-  [Types.UPDATE_LIST_SELECT_SERVICE]: ({state, action}) => {
+  [Types.GET_LIST_SELECT_SERVICE]: ({state, action}) => {
     return {
       ...state,
       listDataServices: action.payload,
+    };
+  },
+  [Types.UPDATE_LIST_TECHNICIAN]: ({state, action}) => {
+    let data_payload = _.clone(action.payload);
+    let data_state = _.clone(state.listFinish);
+
+    data_state.map(item => (item.isSelected = false));
+    for (let i = 0; i < data_payload.length; ++i) {
+      let _index = data_state.findIndex(obj => obj.id === data_payload[i].id);
+      data_state[_index].isSelected = !data_state[_index].isSelected;
+    }
+    return {
+      ...state,
+      listFinish: data_state,
     };
   },
 });

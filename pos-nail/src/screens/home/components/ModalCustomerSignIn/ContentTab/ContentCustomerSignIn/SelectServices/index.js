@@ -6,11 +6,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => {
-  const updateListSelectService = data => {
-    dispatch(actions.test.updateListSelectService(data));
+  const getListSelectService = data => {
+    dispatch(actions.test.getListSelectService(data));
   };
   return {
-    updateListSelectService,
+    getListSelectService,
   };
 };
 export default connect(

@@ -18,7 +18,6 @@ class ItemService extends Component {
     super(props);
   }
   componentDidMount() {
-    // this.props.fetchGainer();
   }
   render() {
     return (
@@ -77,10 +76,9 @@ const mapDispatchToProps = dispatch => {
   const deleteDataService = id => {
     dispatch(actions.test.dDataService(id));
   };
-  const fetchGainer = () => {
-    dispatch(actions.test.fetchGainer());
+  return {
+    deleteDataService,
   };
-  return {deleteDataService, fetchGainer};
 };
 
 const mapStateToProps = state => ({

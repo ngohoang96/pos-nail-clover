@@ -82,12 +82,12 @@ class InitScreen extends Component {
         // Logg.info('Staffs  xxxx ' + JSON.stringify(this.state.dataStaffs));
         result.map(item => (item.isSelected = false));
         this.props.dispatch(actions.test.updateListFinish(result));
-        this.props.dispatch({
-          type: 'SAVE_DATA_Staffs',
-          payload: {
-            StaffsList: result,
-          },
-        });
+        // this.props.dispatch({
+        //   type: 'SAVE_DATA_Staffs',
+        //   payload: {
+        //     StaffsList: result,
+        //   },
+        // });
         if (result.dataArray && result.dataArray[1].ErrorMessege) {
           Alert.alert('', result.dataArray[1].ErrorMessege);
         } else {
@@ -122,7 +122,7 @@ class InitScreen extends Component {
           }
         }
         result.map(item => (item.isSelected = false));
-        this.props.dispatch(actions.test.updateListSelectService(result));
+        this.props.dispatch(actions.test.getListSelectService(result));
         this.setState({
           listserveceSearch,
           dataListSearch: result,

@@ -23,111 +23,83 @@ import BottomModal from './BottomModal';
 import ItemScroll from './container/ItemScrollViewModal';
 import {Logg} from '../../../../../../../utils';
 import RenderMain from './RenderMain';
-let data_ = [];
-let data_tmp = [];
 class index extends Component {
   constructor(props) {
     super(props);
     this.state = {
       ModalVisiable: false,
-
-      dataStaffs: [],
-      dataNameMain: null,
       dataFinish: [],
+      index: 0,
+      listadd: [],
     };
   }
-  // shouldComponentUpdate({listFinish: mListFinish}) {
-  //   return mListFinish != this.props.list;
-  // }
   componentDidMount() {
-    // this.setState(
-    //   {
-    //     dataStaffs: this.props.listFinish,
-    //   },
-    //   () =>
-    //     console.log('tao đang test ' + JSON.stringify(this.state.dataStaffs)),
-    // );
-    console.log('tao đang test ne huhu' + this.props.listFinish);
-    // console.log('tao đang test ' + this.state.dataStaffs);
+    const {listFinish} = this.props;
+    const {listadd} = this.state;
+    //gán lại check mỗi khi render lên
+    for (let i = 0; i < listFinish.length; ++i) {
+      if (listFinish[i].isSelected) {
+        listadd.push(listFinish[i]);
+      }
+    }
+    this.setState({listadd});
   }
+  //tắt modal
   _onPressClose = () => {
     this.setState({
       ModalVisiable: !this.state.ModalVisiable,
     });
   };
+  //hoàn thành gửi list vừa check sang redux update lại
   _onPressFinish = () => {
-    // const {listFinish} = this.props;
-    // if (listFinish && listFinish.length > 0) {
-    //   this.props.updateList(listFinish);
-    // }v
-    data_ = this.props.listFinish;
+    this.props.updateListTechnician(this.state.listadd);
     this._onPressClose();
-    // alert();
   };
-  // _renderMain = () => {
-  //   return (
-  //     <View style={styles.containerMain}>
-  //       <TextCmp style={styles.txtMain}>
-  //         Please Select Perfer Nails Technician
-  //       </TextCmp>
-  //       <TouchableOpacity
-  //         activeOpacity={0.9}
-  //         onPress={() => {
-  //           this.setState({
-  //             ModalVisiable: !this.state.ModalVisiable,
-  //           });
-  //         }}
-  //         style={styles.btnMain}
-  //       />
-  //     </View>
-  //   );
-  // };
 
-  _onPressItem = _itemStaffs => {
-    // const {dataStaffs} = this.state;
-    // debugger;
-    // let _index = dataStaffs.findIndex(e => e.id === _itemStaffs.id);
-    // dataStaffs[_index].isSelected = !dataStaffs[_index].isSelected;
-    // this.setState({
-    //   dataStaffs,
-    // });
-    // data_tmp.push({_itemStaffs});
-    this.props.updateIsSelectedTechnician(_itemStaffs.id);
+  //bấm vào item thay đổi state để đổi màu và gán vào listAdd
+  pressitem = (index, item) => {
+    let listadd = this.state.listadd;
 
-    console.log(
-      '_itemStaffs ' +
-        JSON.stringify(_itemStaffs) +
-        '\n' +
-        JSON.stringify(this.props.listFinish),
-    );
+    if (listadd.findIndex(obj => obj.name === item.name) == -1) {
+      listadd.push(item);
+    } else {
+      listadd = listadd.filter(_item => _item.name !== item.name);
+    }
+
+    this.setState({index: index, listadd});
   };
-  componentWillUnmount() {
-    // console.log(data_tmp);
-  }
   render() {
+    const {listFinish} = this.props;
     return (
       <View style={{flex: 1}}>
         <Modal
           animationType={'none'}
           transparent={true}
           visible={this.state.ModalVisiable}
-          onRequestClose={() =>
-            this.setState({ModalVisiable: !this.state.ModalVisiable})
-          }>
+          onRequestClose={this._onPressClose}>
           <View style={styles.container}>
             <View style={{width: '80%'}}>
               <Header onPress={this._onPressClose} />
               <ScrollView style={styles.centerModalScrollview}>
                 <View style={styles.contanerScrollView}>
-                  {this.props.listFinish.map((item, index) => {
-                    return (
-                      <ItemScroll
-                        key={index + ' '}
-                        itemStaffs={item}
-                        onPress={this._onPressItem}
-                      />
-                    );
-                  })}
+                  {listFinish &&
+                    listFinish.map((item, index) => {
+                      return (
+                        <ItemScroll
+                          containerStyle={{
+                            backgroundColor:
+                              this.state.listadd.findIndex(
+                                obj => obj.name === item.name,
+                              ) != -1
+                                ? '#5F1AB7'
+                                : '#95C700',
+                          }}
+                          key={index + ' '}
+                          itemStaffs={item}
+                          onPress={() => this.pressitem(index, item)}
+                        />
+                      );
+                    })}
                 </View>
               </ScrollView>
               <BottomModal
@@ -137,7 +109,7 @@ class index extends Component {
             </View>
           </View>
         </Modal>
-        <RenderMain dataSelected={data_} onPressClose={this._onPressClose} />
+        <RenderMain onPressClose={this._onPressClose} />
       </View>
     );
   }
@@ -148,16 +120,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => {
-  // };
-  const updateList = list => {
-    dispatch(actions.test.updateListFinish(list));
-  };
-  const updateIsSelectedTechnician = id => {
-    dispatch(actions.test.updateIsSelectedTechnician(id));
+  const updateListTechnician = data => {
+    dispatch(actions.test.updateListTechnician(data));
   };
   return {
-    updateList,
-    updateIsSelectedTechnician,
+    updateListTechnician,
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(index);

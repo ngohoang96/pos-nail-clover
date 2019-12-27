@@ -7,16 +7,16 @@ import {connect} from 'react-redux';
 import {actions, selectors} from '../../../../../../../stores';
 let tmp = '';
 export class RenderMain extends Component {
-  shouldComponentUpdate({dataSelected: newdataSelected}) {
-    return newdataSelected != this.props.dataSelected;
+  shouldComponentUpdate({listFinish: newdataSelected}) {
+    return newdataSelected != this.props.listFinish;
   }
   render() {
-    console.log('tmp ' + JSON.stringify(this.props.dataSelected));
+    console.log('tmp ' + JSON.stringify(this.props.listFinish));
     tmp = '';
-    if (this.props.dataSelected) {
-      for (let i = 0; i < this.props.dataSelected.length; ++i) {
-        if (this.props.dataSelected[i].isSelected)
-          tmp = tmp + this.props.dataSelected[i].name + ' ,';
+    if (this.props.listFinish) {
+      for (let i = 0; i < this.props.listFinish.length; ++i) {
+        if (this.props.listFinish[i].isSelected)
+          tmp = tmp + this.props.listFinish[i].name + ' ,';
       }
     }
     console.log('tmp ' + tmp);

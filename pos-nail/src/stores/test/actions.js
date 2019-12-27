@@ -14,9 +14,9 @@ const Types = {
   UPDATE_DATA_TECHNICIAN: 'test@UPDATE_DATA_TECHNICIAN',
 
   UPDATE_LIST_FINISH: 'test@UPDATE_LIST_FINISH',
-  UPDATE_LIST_SELECT_SERVICE: 'test@UPDATE_LIST_SELECT_SERVICE',
-  UPDATE_ISSELECTED_SELECT_TECHNICIAN:
-    'test@UPDATE_ISSELECTED_SELECT_TECHNICIAN',
+  GET_LIST_SELECT_SERVICE: 'test@GET_LIST_SELECT_SERVICE',
+  UPDATE_LIST_TECHNICIAN: 'test@UPDATE_LIST_TECHNICIAN',
+  GET_LIST_TECHNICIAN: 'test@GET_LIST_TECHNICIAN',
 };
 
 const Actions = {
@@ -28,10 +28,6 @@ const Actions = {
   dDataService: id => ({
     type: Types.DELETE_DATASERVICE,
     id: id,
-  }),
-  fetchGainer: data => ({
-    type: Types.GET_GAINER_DATA,
-    payload: data,
   }),
   updateGainer: data => ({
     type: Types.GET_GAINER_DATA_SUCCESS,
@@ -47,13 +43,14 @@ const Actions = {
     payload: data,
   }),
 
-  updateIsSelectedTechnician: id => ({
-    type: Types.UPDATE_ISSELECTED_SELECT_TECHNICIAN,
-    payload: id,
+  // gán data vừa được update vào redux
+  updateListTechnician: data => ({
+    type: Types.UPDATE_LIST_TECHNICIAN,
+    payload: data,
   }),
   //gán data services
-  updateListSelectService: data => ({
-    type: Types.UPDATE_LIST_SELECT_SERVICE,
+  getListSelectService: data => ({
+    type: Types.GET_LIST_SELECT_SERVICE,
     payload: data,
   }),
   // updateDataTechnician: id => ({

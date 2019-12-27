@@ -8,31 +8,28 @@ import {Logg} from '../../../../../../../../utils';
 class ItemScrollViewModal extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      // itemStaffs: this.props.itemStaffs,
-    };
+    this.state = {};
   }
   shouldComponentUpdate(itemStaffs) {
-    Logg.info('test thôi');
     return itemStaffs.isSelected != this.props.itemStaffs.isSelected;
   }
   render() {
+    const {itemStaffs} = this.props;
     return (
       <TouchableOpacity
         activeOpacity={0.9}
-        onPress={() => this.props.onPress(this.props.itemStaffs)}
+        onPress={() => this.props.onPress(itemStaffs)}
         style={[styles.container]}>
         <View
           style={[
             styles.containerTitle,
             {
-              backgroundColor: this.props.itemStaffs.isSelected
-                ? '#5F1AB7'
-                : '#95C700',
+              backgroundColor: itemStaffs.isSelected ? '#5F1AB7' : '#95C700',
             },
+            this.props.containerStyle,
           ]}>
           <TextCmp style={styles.txtTitle}>
-            {this.props.itemStaffs.name || 'Any Nails Technician'}
+            {itemStaffs.name || 'Any Nails Technician'}
           </TextCmp>
         </View>
         <View style={styles.containerContent}>
