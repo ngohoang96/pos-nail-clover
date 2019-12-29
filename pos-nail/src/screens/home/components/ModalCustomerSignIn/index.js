@@ -41,6 +41,9 @@ export default class index extends Component {
                 txt1="Close"
                 txt3="Sign In"
                 onPress={this.props.onPressIsModal}
+                onPressFinish={() => {
+                  alert('1');
+                }}
               />
             ) : (
               <BottomButton

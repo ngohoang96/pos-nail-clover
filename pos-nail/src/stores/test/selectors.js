@@ -5,3 +5,5 @@ export const getIsLoadingHistoryWithDraw = state =>
   state.test.isLoadingHistoryWithdraw;
 export const getDataTechnician = state => state.test.DataTechnician;
 export const getlistDataServices = state => state.test.listDataServices;
+export const getdataSelectedPerferService = state =>
+  state.test.dataSelectedPerferService;

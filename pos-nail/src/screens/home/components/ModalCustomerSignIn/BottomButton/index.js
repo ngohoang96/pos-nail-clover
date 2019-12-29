@@ -31,6 +31,7 @@ export default class index extends Component {
                 width: Metrics.appWidth * 0.6 * 0.95 * 0.2,
                 marginHorizontal: 20,
               }}
+              onPress={this.props.onPressFinish}
               text={this.props.txt3 || 'c'}
             />
           </View>

@@ -18,7 +18,9 @@ import BottomButtonServices from './BottomButtonServices';
 import HeaderServices from './HeaderServices';
 import {Logg} from '../../../../../../../utils';
 
-let dataSelected = [];
+// let dataSelected = [];
+let dataRightServices = [[]];
+// let data_index_indexEnd = [];
 export default class index extends Component {
   constructor(props) {
     super(props);
@@ -27,48 +29,76 @@ export default class index extends Component {
       // Data_Services,
       listAdd: [],
       dataListSearch: [],
-      dataSearchButton: this.props.dataSearchButton,
+      dataSearchButton: [],
       index: 0,
-      selectService: [],
     };
   }
-  // shouldComponentUpdate(listAdd) {
-  //   return listAdd !== this.state.listAdd;
-  // }
   componentDidMount() {
-    const {dataListSearch} = this.state;
+    const {getlistDataServices, dataSearchButton} = this.props;
     this.setState({
-      dataListSearch: this.props.getlistDataServices.filter(function(item) {
+      dataListSearch: getlistDataServices.filter(function(item) {
         return item.id != -1;
       }),
+      dataSearchButton: dataSearchButton,
     });
+    // Logg.info('____dataSearchButton_____', dataSearchButton);
+
+    let tmp = 0;
+    for (let i = 1; i < dataSearchButton.length; ++i) {
+      // dataRightServices.push([]);
+
+      let __dataTmp__ = [];
+      let _index_ = getlistDataServices.findIndex(
+        e => e.catname === dataSearchButton[i].catname,
+      );
+      let _indexEnd_ = 0;
+      if (i != dataSearchButton.length - 1) {
+        _indexEnd_ = getlistDataServices.findIndex(
+          e => e.catname === dataSearchButton[i + 1].catname,
+        );
+      } else {
+        _indexEnd_ = getlistDataServices.length;
+      }
+
+      Logg.info('______index_________', _index_, '_____', _indexEnd_);
+
+      for (let j = _index_ + 1; j < _indexEnd_; ++j) {
+        dataRightServices[0].push(getlistDataServices[j]);
+        Logg.info(
+          '_____t________',
+          i,
+          tmp,
+          dataSearchButton[i].catname,
+          getlistDataServices[j].id,
+          getlistDataServices[j].catname,
+          j,
+        );
+        if (
+          getlistDataServices[j].id !== -1 &&
+          getlistDataServices[j].catname === dataSearchButton[i].catname
+        ) {
+          // Logg.info('_____add here________');
+          __dataTmp__.push(getlistDataServices[j]);
+          // Logg.info('__dataTmp__add', __dataTmp__);
+        }
+      }
+
+      dataRightServices.push(__dataTmp__);
+    }
+    Logg.info('____dataRightServices_____', JSON.stringify(dataRightServices));
+    // Logg.info('______dataTmp_______', __dataTmp__);
   }
 
-  _renderBottomModal = () => {
-    return (
-      <View
-        style={{
-          width: Metrics.appWidth * 0.8,
-          height: Metrics.appHeight * 0.1,
-          backgroundColor: '#397DA4',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-around',
-        }}>
-        <ComponentButton onPress={this._onPressClose} text="Close" />
-        <View />
-        <ComponentButton onPress={this._onPressFinish} text="Finish" />
-      </View>
-    );
-  };
   //hoàn thành chọn service
   _onPressFinish = () => {
-    console.log('a');
-    dataSelected = this.state.dataListSearch.filter(function(e) {
-      return e.isSelected;
-    });
+    console.log(
+      'a' + JSON.stringify(this.state.listAdd) + this.state.listAdd.length,
+    );
+    this.props.updateDataPerferService(
+      this.state.listAdd.filter(e => e.isSelected === true),
+    );
     this._onPressClose();
-    console.log(dataSelected);
+    // console.log(dataSelected);
   };
   // đóng mở Modal
   _onPressClose = () => {
@@ -79,26 +109,83 @@ export default class index extends Component {
 
   // bắt sự kiện click vào service
   _onPressItemFilterServices = (item, index) => {
-    const {dataListSearch, dataSearchButton} = this.state;
-    console.log('test1' + item.catname + index);
-    let data = this.props.dataListSearch;
-    if (item.catname === 'All Services') {
-      console.log('a');
-      data = data.filter(function(_item) {
-        console.log(_item.catname);
-        return _item.catname != 'All Services' && _item.id != -1;
-      });
-    } else {
-      data = data.filter(function(_item) {
-        console.log(_item.catname);
-        return _item.catname === item.catname && _item.id != -1;
-      });
-    }
-    console.log('test___' + JSON.stringify(data));
     this.setState({
       index,
-      dataListSearch: data,
+      dataListSearch: dataRightServices[index],
     });
+  };
+
+  //click vào item scroll right
+
+  _onPressItemRight = (index, item) => {
+    const {dataListSearch} = this.state;
+    // let _index = dataListSearch.findIndex(e => e.id == item.id);
+    // dataListSearch[_index].isSelected = !dataListSearch[_index].isSelected;
+    // this.setState({
+    //   dataListSearch,
+    // });
+    // Logg.info('___item___', JSON.stringify(item));
+
+    let _listadd = this.state.listAdd;
+
+    // Logg.info('____datalistadd____', JSON.stringify(_listadd));
+    if (
+      _listadd.findIndex(obj => obj.id === item.id && obj.name === item.name) ==
+      -1
+    ) {
+      // alert(listadd.findIndex((obj) => obj.name === item.name));
+      _listadd.push(item);
+    } else {
+      let _index = _listadd.findIndex(
+        e => e.id === item.id && e.name === item.name,
+      );
+      // console.log('logg -' + _index);
+      _listadd.splice(_index, 1);
+    }
+    let tmp = dataListSearch.findIndex(
+      e => e.id === item.id && e.name === item.name,
+    );
+
+    let tmp1 = dataRightServices[0].findIndex(
+      e => e.id === item.id && e.name === item.name,
+    );
+
+    console.log('___tmp1___' + tmp1 + '_____' + index);
+    // if (dataListSearch[index].catname != 'All Services') {
+    //   console.log('logg -' + dataListSearch[index].catname);
+    //   dataListSearch[index].isSelected = !dataListSearch[index].isSelected;
+    // dataRightServices[0][tmp1].isSelected = !dataRightServices[tmp1]
+    //   .isSelected;
+    // } else {
+    dataListSearch[index].isSelected = !dataListSearch[index].isSelected;
+    // dataRightServices[0][tmp1].isSelected = !dataRightServices[tmp1]
+    //   .isSelected;
+    // }
+
+    // Logg.info(
+    //   '___dataListSearchisSelected___',
+    //   dataListSearch[tmp].isSelected,
+    //   JSON.stringify(dataListSearch[tmp]),
+    // );
+    // Logg.info(
+    //   '__---___',
+    //   dataRightServices[0][0].name,
+    //   dataListSearch[tmp].name,
+    // );
+
+    this.setState({
+      dataListSearch,
+      listadd: _listadd,
+    });
+
+    // this.setState({listadd: _listadd});
+    // alert('___lisAdd___'+ JSON.stringify(_listadd));
+
+    // console.log(
+    //   '-----B' +
+    //     dataListSearch[dataListSearch.findIndex(e => e.id == item.id)]
+    //       .isSelected,
+    // );
   };
   // phần scroll bên trái
   _renderLeftContent = () => {
@@ -106,70 +193,36 @@ export default class index extends Component {
       <FlatList
         showsVerticalScrollIndicator={false}
         numColumns={1}
-        style={{
-          width: '33%',
-          height: '100%',
-          backgroundColor: 'white',
-        }}
+        style={styles.containerListLeftContent}
         data={this.state.dataSearchButton}
         renderItem={({item, index}) => (
           <TouchableOpacity
             onPress={() => this._onPressItemFilterServices(item, index)}
             activeOpacity={0.5}
             key={index + ''}
-            style={{
-              width: '95%',
-              height: (Metrics.appHeight * 1) / 12,
-              marginHorizontal: 5,
-              marginVertical: 5,
-              borderRightWidth: 1,
-              borderRightColor: 'gray',
-              borderBottomWidth: 1,
-              borderBottomColor: 'gray',
-              borderTopWidth: 1,
-              borderTopColor: 'gray',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexDirection: 'row',
-              backgroundColor: this.state.index === index ? '#DFF0D8' : 'white',
-            }}>
-            <View
-              style={{
-                height: '100%',
-                width: 10,
-                backgroundColor: 'red',
-                left: 0,
-                position: 'absolute',
-              }}></View>
-            <TextCmp
-              style={{
-                fontSize: normalize(5),
-                fontWeight: 'bold',
-              }}>
-              {item.catname + ''}
-            </TextCmp>
+            style={[
+              styles.containerItemLeftContent,
+              {
+                backgroundColor:
+                  this.state.index === index ? '#DFF0D8' : 'white',
+              },
+            ]}>
+            <View style={styles.VContentLeft}></View>
+            <TextCmp style={styles.txtBoldNO5}>{item.catname + ''}</TextCmp>
           </TouchableOpacity>
         )}
         keyExtractor={item => item.catname + index + ''}
       />
     );
   };
-  //click vào item scroll right
-
-  _onPressItemRight = (index, item) => {
-    const {dataListSearch} = this.state;
-    dataListSearch[
-      dataListSearch.findIndex(e => e.id == item.id)
-    ].isSelected = !dataListSearch[
-      dataListSearch.findIndex(e => e.id == item.id)
-    ].isSelected;
-    this.setState({
-      dataListSearch,
-    });
-    console.log(
-      '-----B' +
-        dataListSearch[dataListSearch.findIndex(e => e.id == item.id)]
-          .isSelected,
+  // bottom Modal
+  _renderBottomModal = () => {
+    return (
+      <View style={styles.containerBottomModal}>
+        <ComponentButton onPress={this._onPressClose} text="Close" />
+        <View />
+        <ComponentButton onPress={this._onPressFinish} text="Finish" />
+      </View>
     );
   };
   // phần scroll bên phải
@@ -177,42 +230,21 @@ export default class index extends Component {
     return (
       <FlatList
         numColumns={2}
-        style={{
-          width: '67%',
-          height: '100%',
-          backgroundColor: 'white',
-          flexWrap: 'wrap',
-          paddingTop: 5,
-        }}
+        style={styles.containerListRightContent}
         data={this.state.dataListSearch}
         renderItem={({item, index}) => (
           <TouchableOpacity
             onPress={() => this._onPressItemRight(index, item)}
-            activeOpacity={0.5}
+            activeOpacity={0.9}
             key={item.id + ''}
-            style={{
-              width: '48%',
-              backgroundColor: !item.isSelected ? '#F5F5F5' : '#DD4B39',
-              marginHorizontal: 5,
-              marginVertical: 5,
-              alignItems: 'center',
-              justifyContent: 'center',
-              paddingVertical: 13,
-            }}>
-            <TextCmp
-              style={{
-                fontSize: normalize(5),
-                fontWeight: 'bold',
-              }}>
-              {item.name}
-            </TextCmp>
-            <TextCmp
-              style={{
-                fontSize: normalize(5),
-                fontWeight: 'bold',
-              }}>
-              Price: ${item.price}
-            </TextCmp>
+            style={[
+              styles.containerItemRightContent,
+              {
+                backgroundColor: !item.isSelected ? '#F5F5F5' : '#DD4B39',
+              },
+            ]}>
+            <TextCmp style={styles.txtBoldNO5}>{item.name}</TextCmp>
+            <TextCmp style={styles.txtBoldNO5}>Price: ${item.price}</TextCmp>
           </TouchableOpacity>
         )}
         keyExtractor={item => item.id}
@@ -221,7 +253,7 @@ export default class index extends Component {
   };
   render() {
     const {ModalVisiable} = this.state;
-    console.log('test' + JSON.stringify(this.state.dataListSearch));
+    // console.log('test' + JSON.stringify(this.state.dataListSearch));
     return (
       <View style={styles.flex1}>
         <Modal
@@ -241,7 +273,7 @@ export default class index extends Component {
           </View>
         </Modal>
         <BottomButtonServices
-          dataSelected={dataSelected}
+          // dataSelected={this.props.getdataSelectedPerferService}
           onPress={this._onPressClose}
         />
       </View>
@@ -267,5 +299,59 @@ const styles = StyleSheet.create({
     width: '100%',
     height: Metrics.appHeight * 0.7,
     padding: 10,
+  },
+  containerBottomModal: {
+    width: Metrics.appWidth * 0.8,
+    height: Metrics.appHeight * 0.1,
+    backgroundColor: '#397DA4',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  containerListRightContent: {
+    width: '67%',
+    height: '100%',
+    backgroundColor: 'white',
+    flexWrap: 'wrap',
+    paddingTop: 5,
+  },
+  containerItemRightContent: {
+    width: '48%',
+    marginHorizontal: 5,
+    marginVertical: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 13,
+  },
+  txtBoldNO5: {
+    fontSize: normalize(5),
+    fontWeight: 'bold',
+  },
+  containerListLeftContent: {
+    width: '33%',
+    height: '100%',
+    backgroundColor: 'white',
+  },
+  containerItemLeftContent: {
+    width: '95%',
+    height: (Metrics.appHeight * 1) / 12,
+    marginHorizontal: 5,
+    marginVertical: 5,
+    borderRightWidth: 1,
+    borderRightColor: 'gray',
+    borderBottomWidth: 1,
+    borderBottomColor: 'gray',
+    borderTopWidth: 1,
+    borderTopColor: 'gray',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  VContentLeft: {
+    height: '100%',
+    width: 10,
+    backgroundColor: 'red',
+    left: 0,
+    position: 'absolute',
   },
 });

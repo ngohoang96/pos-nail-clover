@@ -9,16 +9,21 @@ import SelectNewTechnician from './SelectNewTechnician';
 import SelectServices from './SelectServices';
 import {Logg} from '../../../../../../utils';
 export default class index extends Component {
-  //   constructor(props) {
-  //     super(props);
-  //     this.state = {};
-  //   }
+  constructor(props) {
+    super(props);
+    this.state = {
+      valuePhone: '',
+    };
+  }
 
   render() {
     Logg.info('data props', this.props.DataTechnician);
     return (
       <View style={styles.container}>
-        <Phone />
+        <Phone
+          value={this.state.valuePhone}
+          onChangePhone={e => this.setState({valuePhone: e})}
+        />
         <Name />
         <HaveAppoiment onSelect={(index, value) => alert(index + value)} />
         <SelectNewTechnician

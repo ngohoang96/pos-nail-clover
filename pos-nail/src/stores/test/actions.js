@@ -17,6 +17,7 @@ const Types = {
   GET_LIST_SELECT_SERVICE: 'test@GET_LIST_SELECT_SERVICE',
   UPDATE_LIST_TECHNICIAN: 'test@UPDATE_LIST_TECHNICIAN',
   GET_LIST_TECHNICIAN: 'test@GET_LIST_TECHNICIAN',
+  UPDATE_DATA_PERFER_SERVICE: 'test@UPDATE_DATA_PERFER_SERVICE',
 };
 
 const Actions = {
@@ -53,10 +54,11 @@ const Actions = {
     type: Types.GET_LIST_SELECT_SERVICE,
     payload: data,
   }),
-  // updateDataTechnician: id => ({
-  //   type: Types.UPDATE_DATA_TECHNICIAN,
-  //   payload: id,
-  // }),
+
+  updateDataPerferService: data => ({
+    type: Types.UPDATE_DATA_PERFER_SERVICE,
+    payload: data,
+  }),
 };
 
 export {Types, Actions};

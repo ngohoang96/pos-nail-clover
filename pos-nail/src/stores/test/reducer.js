@@ -1,5 +1,5 @@
 import {Types} from './actions';
-import {Helper} from '../../utils';
+import {Helper, Logg} from '../../utils';
 import {ToastLib} from '../../utils';
 import _ from 'lodash';
 // import {dataService} from '../../Components/InitScreen/mockData';
@@ -24,6 +24,7 @@ const initialState = {
   ],
   listFinish: [],
   listDataServices: [],
+  dataSelectedPerferService: [],
 };
 
 const reducer = Helper.createReducer(initialState, {
@@ -117,6 +118,15 @@ const reducer = Helper.createReducer(initialState, {
     return {
       ...state,
       listFinish: data_state,
+    };
+  },
+  [Types.UPDATE_DATA_PERFER_SERVICE]: ({state, action}) => {
+    let data = _.clone(action.payload);
+    // data = data.filter(e => e.isSelected === true);
+    Logg.create('_dataSelectedPerferService_', data);
+    return {
+      ...state,
+      dataSelectedPerferService: data,
     };
   },
 });

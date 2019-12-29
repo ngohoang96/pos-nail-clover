@@ -9,19 +9,31 @@ import {
 import {TextCmp} from '../../../../../../../../themes';
 import {normalize} from '../../../../../../../../themes/FontSize';
 import {truncateText} from '../../../../../../../../utils/functions';
+import {Logg} from '../../../../../../../../utils';
 
+import {connect} from 'react-redux';
+import {actions, selectors} from '../../../../../../../../stores';
 class index extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
-  componentDidMount() {}
+  // shouldComponentUpdate({dataSelected: newData}) {
+  //   return newData != this.props.dataSelected;
+  // }
   render() {
+    const {getdataSelectedPerferService} = this.props;
     let tmp = '';
-    console.log(tmp + 'tmp');
-    for (let i = 0; i < this.props.dataSelected.length; ++i) {
-      tmp = tmp + this.props.dataSelected[i].name + ' ,';
+    // console.log(tmp + 'tmp');
+    for (let i = 0; i < getdataSelectedPerferService.length; ++i) {
+      if (getdataSelectedPerferService[i].isSelected)
+        tmp = tmp + getdataSelectedPerferService[i].name + ' ,';
     }
+    Logg.info(
+      '__dataSelected__',
+      getdataSelectedPerferService.filter(e => e.isSelected),
+      getdataSelectedPerferService.filter(e => e.isSelected).length,
+    );
     return (
       <View style={styles.container}>
         <TextCmp style={styles.txtTitle}>Please Select Perfer Services</TextCmp>
@@ -46,7 +58,16 @@ class index extends Component {
   }
 }
 
-export default index;
+const mapStateToProps = state => ({
+  getdataSelectedPerferService: selectors.test.getdataSelectedPerferService(
+    state,
+  ),
+});
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+export default connect(mapStateToProps, mapDispatchToProps)(index);
 
 const styles = StyleSheet.create({
   container: {flex: 1, justifyContent: 'flex-end'},
