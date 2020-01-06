@@ -1,13 +1,19 @@
+/*  header-comment
+/*  file   : Button
+/*  author : Bon
+/*  date   : 2020-1-1 9:39:46
+/*  last   : 2020-1-1 9:39:57
+*/
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Text, StyleSheet, TouchableOpacity} from 'react-native';
+import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 import themes from '../../config/themes';
-import {normalize} from '../../themes/FontSize';
+import { normalize } from '../../themes/FontSize';
 import TextCmp from '../../themes/TextCmp';
 const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
-    fontSize : normalize(3.5)
+    fontSize: normalize(3.5)
   },
   button: {
     backgroundColor: 'white',
@@ -19,7 +25,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export function Button({Textstyle, lable, bg, ...props}) {
+export function Button({ Textstyle, lable, bg, ...props }) {
   return (
     <TouchableOpacity
       {...props}
@@ -32,7 +38,7 @@ export function Button({Textstyle, lable, bg, ...props}) {
           padding: 2,
         },
       ]}>
-      <TextCmp style={[ styles.text,Textstyle]}>{lable}</TextCmp>
+      <TextCmp style={[styles.text, Textstyle]}>{lable}</TextCmp>
     </TouchableOpacity>
   );
 }

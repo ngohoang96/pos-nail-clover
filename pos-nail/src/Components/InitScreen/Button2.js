@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Text, StyleSheet, TouchableOpacity} from 'react-native';
+import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 import themes from '../../config/themes';
-import {normalize} from '../../themes/FontSize';
+import { normalize } from '../../themes/FontSize';
 import TextCmp from '../../themes/TextCmp';
 const styles = StyleSheet.create({
   text: {
@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderBottomColor: '#383E44',
     borderBottomWidth: 1,
+
   },
 });
 
@@ -33,13 +34,17 @@ export default class Button2 extends Component {
     super(props);
   }
   render() {
+    const { onPress } = this.props
     return (
       <TouchableOpacity
+        activeOpacity={.5}
         style={[
           styles.button,
-          {borderLeftWidth: 4, ...this.props.style_button},
-        ]}>
-        <TextCmp style={[styles.text, this.props.Textstyle]}>
+          { borderLeftWidth: 4, ...this.props.style_button },
+        ]}
+        onPress={() => onPress()}
+      >
+        <TextCmp style={[styles.text, this.props.textstyles]}>
           {this.props.lable}
         </TextCmp>
       </TouchableOpacity>

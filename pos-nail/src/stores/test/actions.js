@@ -20,7 +20,14 @@ const Types = {
   UPDATE_DATA_PERFER_SERVICE: 'test@UPDATE_DATA_PERFER_SERVICE',
 
   //UPdate input  tech clock in / clock out
-  UPDATE_INPUT_NAILS_TECH_CLOCK_IN: 'test@UPDATE_INPUT_NAILS_TECH_CLOCK_IN'
+  UPDATE_INPUT_NAILS_TECH_CLOCK_IN: 'test@UPDATE_INPUT_NAILS_TECH_CLOCK_IN',
+
+  //assign data services full menu
+  ASSIGN_LIST_FULLMENU: 'test@ASSIGN_LIST_FULLMENU',
+  //update data services full menu
+  UPDATE_LIST_FULLMENU: 'test@UPDATE_LIST_FULLMENU',
+  //update isSuccessded item list fullmenu
+  UPDATE_ITEM_LIST_FULLMENU: 'test@UPDATE_ITEM_LIST_FULLMENU'
 };
 
 const Actions = {
@@ -69,7 +76,15 @@ const Actions = {
   updateInputNailsTechClockIn: c => ({
     type: Types.UPDATE_INPUT_NAILS_TECH_CLOCK_IN,
     payload: c
-  })
+  }),
+
+  //assign data services full menu
+  assignlistFullMenu: data => ({ type: Types.ASSIGN_LIST_FULLMENU, payload: data }),
+  //update data services full menu
+  updateListFullMenu: catname => ({ type: Types.UPDATE_LIST_FULLMENU, payload: catname }),
+
+  //update isSuccessded item list fullmenu  
+  updateIsSuccessdedItemListFullMenu: (item) => ({ type: Types.UPDATE_ITEM_LIST_FULLMENU, payload: item })
 };
 
 export { Types, Actions };

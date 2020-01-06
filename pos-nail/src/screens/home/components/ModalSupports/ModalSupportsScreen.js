@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Text, View, ScrollView, Modal, StyleSheet } from 'react-native'
+import { Text, View, ScrollView, Modal, StyleSheet, TouchableOpacity } from 'react-native'
 import { Metrics, TextCmp, Colors } from '../../../../themes'
-// import Label from '../../components/ModalNailsTech/LabelModal'
+import Label from '../../components/ModalNailsTech/LabelModal'
+import { normalize } from '../../../../themes/FontSize';
 // import ButtonBottom from './ButtonBottom'
 // import Input from './inputTipsManager'
 // import Keyboard from '../ModalNailsTech/Keyboard'
@@ -13,7 +14,7 @@ export default class ModalSupportsScreen extends Component {
     }
     render() {
         const {
-            modalVisible, onRequestClose
+            modalVisible, onRequestClose, onPressClose
         } = this.props
         const { } = this.state
         return (
@@ -26,34 +27,21 @@ export default class ModalSupportsScreen extends Component {
                     <View style={styles.containerView1}>
                         <View
                             style={styles.containerView2}>
-                            {/* <Label
+                            <Label
                                 containerStyles={styles.bgDarkBlue}
-                                title="Enter Office Password"
-                                onPressClose={() => onPressClose()} />
-                            <View style={{ flex: 3.5 }}>
-                                <Input
-                                    valueTipsManager={valueTipsManager} />
-                                <Keyboard
-                                    containerStyles={{ flex: 4, marginTop: 1 }}
-                                    keyStyle="none"
-                                    onPress1={() => this._onPressKey('1')}
-                                    onPress2={() => this._onPressKey('2')}
-                                    onPress3={() => this._onPressKey('3')}
-                                    onPress4={() => this._onPressKey('4')}
-                                    onPress5={() => this._onPressKey('5')}
-                                    onPress6={() => this._onPressKey('6')}
-                                    onPress7={() => this._onPressKey('7')}
-                                    onPress8={() => this._onPressKey('8')}
-                                    onPress9={() => this._onPressKey('9')}
-                                    onPressC={() => this._onPressKey('C')}
-                                    onPress0={() => this._onPressKey('0')}
-                                    onPressPop={() => this._onPressKey('<<')}
-                                />
+                                title="Support Center"
+                                onPressClose={() => onPressClose()}
+                                textStyles={styles.fSize6}
+                            />
+                            <View style={{ flex: 3.5 }}></View>
+                            <View style={styles.bottom}>
+                                <TouchableOpacity
+                                    onPress={() => onPressClose()}
+                                    style={styles.btnClose}>
+                                    <TextCmp style={styles.txtClose}>Close</TextCmp>
+                                </TouchableOpacity>
                             </View>
-                            <ButtonBottom
-                                onPressCancel={() => onPressCancel()}
-                                onPressConfirm={() => { alert(valueTipsManager) }}
-                            /> */}
+
                         </View>
 
                     </View>
@@ -78,5 +66,9 @@ const styles = StyleSheet.create({
         height: '50%',
         backgroundColor: "#397DA4",
     },
-    bgDarkBlue: { backgroundColor: Colors.darkBlue }
+    bgDarkBlue: { backgroundColor: Colors.darkBlue },
+    bottom: { flex: 0.8, backgroundColor: Colors.darkBlue, justifyContent: "center", paddingLeft: 30 },
+    btnClose: { width: '10%', height: '60%', borderRadius: 5, backgroundColor: 'white', alignItems: 'center', justifyContent: 'center' },
+    txtClose: { fontSize: normalize(5), color: 'black' },
+    fSize6: { fontSize: normalize(6) }
 })

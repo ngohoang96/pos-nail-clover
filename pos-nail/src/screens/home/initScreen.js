@@ -145,7 +145,7 @@ class InitScreen extends Component {
   AppCheckIn_GetServices(params) {
     (params.date = moment(new Date()).format('YYYY-MM-DD')),
       this.props.dispatch(AppCheckIn_GetServices(params)).then(result => {
-        // console.log(JSON.stringify(result));
+        console.log(JSON.stringify(result));
         Logg.info('Services lai xxxx ' + JSON.stringify(result));
         let listserveceSearch = [{ catname: 'All Services', id: -1, name: '' }];
         if (result) {
@@ -165,7 +165,11 @@ class InitScreen extends Component {
           }
         }
         result.map(item => (item.isSelected = false));
+
         this.props.dispatch(actions.test.getListSelectService(result));
+        this.props.dispatch(actions.test.assignlistFullMenu(result))
+        this.props.dispatch(actions.test.updateListFullMenu('Additional Options'))
+        console.log(listserveceSearch)
         this.setState({
           listserveceSearch,
           dataListSearch: result,
@@ -178,6 +182,8 @@ class InitScreen extends Component {
     this.setState({ modalEmployeesSignIn: this.state.modalEmployeesSignIn });
   };
   render() {
+    const { listserveceSearch } = this.state
+    console.log(listserveceSearch)
     return (
       <SafeAreaView style={styles_home.container}>
 
@@ -200,7 +206,7 @@ class InitScreen extends Component {
         </View>
         <View style={{ flex: 1.2, flexDirection: 'row' }}>
           <QuickMenu></QuickMenu>
-          <FullMenu></FullMenu>
+          <FullMenu listserveceSearch={listserveceSearch || []}></FullMenu>
         </View>
         <View style={{ flex: 1.2 }}>
           <Grid></Grid>

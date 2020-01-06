@@ -28,7 +28,11 @@ const initialState = {
 
 
   //UPdate input  tech clock in / clock out
-  inputNailsTechClockIN: ''
+  inputNailsTechClockIN: '',
+
+  //assign data services full menu
+  listServicesFullMenu: [],
+  catnameFullMenu: ''
 };
 
 const reducer = Helper.createReducer(initialState, {
@@ -150,6 +154,39 @@ const reducer = Helper.createReducer(initialState, {
       ...state,
       inputNailsTechClockIN
     }
+  },
+
+  //assign data services full menu
+  [Types.ASSIGN_LIST_FULLMENU]: ({ state, action }) => {
+    let data = _.clone(action.payload);
+    return {
+      ...state,
+      listServicesFullMenu: data,
+    };
+  },
+  //assign data services full menu
+  [Types.UPDATE_LIST_FULLMENU]: ({ state, action }) => {
+    // Logg.info('test  ', _.clone(state.listDataServices).filter(e => e.catname === action.payload && e.id != -1))
+    // _.clone(state.listDataServices).filter(e => e.catname === action.payload && e.id != -1)
+
+    return {
+      ...state,
+      catnameFullMenu: action.payload
+    };
+
+  },
+  //update item issuccessded list services full menu
+  [Types.UPDATE_ITEM_LIST_FULLMENU]: ({ state, action }) => {
+    let data = _.clone(state.listServicesFullMenu);
+    let index = data.findIndex(e => e.id === action.payload.id && e.catname === action.payload.catname);
+    data[index].isSelected = !data[index].isSelected
+    Logg.info('___isssssss_____', index, '____', data[index].isSelected)
+    // data.splice(index, 1);
+    return {
+      ...state,
+      listServicesFullMenu: data
+    };
+
   }
 });
 

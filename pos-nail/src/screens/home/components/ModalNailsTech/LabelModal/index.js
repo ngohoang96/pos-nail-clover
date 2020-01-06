@@ -18,7 +18,7 @@ class index extends Component {
     return (
       <View
         style={[styles.container, this.props.containerStyles]}>
-        <TextCmp style={{ color: 'white', fontSize: normalize(7) }}>
+        <TextCmp style={[styles.txtTitle, this.props.textStyles]}>
           {this.props.title || 'Nails Tech Clock In/ Clock Out'}
         </TextCmp>
         <TouchableOpacity
@@ -45,5 +45,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
-  }
+  },
+  txtTitle: { color: 'white', fontSize: normalize(7) }
 })
