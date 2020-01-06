@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
-import {TextCmp} from '../../../../../themes';
-import {normalize} from '../../../../../themes/FontSize';
+import React, { Component } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { TextCmp } from '../../../../../themes';
+import { normalize } from '../../../../../themes/FontSize';
 
 export default class CustomerSighIn extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ export default class CustomerSighIn extends Component {
   }
 
   render() {
-    const {backgroundColor, textColor} = this.props;
+    const { backgroundColor, textColor } = this.props;
     return (
       <TouchableOpacity
         onPress={() => this.props.onPress(true)}
@@ -23,7 +23,7 @@ export default class CustomerSighIn extends Component {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        <TextCmp style={[{fontSize: normalize(6)}, {color: textColor}]}>
+        <TextCmp style={[{ fontSize: normalize(6) }, { color: textColor }]}>
           Customer Sign In
         </TextCmp>
       </TouchableOpacity>

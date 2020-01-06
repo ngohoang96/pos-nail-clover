@@ -122,6 +122,7 @@ def enableProguardInReleaseBuilds = false
 
 def enableHermes = project.ext.react.get("enableHermes", false);
 def useIntlJsc = false
+def buildVersionCode = Integer.parseInt(new Date().format("yyMMddHHmm"))
 android {
     // compileSdkVersion rootProject.ext.compileSdkVersion
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -141,8 +142,8 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         missingDimensionStrategy "RNN.reactNativeVersion", "reactNative60"
-        versionCode 1
-        versionName "1.0"
+        versionCode buildVersionCode
+        versionName "1.1"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }

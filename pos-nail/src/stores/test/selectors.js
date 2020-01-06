@@ -7,3 +7,4 @@ export const getDataTechnician = state => state.test.DataTechnician;
 export const getlistDataServices = state => state.test.listDataServices;
 export const getdataSelectedPerferService = state =>
   state.test.dataSelectedPerferService;
+export const inputNailsTechClockIN = state => state.test.inputNailsTechClockIN

@@ -1,11 +1,12 @@
-import {connect} from 'react-redux';
-import {actions, selectors} from '../../../../../../../stores';
+import { connect } from 'react-redux';
+import { actions, selectors } from '../../../../../../../stores';
 import SelectServicesScreen from './SelectServicesScreen';
 const mapStateToProps = state => ({
   getlistDataServices: selectors.test.getlistDataServices(state),
   // getdataSelectedPerferService: selectors.test.getdataSelectedPerferService(
   //   state,
   // ),
+  getdataSelectedPerferService: selectors.test.getdataSelectedPerferService(state)
 });
 
 const mapDispatchToProps = dispatch => {

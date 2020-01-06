@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -6,13 +6,13 @@ import {
   StyleSheet,
   ScrollView,
 } from 'react-native';
-import {TextCmp} from '../../../../../../../../themes';
-import {normalize} from '../../../../../../../../themes/FontSize';
-import {truncateText} from '../../../../../../../../utils/functions';
-import {Logg} from '../../../../../../../../utils';
+import { TextCmp } from '../../../../../../../../themes';
+import { normalize } from '../../../../../../../../themes/FontSize';
+import { truncateText } from '../../../../../../../../utils/functions';
+import { Logg } from '../../../../../../../../utils';
 
-import {connect} from 'react-redux';
-import {actions, selectors} from '../../../../../../../../stores';
+import { connect } from 'react-redux';
+import { actions, selectors } from '../../../../../../../../stores';
 class index extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +22,7 @@ class index extends Component {
   //   return newData != this.props.dataSelected;
   // }
   render() {
-    const {getdataSelectedPerferService} = this.props;
+    const { getdataSelectedPerferService } = this.props;
     let tmp = '';
     // console.log(tmp + 'tmp');
     for (let i = 0; i < getdataSelectedPerferService.length; ++i) {
@@ -70,7 +70,10 @@ const mapDispatchToProps = dispatch => {
 export default connect(mapStateToProps, mapDispatchToProps)(index);
 
 const styles = StyleSheet.create({
-  container: {flex: 1, justifyContent: 'flex-end'},
+  container: {
+    flex: 1, justifyContent: 'flex-end',
+    paddingHorizontal: '5%',
+  },
   txtTitle: {
     color: 'white',
     fontWeight: 'bold',

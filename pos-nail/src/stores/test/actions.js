@@ -18,6 +18,9 @@ const Types = {
   UPDATE_LIST_TECHNICIAN: 'test@UPDATE_LIST_TECHNICIAN',
   GET_LIST_TECHNICIAN: 'test@GET_LIST_TECHNICIAN',
   UPDATE_DATA_PERFER_SERVICE: 'test@UPDATE_DATA_PERFER_SERVICE',
+
+  //UPdate input  tech clock in / clock out
+  UPDATE_INPUT_NAILS_TECH_CLOCK_IN: 'test@UPDATE_INPUT_NAILS_TECH_CLOCK_IN'
 };
 
 const Actions = {
@@ -59,6 +62,14 @@ const Actions = {
     type: Types.UPDATE_DATA_PERFER_SERVICE,
     payload: data,
   }),
+
+
+  //UPdate input  tech clock in / clock out
+  // UPDATE_INPUT_NAILS_TECH_CLOCK_IN: 'test@UPDATE_INPUT_NAILS_TECH_CLOCK_IN'
+  updateInputNailsTechClockIn: c => ({
+    type: Types.UPDATE_INPUT_NAILS_TECH_CLOCK_IN,
+    payload: c
+  })
 };
 
-export {Types, Actions};
+export { Types, Actions };

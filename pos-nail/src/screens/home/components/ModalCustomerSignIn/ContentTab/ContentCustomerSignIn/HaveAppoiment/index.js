@@ -1,19 +1,25 @@
-import React, {Component} from 'react';
-import {View, Text, TextInput} from 'react-native';
-import {TextCmp, Metrics} from '../../../../../../../themes';
-import {normalize} from '../../../../../../../themes/FontSize';
+import React, { Component } from 'react';
+import { View, Text, TextInput } from 'react-native';
+import { TextCmp, Metrics } from '../../../../../../../themes';
+import { normalize } from '../../../../../../../themes/FontSize';
 import ModalDropdown from 'react-native-modal-dropdown';
 
-const OPTIONS_1 = ['YES', 'NO'];
+const OPTIONS_1 = ['NO', 'YES',];
 export default class index extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      // haveAppoiment: 'YES'
+    }
   }
 
   render() {
     return (
-      <View style={{flex: 1}}>
-        <View style={{flex: 1, justifyContent: 'flex-end'}}>
+      <View style={{
+        flex: 1,
+        paddingHorizontal: '5%',
+      }}>
+        <View style={{ flex: 1, justifyContent: 'flex-end' }}>
           <TextCmp
             style={{
               color: 'white',
@@ -33,10 +39,10 @@ export default class index extends Component {
             }}>
             <ModalDropdown
               defaultValue={OPTIONS_1[0]}
-              dropdownTextHighlightStyle={{color: 'red'}}
+              dropdownTextHighlightStyle={{ color: 'red' }}
               showsVerticalScrollIndicator={false}
               animated={true}
-              textStyle={{fontSize: normalize(4), marginLeft: 5}}
+              textStyle={{ fontSize: normalize(4), marginLeft: 5 }}
               dropdownStyle={{
                 width: Metrics.appWidth * (3 / 5 - 3 / 50),
                 height: OPTIONS_1.length * 40,
@@ -47,8 +53,13 @@ export default class index extends Component {
                 height: '100%',
                 justifyContent: 'center',
               }}
-              onSelect={(idx, value) => this.props.onSelect(idx, value)}
-              dropdownTextStyle={{fontSize: normalize(5)}}
+              onSelect={(idx, value) => {
+                // this.setState({
+                //   haveAppoiment: value === "YES" ? "YES" : "NO"
+                // })
+                this.props.onSelect(idx, value)
+              }}
+              dropdownTextStyle={{ fontSize: normalize(5) }}
               options={OPTIONS_1}
               renderRow={item => {
                 return (
@@ -57,17 +68,17 @@ export default class index extends Component {
                       height: 40,
                       justifyContent: 'center',
                     }}>
-                    <TextCmp style={{fontSize: normalize(4), paddingLeft: 5}}>
+                    <TextCmp style={{ fontSize: normalize(4), paddingLeft: 5 }}>
                       {item}
                     </TextCmp>
                   </View>
                 );
               }}
             />
-          
+
           </View>
         </View>
-       
+
       </View>
     );
   }

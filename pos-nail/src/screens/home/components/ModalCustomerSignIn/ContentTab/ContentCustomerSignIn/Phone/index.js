@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {View, Text, TextInput} from 'react-native';
-import {TextCmp} from '../../../../../../../themes';
-import {normalize} from '../../../../../../../themes/FontSize';
+import React, { Component } from 'react';
+import { View, Text, TextInput } from 'react-native';
+import { TextCmp } from '../../../../../../../themes';
+import { normalize } from '../../../../../../../themes/FontSize';
 export default class index extends Component {
   // constructor(props) {
   //   super(props);
@@ -10,7 +10,11 @@ export default class index extends Component {
 
   render() {
     return (
-      <View style={{flex: 1, justifyContent: 'flex-end'}}>
+      <View style={{
+        flex: 1, justifyContent: 'flex-end',
+        paddingHorizontal: '5%',
+      }}
+      >
         <TextCmp
           style={{
             color: 'white',
@@ -21,10 +25,11 @@ export default class index extends Component {
           Phone
         </TextCmp>
         <TextInput
+          keyboardType='numeric'
           onChangeText={e => this.props.onChangePhone(e)}
           numberOfLines={1}
           value={this.props.value}
-          placeholder={'Nhập số điện thoại'}
+          // placeholder={'Nhập số điện thoại'}
           style={{
             backgroundColor: 'white',
             width: '45%',

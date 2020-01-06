@@ -1,45 +1,70 @@
-import React, {Component} from 'react';
-import {View, Text, Modal, TouchableOpacity} from 'react-native';
-import {Colors, TextCmp} from '../../../../themes';
-import Label from './LabelModal';
-import Input from './InputModal';
-import Bottom from './BottomBackground';
-import Keyboard from './Keyboard';
+import { connect } from 'react-redux'
+import ModalNailsTechScreen from './ModalNailsTechScreen'
+import { Alert } from 'react-native'
+import { actions, selectors } from '../../../../stores'
+import { AppCheckIn_TechnicianCheckIn, AppCheckIn_TechnicianCheckOut, AppCheckIn_TechnicianCloseOut } from '../../actions'
+import { Logg } from '../../../../utils'
 
-export default class index extends Component {
-  // shouldComponentUpdate
-  constructor(props) {
-    super(props);
-    this.state = {};
+const mapStateToProps = (state) => ({
+  inputNailsTechClockIN: selectors.test.inputNailsTechClockIN(state)
+})
+
+const mapDispatchToProps = dispatch => {
+  const _onChangeStaffPinText = c => {
+    dispatch(actions.test.updateInputNailsTechClockIn(c))
   }
-  render() {
-    return (
-      <Modal
-        animationType={'none'}
-        transparent={true}
-        visible={this.props.modalVisible}
-        onRequestClose={() => this.props.onRequestClose(false)}>
-        <View
-          style={{
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'rgba(0, 0,0,0.5)',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <View
-            style={{
-              width: '60%',
-              height: '70%',
-              backgroundColor: Colors.darkBlue,
-            }}>
-            <Label onPressClose={value => this.props.onRequestClose(value)} />
-            <Input />
-            <Keyboard />
-            <Bottom />
-          </View>
-        </View>
-      </Modal>
-    );
+  const _technicianCheckIN = params => {
+    dispatch(AppCheckIn_TechnicianCheckIn(params))
+      .then((res) => {
+        if (res.dataArray && res.dataArray[1].ErrorMessege) {
+          Alert.alert('', res.dataArray[1].ErrorMessege)
+        } else {
+          if (res.dataArray && res.dataArray[0].Status) {
+            Alert.alert('', res.dataArray[0].Status)
+          } else {
+            Alert.alert('', JSON.stringify(res))
+          }
+        }
+      })
+      .catch(e => Logg.info(e))
+  }
+  const _technicianCheckOut = params => {
+    dispatch(AppCheckIn_TechnicianCheckOut(params))
+      .then((res) => {
+        if (res.dataArray && res.dataArray[1].ErrorMessege) {
+          Alert.alert('', res.dataArray[1].ErrorMessege)
+        } else {
+          if (res.dataArray && res.dataArray[0].Status) {
+            Alert.alert('', res.dataArray[0].Status)
+          } else {
+            Alert.alert('', JSON.stringify(res))
+          }
+        }
+      })
+      .catch(e => Logg.info(e))
+  }
+  const _technicianCloseOut = params => {
+    dispatch(AppCheckIn_TechnicianCloseOut(params))
+      .then((res) => {
+        if (res.dataArray && res.dataArray[1].ErrorMessege) {
+          Alert.alert('', res.dataArray[1].ErrorMessege)
+        } else {
+          if (res.dataArray && res.dataArray[0].Status) {
+            Alert.alert('', res.dataArray[0].Status)
+          } else {
+            Alert.alert('', JSON.stringify(res))
+          }
+        }
+      })
+      .catch(e => Logg.info(e))
+  }
+  return {
+    _onChangeStaffPinText,
+    _technicianCheckIN,
+    _technicianCheckOut,
+    _technicianCloseOut
   }
 }
+export default connect(
+  mapStateToProps, mapDispatchToProps
+)(ModalNailsTechScreen)

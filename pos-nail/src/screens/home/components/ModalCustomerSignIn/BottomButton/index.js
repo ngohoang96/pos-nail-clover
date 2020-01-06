@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import React, { Component } from 'react';
+import { Text, View, StyleSheet } from 'react-native';
 import ComponentButton from './ComponentButton';
-import {Metrics} from '../../../../../themes';
+import { Metrics } from '../../../../../themes';
 export default class index extends Component {
   render() {
     return (
       <View style={[styles.container, this.props.containerStyle]}>
         <View style={styles.containerContent}>
           <ComponentButton
-            styleButton={{width: Metrics.appWidth * 0.6 * 0.95 * 0.2}}
+            styleButton={{ width: Metrics.appWidth * 0.6 * 0.95 * 0.2 }}
             text={this.props.txt1 || 'a'}
             onPress={this.props.onPress}
           />
@@ -18,12 +18,14 @@ export default class index extends Component {
               // backgroundColor: 'red',
               height: '100%',
               alignItems: 'center',
-              justifyContent: 'flex-end',
+              justifyContent: 'space-between',
+              // backgroundColor: 'red'
             }}>
             {this.props.txt3 != 'Sign In' ? (
               <ComponentButton
-                styleButton={{width: Metrics.appWidth * 0.6 * 0.95 * 0.2}}
+                styleButton={{ width: Metrics.appWidth * 0.6 * 0.95 * 0.2 }}
                 text={this.props.txt2 || 'b'}
+                onPress={this.props.onPressAddCustomer}
               />
             ) : null}
             <ComponentButton
@@ -46,11 +48,10 @@ const styles = StyleSheet.create({
     flex: 0.6,
     backgroundColor: '#408EBA',
     alignItems: 'center',
+    paddingLeft: '3%',
   },
   containerContent: {
-    borderTopColor: 'white',
-    borderTopWidth: 1,
-    width: '95%',
+    width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

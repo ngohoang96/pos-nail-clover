@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -10,13 +10,13 @@ import {
   FlatList,
   StyleSheet,
 } from 'react-native';
-import {TextCmp, Metrics, Fonts} from '../../../../../../../themes';
-import {normalize} from '../../../../../../../themes/FontSize';
-import {iconsScroll} from '../../../../../../../assets';
+import { TextCmp, Metrics, Fonts } from '../../../../../../../themes';
+import { normalize } from '../../../../../../../themes/FontSize';
+import { iconsScroll } from '../../../../../../../assets';
 import ComponentButton from '../../../BottomButton/ComponentButton';
 import BottomButtonServices from './BottomButtonServices';
 import HeaderServices from './HeaderServices';
-import {Logg} from '../../../../../../../utils';
+import { Logg } from '../../../../../../../utils';
 
 // let dataSelected = [];
 let dataRightServices = [[]];
@@ -34,14 +34,15 @@ export default class index extends Component {
     };
   }
   componentDidMount() {
-    const {getlistDataServices, dataSearchButton} = this.props;
+    const { getlistDataServices, dataSearchButton } = this.props;
     this.setState({
-      dataListSearch: getlistDataServices.filter(function(item) {
+      dataListSearch: getlistDataServices.filter(function (item) {
         return item.id != -1;
       }),
       dataSearchButton: dataSearchButton,
+      listAdd: this.props.getdataSelectedPerferService
     });
-    // Logg.info('____dataSearchButton_____', dataSearchButton);
+    Logg.info('____Props_____', this.props);
 
     let tmp = 0;
     for (let i = 1; i < dataSearchButton.length; ++i) {
@@ -118,7 +119,7 @@ export default class index extends Component {
   //click vào item scroll right
 
   _onPressItemRight = (index, item) => {
-    const {dataListSearch} = this.state;
+    const { dataListSearch } = this.state;
     // let _index = dataListSearch.findIndex(e => e.id == item.id);
     // dataListSearch[_index].isSelected = !dataListSearch[_index].isSelected;
     // this.setState({
@@ -142,9 +143,9 @@ export default class index extends Component {
       // console.log('logg -' + _index);
       _listadd.splice(_index, 1);
     }
-    let tmp = dataListSearch.findIndex(
-      e => e.id === item.id && e.name === item.name,
-    );
+    // let tmp = dataListSearch.findIndex(
+    //   e => e.id === item.id && e.name === item.name,
+    // );
 
     let tmp1 = dataRightServices[0].findIndex(
       e => e.id === item.id && e.name === item.name,
@@ -187,6 +188,15 @@ export default class index extends Component {
     //       .isSelected,
     // );
   };
+
+  //item right click test thôi 
+  _itemRightClickTest = (Index, Item) => {
+    const { listAdd, dataListSearch, dataSearchButton, index } = this.state
+
+
+    Logg.info('_test_', JSON.stringify(listAdd), '\n', JSON.stringify(dataListSearch),
+      '\n', JSON.stringify(dataSearchButton), '\n', index, '\n', Index, '\n', Item)
+  }
   // phần scroll bên trái
   _renderLeftContent = () => {
     return (
@@ -195,7 +205,7 @@ export default class index extends Component {
         numColumns={1}
         style={styles.containerListLeftContent}
         data={this.state.dataSearchButton}
-        renderItem={({item, index}) => (
+        renderItem={({ item, index }) => (
           <TouchableOpacity
             onPress={() => this._onPressItemFilterServices(item, index)}
             activeOpacity={0.5}
@@ -232,9 +242,10 @@ export default class index extends Component {
         numColumns={2}
         style={styles.containerListRightContent}
         data={this.state.dataListSearch}
-        renderItem={({item, index}) => (
+        renderItem={({ item, index }) => (
           <TouchableOpacity
             onPress={() => this._onPressItemRight(index, item)}
+            // onPress={() => this._itemRightClickTest(index, item)}
             activeOpacity={0.9}
             key={item.id + ''}
             style={[
@@ -252,7 +263,7 @@ export default class index extends Component {
     );
   };
   render() {
-    const {ModalVisiable} = this.state;
+    const { ModalVisiable } = this.state;
     // console.log('test' + JSON.stringify(this.state.dataListSearch));
     return (
       <View style={styles.flex1}>
@@ -260,7 +271,7 @@ export default class index extends Component {
           animationType={'none'}
           transparent={true}
           visible={ModalVisiable}
-          onRequestClose={() => this.setState({ModalVisiable: !ModalVisiable})}>
+          onRequestClose={() => this.setState({ ModalVisiable: !ModalVisiable })}>
           <View style={styles.container}>
             <View style={styles.container1}>
               <HeaderServices onPress={this._onPressClose} />
@@ -281,7 +292,7 @@ export default class index extends Component {
   }
 }
 const styles = StyleSheet.create({
-  flex1: {flex: 1},
+  flex1: { flex: 1 },
   container: {
     width: Metrics.appWidth,
     height: Metrics.appHeight,

@@ -6,7 +6,7 @@
  * @flow
  */
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -17,14 +17,15 @@ import {
   Text,
   TouchableHighlight,
   TouchableOpacity,
+  KeyboardAvoidingView,
 } from 'react-native';
-import {styles_home} from './styles-home';
+import { styles_home } from './styles-home';
 import PaymentContainer from './payment-container';
 import ScrollBottom from './scroll-bottm/index';
 import ScrollScreen from './scroll-container/scroll-screen';
 
 import TechnicianRepander from '../../Components/InitScreen/TechnicianRepander';
-import themes, {Colors} from '../../themes';
+import themes, { Colors, Metrics } from '../../themes';
 
 import Grid from './scroll-container/grid/index';
 import TechnicianTurn from './scroll-container/technician-turn/index';
@@ -33,12 +34,17 @@ import QuickMenu from './scroll-container/quick-menu/index';
 import FullMenu from './scroll-container/full-menu/index';
 import ModalNailsTechSignIn from './components/ModalNailsTech';
 import ModalCustomerSignIn from './components/ModalCustomerSignIn';
+import ModalEmployeesSignIn from './components/ModalEmployeesSignIn';
+import ModalManagerSystem from './components/ModalManagerSystem';
+import ModalTipsManager from './components/ModalTipsManager'
+import ModalSupportsCenter from './components/ModalSupports'
 
-import {connect} from 'react-redux';
-import {AppCheckIn_GetServices, AppCheckIn_GetStaffs} from './actions';
+import { connect } from 'react-redux';
+import { AppCheckIn_GetServices, AppCheckIn_GetStaffs } from './actions';
 import moment from 'moment';
-import {Logg} from '../../utils';
-import {actions} from '../../stores';
+import { Logg } from '../../utils';
+import { actions } from '../../stores';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 class InitScreen extends Component {
   constructor(props) {
@@ -46,31 +52,68 @@ class InitScreen extends Component {
     this.state = {
       modalVisible: false,
       modalCustomerVisible: false,
-
+      modalEmployeesSignIn: false,
+      modalManagerSystem: false,
+      modalTipsManager: false,
+      modalSupportsCenter: false,
       listserveceSearch: null,
       dataListSearch: null,
       index: 0,
       dataStaffs: null,
     };
   }
+  // đóng mở modal technician
   setModalVisible = visible => {
-    this.setState({modalVisible: visible});
+    this.setState({ modalVisible: visible });
   };
+  // đóng mở modal customer
   setModalCustomerVisible = visible => {
-    this.setState({modalCustomerVisible: visible});
+    this.setState({ modalCustomerVisible: visible });
   };
+
+  // đóng mở modal employee
+  setModalEmployeesSignIn = () => {
+    const { modalEmployeesSignIn } = this.state
+    this.setState({ modalEmployeesSignIn: !modalEmployeesSignIn })
+  }
+  // đóng mở modal manager system
+  setModalManagerSystem = () => {
+    const { modalManagerSystem } = this.state
+    this.setState({ modalManagerSystem: !modalManagerSystem })
+  }
+  // đóng mở modal tips manager
+  setModalTipsManager = () => {
+    const { modalTipsManager } = this.state
+    this.setState({ modalTipsManager: !modalTipsManager })
+  }
+  // đóng mở modal suports center
+  setModalSupportsCenter = () => {
+    const { modalSupportsCenter } = this.state
+    this.setState({ modalSupportsCenter: !modalSupportsCenter })
+  }
+  // chọn vào item của scrollBottom
   onPressItem = name => {
     // alert(name);
     if (name === 'Nails Tech Sign In') {
       this.setModalVisible(true);
     } else if (name === 'Customer Sign In') {
       this.setModalCustomerVisible(true);
+    } else if (name === 'Employees Sign In') {
+      this.setModalEmployeesSignIn();
+    } else if (name === 'Manager System') {
+      this.setModalManagerSystem();
+    } else if (name === 'Tips Manager') {
+      this.setModalTipsManager();
+    } else if (name === 'Support Center') {
+      this.setModalSupportsCenter();
     }
   };
   componentDidMount() {
-    this.AppCheckIn_GetServices({storeCode: 'MAX12898'});
-    this.AppCheckIn_GetStaffs({storeCode: 'MAX12898'});
+    // get danh sách staff và services truyền qua ModalCustomer
+    this.AppCheckIn_GetServices({ storeCode: 'MAX12898' });
+    this.AppCheckIn_GetStaffs({ storeCode: 'MAX12898' });
   }
+
   AppCheckIn_GetStaffs(params) {
     (params.date = moment(new Date()).format('YYYY-MM-DD')),
       this.props.dispatch(AppCheckIn_GetStaffs(params)).then(result => {
@@ -104,7 +147,7 @@ class InitScreen extends Component {
       this.props.dispatch(AppCheckIn_GetServices(params)).then(result => {
         // console.log(JSON.stringify(result));
         Logg.info('Services lai xxxx ' + JSON.stringify(result));
-        let listserveceSearch = [{catname: 'All Services', id: -1, name: ''}];
+        let listserveceSearch = [{ catname: 'All Services', id: -1, name: '' }];
         if (result) {
           result.map(item => {
             if (item.id == '-1') {
@@ -129,25 +172,37 @@ class InitScreen extends Component {
         });
       });
   }
+
+  //modalEmployeesSignIn
+  setModalEmployeeVisible = () => {
+    this.setState({ modalEmployeesSignIn: this.state.modalEmployeesSignIn });
+  };
   render() {
     return (
       <SafeAreaView style={styles_home.container}>
-        <View style={{flex: 1.2}}>
-          <PaymentContainer></PaymentContainer>
+
+        <View style={{ flex: 1.2 }}>
+          <KeyboardAvoidingView contentContainerStyle={{
+            width: "100%", height: Metrics.appHeight
+          }}>
+            <ScrollView contentContainerStyle={{ width: "100%", height: Metrics.appHeight }}>
+              <PaymentContainer></PaymentContainer>
+            </ScrollView>
+          </KeyboardAvoidingView>
         </View>
-        <View style={{flex: 0.9}}>
+        <View style={{ flex: 0.9 }}>
           <TechnicianTurn></TechnicianTurn>
           {/*
           <TechnicianTurn></TechnicianTurn>*/}
         </View>
-        <View style={{flex: 1.1}}>
+        <View style={{ flex: 1.1 }}>
           <Customer></Customer>
         </View>
-        <View style={{flex: 1.2, flexDirection: 'row'}}>
+        <View style={{ flex: 1.2, flexDirection: 'row' }}>
           <QuickMenu></QuickMenu>
           <FullMenu></FullMenu>
         </View>
-        <View style={{flex: 1.2}}>
+        <View style={{ flex: 1.2 }}>
           <Grid></Grid>
         </View>
 
@@ -156,6 +211,27 @@ class InitScreen extends Component {
           modalVisible={this.state.modalVisible}
           onRequestClose={this.setModalVisible}
           onPressClose={this.setModalVisible}
+        />
+        <ModalEmployeesSignIn
+          modalVisible={this.state.modalEmployeesSignIn}
+          onRequestClose={this.setModalEmployeesSignIn}
+          onPressClose={this.setModalEmployeesSignIn}
+        />
+        <ModalManagerSystem
+          modalVisible={this.state.modalManagerSystem}
+          onPressClose={this.setModalManagerSystem}
+          onRequestClose={this.setModalManagerSystem}
+        />
+        <ModalTipsManager
+          modalVisible={this.state.modalTipsManager}
+          onPressClose={this.setModalTipsManager}
+          onRequestClose={this.setModalTipsManager}
+          onPressCancel={this.setModalTipsManager}
+        />
+        <ModalSupportsCenter
+          modalVisible={this.state.modalSupportsCenter}
+          onPressClose={this.setModalSupportsCenter}
+          onRequestClose={this.setModalSupportsCenter}
         />
         <ModalCustomerSignIn
           dataStaffs={this.state.dataStaffs}
@@ -169,6 +245,7 @@ class InitScreen extends Component {
           modalVisible={this.state.modalCustomerVisible}
           onRequestClose={this.setModalCustomerVisible}
         />
+
       </SafeAreaView>
     );
   }
@@ -176,7 +253,7 @@ class InitScreen extends Component {
 // export default InitScreen;
 export default connect(
   state => ({}),
-  dispatch => ({dispatch}),
+  dispatch => ({ dispatch }),
 )(InitScreen);
 
 {

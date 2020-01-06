@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
-import {Metrics, TextCmp} from '../../../../../../../../themes';
-import {normalize} from '../../../../../../../../themes/FontSize';
-import {iconsScroll, testsIcons} from '../../../../../../../../assets';
-import {Logg} from '../../../../../../../../utils';
+import React, { Component } from 'react';
+import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { Metrics, TextCmp } from '../../../../../../../../themes';
+import { normalize } from '../../../../../../../../themes/FontSize';
+import { iconsScroll, testsIcons } from '../../../../../../../../assets';
+import { Logg } from '../../../../../../../../utils';
 
 class ItemScrollViewModal extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class ItemScrollViewModal extends Component {
     return itemStaffs.isSelected != this.props.itemStaffs.isSelected;
   }
   render() {
-    const {itemStaffs} = this.props;
+    const { itemStaffs } = this.props;
     return (
       <TouchableOpacity
         activeOpacity={0.9}
@@ -34,7 +34,7 @@ class ItemScrollViewModal extends Component {
         </View>
         <View style={styles.containerContent}>
           <View style={styles.containerAvatar}>
-            <Image style={styles.imgAvatar} source={testsIcons.a1Icon} />
+            <Image style={styles.imgAvatar} source={iconsScroll.staffs} />
           </View>
           <View style={styles.containerRightContent}>
             <View style={styles.containerClockIn}>
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
   },
-  containerContent: {flex: 4, backgroundColor: 'white', flexDirection: 'row'},
+  containerContent: { flex: 4, backgroundColor: 'white', flexDirection: 'row' },
   containerAvatar: {
     flex: 1,
     backgroundColor: '#F5F5F5',
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  txt1: {fontSize: normalize(4), color: 'black'},
+  txt1: { fontSize: normalize(4), color: 'black' },
   txtBold: {
     fontSize: normalize(4),
     color: 'black',

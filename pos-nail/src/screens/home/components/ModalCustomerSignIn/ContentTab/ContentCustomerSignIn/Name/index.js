@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {View, Text, TextInput} from 'react-native';
-import {TextCmp} from '../../../../../../../themes';
-import {normalize} from '../../../../../../../themes/FontSize';
+import React, { Component } from 'react';
+import { View, Text, TextInput } from 'react-native';
+import { TextCmp } from '../../../../../../../themes';
+import { normalize } from '../../../../../../../themes/FontSize';
 export default class index extends Component {
   constructor(props) {
     super(props);
@@ -15,8 +15,9 @@ export default class index extends Component {
           flex: 1,
           flexDirection: 'row',
           alignItems: 'flex-end',
+          paddingHorizontal: '5%',
         }}>
-        <View style={{flex: 1}}>
+        <View style={{ flex: 1 }}>
           <TextCmp
             style={{
               color: 'white',
@@ -27,6 +28,10 @@ export default class index extends Component {
             First Name
           </TextCmp>
           <TextInput
+            onChangeText={e => this.props.onChangeFirstName(e)}
+            numberOfLines={1}
+            value={this.props.valueFirstName}
+            // placeholder={'Nhập số tên'}
             style={{
               backgroundColor: 'white',
               width: '90%',
@@ -41,7 +46,7 @@ export default class index extends Component {
             justifyContent: 'flex-end',
             alignItems: 'flex-end',
           }}>
-          <View style={{justifyContent: 'flex-start', width: '90%'}}>
+          <View style={{ justifyContent: 'flex-start', width: '90%' }}>
             <TextCmp
               style={{
                 color: 'white',
@@ -53,6 +58,10 @@ export default class index extends Component {
             </TextCmp>
           </View>
           <TextInput
+            onChangeText={e => this.props.onChangeLastName(e)}
+            numberOfLines={1}
+            value={this.props.valueLastName}
+            // placeholder={'Nhập số họ'}
             style={{
               backgroundColor: 'white',
               width: '90%',

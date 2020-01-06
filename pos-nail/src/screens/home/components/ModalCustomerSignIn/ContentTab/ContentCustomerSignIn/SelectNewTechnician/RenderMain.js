@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
-import {TextCmp} from '../../../../../../../themes';
-import {normalize} from '../../../../../../../themes/FontSize';
+import React, { Component } from 'react';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { TextCmp } from '../../../../../../../themes';
+import { normalize } from '../../../../../../../themes/FontSize';
 
-import {connect} from 'react-redux';
-import {actions, selectors} from '../../../../../../../stores';
+import { connect } from 'react-redux';
+import { actions, selectors } from '../../../../../../../stores';
 let tmp = '';
 export class RenderMain extends Component {
-  shouldComponentUpdate({listFinish: newdataSelected}) {
+  shouldComponentUpdate({ listFinish: newdataSelected }) {
     return newdataSelected != this.props.listFinish;
   }
   render() {
@@ -60,7 +60,10 @@ const mapDispatchToProps = dispatch => {
 export default connect(mapStateToProps, mapDispatchToProps)(RenderMain);
 
 const styles = StyleSheet.create({
-  containerMain: {flex: 1, justifyContent: 'flex-end'},
+  containerMain: {
+    flex: 1, justifyContent: 'flex-end',
+    paddingHorizontal: '5%',
+  },
   txtMain: {
     color: 'white',
     fontWeight: 'bold',

@@ -1,18 +1,26 @@
-import {connect} from 'react-redux';
-import {actions, selectors} from '../../../../../../stores';
+import { connect } from 'react-redux';
+import { actions, selectors } from '../../../../../../stores';
 import CustomerSignInScreen from './CustomerSignInScreen';
-
+import { Alert } from 'react-native'
+import { AppCheckIn_CustomerSignIn } from '../../../../actions';
+import { Logg } from '../../../../../../utils';
 const mapStateToProps = state => ({
   DataTechnician: selectors.test.getDataTechnician(state),
+  listFinish: state.test.listFinish,
+  getdataSelectedPerferService: selectors.test.getdataSelectedPerferService(state)
 });
 
 const mapDispatchToProps = dispatch => {
-  // const onPress = async id => {
-  //   console.log('aaaaaaaaaaaa' + id);
-  //   dispatch(actions.test.updateDataTechnician(id));
-  // };
+  const onPressFinish = params => {
+    dispatch(AppCheckIn_CustomerSignIn(params))
+      .then((result) => {
+        Alert.alert('', result.dataArray[1].ErrorMessege);
+        // alert(JSON.stringify(params))
+      })
+      .catch((e) => Logg.info(e))
+  }
   return {
-    // onPress,
+    onPressFinish
   };
 };
 export default connect(
