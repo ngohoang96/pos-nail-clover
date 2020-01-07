@@ -170,8 +170,6 @@ const reducer = Helper.createReducer(initialState, {
   },
   //update data services full menu
   [Types.UPDATE_LIST_FULLMENU]: ({ state, action }) => {
-    // Logg.info('test  ', _.clone(state.listDataServices).filter(e => e.catname === action.payload && e.id != -1))
-    // _.clone(state.listDataServices).filter(e => e.catname === action.payload && e.id != -1)
 
     return {
       ...state,

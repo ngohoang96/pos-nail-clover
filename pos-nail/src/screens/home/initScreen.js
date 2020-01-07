@@ -168,13 +168,16 @@ class InitScreen extends Component {
         Logg.info('___tao_đã_có_mặt_ở_đây___')
         this.props.dispatch(actions.test.assignlistFullMenu(result))
         this.props.dispatch(actions.test.updateListFullMenu('Additional Options'))
-        this.props.dispatch(actions.test.getListSelectService(result));
-        this.props.dispatch(actions.test.updateDataPerferService('Additional Options'))
+
+        this.props.dispatch(actions.cus.assignListService(result))
+        this.props.dispatch(actions.cus.updateCatnameService('Additional Options'))
+
         console.log(listserveceSearch)
         this.setState({
           listserveceSearch,
           dataListSearch: result,
-        });
+        }, () =>
+          console.log('______ABCD______' + listserveceSearch));
       });
   }
 

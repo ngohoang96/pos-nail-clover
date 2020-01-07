@@ -10,7 +10,7 @@ export default class index extends Component {
                 style={{
                     width: '33%',
                     height: '100%',
-                    backgroundColor: 'white',
+                    // backgroundColor: 'white',
 
                 }}>
                 {dataSearchButton.map((item, index) => {

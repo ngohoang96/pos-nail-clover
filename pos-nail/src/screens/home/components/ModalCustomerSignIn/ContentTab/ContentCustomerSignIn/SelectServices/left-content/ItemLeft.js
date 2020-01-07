@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         minHeight: (Metrics.appHeight * 1) / 12,
         // marginHorizontal: 5, 
         // marginVertical: 5,
-        marginTop: 5,
+        marginTop: 3,
         borderRightWidth: 1,
         borderRightColor: 'gray',
         borderBottomWidth: 1,

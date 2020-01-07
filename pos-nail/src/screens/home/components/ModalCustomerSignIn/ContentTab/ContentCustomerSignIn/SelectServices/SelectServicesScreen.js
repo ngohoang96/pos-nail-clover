@@ -38,12 +38,12 @@ export default class index extends Component {
     this.setState({
       mCatName: item.catname
     })
-    this.props.updateDataPerferService(item.catname)
+    this.props.updateCatnameService(item.catname)
   }
 
   render() {
     const { mCatName, ModalVisiable } = this.state
-    const { dataSearchButton, getlistDataServices, catnameCustomerServices, updateItemListService } = this.props
+    const { dataSearchButton, listService, catnameActive, updateIssuccessItemService } = this.props
     return (
       <View style={styles.flex1}>
         <Modal
@@ -62,9 +62,9 @@ export default class index extends Component {
                   onPress={this._onPressLeftContent}
                 />
                 <RightContent
-                  getlistDataServices={getlistDataServices}
-                  catnameCustomerServices={catnameCustomerServices}
-                  onPress={(item) => updateItemListService(item)}
+                  getlistDataServices={listService}
+                  catnameCustomerServices={catnameActive}
+                  onPress={(item) => updateIssuccessItemService(item)}
                 />
               </View>
               <BottomContent

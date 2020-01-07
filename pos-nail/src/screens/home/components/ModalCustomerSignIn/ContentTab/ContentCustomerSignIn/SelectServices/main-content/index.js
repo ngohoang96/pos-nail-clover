@@ -18,12 +18,14 @@ class index extends Component {
     this.state = {};
   }
   render() {
-    const { getlistDataServices, onPress } = this.props;
-    debugger;
+    const { getListCusService, onPress } = this.props;
+
+    let tempArr = getListCusService.filter((x) => x.isSelected === true)
+    Logg.info('tempArr xx', tempArr);
     let tmp = '';
-    for (let i = 0; i < getlistDataServices.length; ++i) {
-      if (getlistDataServices[i].isSelected)
-        tmp = tmp + getlistDataServices[i].name + ' ,';
+    for (let i = 0; i < getListCusService.length; ++i) {
+      if (getListCusService[i].isSelected)
+        tmp = tmp + getListCusService[i].name + ' ,';
     }
     return (
       <View style={styles.container}>
@@ -50,10 +52,11 @@ class index extends Component {
 }
 
 const mapStateToProps = state => ({
-  getdataSelectedPerferService: selectors.test.getdataSelectedPerferService(
-    state,
-  ),
-  getlistDataServices: selectors.test.getlistDataServices(state)
+  // getdataSelectedPerferService: selectors.test.getdataSelectedPerferService(
+  //   state,
+  // ),
+  // getlistDataServices: selectors.test.getlistDataServices(state),
+  getListCusService: selectors.cus.listService(state)
 });
 
 const mapDispatchToProps = dispatch => {

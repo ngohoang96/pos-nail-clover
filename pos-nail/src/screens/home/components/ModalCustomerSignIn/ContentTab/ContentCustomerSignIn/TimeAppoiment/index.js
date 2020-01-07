@@ -10,7 +10,7 @@ export default class index extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+      <View style={{ flex: 1, justifyContent: 'flex-end', marginHorizontal: '5%' }}>
         <TextCmp
           style={{
             color: 'white',
