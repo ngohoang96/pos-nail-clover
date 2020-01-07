@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import { TextCmp } from '../../../../../../../../themes';
 import { normalize } from '../../../../../../../../themes/FontSize';
-import { truncateText } from '../../../../../../../../utils/functions';
 import { Logg } from '../../../../../../../../utils';
 
 import { connect } from 'react-redux';
@@ -18,29 +17,21 @@ class index extends Component {
     super(props);
     this.state = {};
   }
-  // shouldComponentUpdate({dataSelected: newData}) {
-  //   return newData != this.props.dataSelected;
-  // }
   render() {
-    const { getdataSelectedPerferService } = this.props;
+    const { getlistDataServices, onPress } = this.props;
+    debugger;
     let tmp = '';
-    // console.log(tmp + 'tmp');
-    for (let i = 0; i < getdataSelectedPerferService.length; ++i) {
-      if (getdataSelectedPerferService[i].isSelected)
-        tmp = tmp + getdataSelectedPerferService[i].name + ' ,';
+    for (let i = 0; i < getlistDataServices.length; ++i) {
+      if (getlistDataServices[i].isSelected)
+        tmp = tmp + getlistDataServices[i].name + ' ,';
     }
-    Logg.info(
-      '__dataSelected__',
-      getdataSelectedPerferService.filter(e => e.isSelected),
-      getdataSelectedPerferService.filter(e => e.isSelected).length,
-    );
     return (
       <View style={styles.container}>
         <TextCmp style={styles.txtTitle}>Please Select Perfer Services</TextCmp>
         <TouchableOpacity
           numberOfLines={1}
           activeOpacity={0.9}
-          onPress={() => this.props.onPress()}
+          onPress={() => onPress()}
           style={styles.btn}>
           <TextCmp
             numberOfLines={1}
@@ -62,6 +53,7 @@ const mapStateToProps = state => ({
   getdataSelectedPerferService: selectors.test.getdataSelectedPerferService(
     state,
   ),
+  getlistDataServices: selectors.test.getlistDataServices(state)
 });
 
 const mapDispatchToProps = dispatch => {

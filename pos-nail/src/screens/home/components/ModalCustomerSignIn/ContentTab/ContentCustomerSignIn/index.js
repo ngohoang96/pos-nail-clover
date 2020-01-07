@@ -7,7 +7,8 @@ import { Logg } from '../../../../../../utils';
 const mapStateToProps = state => ({
   DataTechnician: selectors.test.getDataTechnician(state),
   listFinish: state.test.listFinish,
-  getdataSelectedPerferService: selectors.test.getdataSelectedPerferService(state)
+  getdataSelectedPerferService: selectors.test.getdataSelectedPerferService(state),
+  getlistDataServices: selectors.test.getlistDataServices(state)
 });
 
 const mapDispatchToProps = dispatch => {

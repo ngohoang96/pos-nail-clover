@@ -19,6 +19,8 @@ const Types = {
   GET_LIST_TECHNICIAN: 'test@GET_LIST_TECHNICIAN',
   UPDATE_DATA_PERFER_SERVICE: 'test@UPDATE_DATA_PERFER_SERVICE',
 
+  //update isSuccessded item list fullmenu
+  UPDATE_ITEM_LIST_CUSTOMER_SERVICE: 'test@UPDATE_ITEM_LIST_CUSTOMER_SERVICE',
   //UPdate input  tech clock in / clock out
   UPDATE_INPUT_NAILS_TECH_CLOCK_IN: 'test@UPDATE_INPUT_NAILS_TECH_CLOCK_IN',
 
@@ -60,15 +62,9 @@ const Actions = {
     payload: data,
   }),
   //gán data services
-  getListSelectService: data => ({
-    type: Types.GET_LIST_SELECT_SERVICE,
-    payload: data,
-  }),
+  getListSelectService: data => ({ type: Types.GET_LIST_SELECT_SERVICE, payload: data }),
 
-  updateDataPerferService: data => ({
-    type: Types.UPDATE_DATA_PERFER_SERVICE,
-    payload: data,
-  }),
+  updateDataPerferService: catname => ({ type: Types.UPDATE_DATA_PERFER_SERVICE, payload: catname }),
 
 
   //UPdate input  tech clock in / clock out
@@ -84,7 +80,10 @@ const Actions = {
   updateListFullMenu: catname => ({ type: Types.UPDATE_LIST_FULLMENU, payload: catname }),
 
   //update isSuccessded item list fullmenu  
-  updateIsSuccessdedItemListFullMenu: (item) => ({ type: Types.UPDATE_ITEM_LIST_FULLMENU, payload: item })
+  updateIsSuccessdedItemListFullMenu: (item) => ({ type: Types.UPDATE_ITEM_LIST_FULLMENU, payload: item }),
+
+  //update isSuccessded item list fullmenu  
+  updateIsSuccessdedItemListCustomerService: (item) => ({ type: Types.UPDATE_ITEM_LIST_CUSTOMER_SERVICE, payload: item })
 };
 
 export { Types, Actions };

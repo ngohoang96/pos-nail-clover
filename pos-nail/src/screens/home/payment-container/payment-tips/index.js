@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Text,
   StyleSheet,
@@ -9,8 +9,9 @@ import {
 } from 'react-native';
 
 import themes from '../../../../config/themes';
-import {normalize} from '../../../../themes/FontSize';
-import TextCmp from '../../../../themes/TextCmp';
+import { normalize } from '../../../../themes/FontSize';
+import { TextCmp } from '../../../../themes';
+
 export default class PaymentTips extends Component {
   constructor(props) {
     super(props);
@@ -37,7 +38,7 @@ export default class PaymentTips extends Component {
               alignItems: 'center',
               color: '#383E44',
               flex: 1,
-              fontSize : normalize(3.5)
+              fontSize: normalize(3.5)
             }}>
             Tips
           </TextCmp>
@@ -49,7 +50,7 @@ export default class PaymentTips extends Component {
               borderColor: '#BEBEBE',
               paddingVertical: -5,
               flex: 1,
-              fontSize : normalize(3.5),
+              fontSize: normalize(3.5),
               marginHorizontal: 2,
             }}></TextInput>
 
@@ -58,7 +59,7 @@ export default class PaymentTips extends Component {
               alignItems: 'center',
               color: '#383E44',
               flex: 1.2,
-              fontSize : normalize(3.5)
+              fontSize: normalize(3.5)
             }}>
             Ticket
           </TextCmp>
@@ -69,17 +70,17 @@ export default class PaymentTips extends Component {
               borderColor: '#BEBEBE',
               paddingVertical: -5,
               flex: 2,
-              fontSize : normalize(3.5),
+              fontSize: normalize(3.5),
               marginLeft: 2,
             }}></TextInput>
         </View>
-        <View style={{flex: 0.3}}>
+        <View style={{ flex: 0.3 }}>
           <TextCmp
             style={{
               alignItems: 'center',
               color: '#383E44',
               textAlign: 'right',
-              fontSize : normalize(3.5)
+              fontSize: normalize(3.5)
             }}>
             ($0.00)
           </TextCmp>

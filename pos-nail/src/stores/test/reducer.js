@@ -32,7 +32,8 @@ const initialState = {
 
   //assign data services full menu
   listServicesFullMenu: [],
-  catnameFullMenu: ''
+  catnameFullMenu: '',
+  catnameCustomerServices: ''
 };
 
 const reducer = Helper.createReducer(initialState, {
@@ -108,6 +109,7 @@ const reducer = Helper.createReducer(initialState, {
       listFinish: action.payload,
     };
   },
+  //gán data customer lis select service
   [Types.GET_LIST_SELECT_SERVICE]: ({ state, action }) => {
     return {
       ...state,
@@ -128,13 +130,15 @@ const reducer = Helper.createReducer(initialState, {
       listFinish: data_state,
     };
   },
+
+  //update data services customer sign in
   [Types.UPDATE_DATA_PERFER_SERVICE]: ({ state, action }) => {
-    let data = _.clone(action.payload);
+    // let data = _.clone(action.payload);
     // data = data.filter(e => e.isSelected === true);
-    Logg.create('_dataSelectedPerferService_', data);
+    // Logg.create('_dataSelectedPerferService_', data);
     return {
       ...state,
-      dataSelectedPerferService: data,
+      catnameCustomerServices: action.payload,
     };
   },
 
@@ -164,7 +168,7 @@ const reducer = Helper.createReducer(initialState, {
       listServicesFullMenu: data,
     };
   },
-  //assign data services full menu
+  //update data services full menu
   [Types.UPDATE_LIST_FULLMENU]: ({ state, action }) => {
     // Logg.info('test  ', _.clone(state.listDataServices).filter(e => e.catname === action.payload && e.id != -1))
     // _.clone(state.listDataServices).filter(e => e.catname === action.payload && e.id != -1)
@@ -185,6 +189,19 @@ const reducer = Helper.createReducer(initialState, {
     return {
       ...state,
       listServicesFullMenu: data
+    };
+
+  },
+  //update item issuccessded list services full menu
+  [Types.UPDATE_ITEM_LIST_CUSTOMER_SERVICE]: ({ state, action }) => {
+    let data = _.clone(state.listDataServices);
+    let index = data.findIndex(e => e.id === action.payload.id && e.catname === action.payload.catname);
+    data[index].isSelected = !data[index].isSelected
+    Logg.info('___isssssss_____', index, '____', data[index].isSelected)
+    // data.splice(index, 1);
+    return {
+      ...state,
+      listDataServices: data
     };
 
   }

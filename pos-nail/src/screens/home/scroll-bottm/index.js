@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Text,
   StyleSheet,
@@ -10,10 +10,11 @@ import {
 } from 'react-native';
 
 import themes from '../../../config/themes';
-import {normalize} from '../../../themes/FontSize';
-import TextCmp from '../../../themes/TextCmp';
+import { normalize } from '../../../themes/FontSize';
+
 import IonIcon from 'react-native-vector-icons/Ionicons';
-import {data} from '../../../Components/InitScreen/mockData';
+import { data } from '../../../Components/InitScreen/mockData';
+import { TextCmp } from '../../../themes';
 export default class PaymentTips extends Component {
   constructor(props) {
     super(props);
@@ -59,8 +60,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingVertical: 7,
   },
-  fx1P5: {flex: 1, padding: 5},
-  center: {alignItems: 'center', justifyContent: 'center'},
+  fx1P5: { flex: 1, padding: 5 },
+  center: { alignItems: 'center', justifyContent: 'center' },
   txtLabel: {
     color: 'black',
     textAlign: 'center',

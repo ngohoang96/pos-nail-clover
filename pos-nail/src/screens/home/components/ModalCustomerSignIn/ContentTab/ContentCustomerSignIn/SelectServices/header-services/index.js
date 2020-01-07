@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
-import {TextCmp, Metrics} from '../../../../../../../../themes';
-import {iconsScroll} from '../../../../../../../../assets';
-import {normalize} from '../../../../../../../../themes/FontSize';
+import React, { Component } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { TextCmp, Metrics } from '../../../../../../../../themes';
+import { iconsScroll } from '../../../../../../../../assets';
+import { normalize } from '../../../../../../../../themes/FontSize';
 export default class index extends Component {
   constructor(props) {
     super(props);
@@ -33,14 +33,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
   },
-  txtTitle: {fontSize: normalize(6), color: '#fff'},
+  txtTitle: { fontSize: normalize(6), color: '#fff' },
   btn: {
     right: 20,
     height: 30,
     width: 30,
     position: 'absolute',
   },
-  img: {height: '100%', width: '100%', tintColor: '#fff'},
+  img: { height: '100%', width: '100%', tintColor: '#fff' },
   img1: {
     height: '100%',
     width: '100%',

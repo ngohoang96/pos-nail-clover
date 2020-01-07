@@ -2,14 +2,14 @@
 /*  file   : Button
 /*  author : Bon
 /*  date   : 2020-1-1 9:39:46
-/*  last   : 2020-1-1 9:39:57
+/*  last   : 2020-1-2 9:49:16
 */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 import themes from '../../config/themes';
 import { normalize } from '../../themes/FontSize';
-import TextCmp from '../../themes/TextCmp';
+import { TextCmp } from '../../themes';
 const styles = StyleSheet.create({
   text: {
     textAlign: 'center',

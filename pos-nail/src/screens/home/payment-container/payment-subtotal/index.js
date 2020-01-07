@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Text,
   StyleSheet,
@@ -9,8 +9,9 @@ import {
 } from 'react-native';
 
 import themes from '../../../../config/themes';
-import {normalize} from '../../../../themes/FontSize';
-import TextCmp from '../../../../themes/TextCmp';
+import { normalize } from '../../../../themes/FontSize';
+import { TextCmp } from '../../../../themes';
+
 export default class PaymentSubtotal extends Component {
   constructor(props) {
     super(props);

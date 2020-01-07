@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 import themes from '../../config/themes';
 import { normalize } from '../../themes/FontSize';
-import TextCmp from '../../themes/TextCmp';
+import { TextCmp } from '../../themes';
+
 const styles = StyleSheet.create({
   text: {
     color: 'black',

@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
-import {Text, StyleSheet, TouchableOpacity, View, Image} from 'react-native';
+import React, { Component } from 'react';
+import { Text, StyleSheet, TouchableOpacity, View, Image } from 'react-native';
 import themes from '../../config/themes';
-import {normalize} from '../../themes/FontSize';
-import TextCmp from '../../themes/TextCmp';
+import { normalize } from '../../themes/FontSize';
+import { TextCmp } from '../../themes';
+
 export default class ItemCustomer extends Component {
   constructor(props) {
     super(props);
@@ -12,12 +13,12 @@ export default class ItemCustomer extends Component {
       <View
         style={{
           marginTop: 10,
-          width: themes.width*1.1/5.6,
-          height: themes.width*1.1/5.6*0.65,
+          width: themes.width * 1.1 / 5.6,
+          height: themes.width * 1.1 / 5.6 * 0.65,
           flexDirection: 'row',
           backgroundColor: '#F5F5F5',
         }}>
-        <View style={{flex: 1}}>
+        <View style={{ flex: 1 }}>
           <View
             style={{
               backgroundColor: '#F39C12',
@@ -32,7 +33,7 @@ export default class ItemCustomer extends Component {
                 alignItems: 'center',
                 color: 'white',
                 fontWeight: 'bold',
-                fontSize : normalize(4)
+                fontSize: normalize(4)
               }}>
               #100672
             </TextCmp>
@@ -48,8 +49,8 @@ export default class ItemCustomer extends Component {
             }}>
             <Image
               style={{
-                width: (themes.width*1.1/5.6)*0.2,
-                height: (themes.width*1.1/5.6)*0.2,
+                width: (themes.width * 1.1 / 5.6) * 0.2,
+                height: (themes.width * 1.1 / 5.6) * 0.2,
                 borderRadius: 3,
               }}
               source={{
@@ -67,14 +68,14 @@ export default class ItemCustomer extends Component {
                   alignItems: 'center',
                   color: '#939393',
                   textAlign: 'left',
-                  fontSize : normalize(5)
+                  fontSize: normalize(5)
                 }}>
                 Van Hoang
               </TextCmp>
             </View>
           </View>
         </View>
-        <View style={{flex: 2.3}}>
+        <View style={{ flex: 2.3 }}>
           <View
             style={{
               height: 35,
@@ -88,7 +89,7 @@ export default class ItemCustomer extends Component {
                 alignItems: 'center',
                 color: 'white',
                 fontWeight: 'bold',
-                fontSize : normalize(5)
+                fontSize: normalize(5)
               }}>
               Frequent Customer
             </TextCmp>
@@ -102,7 +103,7 @@ export default class ItemCustomer extends Component {
               borderBottomWidth: 0.5,
               borderBottomColor: '#F7BD61',
             }}>
-            <View style={{flex: 3}}>
+            <View style={{ flex: 3 }}>
               <View
                 style={{
                   borderTopWidth: 0.5,
@@ -113,12 +114,16 @@ export default class ItemCustomer extends Component {
                   alignItems: 'center',
                 }}>
                 <TextCmp
-                  style={{alignItems: 'center', color: 'black', marginLeft: 3,
-                  fontSize : normalize(3.5)}}>
+                  style={{
+                    alignItems: 'center', color: 'black', marginLeft: 3,
+                    fontSize: normalize(3.5)
+                  }}>
                   SignIn:
                 </TextCmp>
-                <TextCmp style={{alignItems: 'center', color: 'black',
-                fontSize : normalize(4)}}>
+                <TextCmp style={{
+                  alignItems: 'center', color: 'black',
+                  fontSize: normalize(4)
+                }}>
                   12h57 AM
                 </TextCmp>
               </View>
@@ -135,7 +140,7 @@ export default class ItemCustomer extends Component {
                     alignItems: 'center',
                     color: 'black',
                     marginLeft: 3,
-                    fontSize : normalize(4)
+                    fontSize: normalize(4)
                   }}>
                   Walk in
                 </TextCmp>
@@ -153,7 +158,7 @@ export default class ItemCustomer extends Component {
                     alignItems: 'center',
                     color: '#383E44',
                     marginLeft: 3,
-                    fontSize : normalize(4)
+                    fontSize: normalize(4)
                   }}>
                   Calling gei
                 </TextCmp>
@@ -173,13 +178,13 @@ export default class ItemCustomer extends Component {
                     alignItems: 'center',
                     color: 'black',
                     marginLeft: 3,
-                    fontSize : normalize(4)
+                    fontSize: normalize(4)
                   }}>
                   Any nail
                 </TextCmp>
               </View>
             </View>
-            <View style={{flex: 1.8}}>
+            <View style={{ flex: 1.8 }}>
               <View
                 style={{
                   borderTopWidth: 0.5,
@@ -198,7 +203,7 @@ export default class ItemCustomer extends Component {
                     alignItems: 'center',
                     color: '#939393',
                     marginLeft: 3,
-                    fontSize : normalize(4)
+                    fontSize: normalize(4)
                   }}>
                   Waiting list
                 </TextCmp>
@@ -220,7 +225,7 @@ export default class ItemCustomer extends Component {
                     alignItems: 'flex-start',
                     color: 'black',
                     marginLeft: 3,
-                    fontSize : normalize(4)
+                    fontSize: normalize(4)
                   }}>
                   Quick
                 </TextCmp>
@@ -243,7 +248,7 @@ export default class ItemCustomer extends Component {
                     alignItems: 'center',
                     color: 'black',
                     marginLeft: 3,
-                    fontSize : normalize(4)
+                    fontSize: normalize(4)
                   }}>
                   Remove
                 </TextCmp>

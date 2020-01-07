@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Text,
   StyleSheet,
@@ -9,9 +9,10 @@ import {
 } from 'react-native';
 
 import themes from '../../../../config/themes';
-import {normalize} from '../../../../themes/FontSize';
-import TextCmp from '../../../../themes/TextCmp';
-import {styles_home} from '../../styles-home';
+import { normalize } from '../../../../themes/FontSize';
+
+import { styles_home } from '../../styles-home';
+import { TextCmp } from '../../../../themes';
 export default class PaymentReward extends Component {
   constructor(props) {
     super(props);
@@ -25,13 +26,13 @@ export default class PaymentReward extends Component {
           marginTop: 1,
           flex: 1,
         }}>
-        <View style={[styles_home.container2, {paddingRight: 10, flex: 1}]}>
+        <View style={[styles_home.container2, { paddingRight: 10, flex: 1 }]}>
           <TextCmp
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
               flex: 1,
-              fontSize : normalize(3.5)
+              fontSize: normalize(3.5)
             }}>
             Reward
           </TextCmp>
@@ -50,8 +51,10 @@ export default class PaymentReward extends Component {
               flex: 0.8,
               marginLeft: 3,
             }}>
-            <TextCmp style={{color: 'black',
-            fontSize : normalize(3.5)}}>($0.00)</TextCmp>
+            <TextCmp style={{
+              color: 'black',
+              fontSize: normalize(3.5)
+            }}>($0.00)</TextCmp>
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={0.8}
@@ -68,13 +71,16 @@ export default class PaymentReward extends Component {
               width: '75%',
             }}>
             <TextCmp style={{
-              fontSize : normalize(3.5)}}>Redoom</TextCmp>
+              fontSize: normalize(3.5)
+            }}>Redoom</TextCmp>
           </TouchableOpacity>
         </View>
 
-        <View style={{flex: 0.3}}>
-          <TextCmp style={{color: '#383E44', textAlign: 'right',
-          fontSize : normalize(3.5)}}>
+        <View style={{ flex: 0.3 }}>
+          <TextCmp style={{
+            color: '#383E44', textAlign: 'right',
+            fontSize: normalize(3.5)
+          }}>
             ($0.00)
           </TextCmp>
         </View>

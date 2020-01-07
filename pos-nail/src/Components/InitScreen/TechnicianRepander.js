@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
@@ -9,16 +9,11 @@ import {
   Dimensions,
 } from 'react-native';
 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-// const dataAdd = [{id: '13', name: 'Nguyen Van C'}];
-import {selectors, actions} from '../../stores';
+import { selectors, actions } from '../../stores';
 import themes from '../../config/themes';
-import {normalize} from '../../themes/FontSize';
-import TextCmp from '../../themes/TextCmp';
 import ItemTech from '../../Components/InitScreen/itemTech';
-import ViewOverflow from 'react-native-view-overflow';
-// import {SnackBar} from '../../utils';
 class TechnicianRepander extends Component {
   constructor(props) {
     super(props);
@@ -39,7 +34,7 @@ class TechnicianRepander extends Component {
           dx: this.state.pan.x,
           dy: this.state.pan.y,
         },
-        
+
       ]),
       onPanResponderRelease: (e, gesture) => {
         if (this.isDropZone(gesture)) {
@@ -47,7 +42,7 @@ class TechnicianRepander extends Component {
             showDraggable: false,
           });
         } else {
-          Animated.spring(this.state.pan, {toValue: {x: 0, y: 0}}).start();
+          Animated.spring(this.state.pan, { toValue: { x: 0, y: 0 } }).start();
         }
       },
     });
@@ -113,10 +108,10 @@ class TechnicianRepander extends Component {
 const mapDispatchToProps = dispatch => {
   const update = (id, name) => {
     let data = [];
-    data.push({id, name});
+    data.push({ id, name });
     dispatch(actions.test.updateDataService(data));
   };
-  return {update};
+  return { update };
 };
 
 const mapStateToProps = state => ({

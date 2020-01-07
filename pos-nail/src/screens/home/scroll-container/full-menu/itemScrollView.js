@@ -5,7 +5,6 @@ import {
 import Button2 from '../../../../Components/InitScreen/Button2';
 import themes from '../../../../config/themes';
 import { normalize } from '../../../../themes/FontSize';
-import TextCmp from '../../../../themes/TextCmp';
 
 export default class PaymentCoupon extends Component {
   constructor(props) {

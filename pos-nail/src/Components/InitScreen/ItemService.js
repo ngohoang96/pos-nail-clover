@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Text,
   StyleSheet,
@@ -8,9 +8,10 @@ import {
   TextInput,
 } from 'react-native';
 import themes from '../../config/themes';
-import {normalize} from '../../themes/FontSize';
-import TextCmp from '../../themes/TextCmp';
-import {testsIcons} from '../../assets'
+import { normalize } from '../../themes/FontSize';
+
+import { testsIcons } from '../../assets'
+import { TextCmp } from '../../themes';
 export default class ItemService extends Component {
   constructor(props) {
     super(props);
@@ -23,15 +24,17 @@ export default class ItemService extends Component {
             flex: 1,
             justifyContent: 'center'
           }}>
-          <View style={{flex: 1, justifyContent: 'flex-end'}}>
+          <View style={{ flex: 1, justifyContent: 'flex-end' }}>
             <TextCmp style={{
-              fontSize : normalize(3)}}>Organic</TextCmp>
+              fontSize: normalize(3)
+            }}>Organic</TextCmp>
           </View>
-          <View style={{flex: 1, justifyContent: 'center'}}>
+          <View style={{ flex: 1, justifyContent: 'center' }}>
             <TextCmp style={{
-              fontSize : normalize(3)}}>Rejuventation</TextCmp>
+              fontSize: normalize(3)
+            }}>Rejuventation</TextCmp>
           </View>
-          <TouchableOpacity style={{flex: 1, justifyContent: 'flex-start'}}>
+          <TouchableOpacity style={{ flex: 1, justifyContent: 'flex-start' }}>
             <Image
               resizeMethod="scale"
               source={testsIcons.trashIcon}
@@ -47,8 +50,8 @@ export default class ItemService extends Component {
             <TextCmp style={styles.txtName}>{this.props.name}</TextCmp>
           </TouchableOpacity>
         </View>
-        <View style={{flex: 0.8}}>
-          <TextCmp style={{marginLeft: 1}}>Guest x1</TextCmp>
+        <View style={{ flex: 0.8 }}>
+          <TextCmp style={{ marginLeft: 1 }}>Guest x1</TextCmp>
         </View>
         <View style={styles.containerTp}>
           <TextInput style={styles.styInput}></TextInput>
@@ -93,7 +96,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
-    fontSize : normalize(3)
+    fontSize: normalize(3)
   },
   styInput: {
     width: '48%',

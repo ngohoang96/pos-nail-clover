@@ -43,7 +43,7 @@ import { connect } from 'react-redux';
 import { AppCheckIn_GetServices, AppCheckIn_GetStaffs } from './actions';
 import moment from 'moment';
 import { Logg } from '../../utils';
-import { actions } from '../../stores';
+import { actions, selectors } from '../../stores';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 class InitScreen extends Component {
@@ -165,10 +165,11 @@ class InitScreen extends Component {
           }
         }
         result.map(item => (item.isSelected = false));
-
-        this.props.dispatch(actions.test.getListSelectService(result));
+        Logg.info('___tao_đã_có_mặt_ở_đây___')
         this.props.dispatch(actions.test.assignlistFullMenu(result))
         this.props.dispatch(actions.test.updateListFullMenu('Additional Options'))
+        this.props.dispatch(actions.test.getListSelectService(result));
+        this.props.dispatch(actions.test.updateDataPerferService('Additional Options'))
         console.log(listserveceSearch)
         this.setState({
           listserveceSearch,
@@ -198,8 +199,6 @@ class InitScreen extends Component {
         </View>
         <View style={{ flex: 0.9 }}>
           <TechnicianTurn></TechnicianTurn>
-          {/*
-          <TechnicianTurn></TechnicianTurn>*/}
         </View>
         <View style={{ flex: 1.1 }}>
           <Customer></Customer>
@@ -256,83 +255,11 @@ class InitScreen extends Component {
     );
   }
 }
+const mapStateToProps = (state) => ({
+  dataListSearch: selectors.test.getlistDataServices(state)
+})
 // export default InitScreen;
 export default connect(
-  state => ({}),
-  dispatch => ({ dispatch }),
+  mapStateToProps,
+  dispatch => ({ dispatch })
 )(InitScreen);
-
-{
-  /*
-  const styles = StyleSheet.create({
-  fx3: {flex: 3, backgroundColor: 'white'},
-});
-
-           <Modal
-          animationType={'none'}
-          transparent={true}
-          visible={this.state.modalVisible}
-          onRequestClose={() => {
-            this.setModalVisible(false);
-          }}>
-          <View
-            style={{
-              width: '100%',
-              height: '100%',
-              backgroundColor: 'rgba(0, 0,0,0.5)',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <View
-              style={{
-                width: "60%",
-                height: '50%',
-                backgroundColor: Colors.darkBlue,
-
-              }}>
-              <View style = {{flex : 0.7 , backgroundColor : Colors.darkBlue}}></View>
-              <View style = {{flex : 0.6 , backgroundColor : 'red'}}></View>
-              <View style = {{flex : 2 , backgroundColor : 'white'}}></View>
-              <View style = {{flex : 0.7 , backgroundColor : 'red'}}></View>
-            </View>
-          </View>
-        </Modal>
-          <TouchableOpacity
-                  onPress={() => {
-                    this.setModalVisible(false);
-                  }}>
-                  <Text>Hide Modal</Text>
-                </TouchableOpacity>
-           <PaymentContainer></PaymentContainer>
-      <View style={styles.fx3}>
-        <ScrollScreen></ScrollScreen>
-        <ScrollBottom></ScrollBottom>
-      </View>
-           <PaymentContainer></PaymentContainer>
-        <View style={styles.fx3}>
-          <ScrollScreen></ScrollScreen>
-          <ScrollBottom></ScrollBottom>
-        </View>
- <ScrollView
-       horizontal = {false}
-          style={{
-            position: 'absolute',
-          }}>
-          {[1, 2, 3, 4, 5, 5, 6, 6,4].map((item, index) => {
-            return <TechnicianRepander name="test"></TechnicianRepander>;
-          })}
-        </ScrollView>
-      
-          <View
-          style={{
-            width: (themes.width * 0.8) / 3.8,
-            height: themes.height,
-            backgroundColor: 'transparent',
-            position: 'absolute',
-            left: (themes.width * 0.8) / 3.8,
-          }}>
-          {[1, 2, 3, 5, 6, 2, 3, 5, 6].map(item => {
-            return <TechnicianRepander name="test"></TechnicianRepander>;
-          })}
-        </View>*/
-}

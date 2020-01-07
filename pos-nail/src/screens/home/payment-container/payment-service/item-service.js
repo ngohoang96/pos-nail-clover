@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Text,
   StyleSheet,
@@ -7,12 +7,13 @@ import {
   Image,
   TextInput,
 } from 'react-native';
-import {connect} from 'react-redux';
-import {actions, selectors} from '../../../../stores';
+import { connect } from 'react-redux';
+import { actions, selectors } from '../../../../stores';
 import themes from '../../../../config/themes';
-import {normalize} from '../../../../themes/FontSize';
-import TextCmp from '../../../../themes/TextCmp';
-import {testsIcons} from '../../../../assets';
+import { normalize } from '../../../../themes/FontSize';
+
+import { testsIcons } from '../../../../assets';
+import { TextCmp } from '../../../../themes';
 class ItemService extends Component {
   constructor(props) {
     super(props);
@@ -27,7 +28,7 @@ class ItemService extends Component {
             flex: 1,
             justifyContent: 'center',
           }}>
-          <View style={{flex: 1, justifyContent: 'flex-end'}}>
+          <View style={{ flex: 1, justifyContent: 'flex-end' }}>
             <TextCmp
               style={{
                 fontSize: normalize(3.5),
@@ -35,10 +36,10 @@ class ItemService extends Component {
               Organic
             </TextCmp>
           </View>
-          <View style={{flex: 1, justifyContent: 'center'}}>
-            <TextCmp style={{fontSize: normalize(3.5)}}>Rejuventation</TextCmp>
+          <View style={{ flex: 1, justifyContent: 'center' }}>
+            <TextCmp style={{ fontSize: normalize(3.5) }}>Rejuventation</TextCmp>
           </View>
-          <TouchableOpacity style={{flex: 1, justifyContent: 'flex-start'}}>
+          <TouchableOpacity style={{ flex: 1, justifyContent: 'flex-start' }}>
             <Image
               resizeMethod="scale"
               source={testsIcons.trashIcon}
@@ -59,8 +60,8 @@ class ItemService extends Component {
             <TextCmp style={styles.txtName}>{this.props.name || 'Tên'}</TextCmp>
           </TouchableOpacity>
         </View>
-        <View style={{flex: 0.8}}>
-          <TextCmp style={{marginLeft: 1, fontSize: normalize(3.5)}}>
+        <View style={{ flex: 0.8 }}>
+          <TextCmp style={{ marginLeft: 1, fontSize: normalize(3.5) }}>
             Guest x1
           </TextCmp>
         </View>

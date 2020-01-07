@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Text,
   StyleSheet,
@@ -10,10 +10,11 @@ import {
 } from 'react-native';
 
 import themes from '../../../../config/themes';
-import {normalize} from '../../../../themes/FontSize';
-import TextCmp from '../../../../themes/TextCmp';
+import { normalize } from '../../../../themes/FontSize';
+
 import Button2 from '../../../../Components/InitScreen/Button2';
-import {items1} from '../../../../Components/InitScreen/mockData';
+import { items1 } from '../../../../Components/InitScreen/mockData';
+import { TextCmp } from '../../../../themes';
 export default class PaymentCoupon extends Component {
   constructor(props) {
     super(props);
@@ -31,19 +32,24 @@ export default class PaymentCoupon extends Component {
               return (
                 <Button2
                   key={index}
-                  Textstyle={{color: 'black'}}
-                  style_button={{
-                    borderLeftColor: item.code,
-                    width: '100%',
-                    height: ((((themes.width * 3) / 3.8) * 0.5) / 3.9) * 0.3,
-                    backgroundColor: 'white',
+                  Textstyle={{
+                    color: 'black',
+                    fontSize: normalize(4)
                   }}
-                  lable={item.lable}></Button2>
+                  style_button={{
+                    width: '100%',
+                    minHeight: ((((themes.width * 3) / 3.8) * 0.5) / 3.9) * 0.3,
+                    borderLeftColor: '#' + (Math.random().toString(16) + "000000").substring(2, 8),
+                    paddingVertical: 10,
+                    // backgroundColor: item.catname === mCatName ? '#CAE5E8' : '#fff'
+                  }}
+                  lable={item.lable}
+                  textstyles={{ fontWeight: '300' }} />
               );
             })}
           </ScrollView>
         </View>
-      </View>
+      </View >
     );
   }
 }
@@ -70,5 +76,5 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: 5,
   },
-  width100: {width: '100%'},
+  width100: { width: '100%' },
 });

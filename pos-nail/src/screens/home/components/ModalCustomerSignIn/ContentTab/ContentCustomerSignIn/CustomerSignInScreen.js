@@ -86,11 +86,7 @@ export default class index extends Component {
         </View>
           : (<View style={{ flex: 2 }}>
             <SelectNewTechnician
-              // _onPressFinish={data => {
-              //   console.log(JSON.stringify(data));
-              // }}
               dataStaffs={this.props.dataStaffs}
-              // onPress={id => this.props.onPress(id)}
               DataTechnician={this.props.DataTechnician}
             />
             <SelectServices
@@ -114,10 +110,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 3.5,
     backgroundColor: '#408EBA',
-    // paddingHorizontal: '5%',
-    // paddingVertical: '3%',
     paddingTop: 1
-    // borderTopWidth : 0.5 , 
-    // borderTopColor : 'white'
   },
 });

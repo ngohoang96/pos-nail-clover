@@ -1,22 +1,16 @@
 import React, { Component } from 'react';
 import {
-    Text,
     StyleSheet,
-    TouchableOpacity,
     View,
-    Image,
-    TextInput,
     ScrollView,
 } from 'react-native';
 
 import themes from '../../../../config/themes';
 import { normalize } from '../../../../themes/FontSize';
-import TextCmp from '../../../../themes/TextCmp';
-import { items2 } from '../../../../Components/InitScreen/mockData';
-import Button2 from '../../../../Components/InitScreen/Button2';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import ItemScrollView from './itemScrollView';
 import { Logg } from '../../../../utils';
+import { TextCmp } from '../../../../themes';
 export default class PaymentCoupon extends Component {
     constructor(props) {
         super(props);

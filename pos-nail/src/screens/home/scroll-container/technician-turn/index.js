@@ -17,10 +17,11 @@ import {
 import { iconsScroll } from '../../../../assets';
 import themes from '../../../../config/themes';
 import { normalize } from '../../../../themes/FontSize';
-import TextCmp from '../../../../themes/TextCmp';
+
 import TechnicianRepander from '../../../../Components/InitScreen/TechnicianRepander';
 import { dataTechnician } from '../../../../Components/InitScreen/mockData';
 import { ToastLib } from '../../../../utils';
+import { TextCmp } from '../../../../themes';
 export default class PaymentCoupon extends Component {
   constructor(props) {
     super(props);

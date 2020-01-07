@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Text,
   StyleSheet,
@@ -9,8 +9,9 @@ import {
 } from 'react-native';
 
 import themes from '../../../../config/themes';
-import {normalize} from '../../../../themes/FontSize';
-import TextCmp from '../../../../themes/TextCmp';
+import { normalize } from '../../../../themes/FontSize';
+import { TextCmp } from '../../../../themes';
+
 export default class PaymentDiscount extends Component {
   constructor(props) {
     super(props);
@@ -37,7 +38,7 @@ export default class PaymentDiscount extends Component {
               alignItems: 'center',
               color: '#383E44',
               flex: 1,
-              fontSize : normalize(3.5)
+              fontSize: normalize(3.5)
             }}>
             Discount(%)
           </TextCmp>
@@ -48,7 +49,7 @@ export default class PaymentDiscount extends Component {
               borderColor: '#BEBEBE',
               paddingVertical: -5,
               flex: 0.6,
-              fontSize : normalize(3.5),
+              fontSize: normalize(3.5),
               marginBottom: 1,
             }}></TextInput>
 
@@ -57,19 +58,19 @@ export default class PaymentDiscount extends Component {
               alignItems: 'center',
               color: '#383E44',
               flex: 1.1,
-              fontSize : normalize(3.5)
+              fontSize: normalize(3.5)
             }}>
             (Fix amount)
           </TextCmp>
         </View>
 
-        <View style={{flex: 0.3}}>
+        <View style={{ flex: 0.3 }}>
           <TextCmp
             style={{
               alignItems: 'center',
               color: '#383E44',
               textAlign: 'right',
-              fontSize : normalize(3.5)
+              fontSize: normalize(3.5)
             }}>
             ($0.00)
           </TextCmp>

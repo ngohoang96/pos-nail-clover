@@ -10,3 +10,4 @@ export const getdataSelectedPerferService = state =>
 export const inputNailsTechClockIN = state => state.test.inputNailsTechClockIN;
 export const listServicesFullMenu = state => state.test.listServicesFullMenu;
 export const catnameFullMenu = state => state.test.catnameFullMenu;
+export const catnameCustomerServices = state => state.test.catnameCustomerServices
