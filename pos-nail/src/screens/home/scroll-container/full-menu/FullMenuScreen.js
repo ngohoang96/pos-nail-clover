@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import {StyleSheet, View, ScrollView} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, View, ScrollView } from 'react-native';
 
 import themes from '../../../../config/themes';
-import {normalize} from '../../../../themes/FontSize';
+import { normalize } from '../../../../themes/FontSize';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import ItemScrollView from './itemScrollView';
-import {Logg} from '../../../../utils';
-import {TextCmp} from '../../../../themes';
+import { Logg } from '../../../../utils';
+import { TextCmp } from '../../../../themes';
 export default class PaymentCoupon extends Component {
   constructor(props) {
     super(props);
@@ -19,12 +19,12 @@ export default class PaymentCoupon extends Component {
     // listserveceSearch = listserveceSearch.map(item => (item.isSelected = false))
   }
   render() {
-    const {listserveceSearch} = this.props;
-    const {mCatName} = this.state;
+    const { listserveceSearch } = this.props;
+    const { mCatName } = this.state;
     console.log(JSON.stringify(listserveceSearch));
     return (
       <View style={styles.fx05MGH10}>
-        <View style={styles.fxD_row}>
+        {/* <View style={styles.fxD_row}>
           <View style={styles.containerLabel}>
             <TextCmp style={styles.txtLabel}>Full Menu</TextCmp>
           </View>
@@ -35,9 +35,9 @@ export default class PaymentCoupon extends Component {
               color="black"
               style={{}}></IonIcon>
           </View>
-        </View>
+        </View> */}
         <View style={styles.containerScroll}>
-          <ScrollView style={styles.width100}>
+          <ScrollView horizontal={true} style={styles.width100}>
             {listserveceSearch.map((item, index) => {
               if (index != 0) {
                 return (
@@ -66,31 +66,37 @@ export default class PaymentCoupon extends Component {
 
 const styles = StyleSheet.create({
   fx05MGH10: {
-    marginLeft: 3,
-    marginRight: 6,
-    flex: 0.5,
-    // zIndex: -1,
+    flex: 1,
+    zIndex: -1,
   },
   fxD_row: {
     flexDirection: 'row',
+
+
+    backgroundColor: '#F0F0F0',
+    borderRightWidth: 0.5, borderRightColor: 'gray',
+    borderBottomColor: 'gray', borderBottomWidth: 0.5,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   containerLabel: {
     height: themes.height / 20,
 
     justifyContent: 'center',
+
   },
   txtLabel: {
     alignItems: 'center',
     color: '#383E44',
     fontSize: normalize(5),
   },
-  containerIconMenu: {alignItems: 'center', justifyContent: 'center'},
+  containerIconMenu: { alignItems: 'center', justifyContent: 'center', marginLeft: 10 },
   containerScroll: {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
     // marginTop: 5,
   },
-  width100: {width: '100%'},
-  colorBlack: {color: 'black'},
+  width100: { width: '100%' },
+  colorBlack: { color: 'black' },
 });

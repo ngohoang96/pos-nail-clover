@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Text,
   StyleSheet,
@@ -9,28 +9,31 @@ import {
 } from 'react-native';
 
 import themes from '../../../../config/themes';
-import {normalize} from '../../../../themes/FontSize';
+import { normalize } from '../../../../themes/FontSize';
 
-import {Button} from '../../../../Components/InitScreen/Button';
-import {TextCmp} from '../../../../themes';
+import { Button } from '../../../../Components/InitScreen/Button';
+import { TextCmp } from '../../../../themes';
 export default class PaymentListButton extends Component {
   constructor(props) {
     super(props);
   }
   render() {
     return (
-      <View style={{marginTop: 3, flex: 4}}>
+      <View style={{ marginTop: 3, flex: 4, backgroundColor: '#F0F0F0' }}>
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'space-around',
             marginVertical: 3,
           }}>
-          <Button Textstyle={{color: 'black'}} lable={'$64.00'} bg={'white'} />
-          <Button Textstyle={{color: 'black'}} lable={'$65.00'} bg={'white'} />
-          <Button Textstyle={{color: 'black'}} lable={'$70.00'} bg={'white'} />
+          <Button Textstyle={{ color: 'black' }} lable={'$64.00'} bg={'white'}
+            containerStyle={{ backgroundColor: '#F0F0F0' }} />
+          <Button Textstyle={{ color: 'black' }} lable={'$65.00'} bg={'white'}
+            containerStyle={{ backgroundColor: '#F0F0F0' }} />
+          <Button Textstyle={{ color: 'black' }} lable={'$70.00'} bg={'white'}
+            containerStyle={{ backgroundColor: '#F0F0F0' }} />
           <Button
-            Textstyle={{color: 'black'}}
+            Textstyle={{ color: 'black' }}
             lable={'Custom Price'}
             bg={'#EEEEEE'}
           />
@@ -43,27 +46,30 @@ export default class PaymentListButton extends Component {
             marginVertical: 3,
           }}>
           <Button
-            Textstyle={{color: 'black'}}
-            lable={'Cancel'}
+            containerStyle={{ height: 40, backgroundColor: '#F0F0F0' }}
+            Textstyle={{ color: 'black' }}
+            lable={'CANCEL'}
             bg={'white'}></Button>
           <Button
-            Textstyle={{color: 'black'}}
-            lable={'Gift Card'}
-            bg={'#6697EA'}></Button>
+            containerStyle={{ height: 40, backgroundColor: '#F0F0F0' }}
+            Textstyle={{ color: 'black' }}
+            lable={'GIFT'}></Button>
           <Button
-            Textstyle={{color: 'black'}}
-            lable={'Charge'}
-            bg={'#FD6CB4'}></Button>
+            containerStyle={{ height: 40 }}
+            Textstyle={{ color: 'black' }}
+            lable={'CHARGE'}
+            bg={'red'}></Button>
           <Button
-            Textstyle={{color: 'black'}}
-            lable={'Cash'}
-            bg={'#FDA428'}></Button>
+            containerStyle={{ height: 40 }}
+            Textstyle={{ color: 'black' }}
+            lable={'CASH'}
+            bg={'green'}></Button>
         </View>
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'space-around',
-            borderTopColor: 'gray',
+            borderTopColor: 'gray', backgroundColor: '#F0F0F0'
           }}>
           <TouchableOpacity
             style={{
@@ -73,7 +79,7 @@ export default class PaymentListButton extends Component {
               borderColor: 'gray',
               borderRadius: 1,
               alignItems: 'center',
-              justifyContent: 'center',
+              justifyContent: 'center', backgroundColor: '#F0F0F0'
             }}>
             <TextCmp
               style={{
@@ -91,7 +97,7 @@ export default class PaymentListButton extends Component {
               borderColor: 'gray',
               borderRadius: 1,
               alignItems: 'center',
-              justifyContent: 'center',
+              justifyContent: 'center', backgroundColor: '#F0F0F0'
             }}>
             <TextCmp
               style={{

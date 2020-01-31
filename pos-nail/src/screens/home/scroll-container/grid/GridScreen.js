@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -6,11 +6,11 @@ import {
   FlatList,
   ScrollView,
 } from 'react-native';
-import {items} from '../../../../Components/InitScreen/mockData';
+import { items } from '../../../../Components/InitScreen/mockData';
 
 import themes from '../../../../config/themes';
 import Item from './itemGrid';
-import {Logg} from '../../../../utils';
+import { Logg } from '../../../../utils';
 export default class PaymentCoupon extends Component {
   constructor(props) {
     super(props);
@@ -34,13 +34,23 @@ export default class PaymentCoupon extends Component {
   // }
 
   render() {
-    const {listServicesFullMenu, catnameFullMenu} = this.props;
+    const { listServicesFullMenu, catnameFullMenu } = this.props;
     let list = listServicesFullMenu;
     list = list.filter(e => e.catname === catnameFullMenu && e.id != -1);
     return (
       <View test style={styles.container}>
-        <View style={styles.tmp} />
-        <FlatList
+        {list.map((item, index) => {
+          return <Item
+            item={item}
+            index={index}
+            onPress={() => {
+              this.props.updateItemLisFullMenu(item);
+            }}
+          />
+        })}
+        {/* <View style={styles.tmp} /> */}
+
+        {/* <FlatList
           // style={styles.containerListRightContent}
           data={list}
           renderItem={({item, index}) => (
@@ -53,7 +63,7 @@ export default class PaymentCoupon extends Component {
             />
           )}
           keyExtractor={item => item.id + item.catname + ' '}
-        />
+        /> */}
       </View>
     );
   }
@@ -62,8 +72,10 @@ export default class PaymentCoupon extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexWrap: "wrap",
+    flexDirection: 'row'
   },
-  tmp: {height: themes.height / 20},
+  tmp: { height: themes.height / 20 },
   containerListRightContent: {
     width: '100%',
     height: '100%',

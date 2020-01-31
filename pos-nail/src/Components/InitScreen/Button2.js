@@ -7,19 +7,20 @@ import { TextCmp } from '../../themes';
 
 const styles = StyleSheet.create({
   text: {
-    color: 'black',
-    fontSize: normalize(4),
+    // color: 'black',
+    fontSize: normalize(5),
     fontWeight: 'bold',
   },
   button: {
     backgroundColor: 'white',
-    height: 40,
+    minHeight: 40,
     width: '100%',
     borderTopLeftRadius: 2,
     borderBottomLeftRadius: 2,
     justifyContent: 'center',
+    alignItems: 'center',
     paddingLeft: 10,
-    marginTop: 5,
+    marginTop: 1,
     borderTopColor: '#383E44',
     borderTopWidth: 1,
     borderRightColor: '#383E44',
@@ -41,11 +42,11 @@ export default class Button2 extends Component {
         activeOpacity={.5}
         style={[
           styles.button,
-          { borderLeftWidth: 4, ...this.props.style_button },
+          { borderLeftWidth: 1, ...this.props.style_button },
         ]}
         onPress={() => onPress()}
       >
-        <TextCmp style={[styles.text, this.props.textstyles]}>
+        <TextCmp style={[styles.text]}>
           {this.props.lable}
         </TextCmp>
       </TouchableOpacity>

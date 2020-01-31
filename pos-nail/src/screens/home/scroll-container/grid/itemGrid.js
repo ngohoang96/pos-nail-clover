@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
-import {TextCmp} from '../../../../themes';
-import {normalize} from '../../../../themes/FontSize';
+import React, { Component } from 'react';
+import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import { TextCmp } from '../../../../themes';
+import { normalize } from '../../../../themes/FontSize';
 import themes from '../../../../config/themes';
 
 export default class ItemGrid extends Component {
@@ -9,7 +9,7 @@ export default class ItemGrid extends Component {
   //     return newItem.isSelected != this.props.item.isSelected
   // }
   render() {
-    const {item, index, onPress} = this.props;
+    const { item, index, onPress } = this.props;
     return (
       <TouchableOpacity
         style={[
@@ -22,7 +22,7 @@ export default class ItemGrid extends Component {
         <TextCmp style={styles.txtCenter}>{item.name}</TextCmp>
         <TextCmp
           style={{
-            fontSize: normalize(4),
+            fontSize: normalize(4)
           }}>
           Price: {item.price}$
         </TextCmp>
@@ -32,13 +32,16 @@ export default class ItemGrid extends Component {
 }
 
 const styles = StyleSheet.create({
-  txtCenter: {textAlign: 'center', fontSize: normalize(3.5)},
+  txtCenter: {
+    textAlign: 'center', fontSize: normalize(4),
+    fontWeight: 'bold'
+  },
   containerTouchItem: {
-    width: '100%',
+    width: '32%',
     backgroundColor: '#F4F4F4',
-    borderRadius: 3,
+    // borderRadius: 3,
     borderWidth: 1,
-    borderColor: '#EDEDED',
+    borderColor: 'gray',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 3,

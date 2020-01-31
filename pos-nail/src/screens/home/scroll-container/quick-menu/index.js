@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Text,
   StyleSheet,
@@ -10,11 +10,11 @@ import {
 } from 'react-native';
 
 import themes from '../../../../config/themes';
-import {normalize} from '../../../../themes/FontSize';
+import { normalize } from '../../../../themes/FontSize';
 
 import Button2 from '../../../../Components/InitScreen/Button2';
-import {items1} from '../../../../Components/InitScreen/mockData';
-import {TextCmp} from '../../../../themes';
+import { items1 } from '../../../../Components/InitScreen/mockData';
+import { TextCmp } from '../../../../themes';
 export default class PaymentCoupon extends Component {
   constructor(props) {
     super(props);
@@ -32,21 +32,18 @@ export default class PaymentCoupon extends Component {
               return (
                 <Button2
                   key={index}
-                  Textstyle={{
-                    color: 'black',
-                    fontSize: normalize(4),
-                  }}
+
                   style_button={{
                     width: '100%',
                     minHeight: ((((themes.width * 3) / 3.8) * 0.5) / 3.9) * 0.3,
-                    borderLeftColor:
-                      '#' +
-                      (Math.random().toString(16) + '000000').substring(2, 8),
+                    // borderLeftColor:
+                    //   '#' +
+                    //   (Math.random().toString(16) + '000000').substring(2, 8),
                     paddingVertical: 10,
-                    // backgroundColor: item.catname === mCatName ? '#CAE5E8' : '#fff'
+                    backgroundColor: '#f0f0f0'
                   }}
                   lable={item.lable}
-                  textstyles={{fontWeight: '300'}}
+                  textstyles={{ fontWeight: '300' }}
                 />
               );
             })}
@@ -59,14 +56,19 @@ export default class PaymentCoupon extends Component {
 
 const styles = StyleSheet.create({
   fx05MGH10: {
-    marginLeft: 9,
-    marginRight: 3,
-    flex: 0.5,
+    flex: 1,
     zIndex: -1,
+    backgroundColor: 'orange'
   },
   containerTxt: {
     height: themes.height / 20,
     justifyContent: 'center',
+
+    backgroundColor: '#F0F0F0',
+    borderRightWidth: 0.5, borderRightColor: 'gray',
+    borderBottomColor: 'gray', borderBottomWidth: 0.5,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   txt: {
     alignItems: 'center',
@@ -78,5 +80,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
   },
-  width100: {width: '100%'},
+  width100: { width: '100%' },
 });

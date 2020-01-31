@@ -1,10 +1,9 @@
-import React, {Component} from 'react';
-import {Text, StyleSheet, TouchableOpacity, View, Image} from 'react-native';
-import themes from '../../config/themes';
-import {normalize} from '../../themes/FontSize';
-import {TextCmp} from '../../themes';
+import React, { Component } from 'react';
+import { Text, StyleSheet, TouchableOpacity, View, Image } from 'react-native';
+import { normalize } from '../../themes/FontSize';
+import { TextCmp, Metrics } from '../../themes';
+import { iconsScroll } from '../../assets';
 
-// import ViewOverflow from 'react-native-view-overflow';
 export default class ItemTech extends Component {
   constructor(props) {
     super(props);
@@ -14,90 +13,48 @@ export default class ItemTech extends Component {
       <View
         style={[
           {
-            borderBottomColor: '#9BAB6A',
-            borderBottomWidth: 0.5,
-            width: (themes.width * 0.9) / 5.6 + 3,
-            height: ((themes.width * 0.9) / 5.6) * 0.65,
+            borderTopColor: 'orange',
+            borderTopWidth: 2,
+
+            width: '100%',
+            height: '100%',
+            backgroundColor: '#F0F0F0'
           },
           this.props.containerStyle,
         ]}>
-        <View style={styl.container}>
-          <TextCmp style={styl.textName}>
-            {this.props.nameTechnician || 'tên'}
-          </TextCmp>
-        </View>
-        <View style={styl.container1}>
-          <View style={styl.containerImg}>
+        <View style={{ flex: 2, flexDirection: 'row' }}>
+
+          <View style={{
+            height: (Metrics.appWidth * 1.2 / 8.4) * 0.35, width: (Metrics.appWidth * 1.2 / 8.4) * 0.35,
+            borderRightWidth: 0.5, borderRightColor: 'gray', alignItems: 'center', justifyContent: "center",
+
+          }}>
             <Image
               style={{
-                width: ((themes.width * 0.9) / 5.6) * 0.3,
-                height: ((themes.width * 0.9) / 5.6) * 0.3,
-                borderRadius: 50,
+                width: '90%',
+                height: '90%',
+                borderRadius: 50
               }}
-              source={{
-                uri:
-                  'https://i.a4vn.com/2018/11/27/tong-hop-hinh-anh-cac-hotgirl-xinh-hot-nhat-nam-2018-7b8685.jpg',
-              }}></Image>
+              source={iconsScroll.ninja}></Image>
           </View>
-          <View style={{flex: 2, backgroundColor: '#F5F5F5'}}>
-            <View
-              style={{
-                flex: 1,
-                borderBottomColor: '#9BAB6A',
-                flexDirection: 'row',
-                paddingHorizontal: 3,
-                borderBottomWidth: 0.5,
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRightWidth: 0.5,
-                borderRightColor: '#9BAB6A',
-              }}>
-              <TextCmp
-                style={{
-                  alignItems: 'center',
-                  color: 'black',
-                  fontSize: normalize(4),
-                }}>
-                12h34 Am
-              </TextCmp>
-            </View>
-            <View
-              style={{
-                flex: 1,
-                borderBottomWidth: 0.5,
-                borderBottomColor: '#9BAB6A',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRightWidth: 0.5,
-                borderRightColor: '#9BAB6A',
-              }}>
-              <TextCmp
-                style={{
-                  alignItems: 'center',
-                  color: 'black',
-                  fontSize: normalize(4),
-                }}>
-                c:=0
-              </TextCmp>
-            </View>
-            <View
-              style={{
-                flex: 1,
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRightWidth: 0.5,
-                borderRightColor: '#9BAB6A',
-              }}>
-              <TextCmp
-                style={{
-                  alignItems: 'center',
-                  color: 'black',
-                  fontSize: normalize(4),
-                }}>
-                Today Appt:=0
-              </TextCmp>
-            </View>
+          <View style={{
+            height: (Metrics.appWidth * 1.2 / 8.4) * 0.35, width: (Metrics.appWidth * 1.2 / 8.4) * 0.65
+            , alignItems: 'center', justifyContent: 'center',
+            borderRightWidth: 0.5, borderRightColor: '#CECECE',
+          }}>
+            <TextCmp style={styl.textName}>
+              {this.props.nameTechnician || 'tên'}
+            </TextCmp>
           </View>
+        </View>
+        <View style={{
+          height: (Metrics.appWidth * 1.2 / 8.4) * 0.14, width: '100%', alignItems: 'center', justifyContent: 'center',
+          borderTopWidth: 0.5, borderTopColor: 'orange', borderBottomWidth: 0.5, borderBottomColor: "#CECECE",
+          borderRightWidth: 0.5, borderRightColor: '#cecece',
+        }}>
+          <TextCmp style={styl.txtViewDetail}>
+            View detail
+            </TextCmp>
         </View>
       </View>
     );
@@ -113,7 +70,7 @@ const styl = StyleSheet.create({
   },
   textName: {
     alignItems: 'center',
-    color: 'white',
+    // color: 'black',
     fontWeight: 'bold',
     fontSize: normalize(5),
   },
@@ -132,4 +89,8 @@ const styl = StyleSheet.create({
     borderLeftWidth: 0.5,
     borderLeftColor: '#9BAB6A',
   },
+  txtViewDetail: {
+    fontSize: normalize(3.5),
+    fontWeight: 'bold',
+  }
 });

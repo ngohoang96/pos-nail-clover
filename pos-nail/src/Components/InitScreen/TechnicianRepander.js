@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import { selectors, actions } from '../../stores';
 import themes from '../../config/themes';
 import ItemTech from '../../Components/InitScreen/itemTech';
+import { Metrics } from '../../themes';
 class TechnicianRepander extends Component {
   constructor(props) {
     super(props);
@@ -83,9 +84,8 @@ class TechnicianRepander extends Component {
     return (
       <View
         style={{
-          width: (themes.width * 0.9) / 5.6,
-          height: ((themes.width * 0.9) / 5.6) * 0.65,
-          marginTop: 10,
+          width: Metrics.appWidth * 1.2 / 8.4,
+          height: (Metrics.appWidth * 1.2 / 8.4) * 0.35 + (Metrics.appWidth * 1.2 / 8.4) * 0.15,
           backgroundColor: 'white',
         }}
         onLayout={this.setDropZoneValues.bind(this)}>
@@ -94,12 +94,11 @@ class TechnicianRepander extends Component {
           style={[
             this.state.pan.getLayout(),
             {
-              backgroundColor: '#fff',
               width: '100%',
               height: '100%',
             },
           ]}>
-          <ItemTech nameTechnician={this.props.name}></ItemTech>
+          <ItemTech nameTechnician={this.props.name} />
         </Animated.View>
       </View>
     );

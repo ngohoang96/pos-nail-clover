@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Text,
   StyleSheet,
@@ -14,14 +14,14 @@ import {
   TouchableHighlight,
   Alert,
 } from 'react-native';
-import {iconsScroll} from '../../../../assets';
+import { iconsScroll } from '../../../../assets';
 import themes from '../../../../config/themes';
-import {normalize} from '../../../../themes/FontSize';
+import { normalize } from '../../../../themes/FontSize';
 
 import TechnicianRepander from '../../../../Components/InitScreen/TechnicianRepander';
-import {dataTechnician} from '../../../../Components/InitScreen/mockData';
-import {ToastLib} from '../../../../utils';
-import {TextCmp} from '../../../../themes';
+import { dataTechnician } from '../../../../Components/InitScreen/mockData';
+import { ToastLib } from '../../../../utils';
+import { TextCmp, Metrics } from '../../../../themes';
 export default class PaymentCoupon extends Component {
   constructor(props) {
     super(props);
@@ -35,7 +35,7 @@ export default class PaymentCoupon extends Component {
   }
 
   render() {
-    const {indexMap, indexMapEnd, isAdd, isReduction} = this.state;
+    const { indexMap, indexMapEnd, isAdd, isReduction } = this.state;
     return (
       <View style={styles.fx09}>
         <View style={styles.container}>
@@ -58,16 +58,18 @@ export default class PaymentCoupon extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: themes.height / 20,
+    height: Metrics.appHeight / 20,
     width: '100%',
-    paddingLeft: 3,
     // paddingRight: 3,
     justifyContent: 'center',
+    alignItems: 'center',
+    borderRightWidth: 0.5, borderRightColor: 'gray',
+    borderBottomColor: 'gray', borderBottomWidth: 0.5
   },
   fx09: {
     flex: 1,
-    overflow: 'scroll',
-    backgroundColor: 'white',
+    // overflow: 'scroll',
+    backgroundColor: '#F0F0F0',
 
     // marginBottom: themes.height / 12,
   },
@@ -76,6 +78,11 @@ const styles = StyleSheet.create({
     color: '#383E44',
     fontSize: normalize(5),
   },
-  fx1: {flex: 1, backgroundColor: 'white'},
-  tmp: {height: themes.height / 20},
+  fx1: {
+    flex: 1, backgroundColor: 'orange',
+    borderRightWidth: 0.5, borderRightColor: '#CECECE',
+  },
+  tmp: {
+    height: Metrics.appHeight / 20,
+  },
 });

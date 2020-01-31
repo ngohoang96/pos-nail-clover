@@ -6,7 +6,7 @@
  * @flow
  */
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -16,13 +16,13 @@ import {
   Alert,
   KeyboardAvoidingView,
 } from 'react-native';
-import {styles} from './styles';
+import { styles } from './styles';
 import PaymentContainer from './payment-container';
 import ScrollBottom from './scroll-bottm/index';
 import ScrollScreen from './scroll-container/scroll-screen';
 
 import TechnicianRepander from '../../Components/InitScreen/TechnicianRepander';
-import themes, {Colors, Metrics, TextCmp} from '../../themes';
+import themes, { Colors, Metrics, TextCmp } from '../../themes';
 
 import Grid from './scroll-container/grid/index';
 import TechnicianTurn from './scroll-container/technician-turn/index';
@@ -36,12 +36,12 @@ import ModalManagerSystem from './components/ModalManagerSystem';
 import ModalTipsManager from './components/ModalTipsManager';
 import ModalSupportsCenter from './components/ModalSupports';
 
-import {connect} from 'react-redux';
-import {AppCheckIn_GetServices, AppCheckIn_GetStaffs} from './actions';
+import { connect } from 'react-redux';
+import { AppCheckIn_GetServices, AppCheckIn_GetStaffs } from './actions';
 import moment from 'moment';
-import {Logg} from '../../utils';
-import {actions, selectors} from '../../stores';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import { Logg } from '../../utils';
+import { actions, selectors } from '../../stores';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 class Home extends Component {
   constructor(props) {
@@ -61,32 +61,32 @@ class Home extends Component {
   }
   // đóng mở modal technician
   setModalVisible = visible => {
-    this.setState({modalVisible: visible});
+    this.setState({ modalVisible: visible });
   };
   // đóng mở modal customer
   setModalCustomerVisible = visible => {
-    this.setState({modalCustomerVisible: visible});
+    this.setState({ modalCustomerVisible: visible });
   };
 
   // đóng mở modal employee
   setModalEmployeesSignIn = () => {
-    const {modalEmployeesSignIn} = this.state;
-    this.setState({modalEmployeesSignIn: !modalEmployeesSignIn});
+    const { modalEmployeesSignIn } = this.state;
+    this.setState({ modalEmployeesSignIn: !modalEmployeesSignIn });
   };
   // đóng mở modal manager system
   setModalManagerSystem = () => {
-    const {modalManagerSystem} = this.state;
-    this.setState({modalManagerSystem: !modalManagerSystem});
+    const { modalManagerSystem } = this.state;
+    this.setState({ modalManagerSystem: !modalManagerSystem });
   };
   // đóng mở modal tips manager
   setModalTipsManager = () => {
-    const {modalTipsManager} = this.state;
-    this.setState({modalTipsManager: !modalTipsManager});
+    const { modalTipsManager } = this.state;
+    this.setState({ modalTipsManager: !modalTipsManager });
   };
   // đóng mở modal suports center
   setModalSupportsCenter = () => {
-    const {modalSupportsCenter} = this.state;
-    this.setState({modalSupportsCenter: !modalSupportsCenter});
+    const { modalSupportsCenter } = this.state;
+    this.setState({ modalSupportsCenter: !modalSupportsCenter });
   };
   // chọn vào item của scrollBottom
   onPressItem = name => {
@@ -107,8 +107,8 @@ class Home extends Component {
   };
   componentDidMount() {
     // get danh sách staff và services truyền qua ModalCustomer
-    this.AppCheckIn_GetServices({storeCode: 'MAX12898'});
-    this.AppCheckIn_GetStaffs({storeCode: 'MAX12898'});
+    this.AppCheckIn_GetServices({ storeCode: 'MAX12898' });
+    this.AppCheckIn_GetStaffs({ storeCode: 'MAX12898' });
   }
 
   AppCheckIn_GetStaffs(params) {
@@ -142,7 +142,7 @@ class Home extends Component {
   AppCheckIn_GetServices(params) {
     (params.date = moment(new Date()).format('YYYY-MM-DD')),
       this.props.dispatch(AppCheckIn_GetServices(params)).then(result => {
-        let listserveceSearch = [{catname: 'All Services', id: -1, name: ''}];
+        let listserveceSearch = [{ catname: 'All Services', id: -1, name: '' }];
         if (result) {
           result.map(item => {
             if (item.id == '-1') {
@@ -180,42 +180,56 @@ class Home extends Component {
 
   //modalEmployeesSignIn
   setModalEmployeeVisible = () => {
-    this.setState({modalEmployeesSignIn: this.state.modalEmployeesSignIn});
+    this.setState({ modalEmployeesSignIn: this.state.modalEmployeesSignIn });
   };
 
   render() {
-    const {listserveceSearch} = this.state;
+    const { listserveceSearch } = this.state;
     return (
       <View style={styles.container}>
-        <View style={{flex: 1.8}}>
+        <View style={{ flex: 2 }}>
           <KeyboardAvoidingView
             contentContainerStyle={{
               width: '100%',
               height: Metrics.appHeight,
             }}>
-            <ScrollView
-              contentContainerStyle={{
+            <View
+              style={{
                 width: '100%',
                 height: Metrics.appHeight,
               }}>
               <PaymentContainer />
-            </ScrollView>
+            </View>
           </KeyboardAvoidingView>
         </View>
-        <View style={{flex: 0.9, paddingRight: 10, paddingLeft: 3}}>
+        <View style={{ flex: 1.2 }}>
           <TechnicianTurn />
         </View>
-        <View style={{flex: 1.1, paddingHorizontal: 10}}>
+        <View style={{ flex: 1.2 }}>
           <Customer />
         </View>
 
-        <View style={{flex: 1.2, flexDirection: 'row'}}>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
           <QuickMenu />
+        </View>
+        <View style={{ flex: 3 }}>
+          <View style={{ height: Metrics.appHeight / 20, width: '100%', backgroundColor: '#f0f0f0', flexDirection: 'row' }}>
+            <FullMenu listserveceSearch={listserveceSearch || []} />
+          </View>
+          <View style={{ height: Metrics.appHeight - Metrics.appHeight / 20 - Metrics.appHeight / 15, width: '100%', paddingRight: 3 }}>
+            <Grid></Grid>
+          </View>
+        </View>
+
+        {/* <View style={{ flex: 1, flexDirection: 'row' }}>
           <FullMenu listserveceSearch={listserveceSearch || []} />
         </View>
-        <View style={{flex: 0.6, paddingRight: 3}}>
+        <View style={{ flex: 1, paddingRight: 3 }}>
           <Grid></Grid>
         </View>
+        <View style={{ flex: 1, paddingRight: 3 }}>
+          <Grid></Grid>
+        </View> */}
 
         <ScrollBottom onPressItem={this.onPressItem} />
         <ModalNailsTechSignIn

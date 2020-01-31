@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import themes from '../../config/themes';
-import {Metrics} from '../../themes';
+import { Metrics } from '../../themes';
 const styles = StyleSheet.create({
   renderItemGridList: {
     width: '100%',
@@ -16,10 +16,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    paddingBottom: 100,
+    // paddingBottom: 100,
     flexDirection: 'row',
   },
-  text1: {fontSize: 14, alignItems: 'center', color: '#383E44'},
+  text1: { fontSize: 14, alignItems: 'center', color: '#383E44' },
   viewService: {
     flex: 0.6,
     backgroundColor: '#F5F5F5',
@@ -28,20 +28,20 @@ const styles = StyleSheet.create({
     padding: 3,
     justifyContent: 'center',
   },
-  textService: {fontSize: 18, alignItems: 'center', color: '#383E44'},
+  textService: { fontSize: 18, alignItems: 'center', color: '#383E44' },
   textPaymentCart: {
     fontSize: 20,
     alignItems: 'center',
     color: '#383E44',
     fontWeight: 'bold',
   },
-  bgWhite_flex1: {flex: 0.65, backgroundColor: 'white', overflow: 'hidden'},
+  bgWhite_flex1: { flex: 0.65, backgroundColor: 'white', overflow: 'hidden' },
   containerView1: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginTop: 1,
   },
-  container2: {flexDirection: 'row', justifyContent: 'space-between', flex: 1},
+  container2: { flexDirection: 'row', justifyContent: 'space-between', flex: 1 },
   textIpCoupon: {
     width: '60%',
     borderWidth: 0.5,
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     borderColor: '#BEBEBE',
     padding: 1,
   },
-  view1: {flex: 1, borderBottomColor: '#99CC00', borderBottomWidth: 1},
+  view1: { flex: 1, borderBottomColor: '#99CC00', borderBottomWidth: 1 },
   buttonCancel: {
     width: '30%',
     height: '90%',
@@ -118,4 +118,4 @@ const styles = StyleSheet.create({
   // },
 });
 
-export {styles};
+export { styles };
