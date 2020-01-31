@@ -13,11 +13,11 @@ import {TextCmp} from '../../themes';
 const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
-    fontSize: normalize(3.5),
+    fontSize: normalize(3),
   },
   button: {
     backgroundColor: 'white',
-    width: '22%',
+    width: '24%',
     borderRadius: 2,
     alignItems: 'center',
     justifyContent: 'center',

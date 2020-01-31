@@ -19,31 +19,21 @@ export default class PaymentListButton extends Component {
   }
   render() {
     return (
-      <View style={{marginTop: 1, flex: 4}}>
+      <View style={{marginTop: 3, flex: 4}}>
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'space-around',
-            // margin: 3,
             marginVertical: 3,
-            // flex: 1,
           }}>
-          <Button
-            Textstyle={{color: 'black'}}
-            lable={'$64.00'}
-            bg={'white'}></Button>
-          <Button
-            Textstyle={{color: 'black'}}
-            lable={'$65.00'}
-            bg={'white'}></Button>
-          <Button
-            Textstyle={{color: 'black'}}
-            lable={'$70.00'}
-            bg={'white'}></Button>
+          <Button Textstyle={{color: 'black'}} lable={'$64.00'} bg={'white'} />
+          <Button Textstyle={{color: 'black'}} lable={'$65.00'} bg={'white'} />
+          <Button Textstyle={{color: 'black'}} lable={'$70.00'} bg={'white'} />
           <Button
             Textstyle={{color: 'black'}}
             lable={'Custom Price'}
-            bg={'#EEEEEE'}></Button>
+            bg={'#EEEEEE'}
+          />
         </View>
         <View
           style={{
@@ -73,14 +63,11 @@ export default class PaymentListButton extends Component {
           style={{
             flexDirection: 'row',
             justifyContent: 'space-around',
-            // flex: 1,
-
             borderTopColor: 'gray',
-            // margin: 3,
           }}>
           <TouchableOpacity
             style={{
-              width: '47%',
+              width: '49%',
               height: 30,
               borderWidth: 1,
               borderColor: 'gray',
@@ -93,12 +80,12 @@ export default class PaymentListButton extends Component {
                 color: '#383E44',
                 fontSize: normalize(3.5),
               }}>
-              Cancel
+              Cancel Service
             </TextCmp>
           </TouchableOpacity>
           <TouchableOpacity
             style={{
-              width: '47%',
+              width: '49%',
               height: 30,
               borderWidth: 1,
               borderColor: 'gray',
@@ -111,7 +98,7 @@ export default class PaymentListButton extends Component {
                 color: '#383E44',
                 fontSize: normalize(3.5),
               }}>
-              Service
+              Service Now
             </TextCmp>
           </TouchableOpacity>
         </View>

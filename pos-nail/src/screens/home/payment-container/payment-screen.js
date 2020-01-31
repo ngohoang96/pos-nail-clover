@@ -42,7 +42,17 @@ export default class PaymentScreen extends Component {
 
     return (
       <View style={styles.container}>
-        <PaymentTitle></PaymentTitle>
+        <View style={styles.wrapper_title}>
+          <TextCmp
+            style={{
+              alignItems: 'center',
+              color: '#383E44',
+              fontWeight: 'bold',
+              fontSize: normalize(5),
+            }}>
+            Payment Cart
+          </TextCmp>
+        </View>
         <View style={{flex: 4}}>
           <TextCmp style={{marginLeft: 5}}>
             Drag Nail Tech, Service, Ticket item here
@@ -67,8 +77,7 @@ export default class PaymentScreen extends Component {
           />
         </View>
         <View style={styles.containerfx6}>
-          <View style={styles.fx4}>
-            {/* <ScrollView style={styles.fx1}>
+          {/* <ScrollView style={styles.fx1}>
               {this.props.dataService.map((item, index) => {
                 return (
                   <ItemService
@@ -78,22 +87,20 @@ export default class PaymentScreen extends Component {
                 );
               })}
             </ScrollView> */}
-            <View style={styles.fx1}>
-              <PaymentSubtotal />
-              <PaymentCoupon />
-              <PaymentGiftCart />
-              <PaymentTips />
-              <PaymentDiscount />
-              <PaymentReward />
-              <PaymentTotal />
-              <View style={styles.fx1FlexStart}>
-                <TextCmp style={{color: '#383E44', fontSize: normalize(5)}}>
-                  Fast Pay With Cash
-                </TextCmp>
-              </View>
-              <PaymentListButton />
-            </View>
+
+          <PaymentSubtotal />
+          <PaymentCoupon />
+          <PaymentGiftCart />
+          <PaymentTips />
+          <PaymentDiscount />
+          <PaymentReward />
+          <PaymentTotal />
+          <View style={styles.fx1FlexStart}>
+            <TextCmp style={{color: '#383E44', fontSize: normalize(4)}}>
+              Fast Pay With Cash
+            </TextCmp>
           </View>
+          <PaymentListButton />
         </View>
       </View>
     );
@@ -102,18 +109,22 @@ export default class PaymentScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 0.8,
     flex: 1,
     borderWidth: 0.5,
     borderColor: '#CECECE',
-    padding: 2,
+    paddingHorizontal: 5,
   },
   containerfx6: {
-    flex: 5.25,
+    flex: 5.5,
     justifyContent: 'flex-start',
-    marginTop: 15,
+    marginTop: 30,
   },
-  fx4: {flex: 4},
-  fx1: {flex: 1},
+  // fx4: {flex: 4},
+  fx1: {flex: 1, padding: 5},
   fx1FlexStart: {alignItems: 'flex-start'},
+  wrapper_title: {
+    flex: 0.5,
+    paddingLeft: 7,
+    justifyContent: 'center',
+  },
 });

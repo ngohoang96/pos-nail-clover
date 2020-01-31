@@ -187,12 +187,6 @@ class Home extends Component {
     const {listserveceSearch} = this.state;
     return (
       <View style={styles.container}>
-        <View style={{flex: 0.9, paddingRight: 10}}>
-          <TechnicianTurn />
-        </View>
-        <View style={{flex: 1.1, paddingHorizontal: 10}}>
-          <Customer />
-        </View>
         <View style={{flex: 1.8}}>
           <KeyboardAvoidingView
             contentContainerStyle={{
@@ -208,11 +202,18 @@ class Home extends Component {
             </ScrollView>
           </KeyboardAvoidingView>
         </View>
+        <View style={{flex: 0.9, paddingRight: 10, paddingLeft: 3}}>
+          <TechnicianTurn />
+        </View>
+        <View style={{flex: 1.1, paddingHorizontal: 10}}>
+          <Customer />
+        </View>
+
         <View style={{flex: 1.2, flexDirection: 'row'}}>
           <QuickMenu />
           <FullMenu listserveceSearch={listserveceSearch || []} />
         </View>
-        <View style={{flex: 0.6, paddingHorizontal: 3}}>
+        <View style={{flex: 0.6, paddingRight: 3}}>
           <Grid></Grid>
         </View>
 
