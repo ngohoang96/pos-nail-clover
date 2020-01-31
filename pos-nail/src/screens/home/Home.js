@@ -216,7 +216,7 @@ class Home extends Component {
           <View style={{ height: Metrics.appHeight / 20, width: '100%', backgroundColor: '#f0f0f0', flexDirection: 'row' }}>
             <FullMenu listserveceSearch={listserveceSearch || []} />
           </View>
-          <View style={{ height: Metrics.appHeight - Metrics.appHeight / 20 - Metrics.appHeight / 15, width: '100%', paddingRight: 3 }}>
+          <View style={{ height: Metrics.appHeight * (1 - 1 / 20 - 1 / 15), width: '100%', paddingRight: 3 }}>
             <Grid></Grid>
           </View>
         </View>

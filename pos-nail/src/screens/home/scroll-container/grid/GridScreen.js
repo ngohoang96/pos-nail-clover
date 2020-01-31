@@ -11,6 +11,7 @@ import { items } from '../../../../Components/InitScreen/mockData';
 import themes from '../../../../config/themes';
 import Item from './itemGrid';
 import { Logg } from '../../../../utils';
+import { Colors } from '../../../../themes';
 export default class PaymentCoupon extends Component {
   constructor(props) {
     super(props);
@@ -73,7 +74,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexWrap: "wrap",
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'center'
   },
   tmp: { height: themes.height / 20 },
   containerListRightContent: {

@@ -19,6 +19,7 @@ export default class PaymentCoupon extends Component {
     // listserveceSearch = listserveceSearch.map(item => (item.isSelected = false))
   }
   render() {
+    Logg.info('aaaaa', this.props)
     const { listserveceSearch } = this.props;
     const { mCatName } = this.state;
     console.log(JSON.stringify(listserveceSearch));
@@ -38,25 +39,27 @@ export default class PaymentCoupon extends Component {
         </View> */}
         <View style={styles.containerScroll}>
           <ScrollView horizontal={true} style={styles.width100}>
-            {listserveceSearch.map((item, index) => {
-              if (index != 0) {
-                return (
-                  <ItemScrollView
-                    onPress={() => {
-                      this.setState({
-                        mCatName: item.catname,
-                      });
-                      this.props.updateListFullMenu(item.catname);
-                    }}
-                    key={index + ''}
-                    item={item}
-                    mCatName={mCatName}
-                  />
-                );
-              } else {
-                return null;
-              }
-            })}
+            <View style={{ flexDirection: 'row' }}>
+              {listserveceSearch.map((item, index) => {
+                if (index != 0) {
+                  return (
+                    <ItemScrollView
+                      onPress={() => {
+                        this.setState({
+                          mCatName: item.catname,
+                        });
+                        this.props.updateListFullMenu(item.catname);
+                      }}
+                      key={index + ''}
+                      item={item}
+                      mCatName={mCatName}
+                    />
+                  );
+                } else {
+                  return null;
+                }
+              })}
+            </View>
           </ScrollView>
         </View>
       </View>

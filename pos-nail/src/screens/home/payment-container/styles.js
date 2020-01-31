@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { normalize } from '../../../themes/FontSize';
-import { Metrics } from '../../../themes';
+import { Metrics, Colors } from '../../../themes';
 const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     color: '#383E44',
     fontSize: normalize(4),
-    fontWeight: '400',
+    fontWeight: 'bold',
 
   },
   wrapper_cash: {
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     borderColor: '#A7A7A7',
     height: 22,
     minWidth: '15%',
-    backgroundColor: '#F0F0F0',
+    backgroundColor: Colors.bgGray,
 
   },
   txt_cash: {
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: '#A7A7A7',
     height: 22,
-    backgroundColor: '#F0F0F0'
+    backgroundColor: Colors.bgGray
   },
   first_card: {
     width: '70%',
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: '#A7A7A7',
     height: 22,
-    backgroundColor: '#F0F0F0'
+    backgroundColor: Colors.bgGray
   },
   second_card: {
     width: '26%',
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     borderColor: '#A7A7A7',
     height: 22,
     marginHorizontal: '2%',
-    backgroundColor: '#F0F0F0'
+    backgroundColor: Colors.bgGray
   },
   box_discount: {
     width: '50%',
@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     color: '#383E44',
     textAlign: 'center',
     fontSize: normalize(3.5),
+    fontWeight: 'bold'
   },
   box_fixamount: {
     width: '50%',

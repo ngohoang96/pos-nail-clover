@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, TouchableOpacity, View, Image } from 'react-native';
 import { normalize } from '../../themes/FontSize';
-import { TextCmp, Metrics } from '../../themes';
+import { TextCmp, Metrics, Colors } from '../../themes';
 import { iconsScroll } from '../../assets';
-
 export default class ItemTech extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +17,7 @@ export default class ItemTech extends Component {
 
             width: '100%',
             height: '100%',
-            backgroundColor: '#F0F0F0'
+            backgroundColor: Colors.bgGray
           },
           this.props.containerStyle,
         ]}>
@@ -40,7 +39,7 @@ export default class ItemTech extends Component {
           <View style={{
             height: (Metrics.appWidth * 1.2 / 8.4) * 0.35, width: (Metrics.appWidth * 1.2 / 8.4) * 0.65
             , alignItems: 'center', justifyContent: 'center',
-            borderRightWidth: 0.5, borderRightColor: '#CECECE',
+            borderRightWidth: 0.5, borderRightColor: 'gray',
           }}>
             <TextCmp style={styl.textName}>
               {this.props.nameTechnician || 'tên'}
@@ -49,8 +48,8 @@ export default class ItemTech extends Component {
         </View>
         <View style={{
           height: (Metrics.appWidth * 1.2 / 8.4) * 0.14, width: '100%', alignItems: 'center', justifyContent: 'center',
-          borderTopWidth: 0.5, borderTopColor: 'orange', borderBottomWidth: 0.5, borderBottomColor: "#CECECE",
-          borderRightWidth: 0.5, borderRightColor: '#cecece',
+          borderTopWidth: 0.5, borderTopColor: 'orange', borderBottomWidth: 0.5, borderBottomColor: "gray",
+          borderRightWidth: 0.5, borderRightColor: 'gray',
         }}>
           <TextCmp style={styl.txtViewDetail}>
             View detail

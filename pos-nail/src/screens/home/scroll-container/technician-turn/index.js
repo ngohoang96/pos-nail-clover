@@ -21,7 +21,7 @@ import { normalize } from '../../../../themes/FontSize';
 import TechnicianRepander from '../../../../Components/InitScreen/TechnicianRepander';
 import { dataTechnician } from '../../../../Components/InitScreen/mockData';
 import { ToastLib } from '../../../../utils';
-import { TextCmp, Metrics } from '../../../../themes';
+import { TextCmp, Metrics, Colors } from '../../../../themes';
 export default class PaymentCoupon extends Component {
   constructor(props) {
     super(props);
@@ -69,13 +69,13 @@ const styles = StyleSheet.create({
   fx09: {
     flex: 1,
     // overflow: 'scroll',
-    backgroundColor: '#F0F0F0',
+    backgroundColor: Colors.bgGray,
 
     // marginBottom: themes.height / 12,
   },
   txtCenter: {
     alignItems: 'center',
-    color: '#383E44',
+    color: 'black',
     fontSize: normalize(5),
   },
   fx1: {

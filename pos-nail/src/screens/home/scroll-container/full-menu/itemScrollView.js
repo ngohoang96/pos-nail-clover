@@ -5,7 +5,7 @@ import {
 import Button2 from '../../../../Components/InitScreen/Button2';
 import themes from '../../../../config/themes';
 import { normalize } from '../../../../themes/FontSize';
-
+import { Colors } from '../../../../themes';
 export default class PaymentCoupon extends Component {
   constructor(props) {
     super(props);
@@ -20,14 +20,14 @@ export default class PaymentCoupon extends Component {
         Textstyle={styles.colorBlack}
         onPress={() => onPress(item)}
         style_button={{
-          width: '100%',
-          minHeight: ((((themes.width * 3) / 3.8) * 0.5) / 3.9) * 0.3,
+          width: 100,
+          minHeight: '100%',
           borderLeftColor: '#' + (Math.random().toString(16) + "000000").substring(2, 8),
           paddingVertical: 10,
-          backgroundColor: item.catname === mCatName ? '#CAE5E8' : '#fff'
+          backgroundColor: item.catname === mCatName ? '#CAE5E8' : Colors.bgGray
         }}
         lable={item.catname}
-        textstyles={{ fontWeight: '300' }}
+        textstyles={{ fontWeight: 'bold' }}
       >
 
       </Button2>

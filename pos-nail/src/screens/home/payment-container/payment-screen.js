@@ -21,7 +21,7 @@ import PaymentTotal from './payment-total/index';
 import PaymentSubtotal from './payment-subtotal/index';
 import PaymentListButton from './payment-listbutton/index';
 import PaymentTitle from './payment-title/index';
-import { TextCmp } from '../../../themes';
+import { TextCmp, Colors } from '../../../themes';
 import IonIcon from 'react-native-vector-icons/Ionicons'
 export default class PaymentScreen extends Component {
   shouldComponentUpdate({ dataService: newDataService }) {
@@ -57,12 +57,12 @@ export default class PaymentScreen extends Component {
             <IonIcon
               name="ios-menu"
               size={normalize(6)}
-              color="gray"
+              // color="gray"
               style={{}} />
           </TouchableOpacity>
         </View>
         <View style={{ flex: 4 }}>
-          <TextCmp style={{ marginLeft: 5 }}>
+          <TextCmp style={{ marginLeft: 5, fontWeight: 'bold' }}>
             Drag Nail Tech, Service, Ticket item here
           </TextCmp>
           <View
@@ -74,11 +74,11 @@ export default class PaymentScreen extends Component {
               justifyContent: 'space-between',
               marginVertical: 3,
             }}>
-            <TextCmp style={{ marginLeft: 5 }}>Service</TextCmp>
-            <TextCmp style={{ marginLeft: 5 }}>Nails Tech</TextCmp>
-            <TextCmp style={{ marginLeft: 5 }}>Qty</TextCmp>
-            <TextCmp style={{ marginLeft: 5 }}>Amount</TextCmp>
-            <TextCmp style={{ marginLeft: 5, marginRight: 5 }}>Tip</TextCmp>
+            <TextCmp style={{ marginLeft: 5, fontWeight: 'bold' }}>Service</TextCmp>
+            <TextCmp style={{ marginLeft: 5, fontWeight: 'bold' }}>Nails Tech</TextCmp>
+            <TextCmp style={{ marginLeft: 5, fontWeight: 'bold' }}>Qty</TextCmp>
+            <TextCmp style={{ marginLeft: 5, fontWeight: 'bold' }}>Amount</TextCmp>
+            <TextCmp style={{ marginLeft: 5, marginRight: 5, fontWeight: 'bold' }}>Tip</TextCmp>
           </View>
           <View
             style={{ width: '100%', height: '45%' }}
@@ -104,7 +104,7 @@ export default class PaymentScreen extends Component {
           <PaymentReward />
           <PaymentTotal />
           <View style={styles.fx1FlexStart}>
-            <TextCmp style={{ color: '#383E44', fontSize: normalize(4) }}>
+            <TextCmp style={{ color: '#383E44', fontSize: normalize(4), fontWeight: 'bold' }}>
               Fast Pay With Cash
             </TextCmp>
           </View>
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     // paddingLeft: 7,
     justifyContent: 'space-between',
     flexDirection: 'row',
-    backgroundColor: '#F0F0F0',
+    backgroundColor: Colors.bgGray,
     paddingHorizontal: 5,
     borderRightColor: 'gray',
     borderRightWidth: 1,

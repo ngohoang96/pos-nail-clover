@@ -14,7 +14,7 @@ import { normalize } from '../../../themes/FontSize';
 
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import { data } from '../../../Components/InitScreen/mockData';
-import { TextCmp, Metrics } from '../../../themes';
+import { TextCmp, Metrics, Colors } from '../../../themes';
 export default class ScrollBottom extends Component {
   constructor(props) {
     super(props);
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     padding: 5,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#F0F0F0',
+    backgroundColor: Colors.bgGray,
     width: Metrics.appWidth / 12 - 1,
     marginLeft: 1
     // paddingVertical: 5

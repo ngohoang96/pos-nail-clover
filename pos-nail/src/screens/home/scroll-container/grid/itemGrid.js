@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
-import { TextCmp } from '../../../../themes';
+import { TextCmp, Colors } from '../../../../themes';
 import { normalize } from '../../../../themes/FontSize';
 import themes from '../../../../config/themes';
-
 export default class ItemGrid extends Component {
   // shouldComponentUpdate({ item: newItem }) {
   //     return newItem.isSelected != this.props.item.isSelected
@@ -15,7 +14,7 @@ export default class ItemGrid extends Component {
         style={[
           styles.containerTouchItem,
           {
-            backgroundColor: item.isSelected ? 'pink' : '#F5F5F5',
+            backgroundColor: item.isSelected ? 'pink' : Colors.bgGray,
           },
         ]}
         onPress={() => onPress()}>
@@ -37,14 +36,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   containerTouchItem: {
-    width: '32%',
-    backgroundColor: '#F4F4F4',
+    width: '32.8%',
+    backgroundColor: Colors.bgGray,
     // borderRadius: 3,
     borderWidth: 1,
     borderColor: 'gray',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 3,
-    margin: 3,
+    padding: 1,
+    margin: 1,
   },
 });

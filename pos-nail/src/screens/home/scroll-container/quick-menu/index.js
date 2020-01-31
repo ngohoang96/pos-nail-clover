@@ -14,7 +14,7 @@ import { normalize } from '../../../../themes/FontSize';
 
 import Button2 from '../../../../Components/InitScreen/Button2';
 import { items1 } from '../../../../Components/InitScreen/mockData';
-import { TextCmp } from '../../../../themes';
+import { TextCmp, Colors } from '../../../../themes';
 export default class PaymentCoupon extends Component {
   constructor(props) {
     super(props);
@@ -40,7 +40,7 @@ export default class PaymentCoupon extends Component {
                     //   '#' +
                     //   (Math.random().toString(16) + '000000').substring(2, 8),
                     paddingVertical: 10,
-                    backgroundColor: '#f0f0f0'
+                    backgroundColor: Colors.bgGray
                   }}
                   lable={item.lable}
                   textstyles={{ fontWeight: '300' }}
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     height: themes.height / 20,
     justifyContent: 'center',
 
-    backgroundColor: '#F0F0F0',
+    backgroundColor: Colors.bgGray,
     borderRightWidth: 0.5, borderRightColor: 'gray',
     borderBottomColor: 'gray', borderBottomWidth: 0.5,
     alignItems: 'center',
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   },
   txt: {
     alignItems: 'center',
-    color: '#383E44',
+    color: 'black',
     fontSize: normalize(5),
   },
   containerScroll: {

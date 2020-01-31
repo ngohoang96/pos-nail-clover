@@ -13,7 +13,8 @@ import themes from '../../../../config/themes';
 import { normalize } from '../../../../themes/FontSize';
 
 import ItemCustomer from '../../../../Components/InitScreen/itemCustomer';
-import { TextCmp } from '../../../../themes';
+import { TextCmp, Colors } from '../../../../themes';
+
 export default class PaymentCoupon extends Component {
   constructor(props) {
     super(props);
@@ -35,19 +36,19 @@ export default class PaymentCoupon extends Component {
 }
 
 const styles = StyleSheet.create({
-  fx1PL2: { flex: 1, zIndex: -1, backgroundColor: '#f0f0f0' },
+  fx1PL2: { flex: 1, zIndex: -1, backgroundColor: Colors.bgGray },
   containerTxt: {
     height: themes.height / 20,
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F0F0F0',
+    backgroundColor: Colors.bgGray,
     borderRightWidth: 0.5, borderRightColor: 'gray',
     borderBottomColor: 'gray', borderBottomWidth: 0.5
   },
   txtLabel: {
     alignItems: 'center',
-    color: '#383E44',
+    color: 'black',
     fontSize: normalize(5),
   },
   fx1: { flex: 1 },
