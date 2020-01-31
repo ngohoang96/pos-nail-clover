@@ -18,7 +18,6 @@ export const Methods = {
 };
 
 export const setToken = (token) => {
-  Logg.info('token api', token);
   accessToken = 'bearer' + ' ' + token.accessToken;
 };
 export function getParsedDate(date) {
@@ -67,8 +66,8 @@ export function getAPILL(api, method = 'GET', body) {
             });
         })
         .catch((err) => {
-          // console.log('There is an error occurred while requesting api', err, api)
-          Logg.info('err 22', err);
+          console.log('There is an error occurred while requesting api', err, api)
+    
         });
     } catch (error) {
       let res = {

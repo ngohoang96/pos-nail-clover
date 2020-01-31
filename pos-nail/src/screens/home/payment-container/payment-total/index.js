@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   Text,
   StyleSheet,
@@ -8,8 +8,8 @@ import {
   TextInput,
 } from 'react-native';
 import themes from '../../../../config/themes';
-import { normalize } from '../../../../themes/FontSize';
-import { TextCmp } from '../../../../themes';
+import {normalize} from '../../../../themes/FontSize';
+import {TextCmp} from '../../../../themes';
 
 export default class PaymentCoupon extends Component {
   constructor(props) {
@@ -22,27 +22,41 @@ export default class PaymentCoupon extends Component {
           flexDirection: 'row',
           justifyContent: 'space-between',
           flex: 1,
+          maxHeight: 25,
         }}>
-        <View style={{ flex: 1 }}>
+        <View
+          style={{
+            justifyContent: 'flex-start',
+            alignItems: 'flex-start',
+            flex: 2,
+          }}>
           <TextCmp
             style={{
               alignItems: 'center',
               color: '#383E44',
+
+              fontSize: normalize(5),
               fontWeight: 'bold',
-              fontSize: normalize(3.5)
             }}>
             Total
           </TextCmp>
         </View>
-        <View style={{ flex: 0.3 }}>
+        <View style={{flex: 6}}></View>
+        <View
+          style={{
+            borderWidth: 0.5,
+            padding: 2,
+            flex: 2,
+            maxHeight: 15,
+            maxWidth: 30,
+          }}>
           <TextCmp
             style={{
-              color: 'black',
+              color: '#383E44',
               textAlign: 'right',
-              fontWeight: 'bold',
-              fontSize: normalize(3.5)
+              fontSize: normalize(3.5),
             }}>
-            $64.0
+            $0
           </TextCmp>
         </View>
       </View>

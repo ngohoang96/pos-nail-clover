@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   Text,
   StyleSheet,
@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 
 import themes from '../../../../config/themes';
-import { normalize } from '../../../../themes/FontSize';
-import { TextCmp } from '../../../../themes';
+import {normalize} from '../../../../themes/FontSize';
+import {TextCmp} from '../../../../themes';
 
 export default class PaymentTitle extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ export default class PaymentTitle extends Component {
   }
   render() {
     return (
-      <View style={{ flex: 0.65, backgroundColor: 'white', overflow: 'hidden' }}>
+      <View style={{flex: 0.65, backgroundColor: 'white', overflow: 'hidden'}}>
         <View
           style={{
             flex: 0.65,
@@ -32,25 +32,9 @@ export default class PaymentTitle extends Component {
               alignItems: 'center',
               color: '#383E44',
               fontWeight: 'bold',
-              fontSize: normalize(5)
+              fontSize: normalize(5),
             }}>
             Payment Cart
-          </TextCmp>
-        </View>
-        <View
-          style={{
-            flex: 0.6,
-            backgroundColor: '#F5F5F5',
-            borderBottomWidth: 1,
-            borderBottomColor: '#878787',
-            padding: 3,
-            justifyContent: 'center',
-          }}>
-          <TextCmp style={{
-            alignItems: 'center', color: '#383E44',
-            fontSize: normalize(4)
-          }}>
-            Service
           </TextCmp>
         </View>
       </View>

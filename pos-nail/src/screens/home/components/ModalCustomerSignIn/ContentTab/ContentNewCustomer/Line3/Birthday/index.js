@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
-import { styles_home } from '../../../../../../styles-home';
+import { styles_home } from '../../../../../../styles';
 import SelectMonth from './SelectMonth'
 import SelectDay from './SelectDay'
 export class index extends Component {

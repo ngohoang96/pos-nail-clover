@@ -6,14 +6,14 @@
 */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 import themes from '../../config/themes';
-import { normalize } from '../../themes/FontSize';
-import { TextCmp } from '../../themes';
+import {normalize} from '../../themes/FontSize';
+import {TextCmp} from '../../themes';
 const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
-    fontSize: normalize(3.5)
+    fontSize: normalize(3.5),
   },
   button: {
     backgroundColor: 'white',
@@ -21,11 +21,11 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     alignItems: 'center',
     justifyContent: 'center',
-    height: '85%',
+    height: 30,
   },
 });
 
-export function Button({ Textstyle, lable, bg, ...props }) {
+export function Button({Textstyle, lable, bg, ...props}) {
   return (
     <TouchableOpacity
       {...props}

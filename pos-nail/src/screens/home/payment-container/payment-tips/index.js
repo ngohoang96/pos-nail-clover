@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   Text,
   StyleSheet,
@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 
 import themes from '../../../../config/themes';
-import { normalize } from '../../../../themes/FontSize';
-import { TextCmp } from '../../../../themes';
+import {normalize} from '../../../../themes/FontSize';
+import {TextCmp} from '../../../../themes';
 
 export default class PaymentTips extends Component {
   constructor(props) {
@@ -21,68 +21,60 @@ export default class PaymentTips extends Component {
       <View
         style={{
           flexDirection: 'row',
-          justifyContent: 'space-around',
-          marginTop: 1,
+          justifyContent: 'space-between',
           flex: 1,
-          marginTop: 2,
+          alignItems: 'center',
+          maxHeight: 25,
         }}>
         <View
           style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            flex: 1,
-            paddingRight: 10,
+            justifyContent: 'flex-start',
+            alignItems: 'flex-start',
+            flex: 2,
           }}>
           <TextCmp
             style={{
               alignItems: 'center',
               color: '#383E44',
-              flex: 1,
-              fontSize: normalize(3.5)
+
+              fontSize: normalize(3),
+              fontWeight: '500',
             }}>
             Tips
           </TextCmp>
-
-          <TextInput
-            style={{
-              width: '100%',
-              borderWidth: 0.5,
-              borderColor: '#BEBEBE',
-              paddingVertical: -5,
-              flex: 1,
-              fontSize: normalize(3.5),
-              marginHorizontal: 2,
-            }}></TextInput>
-
-          <TextCmp
-            style={{
-              alignItems: 'center',
-              color: '#383E44',
-              flex: 1.2,
-              fontSize: normalize(3.5)
-            }}>
-            Ticket
-          </TextCmp>
-          <TextInput
-            style={{
-              width: '100%',
-              borderWidth: 0.5,
-              borderColor: '#BEBEBE',
-              paddingVertical: -5,
-              flex: 2,
-              fontSize: normalize(3.5),
-              marginLeft: 2,
-            }}></TextInput>
         </View>
-        <View style={{ flex: 0.3 }}>
+        <View
+          style={{
+            flex: 6,
+            flexDirection: 'row',
+            height: 15,
+            maxHeight: 15,
+            alignItems: 'center',
+          }}>
+          <View style={{width: '65%', borderWidth: 0.5, height: 15}} />
+          <View
+            style={{
+              width: '25%',
+              marginHorizontal: '5%',
+              height: 15,
+            }}
+          />
+        </View>
+        <View
+          style={{
+            borderWidth: 0.5,
+            padding: 2,
+            flex: 2,
+            maxHeight: 15,
+            maxWidth: 30,
+          }}>
           <TextCmp
             style={{
-              alignItems: 'center',
               color: '#383E44',
               textAlign: 'right',
-              fontSize: normalize(3.5)
+              fontSize: normalize(3.5),
             }}>
-            ($0.00)
+            $0
           </TextCmp>
         </View>
       </View>

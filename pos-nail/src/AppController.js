@@ -15,7 +15,7 @@ export const startHome = () => {
         children: [
           {
             component: {
-              id: ScreenIDs.Home + 'id',
+              id: ScreenIDs.Home,
               name: ScreenIDs.Home,
               options: {
                 topBar: {

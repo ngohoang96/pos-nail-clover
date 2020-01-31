@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { Text, StyleSheet, TouchableOpacity, View, Image } from 'react-native';
+import React, {Component} from 'react';
+import {Text, StyleSheet, TouchableOpacity, View, Image} from 'react-native';
 import themes from '../../config/themes';
-import { normalize } from '../../themes/FontSize';
-import { TextCmp } from '../../themes';
+import {normalize} from '../../themes/FontSize';
+import {TextCmp} from '../../themes';
 
 // import ViewOverflow from 'react-native-view-overflow';
 export default class ItemTech extends Component {
@@ -16,7 +16,7 @@ export default class ItemTech extends Component {
           {
             borderBottomColor: '#9BAB6A',
             borderBottomWidth: 0.5,
-            width: (themes.width * 0.9) / 5.6 - 5,
+            width: (themes.width * 0.9) / 5.6 + 3,
             height: ((themes.width * 0.9) / 5.6) * 0.65,
           },
           this.props.containerStyle,
@@ -39,7 +39,7 @@ export default class ItemTech extends Component {
                   'https://i.a4vn.com/2018/11/27/tong-hop-hinh-anh-cac-hotgirl-xinh-hot-nhat-nam-2018-7b8685.jpg',
               }}></Image>
           </View>
-          <View style={{ flex: 2, backgroundColor: '#F5F5F5' }}>
+          <View style={{flex: 2, backgroundColor: '#F5F5F5'}}>
             <View
               style={{
                 flex: 1,

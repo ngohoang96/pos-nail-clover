@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   Text,
   StyleSheet,
@@ -10,10 +10,10 @@ import {
 } from 'react-native';
 
 import themes from '../../../../config/themes';
-import { normalize } from '../../../../themes/FontSize';
+import {normalize} from '../../../../themes/FontSize';
 
 import ItemCustomer from '../../../../Components/InitScreen/itemCustomer';
-import { TextCmp } from '../../../../themes';
+import {TextCmp} from '../../../../themes';
 export default class PaymentCoupon extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +26,7 @@ export default class PaymentCoupon extends Component {
         </View>
         <ScrollView style={styles.fx1}>
           {[1, 2].map((item, index) => {
-            return <ItemCustomer key={index}></ItemCustomer>;
+            return <ItemCustomer key={index} />;
           })}
         </ScrollView>
       </View>
@@ -35,7 +35,7 @@ export default class PaymentCoupon extends Component {
 }
 
 const styles = StyleSheet.create({
-  fx1PL2: { flex: 1, paddingLeft: 2, zIndex: -1 },
+  fx1PL2: {flex: 1, zIndex: -1},
   containerTxt: {
     height: themes.height / 20,
     width: '100%',
@@ -47,5 +47,5 @@ const styles = StyleSheet.create({
     color: '#383E44',
     fontSize: normalize(5),
   },
-  fx1: { flex: 1 },
+  fx1: {flex: 1},
 });

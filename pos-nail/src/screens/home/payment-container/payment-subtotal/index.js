@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   Text,
   StyleSheet,
@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 
 import themes from '../../../../config/themes';
-import { normalize } from '../../../../themes/FontSize';
-import { TextCmp } from '../../../../themes';
+import {normalize} from '../../../../themes/FontSize';
+import {TextCmp} from '../../../../themes';
 
 export default class PaymentSubtotal extends Component {
   constructor(props) {
@@ -23,26 +23,43 @@ export default class PaymentSubtotal extends Component {
           flexDirection: 'row',
           justifyContent: 'space-between',
           flex: 1,
+          maxHeight: 25,
         }}>
-        <TextCmp
+        <View
           style={{
-            alignItems: 'center',
-            color: '#383E44',
-            flex: 1,
-            fontSize: normalize(3.5),
+            justifyContent: 'flex-start',
+            alignItems: 'flex-start',
+            flex: 2,
           }}>
-          Subtotal
-        </TextCmp>
+          <TextCmp
+            style={{
+              alignItems: 'center',
+              color: '#383E44',
 
-        <TextCmp
+              fontSize: normalize(4),
+              fontWeight: '400',
+            }}>
+            Subtotal
+          </TextCmp>
+        </View>
+        <View style={{flex: 6}}></View>
+        <View
           style={{
-            color: '#383E44',
-            flex: 0.3,
-            textAlign: 'right',
-            fontSize: normalize(3.5),
+            borderWidth: 0.5,
+            padding: 2,
+            flex: 2,
+            maxHeight: 15,
+            maxWidth: 30,
           }}>
-          ($0.00)
-        </TextCmp>
+          <TextCmp
+            style={{
+              color: '#383E44',
+              textAlign: 'right',
+              fontSize: normalize(3.5),
+            }}>
+            $0
+          </TextCmp>
+        </View>
       </View>
     );
   }

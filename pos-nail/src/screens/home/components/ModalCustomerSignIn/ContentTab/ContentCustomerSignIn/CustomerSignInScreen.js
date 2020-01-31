@@ -49,7 +49,6 @@ export default class index extends Component {
 
   }
   render() {
-    Logg.info('data props', this.props.DataTechnician);
     return (
       <View style={styles.container}>
         <Phone

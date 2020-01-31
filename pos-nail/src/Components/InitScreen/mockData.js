@@ -1,15 +1,19 @@
 export const data = [
+  {id: '12', icon: 'ios-aperture', lable: 'Employees'},
+  {id: '13', icon: 'ios-bicycle', lable: 'Nails Tech'},
+  {id: '14', icon: 'ios-bed', lable: 'Customer'},
+  {id: '15', icon: 'ios-card', lable: 'Payment'},
+  {id: '15', icon: 'ios-cafe', lable: 'BackOffice'},
   {id: '1', icon: 'ios-home', lable: 'Dashboard'},
-  {id: '12', icon: 'ios-aperture', lable: 'Employees Sign In'},
-  {id: '13', icon: 'ios-bicycle', lable: 'Nails Tech Sign In'},
-  {id: '14', icon: 'ios-bed', lable: 'Customer Sign In'},
-  {id: '15', icon: 'ios-boat', lable: 'Advance Payment'},
-  {id: '16', icon: 'ios-bug', lable: 'Manager System'},
-  {id: '17', icon: 'ios-bookmarks', lable: 'Appointment Book'},
+  {id: '1', icon: 'ios-gift', lable: 'Buy Giftcard'},
+  // {id: '16', icon: 'ios-bug', lable: 'Manager System'},
+  {id: '17', icon: 'ios-tv', lable: 'Appointment Book'},
+  {id: '11', icon: 'ios-bookmark', lable: 'Tips ADJS'},
+  {id: '19', icon: 'ios-book', lable: 'Closeout Report'},
   {id: '18', icon: 'ios-build', lable: 'Buy Supply'},
-  {id: '19', icon: 'ios-bookmark', lable: 'Closeout Report'},
-  {id: '10', icon: 'ios-bookmark', lable: 'Support Center'},
-  {id: '11', icon: 'ios-bookmark', lable: 'Tips Manager'},
+
+  {id: '10', icon: 'ios-card', lable: 'Connect Credit Card'},
+  
 ];
 export const items = [
   {code: '#4E48454E4845'},

@@ -8,10 +8,10 @@
 import {StatusBar} from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import IDs from './ScreenIDs';
-import HomeScreen from './home/initScreen';
+import Home from './home/Home';
 
 const screens = {
-  [IDs.Home]: HomeScreen,
+  [IDs.Home]: Home,
 };
 
 const registerScreens = (
