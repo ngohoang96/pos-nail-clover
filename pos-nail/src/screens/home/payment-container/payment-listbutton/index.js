@@ -1,14 +1,10 @@
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import React, {Component} from 'react';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 
-import { normalize } from '../../../../themes/FontSize';
+import {normalize} from '../../../../themes/FontSize';
 
-import { Button } from '../../../../Components/InitScreen/Button';
-import { TextCmp, Colors } from '../../../../themes';
+import {Button} from '../../../../Components/InitScreen/Button';
+import {TextCmp, Colors} from '../../../../themes';
 
 export default class PaymentListButton extends Component {
   constructor(props) {
@@ -16,22 +12,34 @@ export default class PaymentListButton extends Component {
   }
   render() {
     return (
-      <View style={{ marginTop: 3, flex: 4, backgroundColor: '#F0F0F0' }}>
+      <View style={{marginTop: 3, flex: 4, backgroundColor: '#F0F0F0'}}>
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'space-around',
             marginVertical: 3,
           }}>
-          <Button Textstyle={{ color: 'black' }} lable={'$64.00'} bg={'white'}
-            containerStyle={{ backgroundColor: Colors.bgGray }} />
-          <Button Textstyle={{ color: 'black' }} lable={'$65.00'} bg={'white'}
-            containerStyle={{ backgroundColor: Colors.bgGray }} />
-          <Button Textstyle={{ color: 'black' }} lable={'$70.00'} bg={'white'}
-            containerStyle={{ backgroundColor: Colors.bgGray }} />
           <Button
-            containerStyle={{ backgroundColor: Colors.bgGray }}
-            Textstyle={{ color: 'black' }}
+            Textstyle={{color: 'black'}}
+            lable={'$64.00'}
+            bg={'white'}
+            containerStyle={{backgroundColor: Colors.bgGray}}
+          />
+          <Button
+            Textstyle={{color: 'black'}}
+            lable={'$65.00'}
+            bg={'white'}
+            containerStyle={{backgroundColor: Colors.bgGray}}
+          />
+          <Button
+            Textstyle={{color: 'black'}}
+            lable={'$70.00'}
+            bg={'white'}
+            containerStyle={{backgroundColor: Colors.bgGray}}
+          />
+          <Button
+            containerStyle={{backgroundColor: Colors.bgGray}}
+            Textstyle={{color: 'black'}}
             lable={'Custom Price'}
             bg={'#EEEEEE'}
           />
@@ -44,22 +52,22 @@ export default class PaymentListButton extends Component {
             marginVertical: 3,
           }}>
           <Button
-            containerStyle={{ height: 40, backgroundColor: Colors.bgGray }}
-            Textstyle={{ color: 'black' }}
-            lable={'CANCEL'}
+            containerStyle={{height: 40, backgroundColor: Colors.bgGray}}
+            Textstyle={{color: 'black'}}
+            lable={'OTHER'}
             bg={'white'}></Button>
           <Button
-            containerStyle={{ height: 40, backgroundColor: Colors.bgGray }}
-            Textstyle={{ color: 'black' }}
+            containerStyle={{height: 40, backgroundColor: Colors.bgGray}}
+            Textstyle={{color: 'black'}}
             lable={'GIFT'}></Button>
           <Button
-            containerStyle={{ height: 40 }}
-            Textstyle={{ color: 'black' }}
+            containerStyle={{height: 40}}
+            Textstyle={{color: 'black'}}
             lable={'CHARGE'}
             bg={'red'}></Button>
           <Button
-            containerStyle={{ height: 40 }}
-            Textstyle={{ color: 'black' }}
+            containerStyle={{height: 40}}
+            Textstyle={{color: 'black'}}
             lable={'CASH'}
             bg={'green'}></Button>
         </View>
@@ -67,7 +75,8 @@ export default class PaymentListButton extends Component {
           style={{
             flexDirection: 'row',
             justifyContent: 'space-around',
-            borderTopColor: 'gray', backgroundColor: Colors.bgGray
+            borderTopColor: 'gray',
+            backgroundColor: Colors.bgGray,
           }}>
           <TouchableOpacity
             style={{
@@ -77,13 +86,14 @@ export default class PaymentListButton extends Component {
               borderColor: 'gray',
               borderRadius: 1,
               alignItems: 'center',
-              justifyContent: 'center', backgroundColor: Colors.bgGray
+              justifyContent: 'center',
+              backgroundColor: Colors.bgGray,
             }}>
             <TextCmp
               style={{
                 color: '#383E44',
                 fontSize: normalize(3.5),
-                fontWeight: 'bold'
+                fontWeight: 'bold',
               }}>
               Cancel Service
             </TextCmp>
@@ -96,13 +106,14 @@ export default class PaymentListButton extends Component {
               borderColor: 'gray',
               borderRadius: 1,
               alignItems: 'center',
-              justifyContent: 'center', backgroundColor: Colors.bgGray
+              justifyContent: 'center',
+              backgroundColor: Colors.bgGray,
             }}>
             <TextCmp
               style={{
                 color: '#383E44',
                 fontSize: normalize(3.5),
-                fontWeight: 'bold'
+                fontWeight: 'bold',
               }}>
               Service Now
             </TextCmp>

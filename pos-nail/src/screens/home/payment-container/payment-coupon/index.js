@@ -27,7 +27,7 @@ export default class PaymentCoupon extends Component {
           <View style={styles.coupon}></View>
         </View>
         <View style={styles.wrapper_cash}>
-          <TextCmp style={styles.txt_cash}>$0</TextCmp>
+          <TextCmp style={styles.txt_cash}></TextCmp>
         </View>
       </View>
     );

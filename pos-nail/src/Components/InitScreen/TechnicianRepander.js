@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   StyleSheet,
   View,
@@ -9,12 +9,13 @@ import {
   Dimensions,
 } from 'react-native';
 
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
-import { selectors, actions } from '../../stores';
+import {selectors, actions} from '../../stores';
 import themes from '../../config/themes';
 import ItemTech from '../../Components/InitScreen/itemTech';
-import { Metrics } from '../../themes';
+import {Metrics} from '../../themes';
+import {Logg} from '../../utils';
 class TechnicianRepander extends Component {
   constructor(props) {
     super(props);
@@ -35,15 +36,16 @@ class TechnicianRepander extends Component {
           dx: this.state.pan.x,
           dy: this.state.pan.y,
         },
-
       ]),
       onPanResponderRelease: (e, gesture) => {
         if (this.isDropZone(gesture)) {
           this.setState({
             showDraggable: false,
           });
+          Logg.info('isDropZone hahaha');
+          // this.props.update(this.props.id, this.props.name);
         } else {
-          Animated.spring(this.state.pan, { toValue: { x: 0, y: 0 } }).start();
+          Animated.spring(this.state.pan, {toValue: {x: 0, y: 0}}).start();
         }
       },
     });
@@ -53,22 +55,33 @@ class TechnicianRepander extends Component {
   // }
 
   isDropZone(gesture) {
-    var dz = this.state.dropZoneValues;
-    console.log(
-      'gesture ' + gesture.moveX + '   ' + (themes.width * 0.2) / 5.6,
-    );
-    // this.setState({
-    //     posX : gesture.moveX ,
-    //     posY : gesture.moveY
-    // })
+    var dz = this.props.nailTechDropZone;
+    // Logg.info('gesture ' + gesture.moveX);
+    // Logg.info('gesture ' + gesture.moveY);
+    // // this.setState({
+    // //     posX : gesture.moveX ,
+    // //     posY : gesture.moveY
+    // // })
 
-    if (gesture.moveX < (themes.width * 0.2) / 5.6 && gesture.moveX != 0) {
-      console.log('add Success  ' + this.props.addSuccess);
-      // if (this.props.addSuccess)
-      //   SnackBar.showSuccess('Thêm service thành công');
+    // if (gesture.moveX < (themes.width * 0.2) / 5.6 && gesture.moveX != 0) {
+    //   console.log('add Success  ' + this.props.addSuccess);
+    //   // if (this.props.addSuccess)
+    //   //   SnackBar.showSuccess('Thêm service thành công');
 
-      this.props.update(this.props.id, this.props.name);
-      // alert('posX ' + gesture.moveX + '  ' + 'ok ' + this.props.name);
+    //
+    //   // alert('posX ' + gesture.moveX + '  ' + 'ok ' + this.props.name);
+    // }
+    if (
+      gesture.moveY > (themes.height * 0.5) / 10 &&
+      gesture.moveY < ((themes.height * 4.5) / 10) * 0.45
+    ) {
+      alert(1);
+    }
+    if (
+      gesture.moveY > ((themes.height * 4.5) / 10) * 0.5 &&
+      gesture.moveY < (themes.height * 4.5) / 10
+    ) {
+      alert(2);
     }
 
     return gesture.moveY > dz.y && gesture.moveY < dz.y + dz.height;
@@ -84,8 +97,10 @@ class TechnicianRepander extends Component {
     return (
       <View
         style={{
-          width: Metrics.appWidth * 1.2 / 8.4,
-          height: (Metrics.appWidth * 1.2 / 8.4) * 0.35 + (Metrics.appWidth * 1.2 / 8.4) * 0.15,
+          width: (Metrics.appWidth * 1.2) / 8.4,
+          height:
+            ((Metrics.appWidth * 1.2) / 8.4) * 0.35 +
+            ((Metrics.appWidth * 1.2) / 8.4) * 0.15,
           backgroundColor: 'white',
         }}
         onLayout={this.setDropZoneValues.bind(this)}>
@@ -107,10 +122,10 @@ class TechnicianRepander extends Component {
 const mapDispatchToProps = dispatch => {
   const update = (id, name) => {
     let data = [];
-    data.push({ id, name });
+    data.push({id, name});
     dispatch(actions.test.updateDataService(data));
   };
-  return { update };
+  return {update};
 };
 
 const mapStateToProps = state => ({

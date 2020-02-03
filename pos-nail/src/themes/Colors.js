@@ -1,4 +1,4 @@
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 /**
  * @author: thai.nguyen
@@ -6,7 +6,7 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
  *
  *
  */
-const StatusBarTextColors = { dark: 'dark', light: 'light' };
+const StatusBarTextColors = {dark: 'dark', light: 'light'};
 
 export default {
   statusBarTextColors: StatusBarTextColors,
@@ -56,5 +56,6 @@ export default {
   darkBlue: '#1A55A4',
   blue: '#189FBF',
   orange: '#F48210',
-  bgGray: '#113A7A'
+  bgGray: '#E5E5E5',
+  orange: '#FD7E24',
 };

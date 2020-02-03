@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   Text,
   StyleSheet,
@@ -10,11 +10,11 @@ import {
 } from 'react-native';
 
 import themes from '../../../config/themes';
-import { normalize } from '../../../themes/FontSize';
+import {normalize} from '../../../themes/FontSize';
 
 import IonIcon from 'react-native-vector-icons/Ionicons';
-import { data } from '../../../Components/InitScreen/mockData';
-import { TextCmp, Metrics, Colors } from '../../../themes';
+import {data} from '../../../Components/InitScreen/mockData';
+import {TextCmp, Metrics, Colors} from '../../../themes';
 export default class ScrollBottom extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +34,13 @@ export default class ScrollBottom extends Component {
                 onPress={() => this.props.onPressItem(item.lable)}
                 key={item.id}
                 activeOpacity={0.7}
-                style={styles.button}>
+                style={[
+                  styles.button,
+                  {
+                    backgroundColor:
+                      item.lable === 'PAYMENT' ? Colors.orange : Colors.bgGray,
+                  },
+                ]}>
                 {/* <IonIcon
                   name={item.icon}
                   color={'#444444'}
@@ -53,7 +59,7 @@ export default class ScrollBottom extends Component {
 }
 
 const styles = StyleSheet.create({
-  header: { height: 20, paddingLeft: 15, backgroundColor: '#E6E6E6' },
+  header: {height: 20, paddingLeft: 15, backgroundColor: '#E6E6E6'},
   button: {
     height: '100%',
     // margin: 5,
@@ -64,7 +70,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: Colors.bgGray,
     width: Metrics.appWidth / 12 - 1,
-    marginLeft: 1
+    marginLeft: 1,
     // paddingVertical: 5
   },
   wrapper_list_button: {
@@ -73,13 +79,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
   },
-  center: { alignItems: 'center', justifyContent: 'center' },
+  center: {alignItems: 'center', justifyContent: 'center'},
   txtLabel: {
     color: 'black',
     textAlign: 'center',
     paddingHorizontal: 1,
     fontSize: normalize(4),
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   container: {
     borderTopWidth: 1,
@@ -91,6 +97,5 @@ const styles = StyleSheet.create({
     left: 0,
     height: Metrics.appHeight / 15,
     // paddingVertical: 2,
-
   },
 });

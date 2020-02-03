@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   Text,
   StyleSheet,
@@ -14,14 +14,14 @@ import {
   TouchableHighlight,
   Alert,
 } from 'react-native';
-import { iconsScroll } from '../../../../assets';
+import {iconsScroll} from '../../../../assets';
 import themes from '../../../../config/themes';
-import { normalize } from '../../../../themes/FontSize';
+import {normalize} from '../../../../themes/FontSize';
 
 import TechnicianRepander from '../../../../Components/InitScreen/TechnicianRepander';
-import { dataTechnician } from '../../../../Components/InitScreen/mockData';
-import { ToastLib } from '../../../../utils';
-import { TextCmp, Metrics, Colors } from '../../../../themes';
+import {dataTechnician} from '../../../../Components/InitScreen/mockData';
+import {ToastLib} from '../../../../utils';
+import {TextCmp, Metrics, Colors} from '../../../../themes';
 export default class PaymentCoupon extends Component {
   constructor(props) {
     super(props);
@@ -35,7 +35,8 @@ export default class PaymentCoupon extends Component {
   }
 
   render() {
-    const { indexMap, indexMapEnd, isAdd, isReduction } = this.state;
+    const {indexMap, indexMapEnd, isAdd, isReduction} = this.state;
+    const {nailTechDropZone} = this.props;
     return (
       <View style={styles.fx09}>
         <View style={styles.container}>
@@ -47,7 +48,9 @@ export default class PaymentCoupon extends Component {
               <TechnicianRepander
                 key={item.id + ''}
                 id={item.id}
-                name={item.name}></TechnicianRepander>
+                name={item.name}
+                nailTechDropZone={nailTechDropZone}
+              />
             );
           })}
         </View>
@@ -63,8 +66,10 @@ const styles = StyleSheet.create({
     // paddingRight: 3,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRightWidth: 0.5, borderRightColor: 'gray',
-    borderBottomColor: 'gray', borderBottomWidth: 0.5
+    borderRightWidth: 0.5,
+    borderRightColor: 'gray',
+    borderBottomColor: 'gray',
+    borderBottomWidth: 0.5,
   },
   fx09: {
     flex: 1,
@@ -79,8 +84,10 @@ const styles = StyleSheet.create({
     fontSize: normalize(5),
   },
   fx1: {
-    flex: 1, backgroundColor: 'orange',
-    borderRightWidth: 0.5, borderRightColor: '#CECECE',
+    flex: 1,
+    backgroundColor: Colors.orange,
+    borderRightWidth: 0.5,
+    borderRightColor: '#CECECE',
   },
   tmp: {
     height: Metrics.appHeight / 20,
