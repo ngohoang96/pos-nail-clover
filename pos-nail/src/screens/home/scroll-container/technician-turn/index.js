@@ -19,10 +19,9 @@ import themes from '../../../../config/themes';
 import {normalize} from '../../../../themes/FontSize';
 
 import TechnicianRepander from '../../../../Components/InitScreen/TechnicianRepander';
-import {dataTechnician} from '../../../../Components/InitScreen/mockData';
-import {ToastLib} from '../../../../utils';
+import {ToastLib, Logg} from '../../../../utils';
 import {TextCmp, Metrics, Colors} from '../../../../themes';
-export default class PaymentCoupon extends Component {
+export default class TechnicianTurn extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,14 +35,14 @@ export default class PaymentCoupon extends Component {
 
   render() {
     const {indexMap, indexMapEnd, isAdd, isReduction} = this.state;
-    const {nailTechDropZone} = this.props;
+    const {nailTechDropZone, listTechnician} = this.props;
     return (
       <View style={styles.fx09}>
         <View style={styles.container}>
           <TextCmp style={styles.txtCenter}>Technician Turn</TextCmp>
         </View>
         <View style={styles.fx1}>
-          {dataTechnician.map(item => {
+          {listTechnician.map(item => {
             return (
               <TechnicianRepander
                 key={item.id + ''}

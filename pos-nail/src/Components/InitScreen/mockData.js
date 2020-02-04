@@ -34,16 +34,16 @@ export const items = [
   {code: '#3C7ECD'},
   {code: '#4E4845'},
 ];
-export const items1 = [
-  {code: '#2DFFFE', lable: 'MainCure'},
-  {code: '#0303FF', lable: 'Pedicure'},
-  {code: '#FF67B3', lable: 'Full set'},
-  {code: '#6394EB', lable: 'Refill'},
-  {code: '#008000', lable: 'Wax'},
-  {code: '#2DFFFE', lable: 'Facial'},
-  {code: '#6394EB', lable: 'Eyelashes'},
+export const QUICK_MENU = [
+  {code: '#2DFFFE', service: 'MainCure'},
+  {code: '#0303FF', service: 'Pedicure'},
+  {code: '#FF67B3', service: 'Full set'},
+  {code: '#6394EB', service: 'Refill'},
+  {code: '#008000', service: 'Wax'},
+  {code: '#2DFFFE', service: 'Facial'},
+  {code: '#6394EB', service: 'Eyelashes'},
   // { code: '#2DFFFE', lable: 'Manicure and Pedicure' },
-  {code: '#FF67B3', lable: 'order'},
+  {code: '#FF67B3', service: 'Other'},
 ];
 export const items2 = [
   {code: '#6394EB', lable: 'MAINCURE', backgroundColor: '#DFF0D8'},
@@ -65,8 +65,8 @@ export const dataTechnician = [
   {id: '1', name: 'Nguyen Thi 1'},
   {id: '2', name: 'Nguyen Thi 2'},
   {id: '3', name: 'Nguyen Van 3'},
-  {id: '4', name: 'Nguyen Van 4'},
-  {id: '5', name: 'Nguyen Van 5'},
+  // {id: '4', name: 'Nguyen Van 4'},
+  // {id: '5', name: 'Nguyen Van 5'},
 
   // { id: '6', name: 'Nguyen Van 6' },
   // { id: '7', name: 'Nguyen Van 7' },

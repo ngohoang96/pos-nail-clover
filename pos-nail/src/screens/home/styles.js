@@ -128,6 +128,24 @@ const styles = StyleSheet.create({
   //   resizeMode: 'contain',
   //   position: 'absolute',
   // },
+  icon: {
+    width: 15,
+    height: 15,
+  },
+  wrapper_scrollbtn: {
+    width: 70,
+    height: '100%',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  btn_arrow: {
+    width: 35,
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.bgGray,
+  },
 });
 
 export {styles};

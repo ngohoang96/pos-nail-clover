@@ -15,7 +15,7 @@ import {selectors, actions} from '../../stores';
 import themes from '../../config/themes';
 import ItemTech from '../../Components/InitScreen/itemTech';
 import {Metrics} from '../../themes';
-import {Logg} from '../../utils';
+import {Logg, ToastLib} from '../../utils';
 class TechnicianRepander extends Component {
   constructor(props) {
     super(props);
@@ -39,11 +39,8 @@ class TechnicianRepander extends Component {
       ]),
       onPanResponderRelease: (e, gesture) => {
         if (this.isDropZone(gesture)) {
-          this.setState({
-            showDraggable: false,
-          });
-          Logg.info('isDropZone hahaha');
-          // this.props.update(this.props.id, this.props.name);
+          this.props.update(this.props.id, this.props.name);
+          Animated.spring(this.state.pan, {toValue: {x: 0, y: 0}}).start();
         } else {
           Animated.spring(this.state.pan, {toValue: {x: 0, y: 0}}).start();
         }
@@ -54,6 +51,13 @@ class TechnicianRepander extends Component {
   //   return newDataService !== this.props.dataService
   // }
 
+  selectTechnician = () => {
+    if (this.props.listTechnicianSelected.length > 0) {
+      ToastLib.show('Please select services!');
+    } else {
+      this.props.update(this.props.id, this.props.name);
+    }
+  };
   isDropZone(gesture) {
     var dz = this.props.nailTechDropZone;
     // Logg.info('gesture ' + gesture.moveX);
@@ -75,16 +79,17 @@ class TechnicianRepander extends Component {
       gesture.moveY > (themes.height * 0.5) / 10 &&
       gesture.moveY < ((themes.height * 4.5) / 10) * 0.45
     ) {
-      alert(1);
+      return true;
     }
     if (
       gesture.moveY > ((themes.height * 4.5) / 10) * 0.5 &&
       gesture.moveY < (themes.height * 4.5) / 10
     ) {
-      alert(2);
+      // alert(2);
     }
+    return false;
 
-    return gesture.moveY > dz.y && gesture.moveY < dz.y + dz.height;
+    // return gesture.moveY > dz.y && gesture.moveY < dz.y + dz.height;
   }
 
   setDropZoneValues(event) {
@@ -113,7 +118,10 @@ class TechnicianRepander extends Component {
               height: '100%',
             },
           ]}>
-          <ItemTech nameTechnician={this.props.name} />
+          <ItemTech
+            nameTechnician={this.props.name}
+            selectTechnician={this.selectTechnician}
+          />
         </Animated.View>
       </View>
     );
@@ -121,16 +129,15 @@ class TechnicianRepander extends Component {
 }
 const mapDispatchToProps = dispatch => {
   const update = (id, name) => {
-    let data = [];
-    data.push({id, name});
-    dispatch(actions.test.updateDataService(data));
+    let data = {id, name};
+    dispatch(actions.test.updateListTechnicianSelected(data));
   };
   return {update};
 };
 
 const mapStateToProps = state => ({
   dataService: selectors.test.getDataService(state),
-  // addSuccess: selectors.test.addSuccess(state),
+  listTechnicianSelected: selectors.test.selectListTechnicianSelected(state),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TechnicianRepander);

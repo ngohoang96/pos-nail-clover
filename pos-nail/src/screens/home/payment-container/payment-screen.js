@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
+  Image,
 } from 'react-native';
 
 import themes from '../../../config/themes';
@@ -23,21 +24,15 @@ import PaymentListButton from './payment-listbutton/index';
 import PaymentTitle from './payment-title/index';
 import {TextCmp, Colors} from '../../../themes';
 import IonIcon from 'react-native-vector-icons/Ionicons';
+import {homeIcon} from '../../../assets';
 export default class PaymentScreen extends Component {
-  shouldComponentUpdate({dataService: newDataService}) {
-    if (newDataService !== this.props.dataService) return true;
-  }
   constructor(props) {
     super(props);
     this.state = {
       // _dataService: dataService,
     };
   }
-  componentDidMount() {
-    // console.log('get data service ---- ' + this.props.dataService);
-    // this.props.updateDataService
-    // this.props.getHistory();
-  }
+
   render() {
     const {update, setDropZoneNailTech} = this.props;
 
@@ -73,7 +68,23 @@ export default class PaymentScreen extends Component {
           <TextCmp style={{marginLeft: 5, fontWeight: 'bold'}}>
             Drag Nail Tech, Service, Ticket item here
           </TextCmp>
-          <View style={{width: '100%', height: '45%'}} />
+          <View style={{width: '100%', height: '45%'}}>
+            {this.props.listTechnicianSelected.map((item, index) => {
+              return (
+                <View style={styles.wrappername} key={index}>
+                  <TextCmp>Nail Tech: {item.name}</TextCmp>
+                  <TouchableOpacity
+                    style={styles.btn_remove}
+                    onPress={() => this.props.unselectedTechnician(item)}>
+                    <Image
+                      source={homeIcon.delete}
+                      style={{width: 15, height: 15}}
+                    />
+                  </TouchableOpacity>
+                </View>
+              );
+            })}
+          </View>
           <View
             style={{
               flexDirection: 'row',
@@ -151,5 +162,24 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderBottomColor: 'gray',
     borderBottomWidth: 1,
+  },
+  wrappername: {
+    backgroundColor: '#EEE7AD',
+    width: '98%',
+    height: 30,
+    padding: 3,
+    margin: 3,
+    justifyContent: 'center',
+  },
+  btn_remove: {
+    position: 'absolute',
+    top: 0,
+    left: '70%',
+    right: 0,
+    bottom: 0,
+    alignItems: 'center',
+    height: '100%',
+    width: 30,
+    justifyContent: 'center',
   },
 });

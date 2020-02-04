@@ -86,6 +86,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#fff',
   },
+  wrapper_name: {
+    backgroundColor: 'red',
+    width: '100%',
+    height: 30,
+    padding: 3,
+    margin: 3,
+  },
 });
 
 export {styles};

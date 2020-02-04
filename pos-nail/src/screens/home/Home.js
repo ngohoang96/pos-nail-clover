@@ -15,6 +15,8 @@ import {
   Modal,
   Alert,
   KeyboardAvoidingView,
+  TouchableOpacity,
+  Image,
 } from 'react-native';
 import {styles} from './styles';
 import PaymentContainer from './payment-container';
@@ -42,6 +44,7 @@ import moment from 'moment';
 import {Logg} from '../../utils';
 import {actions, selectors} from '../../stores';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {homeIcon} from '../../assets';
 
 class Home extends Component {
   constructor(props) {
@@ -214,19 +217,22 @@ class Home extends Component {
           </KeyboardAvoidingView>
         </View>
         <View style={{flex: 1.2}}>
-          <TechnicianTurn nailTechDropZone={this.state.nailTechDropZone} />
+          <TechnicianTurn
+            nailTechDropZone={this.state.nailTechDropZone}
+            listTechnician={this.props.listTechnician}
+          />
         </View>
         <View style={{flex: 1.2}}>
           <Customer />
         </View>
 
         <View style={{flex: 1, flexDirection: 'row'}}>
-          <QuickMenu />
+          <QuickMenu/>
         </View>
         <View style={{flex: 3}}>
           <View
             style={{
-              height: Metrics.appHeight / 20,
+              height: 40,
               width: '100%',
               backgroundColor: '#f0f0f0',
               flexDirection: 'row',
@@ -235,6 +241,14 @@ class Home extends Component {
               <TextCmp style={styles.txt}>ALL</TextCmp>
             </View>
             <FullMenu listserveceSearch={listserveceSearch || []} />
+            <View style={styles.wrapper_scrollbtn}>
+              <TouchableOpacity style={styles.btn_arrow}>
+                <Image source={homeIcon.left_arrow} style={styles.icon} />
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.btn_arrow}>
+                <Image source={homeIcon.right_arrow} style={styles.icon} />
+              </TouchableOpacity>
+            </View>
           </View>
           <View
             style={{
@@ -242,7 +256,7 @@ class Home extends Component {
               width: '100%',
               paddingRight: 3,
             }}>
-            <Grid></Grid>
+            <Grid/>
           </View>
         </View>
 
@@ -301,6 +315,7 @@ class Home extends Component {
 }
 const mapStateToProps = state => ({
   dataListSearch: selectors.test.getlistDataServices(state),
+  listTechnician: state.test.listTechnician,
 });
 // export default InitScreen;
 export default connect(mapStateToProps, null)(Home);

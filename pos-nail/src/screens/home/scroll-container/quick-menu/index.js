@@ -13,12 +13,19 @@ import themes from '../../../../config/themes';
 import {normalize} from '../../../../themes/FontSize';
 
 import Button2 from '../../../../Components/InitScreen/Button2';
-import {items1} from '../../../../Components/InitScreen/mockData';
+import {QUICK_MENU} from '../../../../Components/InitScreen/mockData';
 import {TextCmp, Colors} from '../../../../themes';
-export default class PaymentCoupon extends Component {
+import {connect} from 'react-redux';
+import {actions} from '../../../../stores';
+import QuickMenuItem from '../../../../Components/InitScreen/QuickMenuItem';
+class QuickMenu extends Component {
   constructor(props) {
     super(props);
   }
+
+  selectService = service => {
+    this.props.selectService(service);
+  };
   render() {
     return (
       <View style={styles.fx05MGH10}>
@@ -28,21 +35,19 @@ export default class PaymentCoupon extends Component {
 
         <View style={styles.containerScroll}>
           <ScrollView style={styles.width100}>
-            {items1.map((item, index) => {
+            {QUICK_MENU.map((item, index) => {
               return (
-                <Button2
+                <QuickMenuItem
                   key={index}
                   style_button={{
                     width: '100%',
-                    minHeight: ((((themes.width * 3) / 3.8) * 0.5) / 3.9) * 0.3,
-                    // borderLeftColor:
-                    //   '#' +
-                    //   (Math.random().toString(16) + '000000').substring(2, 8),
+                    height: 40,
                     paddingVertical: 10,
                     backgroundColor: Colors.bgGray,
                   }}
-                  lable={item.lable}
+                  lable={item.service}
                   textstyles={{fontWeight: '300'}}
+                  onPress={() => this.selectService(item)}
                 />
               );
             })}
@@ -52,6 +57,16 @@ export default class PaymentCoupon extends Component {
     );
   }
 }
+const mapStateToProps = state => ({});
+const mapDispatchToProps = dispatch => {
+  const selectService = service => {
+    dispatch(actions.test.updateServiceTechnician(service));
+  };
+  return {
+    selectService,
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(QuickMenu);
 
 const styles = StyleSheet.create({
   fx05MGH10: {
