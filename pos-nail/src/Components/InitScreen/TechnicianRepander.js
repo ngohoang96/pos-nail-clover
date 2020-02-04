@@ -7,6 +7,8 @@ import {
   Animated,
   Easing,
   Dimensions,
+  TouchableOpacity,
+  Platform
 } from 'react-native';
 
 import {connect} from 'react-redux';
@@ -29,6 +31,16 @@ class TechnicianRepander extends Component {
     };
 
     this.panResponder = PanResponder.create({
+      onMoveShouldSetPanResponder: (e, gestureState) => {
+        if (
+          Platform.OS == 'android'
+          && (gestureState.dx < 2 && gestureState.dx > -2)
+          && (gestureState.dy < 2 && gestureState.dy > -2)
+        ) {
+          return false;
+        }
+        return true;
+      },
       onStartShouldSetPanResponder: () => true,
       onPanResponderMove: Animated.event([
         null,
@@ -60,21 +72,7 @@ class TechnicianRepander extends Component {
   };
   isDropZone(gesture) {
     var dz = this.props.nailTechDropZone;
-    // Logg.info('gesture ' + gesture.moveX);
-    // Logg.info('gesture ' + gesture.moveY);
-    // // this.setState({
-    // //     posX : gesture.moveX ,
-    // //     posY : gesture.moveY
-    // // })
-
-    // if (gesture.moveX < (themes.width * 0.2) / 5.6 && gesture.moveX != 0) {
-    //   console.log('add Success  ' + this.props.addSuccess);
-    //   // if (this.props.addSuccess)
-    //   //   SnackBar.showSuccess('Thêm service thành công');
-
-    //
-    //   // alert('posX ' + gesture.moveX + '  ' + 'ok ' + this.props.name);
-    // }
+    
     if (
       gesture.moveY > (themes.height * 0.5) / 10 &&
       gesture.moveY < ((themes.height * 4.5) / 10) * 0.45
@@ -114,14 +112,15 @@ class TechnicianRepander extends Component {
           style={[
             this.state.pan.getLayout(),
             {
-              width: '100%',
-              height: '100%',
+              width: (Metrics.appWidth * 1.2) / 8.4,
+              height:
+                ((Metrics.appWidth * 1.2) / 8.4) * 0.35 +
+                ((Metrics.appWidth * 1.2) / 8.4) * 0.15,
             },
           ]}>
-          <ItemTech
-            nameTechnician={this.props.name}
-            selectTechnician={this.selectTechnician}
-          />
+          <TouchableOpacity onPress={() => this.selectTechnician()}>
+            <ItemTech nameTechnician={this.props.name} />
+          </TouchableOpacity>
         </Animated.View>
       </View>
     );
