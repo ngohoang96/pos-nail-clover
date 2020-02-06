@@ -20,6 +20,7 @@ const mapStateToProps = state => ({
   dataService: selectors.home.getDataService(state),
   listTechnicianSelected: selectors.home.selectListTechnicianSelected(state),
   listServices: selectors.home.selectListServices(state),
+  paymentBill: selectors.home.selectPaymentBill(state),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Payment);

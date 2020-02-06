@@ -8,49 +8,52 @@ import {Logg} from '../../../../../utils';
 import Input from '../../../../../common-components/Input';
 
 class ListServicesItem extends Component {
-  shouldComponentUpdate({service: newService}) {
-    return newService !== this.props.service;
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      quantity: '',
-      amount: '',
-      tip: '',
-    };
+  shouldComponentUpdate({
+    item: newItem,
+    quantity: newQuantity,
+    amount: newAmount,
+    tip: newTip,
+  }) {
+    return (
+      newItem !== this.props.item ||
+      newQuantity !== this.props.quantity ||
+      newAmount !== this.props.amount ||
+      newTip !== this.props.tip
+    );
   }
 
   updateQuantity = quantity => {
     this.props.updateQuantity(quantity);
-    this.setState({quantity});
   };
 
   updateAmount = amount => {
     this.props.updateAmount(amount);
   };
 
+  updateTip = tip => {
+    this.props.updateTip(tip);
+  };
+
   render() {
-    const {service} = this.props;
-    Logg.info('item service xx', service.quantity);
+    const {quantity, item, amount, tip} = this.props;
     return (
       <View style={styles.container}>
         <View style={styles.wrapper_service}>
-          <TextCmp>{service.service}</TextCmp>
+          <TextCmp>{item.service}</TextCmp>
         </View>
         <View style={styles.wrapper_technician}>
-          <TextCmp>{service.name}</TextCmp>
+          <TextCmp>{item.name}</TextCmp>
         </View>
-        <Input value={service.quantity} onChangeText={this.updateQuantity} />
-        <Input value={service.amount} onChangeText={this.props.updateAmount} />
-        <Input value={service.tip} />
+        <Input value={quantity} onChangeText={this.updateQuantity} />
+        <Input value={amount} onChangeText={this.updateAmount} />
+        <Input value={tip} onChangeText={this.updateTip} />
       </View>
     );
   }
 }
 
 const mapStateToProps = (state, {index}) => ({
-  service: selectors.home.selectListServicesItem(state, index),
+  item: selectors.home.selectListServicesItem(state, index),
 });
 
 const mapDispatchToProps = (dispatch, {index}) => {
@@ -62,9 +65,14 @@ const mapDispatchToProps = (dispatch, {index}) => {
     let data = {index, amount};
     dispatch(actions.home.updateAmountService(data));
   };
+  const updateTip = tip => {
+    let data = {index, tip};
+    dispatch(actions.home.updateTipService(data));
+  };
   return {
     updateQuantity,
     updateAmount,
+    updateTip,
   };
 };
 

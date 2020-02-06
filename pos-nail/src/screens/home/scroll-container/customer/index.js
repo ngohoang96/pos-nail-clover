@@ -12,29 +12,39 @@ import {
 import themes from '../../../../config/themes';
 import {normalize} from '../../../../themes/FontSize';
 
-import ItemCustomer from '../../../../Components/InitScreen/itemCustomer';
+import ItemCustomer from '../../../../Components/InitScreen/CustomerItem';
 import {TextCmp, Colors} from '../../../../themes';
+import {selectors} from '../../../../stores';
+import {connect} from 'react-redux';
+import CustomerItem from '../../../../Components/InitScreen/CustomerItem';
 
-export default class PaymentCoupon extends Component {
+class Customer extends Component {
   constructor(props) {
     super(props);
   }
   render() {
+    const {listCutomers} = this.props;
     return (
       <View style={styles.fx1PL2}>
         <View style={styles.containerTxt}>
           <TextCmp style={styles.txtLabel}>Customer</TextCmp>
         </View>
         <ScrollView style={styles.fx1}>
-          {[1, 2, 3, 4].map((item, index) => {
-            return <ItemCustomer key={index} index={index} />;
+          {listCutomers.map((item, index) => {
+            return <CustomerItem key={index} index={index} item={item} />;
           })}
         </ScrollView>
       </View>
     );
   }
 }
-
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+const mapStateToProps = state => ({
+  listCutomers: selectors.home.selectCustomer(state),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Customer);
 const styles = StyleSheet.create({
   fx1PL2: {flex: 1, zIndex: -1},
   containerTxt: {

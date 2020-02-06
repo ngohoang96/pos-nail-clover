@@ -28,6 +28,7 @@ const initialState = {
   catnameFullMenu: '',
   catnameCustomerServices: '',
 
+  customer: [{name: 'Jenifer Tran'}, {name: 'Jenifer Pham'}],
   listTechnicianSelected: [],
   listTechnician: [
     {name: 'Nguyen Thi 1'},
@@ -35,8 +36,8 @@ const initialState = {
     {name: 'Nguyen Van 3'},
   ],
   listService: [],
-  payment_bill: {
-    subtotal: 0,
+  paymentBill: {
+    subTotal: 0,
     couponText: '',
     couponPrice: 0,
     giftCard: '',
@@ -249,6 +250,7 @@ const reducer = Helper.createReducer(initialState, {
     cloneListTechnician[0].amount = action.payload.amount
       ? action.payload.amount
       : '';
+    cloneListTechnician[0].total = '';
     cloneListTechnician[0].tip = '';
     let newListTechnicianSelected = [];
     if (cloneListTechnician.length > 1) {
@@ -267,18 +269,83 @@ const reducer = Helper.createReducer(initialState, {
   },
   [Types.UPDATE_QUANTITY_SERVICE]: ({state, action}) => {
     let newListService = _.clone(state.listService);
+    let subTotal = 0;
     newListService[action.payload.index].quantity = action.payload.quantity;
+    if (newListService[action.payload.index].tip !== '') {
+      newListService[action.payload.index].total =
+        newListService[action.payload.index].amount * action.payload.quantity +
+        parseFloat(newListService[action.payload.index].tip);
+    } else {
+      newListService[action.payload.index].total =
+        newListService[action.payload.index].amount * action.payload.quantity;
+    }
+    newListService.map(e => {
+      if (!isNaN(e.total)) {
+        subTotal += e.total;
+      }
+    });
     return {
       ...state,
       listService: newListService,
+      paymentBill: {
+        ...state.paymentBill,
+        subTotal,
+      },
     };
   },
   [Types.UPDATE_AMOUNT_SERVICE]: ({state, action}) => {
     let newListService = _.clone(state.listService);
+    let subTotal = 0;
     newListService[action.payload.index].amount = action.payload.amount;
+    if (newListService[action.payload.index].tip !== '') {
+      newListService[action.payload.index].total =
+        newListService[action.payload.index].quantity * action.payload.amount +
+        parseFloat(newListService[action.payload.index].tip);
+    } else {
+      newListService[action.payload.index].total =
+        newListService[action.payload.index].quantity * action.payload.amount;
+    }
+
+    newListService.map(e => {
+      if (!isNaN(e.total)) {
+        subTotal += e.total;
+      }
+    });
     return {
       ...state,
       listService: newListService,
+      paymentBill: {
+        ...state.paymentBill,
+        subTotal,
+      },
+    };
+  },
+  [Types.UPDATE_TIP_SERVICE]: ({state, action}) => {
+    let newListService = _.clone(state.listService);
+    let subTotal = 0;
+    newListService[action.payload.index].tip = action.payload.tip;
+    if (newListService[action.payload.index].tip !== '') {
+      newListService[action.payload.index].total =
+        newListService[action.payload.index].amount *
+          newListService[action.payload.index].quantity +
+        parseFloat(action.payload.tip);
+    } else {
+      newListService[action.payload.index].total =
+        newListService[action.payload.index].amount *
+        newListService[action.payload.index].quantity;
+    }
+    newListService.map(e => {
+      if (!isNaN(e.total)) {
+        subTotal += e.total;
+      }
+    });
+    return {
+      ...state,
+      listService: newListService,
+      paymentBill: {
+        ...state.paymentBill,
+        subTotal,
+      },
     };
   },
 });

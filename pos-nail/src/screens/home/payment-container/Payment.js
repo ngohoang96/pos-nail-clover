@@ -113,7 +113,7 @@ export default class Payment extends Component {
           </View>
         </View>
         <View style={styles.containerfx6}>
-          <PaymentSubtotal />
+          <PaymentSubtotal subTotal={this.props.paymentBill.subTotal} />
           <PaymentCoupon />
           <PaymentGiftCart />
           <PaymentTips />

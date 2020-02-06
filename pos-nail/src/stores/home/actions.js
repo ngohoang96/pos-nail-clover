@@ -137,6 +137,10 @@ const Actions = {
     type: Types.UPDATE_AMOUNT_SERVICE,
     payload: data,
   }),
+  updateTipService: data => ({
+    type: Types.UPDATE_TIP_SERVICE,
+    payload: data,
+  }),
 };
 
 export {Types, Actions};
