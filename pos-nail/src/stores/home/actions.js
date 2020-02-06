@@ -33,6 +33,8 @@ const Types = {
 
   UPDATE_LIST_TECHNICIAN_SELECTED: 'home@UPDATE_LIST_TECHNICIAN_SELECTED',
 
+  UPDATE_SELECTED_CUSTOMER: 'home@UPDATE_SELECTED_CUSTOMER',
+
   UNSELECTED_TECHNICIAN: 'home@UNSELECTED_TECHNICIAN',
 
   UPDATE_SERVICE_TECHNICIAN: 'home@UPDATE_SERVICE_TECHNICIAN',
@@ -42,6 +44,8 @@ const Types = {
   UPDATE_AMOUNT_SERVICE: 'home@UPDATE_AMOUNT_SERVICE',
 
   UPDATE_TIP_SERVICE: 'home@UPDATE_TIP_SERVICE',
+
+  UPDATE_SELECTED_SERVICE: 'home@UPDATE_SELECTED_SERVICE',
 };
 
 const Actions = {
@@ -139,6 +143,14 @@ const Actions = {
   }),
   updateTipService: data => ({
     type: Types.UPDATE_TIP_SERVICE,
+    payload: data,
+  }),
+  updateSelectedCustomer: data => ({
+    type: Types.UPDATE_SELECTED_CUSTOMER,
+    payload: data,
+  }),
+  updateSelectedService: data => ({
+    type: Types.UPDATE_SELECTED_SERVICE,
     payload: data,
   }),
 };

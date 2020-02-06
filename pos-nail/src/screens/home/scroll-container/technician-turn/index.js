@@ -21,20 +21,20 @@ import {normalize} from '../../../../themes/FontSize';
 import TechnicianRepander from '../../../../Components/InitScreen/TechnicianRepander';
 import {ToastLib, Logg} from '../../../../utils';
 import {TextCmp, Metrics, Colors} from '../../../../themes';
-export default class TechnicianTurn extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      indexMap: 0,
-      indexMapEnd: 4,
-      dataMap: [],
-      isAdd: true,
-      isReduction: false,
-    };
-  }
+import ItemTech from '../../../../Components/InitScreen/itemTech';
+import {connect} from 'react-redux';
+import {actions, selectors} from '../../../../stores';
+
+class TechnicianTurn extends Component {
+  selectTechnician = name => {
+    if (this.props.listTechnicianSelected.length > 0) {
+      ToastLib.show('Please select services!');
+    } else {
+      this.props.update(name);
+    }
+  };
 
   render() {
-    const {indexMap, indexMapEnd, isAdd, isReduction} = this.state;
     const {nailTechDropZone, listTechnician} = this.props;
     return (
       <View style={styles.fx09}>
@@ -46,10 +46,14 @@ export default class TechnicianTurn extends Component {
             return (
               <TechnicianRepander
                 key={index}
-                id={item.id}
                 name={item.name}
-                nailTechDropZone={nailTechDropZone}
-              />
+                updateDropZone={() => this.selectTechnician(item.name)}
+                nailTechDropZone={nailTechDropZone}>
+                <TouchableOpacity
+                  onPress={() => this.selectTechnician(item.name)}>
+                  <ItemTech nameTechnician={item.name} />
+                </TouchableOpacity>
+              </TechnicianRepander>
             );
           })}
         </View>
@@ -57,7 +61,20 @@ export default class TechnicianTurn extends Component {
     );
   }
 }
+const mapDispatchToProps = dispatch => {
+  const update = name => {
+    let id = new Date().getTime();
+    let data = {id, name};
+    dispatch(actions.home.updateListTechnicianSelected(data));
+  };
+  return {update};
+};
 
+const mapStateToProps = state => ({
+  dataService: selectors.home.getDataService(state),
+  listTechnicianSelected: selectors.home.selectListTechnicianSelected(state),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(TechnicianTurn);
 const styles = StyleSheet.create({
   container: {
     height: Metrics.appHeight / 20,

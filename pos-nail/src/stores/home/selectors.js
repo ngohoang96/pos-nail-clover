@@ -20,3 +20,5 @@ export const selectListServicesItem = (state, index) => {
 };
 export const selectPaymentBill = state => state.home.paymentBill;
 export const selectCustomer = state => state.home.customer;
+export const getSelectedCustomer = state => state.home.selectedCustomer;
+export const getSelectedService = state => state.home.selectedService;

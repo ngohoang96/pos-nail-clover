@@ -12,7 +12,7 @@ import themes from '../../../../config/themes';
 import Item from './itemGrid';
 import {Logg} from '../../../../utils';
 import {Colors} from '../../../../themes';
-export default class PaymentCoupon extends Component {
+export default class GridScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -27,6 +27,11 @@ export default class PaymentCoupon extends Component {
     );
   }
 
+  updateSelectedService = item => {
+    let data = {service: item.name, amount: item.price + ''};
+    this.props.updateSelectedService(data);
+  };
+
   render() {
     const {listServicesFullMenu, catnameFullMenu} = this.props;
     let list = listServicesFullMenu;
@@ -34,13 +39,14 @@ export default class PaymentCoupon extends Component {
     return (
       <View test style={styles.container}>
         {list.map((item, index) => {
+          Logg.info('item grid', item);
           return (
             <Item
               key={index}
               item={item}
               index={index}
               onPress={() => {
-                this.props.updateItemLisFullMenu(item);
+                this.updateSelectedService(item);
               }}
             />
           );

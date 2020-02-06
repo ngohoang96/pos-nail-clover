@@ -16,7 +16,7 @@ import {connect} from 'react-redux';
 import {selectors, actions} from '../../stores';
 import themes from '../../config/themes';
 import ItemTech from '../../Components/InitScreen/itemTech';
-import {Metrics} from '../../themes';
+import {Metrics, Colors} from '../../themes';
 import {Logg, ToastLib} from '../../utils';
 class TechnicianRepander extends Component {
   constructor(props) {
@@ -29,7 +29,11 @@ class TechnicianRepander extends Component {
       posX: null,
       posY: null,
     };
-
+  }
+  componentWillMount() {
+    this._val = {x: 0, y: 0};
+    this.state.pan.addListener(value => (this._val = value));
+    this.state.pan.setValue({x: 0, y: 0});
     this.panResponder = PanResponder.create({
       onMoveShouldSetPanResponder: (e, gestureState) => {
         if (
@@ -51,11 +55,15 @@ class TechnicianRepander extends Component {
           dy: this.state.pan.y,
         },
       ]),
+
       onPanResponderRelease: (e, gesture) => {
         if (this.isDropZone(gesture)) {
-          this.props.update(this.props.name);
+          this.props.updateDropZone();
         }
-        Animated.spring(this.state.pan, {toValue: {x: 0, y: 0}}).start();
+        Animated.spring(this.state.pan, {
+          toValue: {x: 0, y: 0},
+          friction: 5,
+        }).start();
       },
     });
   }
@@ -63,13 +71,6 @@ class TechnicianRepander extends Component {
   //   return newDataService !== this.props.dataService
   // }
 
-  selectTechnician = () => {
-    if (this.props.listTechnicianSelected.length > 0) {
-      ToastLib.show('Please select services!');
-    } else {
-      this.props.update(this.props.name);
-    }
-  };
   isDropZone(gesture) {
     var dz = this.props.nailTechDropZone;
 
@@ -79,15 +80,7 @@ class TechnicianRepander extends Component {
     ) {
       return true;
     }
-    if (
-      gesture.moveY > ((themes.height * 4.5) / 10) * 0.5 &&
-      gesture.moveY < (themes.height * 4.5) / 10
-    ) {
-      // alert(2);
-    }
     return false;
-
-    // return gesture.moveY > dz.y && gesture.moveY < dz.y + dz.height;
   }
 
   setDropZoneValues(event) {
@@ -97,47 +90,30 @@ class TechnicianRepander extends Component {
   }
 
   render() {
+    const panStyle = {
+      transform: this.state.pan.getTranslateTransform(),
+    };
     return (
-      <View
-        style={{
-          width: (Metrics.appWidth * 1.2) / 8.4,
-          height:
-            ((Metrics.appWidth * 1.2) / 8.4) * 0.35 +
-            ((Metrics.appWidth * 1.2) / 8.4) * 0.15,
-          backgroundColor: 'white',
-        }}
-        onLayout={this.setDropZoneValues.bind(this)}>
-        <Animated.View
-          {...this.panResponder.panHandlers}
-          style={[
-            this.state.pan.getLayout(),
-            {
-              width: (Metrics.appWidth * 1.2) / 8.4,
-              height:
-                ((Metrics.appWidth * 1.2) / 8.4) * 0.35 +
-                ((Metrics.appWidth * 1.2) / 8.4) * 0.15,
-            },
-          ]}>
-          <TouchableOpacity onPress={() => this.selectTechnician()}>
-            <ItemTech nameTechnician={this.props.name} />
-          </TouchableOpacity>
-        </Animated.View>
-      </View>
+      <Animated.View
+        {...this.panResponder.panHandlers}
+        style={[panStyle, styles.container, {...this.props.style}]}>
+        {this.props.children}
+      </Animated.View>
     );
   }
 }
+const styles = StyleSheet.create({
+  container: {
+    width: (Metrics.appWidth * 1.2) / 8.4,
+    height:
+      ((Metrics.appWidth * 1.2) / 8.4) * 0.35 +
+      ((Metrics.appWidth * 1.2) / 8.4) * 0.15,
+  },
+});
 const mapDispatchToProps = dispatch => {
-  const update = name => {
-    let id = new Date().getTime();
-    let data = {id, name};
-    dispatch(actions.home.updateListTechnicianSelected(data));
-  };
-  return {update};
+  return {};
 };
 
-const mapStateToProps = state => ({
-  dataService: selectors.home.getDataService(state),
-  listTechnicianSelected: selectors.home.selectListTechnicianSelected(state),
-});
+const mapStateToProps = state => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(TechnicianRepander);

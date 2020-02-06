@@ -29,12 +29,14 @@ const initialState = {
   catnameCustomerServices: '',
 
   customer: [{name: 'Jenifer Tran'}, {name: 'Jenifer Pham'}],
+  selectedCustomer: null,
   listTechnicianSelected: [],
   listTechnician: [
     {name: 'Nguyen Thi 1'},
     {name: 'Nguyen Thi 2'},
     {name: 'Nguyen Van 3'},
   ],
+  selectedService: null,
   listService: [],
   paymentBill: {
     subTotal: 0,
@@ -42,7 +44,7 @@ const initialState = {
     couponPrice: 0,
     giftCard: '',
     giftCardPrice: 0,
-    tips: 0,
+    tip: 0,
     discount: 0,
     total: 0,
     // discount : 0,
@@ -146,9 +148,6 @@ const reducer = Helper.createReducer(initialState, {
 
   //update data services customer sign in
   [Types.UPDATE_DATA_PERFER_SERVICE]: ({state, action}) => {
-    // let data = _.clone(action.payload);
-    // data = data.filter(e => e.isSelected === true);
-    // Logg.create('_dataSelectedPerferService_', data);
     return {
       ...state,
       catnameCustomerServices: action.payload,
@@ -222,14 +221,29 @@ const reducer = Helper.createReducer(initialState, {
 
   [Types.UPDATE_LIST_TECHNICIAN_SELECTED]: ({state, action}) => {
     let newList = _.clone(state.listTechnicianSelected);
-    newList.push(action.payload);
-    let newListTechnician = _.clone(state.listTechnician);
-    newListTechnician = newListTechnician.filter(
-      x => x.id !== action.payload.id,
-    );
+    let cloneListService = _.clone(state.listService);
+    let cloneSelectedService = _.clone(state.selectedService);
+    if (state.selectedService === null) {
+      newList.push(action.payload);
+    } else {
+      newList = [];
+      cloneListService.unshift(action.payload);
+      cloneListService[0].service = state.selectedService.service;
+      cloneListService[0].amount = state.selectedService.amount
+        ? state.selectedService.amount
+        : '';
+      cloneListService[0].total = '';
+      cloneListService[0].quantity = state.selectedService.quantity
+        ? state.selectedService.quantity
+        : '';
+      cloneListService[0].tip = '';
+      cloneSelectedService = null;
+    }
     return {
       ...state,
       listTechnicianSelected: newList,
+      listService: cloneListService,
+      selectedService: cloneSelectedService,
     };
   },
   [Types.UNSELECTED_TECHNICIAN]: ({state, action}) => {
@@ -281,7 +295,7 @@ const reducer = Helper.createReducer(initialState, {
     }
     newListService.map(e => {
       if (!isNaN(e.total)) {
-        subTotal += e.total;
+        subTotal += parseFloat(e.total);
       }
     });
     return {
@@ -308,7 +322,7 @@ const reducer = Helper.createReducer(initialState, {
 
     newListService.map(e => {
       if (!isNaN(e.total)) {
-        subTotal += e.total;
+        subTotal += parseFloat(e.total);
       }
     });
     return {
@@ -323,6 +337,7 @@ const reducer = Helper.createReducer(initialState, {
   [Types.UPDATE_TIP_SERVICE]: ({state, action}) => {
     let newListService = _.clone(state.listService);
     let subTotal = 0;
+    let tip = 0;
     newListService[action.payload.index].tip = action.payload.tip;
     if (newListService[action.payload.index].tip !== '') {
       newListService[action.payload.index].total =
@@ -336,7 +351,10 @@ const reducer = Helper.createReducer(initialState, {
     }
     newListService.map(e => {
       if (!isNaN(e.total)) {
-        subTotal += e.total;
+        subTotal += parseFloat(e.total);
+      }
+      if (!isNaN(e.tip)) {
+        tip += parseFloat(e.tip);
       }
     });
     return {
@@ -345,7 +363,20 @@ const reducer = Helper.createReducer(initialState, {
       paymentBill: {
         ...state.paymentBill,
         subTotal,
+        tip,
       },
+    };
+  },
+  [Types.UPDATE_SELECTED_CUSTOMER]: ({state, action}) => {
+    return {
+      ...state,
+      selectedCustomer: action.payload,
+    };
+  },
+  [Types.UPDATE_SELECTED_SERVICE]: ({state, action}) => {
+    return {
+      ...state,
+      selectedService: action.payload,
     };
   },
 });

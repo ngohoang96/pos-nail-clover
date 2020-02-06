@@ -25,12 +25,7 @@ class QuickMenu extends Component {
   }
 
   selectService = service => {
-    const {listTechnicianSelected} = this.props;
-    if (listTechnicianSelected.length > 0) {
-      this.props.selectService(service);
-    } else {
-      ToastLib.show('Please select Technician!');
-    }
+    this.props.selectService(service);
   };
   render() {
     return (
@@ -66,10 +61,15 @@ class QuickMenu extends Component {
 const mapStateToProps = state => ({
   listTechnicianSelected: selectors.home.selectListTechnicianSelected(state),
 });
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, {listTechnicianSelected}) => {
   const selectService = service => {
-    dispatch(actions.home.updateServiceTechnician(service));
+    if (listTechnicianSelected.length > 0) {
+      dispatch(actions.home.updateServiceTechnician(service));
+    } else {
+      dispatch(actions.home.updateSelectedService(service));
+    }
   };
+
   return {
     selectService,
   };

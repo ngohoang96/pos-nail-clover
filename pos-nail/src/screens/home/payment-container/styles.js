@@ -86,12 +86,26 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#fff',
   },
-  wrapper_name: {
-    backgroundColor: 'red',
-    width: '100%',
+
+  wrappername: {
+    backgroundColor: '#EEE7AD',
+    width: '98%',
     height: 30,
     padding: 3,
     margin: 3,
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  btn_remove: {
+    position: 'absolute',
+    top: 0,
+    left: '70%',
+    right: 0,
+    bottom: 0,
+    alignItems: 'center',
+    height: '100%',
+    width: 30,
+    justifyContent: 'center',
   },
 });
 

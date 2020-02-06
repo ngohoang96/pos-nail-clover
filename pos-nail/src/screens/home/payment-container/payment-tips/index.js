@@ -18,6 +18,11 @@ export default class PaymentTips extends Component {
     super(props);
   }
   render() {
+    const {tip} = this.props;
+    let tips = 0;
+    if (!isNaN(tip)) {
+      tips = tip;
+    }
     return (
       <View style={styles.wrapper}>
         <View style={styles.wrapper_type}>
@@ -27,7 +32,7 @@ export default class PaymentTips extends Component {
           <View style={styles.coupon}></View>
         </View>
         <View style={styles.wrapper_cash}>
-          <TextCmp style={styles.txt_cash}>$0</TextCmp>
+          <TextCmp style={styles.txt_cash}>$ {tips}</TextCmp>
         </View>
       </View>
     );

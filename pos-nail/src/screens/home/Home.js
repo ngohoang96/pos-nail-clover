@@ -228,7 +228,9 @@ class Home extends Component {
         </View>
 
         <View style={{flex: 1, flexDirection: 'row'}}>
-          <QuickMenu />
+          <QuickMenu
+            listTechnicianSelected={this.props.listTechnicianSelected}
+          />
         </View>
         <View style={{flex: 3}}>
           <View
@@ -257,7 +259,7 @@ class Home extends Component {
               width: '100%',
               paddingRight: 3,
             }}>
-            <Grid />
+            <Grid listTechnicianSelected={this.props.listTechnicianSelected} />
           </View>
         </View>
 
@@ -317,6 +319,7 @@ class Home extends Component {
 const mapStateToProps = state => ({
   dataListSearch: selectors.home.getlistDataServices(state),
   listTechnician: state.home.listTechnician,
+  listTechnicianSelected: selectors.home.selectListTechnicianSelected(state),
 });
 // export default InitScreen;
 export default connect(mapStateToProps, null)(Home);

@@ -16,6 +16,7 @@ class ListServices extends Component {
       <ScrollView style={styles.container}>
         {listServices.map((item, index) => (
           <ListServicesItem
+            key={index}
             index={index}
             quantity={item.quantity}
             amount={item.amount}

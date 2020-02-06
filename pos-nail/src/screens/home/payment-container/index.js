@@ -13,7 +13,14 @@ const mapDispatchToProps = dispatch => {
     dispatch(actions.home.unSelectedTechnician(data));
   };
 
-  return {update, unselectedTechnician};
+  const unSelectedCustomer = () => {
+    dispatch(actions.home.updateSelectedCustomer(null));
+  };
+
+  const unSelectedService = () => {
+    dispatch(actions.home.updateSelectedService(null));
+  };
+  return {update, unselectedTechnician, unSelectedCustomer, unSelectedService};
 };
 
 const mapStateToProps = state => ({
@@ -21,6 +28,8 @@ const mapStateToProps = state => ({
   listTechnicianSelected: selectors.home.selectListTechnicianSelected(state),
   listServices: selectors.home.selectListServices(state),
   paymentBill: selectors.home.selectPaymentBill(state),
+  selectedCustomer: selectors.home.getSelectedCustomer(state),
+  selectedService: selectors.home.getSelectedService(state),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Payment);

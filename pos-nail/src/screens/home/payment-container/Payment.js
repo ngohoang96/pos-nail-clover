@@ -26,6 +26,9 @@ import {TextCmp, Colors} from '../../../themes';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import {homeIcon} from '../../../assets';
 import ListServices from './list-service';
+import CustomerCard from './customer-card/CustomerCard';
+import NailTechCard from './nail-tech-card';
+import ServiceCard from './service-card/ServiceCard';
 
 export default class Payment extends Component {
   constructor(props) {
@@ -36,7 +39,12 @@ export default class Payment extends Component {
   }
 
   render() {
-    const {update, setDropZoneNailTech} = this.props;
+    const {
+      selectedService,
+      unSelectedCustomer,
+      selectedCustomer,
+      unSelectedService,
+    } = this.props;
 
     return (
       <View style={styles.container}>
@@ -70,23 +78,29 @@ export default class Payment extends Component {
           <TextCmp style={{marginLeft: 5, fontWeight: 'bold'}}>
             Drag Nail Tech, Service, Ticket item here
           </TextCmp>
-          <View style={{width: '100%', height: '45%'}}>
+          <ScrollView style={{width: '100%', height: '45%'}}>
             {this.props.listTechnicianSelected.map((item, index) => {
               return (
-                <View style={styles.wrappername} key={index}>
-                  <TextCmp>Nail Tech: {item.name}</TextCmp>
-                  <TouchableOpacity
-                    style={styles.btn_remove}
-                    onPress={() => this.props.unselectedTechnician(item)}>
-                    <Image
-                      source={homeIcon.delete}
-                      style={{width: 15, height: 15}}
-                    />
-                  </TouchableOpacity>
-                </View>
+                <NailTechCard
+                  item={item}
+                  key={index}
+                  unselectedTechnician={this.props.unselectedTechnician}
+                />
               );
             })}
-          </View>
+            {selectedCustomer !== null && (
+              <CustomerCard
+                selectedCustomer={selectedCustomer}
+                unSelectedCustomer={unSelectedCustomer}
+              />
+            )}
+            {selectedService !== null && (
+              <ServiceCard
+                selectedService={selectedService}
+                unSelectedService={unSelectedService}
+              />
+            )}
+          </ScrollView>
           <View
             style={{
               flexDirection: 'row',
@@ -116,7 +130,7 @@ export default class Payment extends Component {
           <PaymentSubtotal subTotal={this.props.paymentBill.subTotal} />
           <PaymentCoupon />
           <PaymentGiftCart />
-          <PaymentTips />
+          <PaymentTips tip={this.props.paymentBill.tip} />
           <PaymentDiscount />
           <PaymentReward />
           <PaymentTotal />
