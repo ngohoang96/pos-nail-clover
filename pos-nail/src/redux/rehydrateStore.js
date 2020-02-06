@@ -12,12 +12,6 @@ import {Logg} from '../utils';
 
 const blacklist = [
   'home',
-  'auth',
-  'trade',
-  'other',
-  'history',
-  'market',
-  'test',
   // Any sub-store that shouldn't be store between run time go here...
 ];
 

@@ -8,7 +8,7 @@ import {
   Easing,
   Dimensions,
   TouchableOpacity,
-  Platform
+  Platform,
 } from 'react-native';
 
 import {connect} from 'react-redux';
@@ -33,9 +33,11 @@ class TechnicianRepander extends Component {
     this.panResponder = PanResponder.create({
       onMoveShouldSetPanResponder: (e, gestureState) => {
         if (
-          Platform.OS == 'android'
-          && (gestureState.dx < 2 && gestureState.dx > -2)
-          && (gestureState.dy < 2 && gestureState.dy > -2)
+          Platform.OS == 'android' &&
+          gestureState.dx < 2 &&
+          gestureState.dx > -2 &&
+          gestureState.dy < 2 &&
+          gestureState.dy > -2
         ) {
           return false;
         }
@@ -51,11 +53,9 @@ class TechnicianRepander extends Component {
       ]),
       onPanResponderRelease: (e, gesture) => {
         if (this.isDropZone(gesture)) {
-          this.props.update(this.props.id, this.props.name);
-          Animated.spring(this.state.pan, {toValue: {x: 0, y: 0}}).start();
-        } else {
-          Animated.spring(this.state.pan, {toValue: {x: 0, y: 0}}).start();
+          this.props.update(this.props.name);
         }
+        Animated.spring(this.state.pan, {toValue: {x: 0, y: 0}}).start();
       },
     });
   }
@@ -67,12 +67,12 @@ class TechnicianRepander extends Component {
     if (this.props.listTechnicianSelected.length > 0) {
       ToastLib.show('Please select services!');
     } else {
-      this.props.update(this.props.id, this.props.name);
+      this.props.update(this.props.name);
     }
   };
   isDropZone(gesture) {
     var dz = this.props.nailTechDropZone;
-    
+
     if (
       gesture.moveY > (themes.height * 0.5) / 10 &&
       gesture.moveY < ((themes.height * 4.5) / 10) * 0.45
@@ -127,16 +127,17 @@ class TechnicianRepander extends Component {
   }
 }
 const mapDispatchToProps = dispatch => {
-  const update = (id, name) => {
+  const update = name => {
+    let id = new Date().getTime();
     let data = {id, name};
-    dispatch(actions.test.updateListTechnicianSelected(data));
+    dispatch(actions.home.updateListTechnicianSelected(data));
   };
   return {update};
 };
 
 const mapStateToProps = state => ({
-  dataService: selectors.test.getDataService(state),
-  listTechnicianSelected: selectors.test.selectListTechnicianSelected(state),
+  dataService: selectors.home.getDataService(state),
+  listTechnicianSelected: selectors.home.selectListTechnicianSelected(state),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TechnicianRepander);

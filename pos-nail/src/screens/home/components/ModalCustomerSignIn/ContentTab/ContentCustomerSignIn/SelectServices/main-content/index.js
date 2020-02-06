@@ -52,10 +52,7 @@ class index extends Component {
 }
 
 const mapStateToProps = state => ({
-  // getdataSelectedPerferService: selectors.test.getdataSelectedPerferService(
-  //   state,
-  // ),
-  // getlistDataServices: selectors.test.getlistDataServices(state),
+
   getListCusService: selectors.cus.listService(state)
 });
 

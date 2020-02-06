@@ -30,10 +30,22 @@ const initialState = {
 
   listTechnicianSelected: [],
   listTechnician: [
-    {id: '1', name: 'Nguyen Thi 1'},
-    {id: '2', name: 'Nguyen Thi 2'},
-    {id: '3', name: 'Nguyen Van 3'},
+    {name: 'Nguyen Thi 1'},
+    {name: 'Nguyen Thi 2'},
+    {name: 'Nguyen Van 3'},
   ],
+  listService: [],
+  payment_bill: {
+    subtotal: 0,
+    couponText: '',
+    couponPrice: 0,
+    giftCard: '',
+    giftCardPrice: 0,
+    tips: 0,
+    discount: 0,
+    total: 0,
+    // discount : 0,
+  },
 };
 
 const reducer = Helper.createReducer(initialState, {
@@ -231,9 +243,42 @@ const reducer = Helper.createReducer(initialState, {
   [Types.UPDATE_SERVICE_TECHNICIAN]: ({state, action}) => {
     let cloneListTechnician = _.clone(state.listTechnicianSelected);
     cloneListTechnician[0].service = action.payload.service;
+    cloneListTechnician[0].quantity = action.payload.quantity
+      ? action.payload.quantity
+      : '';
+    cloneListTechnician[0].amount = action.payload.amount
+      ? action.payload.amount
+      : '';
+    cloneListTechnician[0].tip = '';
+    let newListTechnicianSelected = [];
+    if (cloneListTechnician.length > 1) {
+      newListTechnicianSelected = cloneListTechnician.splice(
+        1,
+        cloneListTechnician.length,
+      );
+    } else {
+      newListTechnicianSelected = [];
+    }
     return {
       ...state,
-      listTechnicianSelected: cloneListTechnician,
+      listTechnicianSelected: newListTechnicianSelected,
+      listService: cloneListTechnician.concat(state.listService),
+    };
+  },
+  [Types.UPDATE_QUANTITY_SERVICE]: ({state, action}) => {
+    let newListService = _.clone(state.listService);
+    newListService[action.payload.index].quantity = action.payload.quantity;
+    return {
+      ...state,
+      listService: newListService,
+    };
+  },
+  [Types.UPDATE_AMOUNT_SERVICE]: ({state, action}) => {
+    let newListService = _.clone(state.listService);
+    newListService[action.payload.index].amount = action.payload.amount;
+    return {
+      ...state,
+      listService: newListService,
     };
   },
 });

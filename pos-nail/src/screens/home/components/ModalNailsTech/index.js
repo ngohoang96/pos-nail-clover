@@ -6,12 +6,12 @@ import { AppCheckIn_TechnicianCheckIn, AppCheckIn_TechnicianCheckOut, AppCheckIn
 import { Logg } from '../../../../utils'
 
 const mapStateToProps = (state) => ({
-  inputNailsTechClockIN: selectors.test.inputNailsTechClockIN(state)
+  inputNailsTechClockIN: selectors.home.inputNailsTechClockIN(state)
 })
 
 const mapDispatchToProps = dispatch => {
   const _onChangeStaffPinText = c => {
-    dispatch(actions.test.updateInputNailsTechClockIn(c))
+    dispatch(actions.home.updateInputNailsTechClockIn(c))
   }
   const _technicianCheckIN = params => {
     dispatch(AppCheckIn_TechnicianCheckIn(params))

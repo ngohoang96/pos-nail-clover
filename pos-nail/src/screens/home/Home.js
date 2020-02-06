@@ -45,7 +45,8 @@ import {Logg} from '../../utils';
 import {actions, selectors} from '../../stores';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {homeIcon} from '../../assets';
-
+import {countNonUnique} from '../../utils/functions';
+// countNonUnique();
 class Home extends Component {
   constructor(props) {
     super();
@@ -133,7 +134,7 @@ class Home extends Component {
 
         // Logg.info('Staffs  xxxx ' + JSON.stringify(this.state.dataStaffs));
         result.map(item => (item.isSelected = false));
-        this.props.dispatch(actions.test.updateListFinish(result));
+        this.props.dispatch(actions.home.updateListFinish(result));
         // this.props.dispatch({
         //   type: 'SAVE_DATA_Staffs',
         //   payload: {
@@ -172,9 +173,9 @@ class Home extends Component {
         }
         result.map(item => (item.isSelected = false));
 
-        this.props.dispatch(actions.test.assignlistFullMenu(result));
+        this.props.dispatch(actions.home.assignlistFullMenu(result));
         this.props.dispatch(
-          actions.test.updateListFullMenu('Additional Options'),
+          actions.home.updateListFullMenu('Additional Options'),
         );
 
         this.props.dispatch(actions.cus.assignListService(result));
@@ -227,7 +228,7 @@ class Home extends Component {
         </View>
 
         <View style={{flex: 1, flexDirection: 'row'}}>
-          <QuickMenu/>
+          <QuickMenu />
         </View>
         <View style={{flex: 3}}>
           <View
@@ -256,7 +257,7 @@ class Home extends Component {
               width: '100%',
               paddingRight: 3,
             }}>
-            <Grid/>
+            <Grid />
           </View>
         </View>
 
@@ -314,8 +315,8 @@ class Home extends Component {
   }
 }
 const mapStateToProps = state => ({
-  dataListSearch: selectors.test.getlistDataServices(state),
-  listTechnician: state.test.listTechnician,
+  dataListSearch: selectors.home.getlistDataServices(state),
+  listTechnician: state.home.listTechnician,
 });
 // export default InitScreen;
 export default connect(mapStateToProps, null)(Home);

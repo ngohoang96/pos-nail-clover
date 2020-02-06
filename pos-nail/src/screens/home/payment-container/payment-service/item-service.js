@@ -75,7 +75,7 @@ class ItemService extends Component {
 }
 const mapDispatchToProps = dispatch => {
   const deleteDataService = id => {
-    dispatch(actions.test.dDataService(id));
+    dispatch(actions.home.dDataService(id));
   };
   return {
     deleteDataService,
@@ -83,7 +83,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => ({
-  // dataService: selectors.test.getDataService(state),
+  // dataService: selectors.home.getDataService(state),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemService);

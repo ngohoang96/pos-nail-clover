@@ -16,15 +16,21 @@ import Button2 from '../../../../Components/InitScreen/Button2';
 import {QUICK_MENU} from '../../../../Components/InitScreen/mockData';
 import {TextCmp, Colors} from '../../../../themes';
 import {connect} from 'react-redux';
-import {actions} from '../../../../stores';
+import {actions, selectors} from '../../../../stores';
 import QuickMenuItem from '../../../../Components/InitScreen/QuickMenuItem';
+import {ToastLib} from '../../../../utils';
 class QuickMenu extends Component {
   constructor(props) {
     super(props);
   }
 
   selectService = service => {
-    this.props.selectService(service);
+    const {listTechnicianSelected} = this.props;
+    if (listTechnicianSelected.length > 0) {
+      this.props.selectService(service);
+    } else {
+      ToastLib.show('Please select Technician!');
+    }
   };
   render() {
     return (
@@ -57,10 +63,12 @@ class QuickMenu extends Component {
     );
   }
 }
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  listTechnicianSelected: selectors.home.selectListTechnicianSelected(state),
+});
 const mapDispatchToProps = dispatch => {
   const selectService = service => {
-    dispatch(actions.test.updateServiceTechnician(service));
+    dispatch(actions.home.updateServiceTechnician(service));
   };
   return {
     selectService,

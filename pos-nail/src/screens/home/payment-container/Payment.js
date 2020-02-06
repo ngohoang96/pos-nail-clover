@@ -25,7 +25,9 @@ import PaymentTitle from './payment-title/index';
 import {TextCmp, Colors} from '../../../themes';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import {homeIcon} from '../../../assets';
-export default class PaymentScreen extends Component {
+import ListServices from './list-service';
+
+export default class Payment extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -61,7 +63,7 @@ export default class PaymentScreen extends Component {
           </TouchableOpacity>
         </View>
         <View
-          style={{flex: 4}}
+          style={{flex: 4.2}}
           onLayout={event => {
             this.props.setDropZoneNailTech(event);
           }}>
@@ -106,7 +108,9 @@ export default class PaymentScreen extends Component {
               Tip
             </TextCmp>
           </View>
-          <View style={{width: '100%', height: '45%'}} />
+          <View style={{width: '100%', height: '45%'}}>
+            <ListServices />
+          </View>
         </View>
         <View style={styles.containerfx6}>
           <PaymentSubtotal />

@@ -1,24 +1,25 @@
 import {connect} from 'react-redux';
 
-import PaymentScreen from './payment-screen';
+import Payment from './Payment';
 
 import {selectors, actions} from '../../../stores';
 const dataAdd = [{id: '13', name: 'Nguyen Van C'}];
 const mapDispatchToProps = dispatch => {
   const update = () => {
-    dispatch(actions.test.updateDataService(dataAdd));
+    dispatch(actions.home.updateDataService(dataAdd));
   };
 
   const unselectedTechnician = data => {
-    dispatch(actions.test.unSelectedTechnician(data));
+    dispatch(actions.home.unSelectedTechnician(data));
   };
 
   return {update, unselectedTechnician};
 };
 
 const mapStateToProps = state => ({
-  dataService: selectors.test.getDataService(state),
-  listTechnicianSelected: selectors.test.selectListTechnicianSelected(state),
+  dataService: selectors.home.getDataService(state),
+  listTechnicianSelected: selectors.home.selectListTechnicianSelected(state),
+  listServices: selectors.home.selectListServices(state),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PaymentScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(Payment);

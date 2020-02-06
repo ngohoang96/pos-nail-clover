@@ -5,10 +5,10 @@ import { selectors, actions } from '../../../../stores';
 
 const mapDispatchToProps = dispatch => {
   const updateListFullMenu = catname => {
-    dispatch(actions.test.updateListFullMenu(catname))
+    dispatch(actions.home.updateListFullMenu(catname))
   }
   const updateItemLisFullMenu = item => {
-    dispatch(actions.test.updateIsSuccessdedItemListFullMenu(item))
+    dispatch(actions.home.updateIsSuccessdedItemListFullMenu(item))
   }
   return {
     updateListFullMenu,
@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => {
   }
 };
 const mapStateToProps = state => ({
-  listServicesFullMenu: selectors.test.listServicesFullMenu(state),
-  catnameFullMenu: selectors.test.catnameFullMenu(state)
+  listServicesFullMenu: selectors.home.listServicesFullMenu(state),
+  catnameFullMenu: selectors.home.catnameFullMenu(state)
 })
 export default connect(mapStateToProps, mapDispatchToProps)(GridSceen)

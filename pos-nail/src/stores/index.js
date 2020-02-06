@@ -1,38 +1,32 @@
-/*  header-comment
-/*  file   : index
-/*  author : Bon
-/*  date   : 2020-1-2 11:37:7
-/*  last   : 2020-1-2 14:30:17
-*/
 
-import { combineReducers } from 'redux';
+import {combineReducers} from 'redux';
 
-import { testReducer, testTypes, testActions, testSelectors } from './test';
+import {homeReducer, homeTypes, homeActions, homeSelectors} from './home';
 
-import { authActions, authSelector, authReducer, authTypes } from './auth';
-import { cusActions, cusTypes, cusReducer, cusSelector } from './cus'
+import {authActions, authSelector, authReducer, authTypes} from './auth';
+import {cusActions, cusTypes, cusReducer, cusSelector} from './cus';
 const rootReducer = combineReducers({
-  test: testReducer,
+  home: homeReducer,
   auth: authReducer,
-  cus: cusReducer
+  cus: cusReducer,
 });
 
 const types = {
-  test: testTypes,
+  home: homeTypes,
   auth: authTypes,
-  cus: cusTypes
+  cus: cusTypes,
 };
 
 const actions = {
-  test: testActions,
+  home: homeActions,
   auth: authActions,
-  cus: cusActions
+  cus: cusActions,
 };
 
 const selectors = {
-  test: testSelectors,
+  home: homeSelectors,
   auth: authSelector,
-  cus: cusSelector
+  cus: cusSelector,
 };
 
-export { rootReducer, types, actions, selectors };
+export {rootReducer, types, actions, selectors};

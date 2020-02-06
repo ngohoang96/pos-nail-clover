@@ -5,13 +5,13 @@ import { selectors, actions } from '../../../../stores';
 
 const mapDispatchToProps = dispatch => {
   const updateListFullMenu = catname => {
-    dispatch(actions.test.updateListFullMenu(catname))
+    dispatch(actions.home.updateListFullMenu(catname))
   }
   return {
     updateListFullMenu
   }
 };
 const mapStateToProps = state => ({
-  listDataServices: selectors.test.getlistDataServices(state)
+  listDataServices: selectors.home.getlistDataServices(state)
 })
 export default connect(mapStateToProps, mapDispatchToProps)(FullMenuScreen)

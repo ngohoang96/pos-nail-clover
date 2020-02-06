@@ -42,10 +42,10 @@ export default class TechnicianTurn extends Component {
           <TextCmp style={styles.txtCenter}>Technician Turn</TextCmp>
         </View>
         <View style={styles.fx1}>
-          {listTechnician.map(item => {
+          {listTechnician.map((item, index) => {
             return (
               <TechnicianRepander
-                key={item.id + ''}
+                key={index}
                 id={item.id}
                 name={item.name}
                 nailTechDropZone={nailTechDropZone}

@@ -116,12 +116,12 @@ class index extends Component {
 }
 
 const mapStateToProps = state => ({
-  listFinish: state.test.listFinish,
+  listFinish: state.home.listFinish,
 });
 
 const mapDispatchToProps = dispatch => {
   const updateListTechnician = data => {
-    dispatch(actions.test.updateListTechnician(data));
+    dispatch(actions.home.updateListTechnician(data));
   };
   return {
     updateListTechnician,

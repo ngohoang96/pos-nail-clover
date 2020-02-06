@@ -45,14 +45,11 @@ export class RenderMain extends Component {
 }
 
 const mapStateToProps = state => ({
-  listFinish: state.test.listFinish,
+  listFinish: state.home.listFinish,
 });
 
 const mapDispatchToProps = dispatch => {
-  // };
-  //   const updateList = list => {
-  //     dispatch(actions.test.updateListFinish(list));
-  //   };
+ 
   return {
     // updateList,
   };

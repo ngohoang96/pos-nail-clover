@@ -1,9 +1,3 @@
-/**
- * @author: thai.nguyen 
- * @date: 2018-11-29 16:30:00 
- *  
- * 
- */
 import { createStore, applyMiddleware, compose, } from 'redux';
 import { Provider, } from 'react-redux';
 import { autoRehydrate, } from 'redux-persist';

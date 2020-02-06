@@ -34,7 +34,7 @@ class index extends Component {
 
 
 const mapStateToProps = (state) => ({
-  inputNailsTechClockIN: selectors.test.inputNailsTechClockIN(state)
+  inputNailsTechClockIN: selectors.home.inputNailsTechClockIN(state)
 })
 
 const mapDispatchToProps = dispatch => {
