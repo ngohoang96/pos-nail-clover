@@ -41,8 +41,9 @@ const styles = StyleSheet.create({
     flex: 0,
   },
   detail_view: {
-    flex: 1,
-    borderWidth: 1,
+    // flex: 1,
+    height: ((Metrics.appWidth * 1.2) / 8.4) * 0.15,
+    borderWidth: 2,
     borderColor: '#CECECE',
     justifyContent: 'center',
     alignItems: 'center',
@@ -53,7 +54,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   name_view: {
-    flex: 2,
+    // flex: 2,
+    height: ((Metrics.appWidth * 1.2) / 8.4) * 0.35,
     borderWidth: 1,
     borderColor: '#CECECE',
     justifyContent: 'center',

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 import themes from '../../config/themes';
 import {normalize} from '../../themes/FontSize';
-import {TextCmp} from '../../themes';
+import {TextCmp, Metrics} from '../../themes';
 
 const styles = StyleSheet.create({
   text: {
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: 'white',
-    height: 40,
+    height: ((Metrics.appWidth * 1.2) / 8.4) * 0.35,
     width: '100%',
     borderTopLeftRadius: 2,
     borderBottomLeftRadius: 2,

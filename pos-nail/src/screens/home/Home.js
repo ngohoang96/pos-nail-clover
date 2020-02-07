@@ -204,12 +204,12 @@ class Home extends Component {
           <KeyboardAvoidingView
             contentContainerStyle={{
               width: '100%',
-              height: Metrics.appHeight,
+              height: Metrics.appHeight - Metrics.appHeight / 15,
             }}>
             <View
               style={{
                 width: '100%',
-                height: Metrics.appHeight,
+                height: Metrics.appHeight - Metrics.appHeight / 15,
               }}>
               <PaymentContainer
                 setDropZoneNailTech={this.setDropZoneNailTech}
@@ -235,7 +235,7 @@ class Home extends Component {
         <View style={{flex: 3}}>
           <View
             style={{
-              height: 40,
+              height: '6%',
               width: '100%',
               backgroundColor: '#f0f0f0',
               flexDirection: 'row',

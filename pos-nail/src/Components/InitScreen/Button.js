@@ -6,28 +6,28 @@
 */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 import themes from '../../config/themes';
-import { normalize } from '../../themes/FontSize';
-import { TextCmp } from '../../themes';
+import {normalize} from '../../themes/FontSize';
+import {TextCmp} from '../../themes';
 const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     fontSize: normalize(4),
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   button: {
     backgroundColor: '#F0F0F0',
     width: '24%',
-    borderRadius: 2,
+    borderRadius: 0.5,
     alignItems: 'center',
     justifyContent: 'center',
-    height: 35,
+    height: '100%',
     // paddingVertical: 1
   },
 });
 
-export function Button({ Textstyle, lable, containerStyle, bg, ...props }) {
+export function Button({Textstyle, lable, containerStyle, bg, ...props}) {
   return (
     <TouchableOpacity
       {...props}
@@ -37,9 +37,8 @@ export function Button({ Textstyle, lable, containerStyle, bg, ...props }) {
           backgroundColor: bg,
           borderWidth: 0.3,
           borderColor: '#383E44',
-          padding: 2,
         },
-        containerStyle
+        containerStyle,
       ]}>
       <TextCmp style={[styles.text, Textstyle]}>{lable}</TextCmp>
     </TouchableOpacity>

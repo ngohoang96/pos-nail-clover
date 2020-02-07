@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    height: 25,
+    height: '6%',
     alignItems: 'center',
     width: '100%',
     marginVertical: 3,
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     padding: 2,
     borderColor: '#A7A7A7',
-    height: 28,
+    height: '100%',
     minWidth: '15%',
     backgroundColor: Colors.bgGray,
     justifyContent: 'center',
@@ -38,14 +38,14 @@ const styles = StyleSheet.create({
   center_view: {
     width: '60%',
 
-    height: 30,
+    height: '100%',
   },
   coupon: {
     width: '70%',
     alignSelf: 'flex-start',
     borderWidth: 0.5,
     borderColor: '#A7A7A7',
-    height: 28,
+    height: '100%',
     backgroundColor: Colors.bgGray,
   },
   first_card: {
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     borderWidth: 0.5,
     borderColor: '#A7A7A7',
-    height: 28,
+    height: '100%',
     backgroundColor: Colors.bgGray,
   },
   second_card: {
@@ -61,14 +61,14 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     borderWidth: 0.5,
     borderColor: '#A7A7A7',
-    height: 28,
+    height: '100%',
     marginHorizontal: '2%',
     backgroundColor: Colors.bgGray,
     justifyContent: 'center',
   },
   box_discount: {
     width: '50%',
-    height: 28,
+    height: '100%',
     borderWidth: 0.5,
     borderColor: '#A7A7A7',
     justifyContent: 'center',
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   wrappername: {
     backgroundColor: '#EEE7AD',
     width: '98%',
-    height: 30,
+    height: '100%',
     padding: 3,
     margin: 3,
     alignItems: 'center',

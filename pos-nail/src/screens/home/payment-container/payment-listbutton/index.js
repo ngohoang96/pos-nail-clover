@@ -12,13 +12,8 @@ export default class PaymentListButton extends Component {
   }
   render() {
     return (
-      <View style={{marginTop: 3, flex: 4, backgroundColor: '#F0F0F0'}}>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            marginVertical: 3,
-          }}>
+      <View style={styles.container}>
+        <View style={styles.wrapper_cash}>
           <Button
             Textstyle={{color: 'black'}}
             lable={'$64.00'}
@@ -44,44 +39,26 @@ export default class PaymentListButton extends Component {
             bg={'#EEEEEE'}
           />
         </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-
-            marginVertical: 3,
-          }}>
+        <View style={styles.wrapper_option}>
           <Button
-            containerStyle={{height: 40, backgroundColor: Colors.bgGray}}
+            containerStyle={{backgroundColor: Colors.bgGray}}
             Textstyle={{color: 'black'}}
             lable={'OTHER'}
-            bg={'white'}></Button>
+            bg={'white'}
+          />
           <Button
-            containerStyle={{height: 40, backgroundColor: Colors.bgGray}}
+            containerStyle={{backgroundColor: Colors.bgGray}}
             Textstyle={{color: 'black'}}
-            lable={'GIFT'}></Button>
-          <Button
-            containerStyle={{height: 40}}
-            Textstyle={{color: 'black'}}
-            lable={'CHARGE'}
-            bg={'red'}></Button>
-          <Button
-            containerStyle={{height: 40}}
-            Textstyle={{color: 'black'}}
-            lable={'CASH'}
-            bg={'green'}></Button>
+            lable={'GIFT'}
+          />
+          <Button Textstyle={{color: 'black'}} lable={'CHARGE'} bg={'red'} />
+          <Button Textstyle={{color: 'black'}} lable={'CASH'} bg={'green'} />
         </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            borderTopColor: 'gray',
-            backgroundColor: Colors.bgGray,
-          }}>
+        <View style={styles.wrapper_service}>
           <TouchableOpacity
             style={{
               width: '49%',
-              height: 35,
+              height: '100%',
               borderWidth: 1,
               borderColor: 'gray',
               borderRadius: 1,
@@ -101,7 +78,7 @@ export default class PaymentListButton extends Component {
           <TouchableOpacity
             style={{
               width: '49%',
-              height: 35,
+              height: '100%',
               borderWidth: 1,
               borderColor: 'gray',
               borderRadius: 1,
@@ -124,4 +101,28 @@ export default class PaymentListButton extends Component {
   }
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    height: '100%',
+    justifyContent: 'space-between',
+  },
+  wrapper_cash: {
+    height: '32%',
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
+  },
+  wrapper_option: {
+    height: '32%',
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
+  },
+  wrapper_service: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    borderTopColor: 'gray',
+    backgroundColor: Colors.bgGray,
+    height: '32%',
+  },
+});

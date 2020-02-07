@@ -38,7 +38,7 @@ class TechnicianTurn extends Component {
     const {nailTechDropZone, listTechnician} = this.props;
     return (
       <View style={styles.fx09}>
-        <View style={styles.container}>
+        <View style={styles.wrapper_title}>
           <TextCmp style={styles.txtCenter}>Technician Turn</TextCmp>
         </View>
         <View style={styles.fx1}>
@@ -76,8 +76,8 @@ const mapStateToProps = state => ({
 });
 export default connect(mapStateToProps, mapDispatchToProps)(TechnicianTurn);
 const styles = StyleSheet.create({
-  container: {
-    height: Metrics.appHeight / 20,
+  wrapper_title: {
+    height: '6%',
     width: '100%',
     // paddingRight: 3,
     justifyContent: 'center',

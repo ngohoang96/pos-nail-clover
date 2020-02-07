@@ -63,7 +63,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Customer);
 const styles = StyleSheet.create({
   fx1PL2: {flex: 1, zIndex: 3},
   containerTxt: {
-    height: themes.height / 20,
+    height: '6%',
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',

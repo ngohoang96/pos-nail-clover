@@ -22,7 +22,7 @@ import PaymentTotal from './payment-total/index';
 import PaymentSubtotal from './payment-subtotal/index';
 import PaymentListButton from './payment-listbutton/index';
 import PaymentTitle from './payment-title/index';
-import {TextCmp, Colors} from '../../../themes';
+import {TextCmp, Colors, Metrics} from '../../../themes';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import {homeIcon} from '../../../assets';
 import ListServices from './list-service';
@@ -53,6 +53,7 @@ export default class Payment extends Component {
           onLayout={event => {
             const layout = event.nativeEvent.layout;
           }}>
+          <View style={{width: '8%'}} />
           <TextCmp
             style={{
               alignItems: 'center',
@@ -71,7 +72,7 @@ export default class Payment extends Component {
           </TouchableOpacity>
         </View>
         <View
-          style={{flex: 4.2}}
+          style={styles.wrapper_drapzone}
           onLayout={event => {
             this.props.setDropZoneNailTech(event);
           }}>
@@ -126,7 +127,7 @@ export default class Payment extends Component {
             <ListServices />
           </View>
         </View>
-        <View style={styles.containerfx6}>
+        <View style={styles.wrapper_bill}>
           <PaymentSubtotal subTotal={this.props.paymentBill.subTotal} />
           <PaymentCoupon />
           <PaymentGiftCart />
@@ -134,17 +135,20 @@ export default class Payment extends Component {
           <PaymentDiscount />
           <PaymentReward />
           <PaymentTotal />
-          <View style={styles.fx1FlexStart}>
+          <View style={styles.wrapper_fastpay}>
             <TextCmp
               style={{
                 color: '#383E44',
                 fontSize: normalize(4),
                 fontWeight: 'bold',
+                height: '10%',
               }}>
               Fast Pay With Cash
             </TextCmp>
+            <View style={styles.wrapper_servicebutton}>
+              <PaymentListButton />
+            </View>
           </View>
-          <PaymentListButton />
         </View>
         {/* <View style={{ height: 100, width: 100, backgroundColor: 'yellow' }}></View> */}
       </View>
@@ -154,24 +158,25 @@ export default class Payment extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0,
+    height: '100%',
     borderWidth: 0.5,
     borderColor: '#CECECE',
-    // paddingHorizontal: 5,
-    // backgroundColor: 'red',
+    paddingBottom: Metrics.appHeight / 15,
   },
-  containerfx6: {
-    flex: 5.5,
-    justifyContent: 'flex-end',
-    marginTop: 30,
+  fx1: {flex: 1, padding: 5},
+  wrapper_fastpay: {
+    height: '56%',
+  },
+  wrapper_bill: {
+    height: '54%',
     paddingHorizontal: 5,
   },
-  // fx4: {flex: 4},
-  fx1: {flex: 1, padding: 5},
-  fx1FlexStart: {alignItems: 'flex-start'},
+  wrapper_drapzone: {
+    height: '40%',
+  },
   wrapper_title: {
-    flex: 0.5,
-    // paddingLeft: 7,
+    height: '6%',
     justifyContent: 'space-between',
     flexDirection: 'row',
     backgroundColor: Colors.bgGray,
@@ -180,6 +185,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderBottomColor: 'gray',
     borderBottomWidth: 1,
+    alignItems: 'center',
   },
   wrappername: {
     backgroundColor: '#EEE7AD',
@@ -199,5 +205,8 @@ const styles = StyleSheet.create({
     height: '100%',
     width: 30,
     justifyContent: 'center',
+  },
+  wrapper_servicebutton: {
+    height: '90%',
   },
 });

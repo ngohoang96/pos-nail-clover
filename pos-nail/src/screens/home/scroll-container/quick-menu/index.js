@@ -41,9 +41,6 @@ class QuickMenu extends Component {
                 <QuickMenuItem
                   key={index}
                   style_button={{
-                    width: '100%',
-                    height: 40,
-                    paddingVertical: 10,
                     backgroundColor: Colors.bgGray,
                   }}
                   lable={item.service}
@@ -83,7 +80,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.orange,
   },
   containerTxt: {
-    height: themes.height / 20,
+    height: '6%',
     justifyContent: 'center',
 
     backgroundColor: Colors.bgGray,
