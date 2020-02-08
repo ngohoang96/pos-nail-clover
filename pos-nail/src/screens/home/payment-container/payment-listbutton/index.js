@@ -58,10 +58,10 @@ export default class PaymentListButton extends Component {
           <TouchableOpacity
             style={{
               width: '49%',
-              height: '100%',
-              borderWidth: 1,
+              height: '98%',
+              borderWidth: 0.5,
               borderColor: 'gray',
-              borderRadius: 1,
+              borderRadius: 0.5,
               alignItems: 'center',
               justifyContent: 'center',
               backgroundColor: Colors.bgGray,
@@ -78,10 +78,10 @@ export default class PaymentListButton extends Component {
           <TouchableOpacity
             style={{
               width: '49%',
-              height: '100%',
-              borderWidth: 1,
+              height: '98%',
+              borderWidth: 0.5,
               borderColor: 'gray',
-              borderRadius: 1,
+              borderRadius: 0.5,
               alignItems: 'center',
               justifyContent: 'center',
               backgroundColor: Colors.bgGray,

@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   },
   fx1: {
     flex: 1,
-    backgroundColor: Colors.orange,
+
     borderRightWidth: 0.5,
     borderRightColor: '#CECECE',
   },

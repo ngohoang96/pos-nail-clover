@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    paddingBottom: Metrics.appHeight / 15,
+    paddingBottom: 60,
     flexDirection: 'row',
   },
   text1: {fontSize: 14, alignItems: 'center', color: '#383E44'},
@@ -105,6 +105,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Colors.orange,
+    borderRightColor: 'gray',
+    borderRightWidth: 0.5,
   },
   // txt: {
   //   fontSize: 18,

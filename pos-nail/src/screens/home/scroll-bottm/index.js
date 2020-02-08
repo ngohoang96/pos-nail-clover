@@ -22,9 +22,6 @@ export default class ScrollBottom extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* <View style={styles.header}>
-          <TextCmp style={{ fontWeight: 'bold' }}>POS Function</TextCmp>
-        </View> */}
         <ScrollView
           horizontal={true}
           contentContainerStyle={styles.wrapper_list_button}>
@@ -61,16 +58,13 @@ export default class ScrollBottom extends Component {
 const styles = StyleSheet.create({
   header: {height: 20, paddingLeft: 15, backgroundColor: '#E6E6E6'},
   button: {
-    height: '100%',
-    // margin: 5,
-    borderWidth: 1,
-    borderColor: 'gray',
-    padding: 5,
+    height: 60,
+    borderRightWidth: 0.5,
+    borderRightColor: 'gray',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: Colors.bgGray,
-    width: Metrics.appWidth / 12 - 1,
-    marginLeft: 1,
+    width: 105,
     // paddingVertical: 5
   },
   wrapper_list_button: {
@@ -95,7 +89,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 0,
     left: 0,
-    height: Metrics.appHeight / 15,
+    height: 60,
     // paddingVertical: 2,
   },
 });

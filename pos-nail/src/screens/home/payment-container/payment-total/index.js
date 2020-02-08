@@ -21,7 +21,7 @@ export default class PaymentCoupon extends Component {
       <View style={styles.wrapper}>
         <View style={styles.wrapper_type}>
           <TextCmp
-            style={[styles.text, {fontSize: normalize(5), fontWeight: 'bold'}]}>
+            style={[styles.text, {fontSize: normalize(6), fontWeight: 'bold'}]}>
             Total
           </TextCmp>
         </View>

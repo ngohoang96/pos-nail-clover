@@ -14,7 +14,7 @@ export default (props = {}) => {
 const styles = StyleSheet.create({
   text: {
     color: Colors.colorOpacity(9),
-
+    flexWrap: 'wrap',
     fontSize: normalize(4),
   },
 });

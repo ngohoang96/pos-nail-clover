@@ -3,30 +3,24 @@ import PropTypes from 'prop-types';
 import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 import themes from '../../config/themes';
 import {normalize} from '../../themes/FontSize';
-import {TextCmp, Metrics} from '../../themes';
+import {TextCmp, Metrics, Colors} from '../../themes';
 
 const styles = StyleSheet.create({
   text: {
-    // color: 'black',
-    fontSize: normalize(3),
-    fontWeight: 'bold',
+    fontWeight: '500',
+    fontSize: normalize(6),
   },
   button: {
     backgroundColor: 'white',
     height: ((Metrics.appWidth * 1.2) / 8.4) * 0.35,
     width: '100%',
-    borderTopLeftRadius: 2,
-    borderBottomLeftRadius: 2,
+    borderRadius: 2,
     justifyContent: 'center',
     alignItems: 'center',
     paddingLeft: 10,
     marginTop: 1,
-    borderTopColor: '#383E44',
-    borderTopWidth: 1,
-    borderRightColor: '#383E44',
-    borderRightWidth: 1,
-    borderBottomColor: '#383E44',
-    borderBottomWidth: 1,
+    borderWidth: 0.5,
+    borderColor: Colors.line,
   },
 });
 

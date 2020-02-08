@@ -4,9 +4,9 @@ import {StyleSheet, View, ScrollView} from 'react-native';
 import themes from '../../../../config/themes';
 import {normalize} from '../../../../themes/FontSize';
 import IonIcon from 'react-native-vector-icons/Ionicons';
-import ItemScrollView from './itemScrollView';
 import {Logg} from '../../../../utils';
 import {TextCmp} from '../../../../themes';
+import FullMenuItem from './FullMenuItem';
 export default class PaymentCoupon extends Component {
   constructor(props) {
     super(props);
@@ -38,28 +38,26 @@ export default class PaymentCoupon extends Component {
           </View>
         </View> */}
         <View style={styles.containerScroll}>
-          <ScrollView horizontal={true} style={styles.width100}>
-            <View style={{flexDirection: 'row'}}>
-              {listserveceSearch.map((item, index) => {
-                if (index != 0) {
-                  return (
-                    <ItemScrollView
-                      onPress={() => {
-                        this.setState({
-                          mCatName: item.catname,
-                        });
-                        this.props.updateListFullMenu(item.catname);
-                      }}
-                      key={index + ''}
-                      item={item}
-                      mCatName={mCatName}
-                    />
-                  );
-                } else {
-                  return null;
-                }
-              })}
-            </View>
+          <ScrollView horizontal={true} style={styles.scrollview}>
+            {listserveceSearch.map((item, index) => {
+              if (index != 0) {
+                return (
+                  <FullMenuItem
+                    onPress={() => {
+                      this.setState({
+                        mCatName: item.catname,
+                      });
+                      this.props.updateListFullMenu(item.catname);
+                    }}
+                    key={index + ''}
+                    item={item}
+                    mCatName={mCatName}
+                  />
+                );
+              } else {
+                return null;
+              }
+            })}
           </ScrollView>
         </View>
       </View>
@@ -103,6 +101,6 @@ const styles = StyleSheet.create({
     width: '100%',
     // marginTop: 5,
   },
-  width100: {width: '100%'},
+  scrollview: {width: '100%', flexDirection: 'row'},
   colorBlack: {color: 'black'},
 });

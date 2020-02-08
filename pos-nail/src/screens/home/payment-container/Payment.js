@@ -106,7 +106,6 @@ export default class Payment extends Component {
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
-              marginVertical: 3,
             }}>
             <TextCmp style={{marginLeft: 5, fontWeight: 'bold'}}>
               Service
@@ -128,13 +127,15 @@ export default class Payment extends Component {
           </View>
         </View>
         <View style={styles.wrapper_bill}>
-          <PaymentSubtotal subTotal={this.props.paymentBill.subTotal} />
-          <PaymentCoupon />
-          <PaymentGiftCart />
-          <PaymentTips tip={this.props.paymentBill.tip} />
-          <PaymentDiscount />
-          <PaymentReward />
-          <PaymentTotal />
+          <View style={styles.wrapper_total}>
+            <PaymentSubtotal subTotal={this.props.paymentBill.subTotal} />
+            <PaymentCoupon />
+            <PaymentGiftCart />
+            <PaymentTips tip={this.props.paymentBill.tip} />
+            <PaymentDiscount />
+            <PaymentReward />
+            <PaymentTotal />
+          </View>
           <View style={styles.wrapper_fastpay}>
             <TextCmp
               style={{
@@ -150,7 +151,6 @@ export default class Payment extends Component {
             </View>
           </View>
         </View>
-        {/* <View style={{ height: 100, width: 100, backgroundColor: 'yellow' }}></View> */}
       </View>
     );
   }
@@ -158,15 +158,12 @@ export default class Payment extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0,
-    height: '100%',
     borderWidth: 0.5,
     borderColor: '#CECECE',
-    paddingBottom: Metrics.appHeight / 15,
   },
   fx1: {flex: 1, padding: 5},
   wrapper_fastpay: {
-    height: '56%',
+    height: '48%',
   },
   wrapper_bill: {
     height: '54%',
@@ -182,9 +179,10 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.bgGray,
     paddingHorizontal: 5,
     borderRightColor: 'gray',
-    borderRightWidth: 1,
+    borderRightWidth: 0.5,
     borderBottomColor: 'gray',
-    borderBottomWidth: 1,
+    borderBottomWidth: 0.5,
+    marginBottom: 1,
     alignItems: 'center',
   },
   wrappername: {
@@ -208,5 +206,9 @@ const styles = StyleSheet.create({
   },
   wrapper_servicebutton: {
     height: '90%',
+  },
+  wrapper_total: {
+    height: '52%',
+    justifyContent: 'space-around',
   },
 });

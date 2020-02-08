@@ -13,20 +13,10 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: 'white',
-    height: 40,
-    width: '100%',
-    borderTopLeftRadius: 2,
-    borderBottomLeftRadius: 2,
+    height: '100%',
+    padding: 2,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingLeft: 10,
-    marginTop: 1,
-    borderTopColor: '#383E44',
-    borderTopWidth: 1,
-    borderRightColor: '#383E44',
-    borderRightWidth: 1,
-    borderBottomColor: '#383E44',
-    borderBottomWidth: 1,
   },
 });
 

@@ -9,9 +9,9 @@ import {
 import {items} from '../../../../Components/InitScreen/mockData';
 
 import themes from '../../../../config/themes';
-import Item from './itemGrid';
 import {Logg} from '../../../../utils';
 import {Colors} from '../../../../themes';
+import GridItem from './GridItem';
 export default class GridScreen extends Component {
   constructor(props) {
     super(props);
@@ -32,25 +32,31 @@ export default class GridScreen extends Component {
     this.props.updateSelectedService(data);
   };
 
+  renderItem = ({item, index}) => {
+    return (
+      <GridItem
+        key={index}
+        item={item}
+        index={index}
+        onPress={() => {
+          this.updateSelectedService(item);
+        }}
+      />
+    );
+  };
+
   render() {
     const {listServicesFullMenu, catnameFullMenu} = this.props;
     let list = listServicesFullMenu;
     list = list.filter(e => e.catname === catnameFullMenu && e.id != -1);
     return (
       <View test style={styles.container}>
-        {list.map((item, index) => {
-          Logg.info('item grid', item);
-          return (
-            <Item
-              key={index}
-              item={item}
-              index={index}
-              onPress={() => {
-                this.updateSelectedService(item);
-              }}
-            />
-          );
-        })}
+        <FlatList
+          data={list}
+          renderItem={this.renderItem}
+          numColumns={3}
+          keyExtractor={(item, index) => index}
+        />
       </View>
     );
   }

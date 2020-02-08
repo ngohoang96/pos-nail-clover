@@ -6,7 +6,7 @@ import {
   Animated,
   TouchableOpacity,
 } from 'react-native';
-import {Metrics, TextCmp} from '../../themes';
+import {Metrics, TextCmp, Colors} from '../../themes';
 import {normalize} from '../../themes/FontSize';
 import themes from '../../config/themes';
 import TechnicianRepander from './TechnicianRepander';
@@ -38,13 +38,12 @@ const styles = StyleSheet.create({
   wrapper: {
     height: ((Metrics.appWidth * 1.2) / 8.4) * 0.5,
     width: (Metrics.appWidth * 1.2) / 8.4,
-    flex: 0,
   },
   detail_view: {
     // flex: 1,
     height: ((Metrics.appWidth * 1.2) / 8.4) * 0.15,
-    borderWidth: 2,
-    borderColor: '#CECECE',
+    borderWidth: 0.5,
+    borderColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -56,8 +55,8 @@ const styles = StyleSheet.create({
   name_view: {
     // flex: 2,
     height: ((Metrics.appWidth * 1.2) / 8.4) * 0.35,
-    borderWidth: 1,
-    borderColor: '#CECECE',
+    borderWidth: 0.5,
+    borderColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
   },

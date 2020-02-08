@@ -17,11 +17,11 @@ import {
   KeyboardAvoidingView,
   TouchableOpacity,
   Image,
+  StatusBar,
 } from 'react-native';
 import {styles} from './styles';
 import PaymentContainer from './payment-container';
 import ScrollBottom from './scroll-bottm/index';
-import ScrollScreen from './scroll-container/scroll-screen';
 
 import TechnicianRepander from '../../Components/InitScreen/TechnicianRepander';
 import themes, {Colors, Metrics, TextCmp} from '../../themes';
@@ -46,6 +46,7 @@ import {actions, selectors} from '../../stores';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {homeIcon} from '../../assets';
 import {countNonUnique} from '../../utils/functions';
+
 // countNonUnique();
 class Home extends Component {
   constructor(props) {
@@ -199,17 +200,17 @@ class Home extends Component {
   render() {
     const {listserveceSearch} = this.state;
     return (
-      <View style={styles.container}>
+      <View style={[styles.container]}>
         <View style={{flex: 2}}>
           <KeyboardAvoidingView
             contentContainerStyle={{
               width: '100%',
-              height: Metrics.appHeight - Metrics.appHeight / 15,
+              height: Metrics.appHeight - 60,
             }}>
             <View
               style={{
                 width: '100%',
-                height: Metrics.appHeight - Metrics.appHeight / 15,
+                height: Metrics.appHeight - 60,
               }}>
               <PaymentContainer
                 setDropZoneNailTech={this.setDropZoneNailTech}
@@ -223,7 +224,7 @@ class Home extends Component {
             listTechnician={this.props.listTechnician}
           />
         </View>
-        <View style={{flex: 1.2}}>
+        <View style={{flex: 1.2, backgroundColor: '#fff'}}>
           <Customer />
         </View>
 
@@ -262,17 +263,6 @@ class Home extends Component {
             <Grid listTechnicianSelected={this.props.listTechnicianSelected} />
           </View>
         </View>
-
-        {/* <View style={{ flex: 1, flexDirection: 'row' }}>
-          <FullMenu listserveceSearch={listserveceSearch || []} />
-        </View>
-        <View style={{ flex: 1, paddingRight: 3 }}>
-          <Grid></Grid>
-        </View>
-        <View style={{ flex: 1, paddingRight: 3 }}>
-          <Grid></Grid>
-        </View> */}
-
         <ScrollBottom onPressItem={this.onPressItem} />
         <ModalNailsTechSignIn
           modalVisible={this.state.modalVisible}

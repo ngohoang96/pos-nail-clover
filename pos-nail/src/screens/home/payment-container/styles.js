@@ -5,10 +5,9 @@ const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    height: '6%',
+    height: '13%',
     alignItems: 'center',
     width: '100%',
-    marginVertical: 3,
   },
   wrapper_type: {
     justifyContent: 'flex-start',

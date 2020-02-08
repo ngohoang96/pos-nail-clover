@@ -44,7 +44,7 @@ class QuickMenu extends Component {
                     backgroundColor: Colors.bgGray,
                   }}
                   lable={item.service}
-                  textstyles={{fontWeight: '300'}}
+                  textstyles={{fontWeight: '500'}}
                   onPress={() => this.selectService(item)}
                 />
               );
@@ -77,7 +77,10 @@ const styles = StyleSheet.create({
   fx05MGH10: {
     flex: 1,
     zIndex: -1,
-    backgroundColor: Colors.orange,
+    // borderRightWidth: 0.5,
+    // borderLeftWidth: 0.5,
+    // borderColor: Colors.line,
+    paddingHorizontal: 2,
   },
   containerTxt: {
     height: '6%',

@@ -30,7 +30,7 @@ export default {
   blurWhite: '#6F7785',
   upColor: '#70a800',
   downColor: '#FF7C53',
-  line: '#ECEDF1',
+  line: 'gray',
   white: '#ffffff',
   btnGreen: '#04C187',
   buyOrdersColor: '#70a800',

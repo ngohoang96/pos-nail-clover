@@ -37,7 +37,7 @@ target 'AwesomeProject' do
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
 
-
+  pod 'ReactNativeNavigation', :podspec => '../node_modules/react-native-navigation/ReactNativeNavigation.podspec'
 
   pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
 
@@ -49,12 +49,12 @@ target 'AwesomeProject' do
   use_native_modules!
 end
 
-target 'AwesomeProject-tvOS' do
-  # Pods for AwesomeProject-tvOS
+# target 'AwesomeProject-tvOS' do
+#   # Pods for AwesomeProject-tvOS
 
-  target 'AwesomeProject-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+#   target 'AwesomeProject-tvOSTests' do
+#     inherit! :search_paths
+#     # Pods for testing
+#   end
 
-end
+# end

@@ -4,10 +4,10 @@
  *
  *
  */
-import { Navigation, } from 'react-native-navigation';
+import {Navigation} from 'react-native-navigation';
 
-import { IDs, } from '../screens';
-import { Fonts, Colors, } from '../themes';
+import {IDs} from '../screens';
+import {Fonts, Colors} from '../themes';
 
 const showCommonDialog = ({
   title,
@@ -45,11 +45,11 @@ const showCommonDialog = ({
   });
 };
 
-const dismissOverlay = (componentID) => {
+const dismissOverlay = componentID => {
   Navigation.dismissOverlay(componentID);
 };
 
-const showModal = (params) => {
+const showModal = params => {
   Navigation.showModal({
     stack: {
       children: [
@@ -68,11 +68,11 @@ const showModal = (params) => {
   });
 };
 
-const dismissModal = (componentID) => {
+const dismissModal = componentID => {
   Navigation.dismissModal(componentID);
 };
 
-const changeTab = (tabIndex) => {
+const changeTab = tabIndex => {
   Navigation.mergeOptions('BottomTabsId', {
     bottomTabs: {
       currentTabIndex: tabIndex,
@@ -83,7 +83,7 @@ const changeTab = (tabIndex) => {
 const setDefaultOptions = () => {
   Navigation.setDefaultOptions({
     statusBar: {
-      visible: true,
+      visible: false,
       style: 'light',
     },
     topBar: {
@@ -118,4 +118,11 @@ const setDefaultOptions = () => {
   });
 };
 
-export { showCommonDialog, dismissOverlay, showModal, dismissModal, changeTab, setDefaultOptions };
+export {
+  showCommonDialog,
+  dismissOverlay,
+  showModal,
+  dismissModal,
+  changeTab,
+  setDefaultOptions,
+};

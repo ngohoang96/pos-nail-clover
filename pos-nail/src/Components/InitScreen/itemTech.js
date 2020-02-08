@@ -14,8 +14,9 @@ export default class ItemTech extends Component {
         onPress={selectTechnician}
         style={[
           {
-            borderTopColor: 'orange',
-            borderTopWidth: 2,
+            borderTopColor: 'gray',
+            borderTopWidth: 1,
+            borderBottomWidth: 1,
             width: '100%',
             height: '100%',
             backgroundColor: Colors.bgGray,
@@ -61,7 +62,7 @@ export default class ItemTech extends Component {
             alignItems: 'center',
             justifyContent: 'center',
             borderTopWidth: 0.5,
-            borderTopColor: 'orange',
+            borderTopColor: Colors.line,
             borderBottomWidth: 0.5,
             borderBottomColor: 'gray',
             borderRightWidth: 0.5,
