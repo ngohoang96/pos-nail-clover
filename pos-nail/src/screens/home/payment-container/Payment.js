@@ -6,6 +6,8 @@ import {
   StyleSheet,
   ScrollView,
   Image,
+  Platform,
+  StatusBar,
 } from 'react-native';
 
 import themes from '../../../config/themes';
@@ -47,7 +49,7 @@ export default class Payment extends Component {
     } = this.props;
 
     return (
-      <View style={styles.container}>
+      <View style={[styles.container]}>
         <View
           style={styles.wrapper_title}
           onLayout={event => {

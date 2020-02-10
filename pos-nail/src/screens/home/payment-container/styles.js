@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   wrapper_type: {
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    width: '22%',
+    width: '23%',
   },
   text: {
     alignItems: 'center',
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     fontSize: normalize(3.5),
   },
   center_view: {
-    width: '60%',
+    width: '59%',
 
     height: '100%',
   },

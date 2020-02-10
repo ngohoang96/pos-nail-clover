@@ -18,6 +18,7 @@ import {
   TouchableOpacity,
   Image,
   StatusBar,
+  Platform,
 } from 'react-native';
 import {styles} from './styles';
 import PaymentContainer from './payment-container';
@@ -200,17 +201,23 @@ class Home extends Component {
   render() {
     const {listserveceSearch} = this.state;
     return (
-      <View style={[styles.container]}>
+      <View
+        style={[
+          styles.container,
+          {
+            paddingBottom: 60,
+          },
+        ]}>
         <View style={{flex: 2}}>
           <KeyboardAvoidingView
             contentContainerStyle={{
               width: '100%',
-              height: Metrics.appHeight - 60,
+              height: '100%',
             }}>
             <View
               style={{
                 width: '100%',
-                height: Metrics.appHeight - 60,
+                height: '100%',
               }}>
               <PaymentContainer
                 setDropZoneNailTech={this.setDropZoneNailTech}
@@ -224,7 +231,7 @@ class Home extends Component {
             listTechnician={this.props.listTechnician}
           />
         </View>
-        <View style={{flex: 1.2, backgroundColor: '#fff'}}>
+        <View style={{flex: 1.2}}>
           <Customer />
         </View>
 
@@ -311,9 +318,4 @@ const mapStateToProps = state => ({
   listTechnician: state.home.listTechnician,
   listTechnicianSelected: selectors.home.selectListTechnicianSelected(state),
 });
-// export default InitScreen;
 export default connect(mapStateToProps, null)(Home);
-
-{
-  /*  */
-}

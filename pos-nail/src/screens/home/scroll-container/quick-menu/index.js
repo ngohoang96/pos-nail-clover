@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     // borderRightWidth: 0.5,
     // borderLeftWidth: 0.5,
     // borderColor: Colors.line,
-    paddingHorizontal: 2,
+    backgroundColor: Colors.orange,
   },
   containerTxt: {
     height: '6%',

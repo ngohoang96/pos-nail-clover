@@ -108,6 +108,7 @@ const styles = StyleSheet.create({
     height:
       ((Metrics.appWidth * 1.2) / 8.4) * 0.35 +
       ((Metrics.appWidth * 1.2) / 8.4) * 0.15,
+    marginVertical: 0.5,
   },
 });
 const mapDispatchToProps = dispatch => {

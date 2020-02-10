@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
     borderColor: Colors.line,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 1,
     margin: 1,
   },
 });

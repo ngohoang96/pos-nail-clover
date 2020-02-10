@@ -83,8 +83,7 @@ const changeTab = tabIndex => {
 const setDefaultOptions = () => {
   Navigation.setDefaultOptions({
     statusBar: {
-      visible: false,
-      style: 'light',
+      visible: true,
     },
     topBar: {
       buttonColor: Colors.text,

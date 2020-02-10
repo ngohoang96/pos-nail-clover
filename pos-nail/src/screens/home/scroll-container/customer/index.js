@@ -61,7 +61,7 @@ const mapStateToProps = state => ({
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Customer);
 const styles = StyleSheet.create({
-  fx1PL2: {flex: 1, zIndex: 3, backgroundColor: '#fff'},
+  fx1PL2: {flex: 1, zIndex: 3},
   containerTxt: {
     height: '6%',
     width: '100%',

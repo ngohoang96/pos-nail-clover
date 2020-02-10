@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    paddingBottom: 60,
+
     flexDirection: 'row',
   },
   text1: {fontSize: 14, alignItems: 'center', color: '#383E44'},
