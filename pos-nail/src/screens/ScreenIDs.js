@@ -6,4 +6,6 @@
  */
 export default {
   Home: 'screen.Home',
+  CustomerSignIn: 'modal.CustomerSignIn',
+  CustomerRegister: 'modal.CustomerRegister',
 };

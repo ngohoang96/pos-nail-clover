@@ -31,11 +31,7 @@ const initialState = {
   customer: [{name: 'Jenifer Tran'}, {name: 'Jenifer Pham'}],
   selectedCustomer: null,
   listTechnicianSelected: [],
-  listTechnician: [
-    {name: 'Nguyen Thi 1'},
-    {name: 'Nguyen Thi 2'},
-    {name: 'Nguyen Van 3'},
-  ],
+  listTechnician: [],
   selectedService: null,
   listService: [],
   paymentBill: {
@@ -49,6 +45,9 @@ const initialState = {
     total: 0,
     // discount : 0,
   },
+  services: null,
+  listTypeServices: null,
+  selectedTechnician: [],
 };
 
 const reducer = Helper.createReducer(initialState, {
@@ -377,6 +376,24 @@ const reducer = Helper.createReducer(initialState, {
     return {
       ...state,
       selectedService: action.payload,
+    };
+  },
+  [Types.GET_TECHNICIAN]: ({state, action}) => {
+    return {
+      ...state,
+      listTechnician: action.payload,
+    };
+  },
+  [Types.GET_ALL_SERVICES]: ({state, action}) => {
+    return {
+      ...state,
+      listTypeServices: action.payload,
+    };
+  },
+  [Types.UPDATE_SELECTED_TECHNICIAN]: ({state, action}) => {
+    return {
+      ...state,
+      selectedTechnician: action.payload,
     };
   },
 });

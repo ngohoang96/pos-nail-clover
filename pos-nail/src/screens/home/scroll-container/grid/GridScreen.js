@@ -67,12 +67,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexWrap: 'wrap',
     flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  tmp: {height: themes.height / 20},
-  containerListRightContent: {
-    width: '100%',
-    height: '100%',
-    flexWrap: 'wrap',
+    marginLeft: 4,
   },
 });

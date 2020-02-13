@@ -12,15 +12,13 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: 'white',
-    height: ((Metrics.appWidth * 1.2) / 8.4) * 0.35,
-    width: '100%',
-    borderRadius: 2,
+    marginVertical: 2,
+    height: ((Metrics.appWidth * 1.2) / 8.4) * 0.35 - 4,
+    width: '96%',
+    marginHorizontal: '2%',
+    borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingLeft: 10,
-    marginTop: 1,
-    borderWidth: 0.5,
-    borderColor: Colors.line,
   },
 });
 
@@ -29,13 +27,15 @@ export default class QuickMenuItem extends Component {
     super(props);
   }
   render() {
-    const {onPress} = this.props;
+    const {onPress, code} = this.props;
     return (
       <TouchableOpacity
         activeOpacity={0.5}
         style={[
           styles.button,
-          {borderLeftWidth: 1, ...this.props.style_button},
+          {
+            ...this.props.style_button,
+          },
         ]}
         onPress={() => onPress()}>
         <TextCmp style={[styles.text]}>{this.props.lable}</TextCmp>

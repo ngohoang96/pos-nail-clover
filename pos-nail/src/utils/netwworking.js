@@ -1,11 +1,10 @@
+import {StatusBar, Platform} from 'react-native';
 
-
-import { StatusBar, Platform, } from 'react-native';
-
-let url = 'http://95.217.32.253/POSSystem/MaxViewWebService.asmx';  
-
+let url =
+  'http://webservice.nailssolutions.com/POSSystem/MaxViewWebService.asmx';
 
 const secret = 'max@@view@@01235';
+let storeId = 'MAX12898';
 
 export function get(api, headers) {
   return fetch(api, {
@@ -16,113 +15,119 @@ export function get(api, headers) {
       ...headers,
     },
   })
-    .then((response) => response.json().then((data) => data))
-    .catch((err) => {
+    .then(response => response.json().then(data => data))
+    .catch(err => {
       // console.log('There is an error occurred while requesting api', err, api)
     });
 }
 
 export function post(api, params) {
-  
-  console.log('POST '+ api +' data '+ JSON.stringify(params)+'\n'+url)
-  Platform.OS == 'ios' && StatusBar.setNetworkActivityIndicatorVisible(true)
-  return new Promise(
-    function (resolve, reject) {
-      const request = new XMLHttpRequest();
-      let strParams = '';
-      if (params) {
-        Object.keys(params).map(param => {
-          strParams += '<' + param + '>' + params[param] + '</' + param + '>'
-        })
-      }
+  console.log('POST ' + api + ' data ' + JSON.stringify(params) + '\n' + url);
+  Platform.OS == 'ios' && StatusBar.setNetworkActivityIndicatorVisible(true);
+  return new Promise(function(resolve, reject) {
+    const request = new XMLHttpRequest();
+    let strParams = '';
+    if (params) {
+      Object.keys(params).map(param => {
+        strParams += '<' + param + '>' + params[param] + '</' + param + '>';
+      });
+    }
 
-      var sr =
-        '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">'
-        + '<soap:Body>'
-        + '<' + api + ' xmlns="http://tempuri.org/">'
-        + '<secret>' + secret + '</secret>'
-        + strParams
-        + '</' + api + '>'
-        + '</soap:Body>'
-        + '</soap:Envelope>'
-       console.log(sr)
-      request.onload = function () {
-        // console.log(api, this)
-        Platform.OS == 'ios' && StatusBar.setNetworkActivityIndicatorVisible(false)
-        if (this.status === 200) {
-          // console.log(this.response)
-          let data = this._response.split('<' + api + 'Result>')[1];
-          data = data.split('</' + api + 'Result>')[0];
-          // alert(JSON.stringify(data))
-          try {
-            data = JSON.parse(data)
-          } catch (e) {
-            data = data
-          }
-          let Data = '';
-          console.log('response '+ api +' '+ JSON.stringify(data) +', datatype ' + typeof data)
-          if (typeof data == 'string') {
-            Data = data
-          } 
-          else {
-            try {
-              Data = {};
-              if (data[2].Data) {
-                try {
-                  Data = JSON.parse(data[2].Data)
-                } catch (e) {
-                  Data = {}
-                }
-
-                //Data.data = JSON.parse(data[2].Data);
-              }
-             
-              Data.meta = data[1];
-              Data.dataArray = data;
-             
-              // Data.data = JSON.parse(data[2].Data)
-            } catch (e) {
-              Data = data
-              if(data[1])
-              Data=data[1]
-              if (data[2])
-                Data = data[2]
-
-            }
-          }
-
-
-          let res = {
-            data: Data,
-            error: false,
-          }
-          resolve(res);
-        } else {
-          resolve({
-            error: true,
-            status: this.status
-          })
-          // Something went wrong (404 etc.)
-          // reject(this.status);
+    var sr =
+      '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">' +
+      '<soap:Body>' +
+      '<' +
+      api +
+      ' xmlns="http://tempuri.org/">' +
+      '<secret>' +
+      secret +
+      '</secret>' +
+      strParams +
+      '</' +
+      api +
+      '>' +
+      '</soap:Body>' +
+      '</soap:Envelope>';
+    console.log(sr);
+    request.onload = function() {
+      // console.log(api, this)
+      Platform.OS == 'ios' &&
+        StatusBar.setNetworkActivityIndicatorVisible(false);
+      if (this.status === 200) {
+        // console.log(this.response)
+        let data = this._response.split('<' + api + 'Result>')[1];
+        data = data.split('</' + api + 'Result>')[0];
+        // alert(JSON.stringify(data))
+        try {
+          data = JSON.parse(data);
+        } catch (e) {
+          data = data;
         }
-      };
-      request.onerror = function () {
-        Platform.OS == 'ios' && StatusBar.setNetworkActivityIndicatorVisible(false)
-        // console.log(this);
+        let Data = '';
+        console.log(
+          'response ' +
+            api +
+            ' ' +
+            JSON.stringify(data) +
+            ', datatype ' +
+            typeof data,
+        );
+        if (typeof data == 'string') {
+          Data = data;
+        } else {
+          try {
+            Data = {};
+            if (data[2].Data) {
+              try {
+                Data = JSON.parse(data[2].Data);
+              } catch (e) {
+                Data = {};
+              }
+
+              //Data.data = JSON.parse(data[2].Data);
+            }
+
+            Data.meta = data[1];
+            Data.dataArray = data;
+
+            // Data.data = JSON.parse(data[2].Data)
+          } catch (e) {
+            Data = data;
+            if (data[1]) Data = data[1];
+            if (data[2]) Data = data[2];
+          }
+        }
+
+        let res = {
+          data: Data,
+          error: false,
+        };
+        resolve(res);
+      } else {
         resolve({
           error: true,
-          status: this.status
-        })
-        
-      };
+          status: this.status,
+        });
+        // Something went wrong (404 etc.)
+        // reject(this.status);
+      }
+    };
+    request.onerror = function() {
+      Platform.OS == 'ios' &&
+        StatusBar.setNetworkActivityIndicatorVisible(false);
+      // console.log(this);
+      resolve({
+        error: true,
+        status: this.status,
+      });
+    };
 
-      request.open('POST', url, true);
-      request.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
-      request.responseType = 'json';
-      request.send(sr);
-    });
+    request.open('POST', url, true);
+    request.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
+    request.responseType = 'json';
+    request.send(sr);
+  });
 }
-
 
 export function toDataUrl(url, callback) {
   var xhr = new XMLHttpRequest();
@@ -153,7 +158,7 @@ export function toDataUrl(url, callback) {
 function encode(input) {
   // Create Base64 Object
   const chars =
-		'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 
   let str = input;
   let output = '';
@@ -167,7 +172,7 @@ function encode(input) {
 
     if (charCode > 0xff) {
       throw new Error(
-        '\'btoa\' failed: The string to be encoded contains characters outside of the Latin1 range.',
+        "'btoa' failed: The string to be encoded contains characters outside of the Latin1 range.",
       );
     }
 
@@ -200,8 +205,8 @@ export function xmlToJson(xml) {
   // If just one text node inside
   if (
     xml.hasChildNodes() &&
-		xml.childNodes.length === 1 &&
-		xml.childNodes[0].nodeType === 3
+    xml.childNodes.length === 1 &&
+    xml.childNodes[0].nodeType === 3
   ) {
     obj = xml.childNodes[0].nodeValue;
   } else if (xml.hasChildNodes()) {
@@ -223,7 +228,7 @@ export function xmlToJson(xml) {
   return obj;
 }
 
-export const modifyXML = (xml) => {
+export const modifyXML = xml => {
   const posElement = xml.indexOf('<DocumentElement');
   if (posElement !== -1) {
     return xml.slice(posElement).replace('</diffgr:diffgram>', '');

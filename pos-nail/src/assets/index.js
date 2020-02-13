@@ -9,11 +9,12 @@ export const iconsScroll = {
   downarrow: require('./icons/downarrow.png'),
   deletemodal: require('./icons/deletemodal.png'),
   staffs: require('./images/staffs.png'),
-  ninja: require('./images/ninja.png'),
+  ninja: require('./images/avatar.png'),
 };
 
 export const homeIcon = {
   delete: require('./icons/delete.png'),
   left_arrow: require('./icons/left.png'),
   right_arrow: require('./icons/right.png'),
+  avatar: require('./images/avatar.png'),
 };

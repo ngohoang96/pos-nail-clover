@@ -24,6 +24,7 @@ import {TextCmp, Metrics, Colors} from '../../../../themes';
 import ItemTech from '../../../../Components/InitScreen/itemTech';
 import {connect} from 'react-redux';
 import {actions, selectors} from '../../../../stores';
+import DraggableFlatList from 'react-native-draggable-dynamic-flatlist';
 
 class TechnicianTurn extends Component {
   selectTechnician = name => {
@@ -34,6 +35,20 @@ class TechnicianTurn extends Component {
     }
   };
 
+  renderItem = ({item, index}) => {
+    return (
+      <TechnicianRepander
+        key={index}
+        name={item.name}
+        updateDropZone={() => this.selectTechnician(item.name)}
+        style={{marginHorizontal: 5}}>
+        <TouchableOpacity onPress={() => this.selectTechnician(item.name)}>
+          <ItemTech nameTechnician={item.name} />
+        </TouchableOpacity>
+      </TechnicianRepander>
+    );
+  };
+
   render() {
     const {nailTechDropZone, listTechnician} = this.props;
     return (
@@ -42,20 +57,11 @@ class TechnicianTurn extends Component {
           <TextCmp style={styles.txtCenter}>Technician Turn</TextCmp>
         </View>
         <View style={styles.fx1}>
-          {listTechnician.map((item, index) => {
-            return (
-              <TechnicianRepander
-                key={index}
-                name={item.name}
-                updateDropZone={() => this.selectTechnician(item.name)}
-                nailTechDropZone={nailTechDropZone}>
-                <TouchableOpacity
-                  onPress={() => this.selectTechnician(item.name)}>
-                  <ItemTech nameTechnician={item.name} />
-                </TouchableOpacity>
-              </TechnicianRepander>
-            );
-          })}
+          <FlatList
+            data={listTechnician}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={this.renderItem}
+          />
         </View>
       </View>
     );

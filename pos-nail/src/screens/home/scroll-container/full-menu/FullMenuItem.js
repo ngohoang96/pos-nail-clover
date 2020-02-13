@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     width: '100%',
+    paddingHorizontal: 2,
   },
   button: {
     backgroundColor: Colors.bgGray,

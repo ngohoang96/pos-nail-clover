@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
-import {TextCmp, Colors} from '../../../../themes';
+import {TextCmp, Colors, Metrics} from '../../../../themes';
 import {normalize} from '../../../../themes/FontSize';
 import themes from '../../../../config/themes';
 export default class GridItem extends Component {
@@ -22,6 +22,7 @@ export default class GridItem extends Component {
         <TextCmp
           style={{
             fontSize: normalize(4),
+            marginTop: 4,
           }}>
           Price: {item.price}$
         </TextCmp>
@@ -37,13 +38,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   containerTouchItem: {
-    width: '32.8%',
+    width: '31%',
     backgroundColor: Colors.bgGray,
     // borderRadius: 3,
-    borderWidth: 0.5,
-    borderColor: Colors.line,
     alignItems: 'center',
     justifyContent: 'center',
-    margin: 1,
+    marginHorizontal: '1%',
+    marginVertical: 4,
+    minHeight: ((Metrics.appWidth * 1.2) / 8.4) * 0.35,
+    borderRadius: 5,
+    elevation: 4,
   },
 });

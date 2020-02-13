@@ -45,7 +45,14 @@ const Types = {
 
   UPDATE_TIP_SERVICE: 'home@UPDATE_TIP_SERVICE',
 
-  UPDATE_SELECTED_SERVICE: 'home@UPDATE_SELECTED_SERVICE',
+  UPDATE_SELECTED_SERVICE: 'cus@UPDATE_SELECTED_SERVICE',
+
+  GET_TECHNICIAN: 'cus@GET_TECHNICIAN',
+
+  GET_ALL_SERVICES: 'cus@GET_ALL_SERVICES',
+
+  UPDATE_SELECTED_TECHNICIAN: 'cus@UPDATE_SELECTED_TECHNICIAN',
+  UPDATE_SELECTED_TYPE_SERVICE: 'cus@UPDATE_SELECTED_TYPE_SERVICE',
 };
 
 const Actions = {
@@ -151,6 +158,18 @@ const Actions = {
   }),
   updateSelectedService: data => ({
     type: Types.UPDATE_SELECTED_SERVICE,
+    payload: data,
+  }),
+  getTechnician: data => ({
+    type: Types.GET_TECHNICIAN,
+    payload: data,
+  }),
+  getAllServices: data => ({
+    type: Types.GET_ALL_SERVICES,
+    payload: data,
+  }),
+  updateSelectedTechnician: data => ({
+    type: Types.UPDATE_SELECTED_TECHNICIAN,
     payload: data,
   }),
 };

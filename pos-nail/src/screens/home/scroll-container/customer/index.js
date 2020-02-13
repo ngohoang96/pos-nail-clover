@@ -78,5 +78,5 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: normalize(5),
   },
-  fx1: {flex: 1},
+  fx1: {flex: 1, marginHorizontal: 5},
 });

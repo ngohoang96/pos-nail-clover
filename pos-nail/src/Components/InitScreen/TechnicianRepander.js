@@ -94,21 +94,24 @@ class TechnicianRepander extends Component {
       transform: this.state.pan.getTranslateTransform(),
     };
     return (
-      <Animated.View
-        {...this.panResponder.panHandlers}
-        style={[panStyle, styles.container, {...this.props.style}]}>
+      <View
+        // {...this.panResponder.panHandlers}
+        style={[styles.container, {...this.props.style}]}>
         {this.props.children}
-      </Animated.View>
+      </View>
     );
   }
 }
 const styles = StyleSheet.create({
   container: {
-    width: (Metrics.appWidth * 1.2) / 8.4,
+    width: (Metrics.appWidth * 1.2) / 8.4 - 10,
     height:
       ((Metrics.appWidth * 1.2) / 8.4) * 0.35 +
       ((Metrics.appWidth * 1.2) / 8.4) * 0.15,
-    marginVertical: 0.5,
+    marginVertical: 3,
+    borderRadius: 10,
+    elevation: 6,
+    zIndex: 10,
   },
 });
 const mapDispatchToProps = dispatch => {

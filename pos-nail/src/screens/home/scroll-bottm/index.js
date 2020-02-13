@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: Colors.bgGray,
-    width: 105,
+    width: '10%',
     // paddingVertical: 5
   },
   wrapper_list_button: {
@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     // height: 80,
     justifyContent: 'space-around',
     alignItems: 'center',
+    width: Metrics.appWidth,
   },
   center: {alignItems: 'center', justifyContent: 'center'},
   txtLabel: {

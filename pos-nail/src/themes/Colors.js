@@ -26,7 +26,8 @@ export default {
   backgroundL3: '#F9F9F9',
   backgroundL4: '#151821',
   selectedColor: '#EBAD0E',
-
+  purple: '#9272D8',
+  purple_line: '#7750CC',
   blurWhite: '#6F7785',
   upColor: '#70a800',
   downColor: '#FF7C53',
@@ -45,7 +46,7 @@ export default {
   textblack: '#242C34',
   textHeader: '#BFC6D3',
   border: '#F2F2F2',
-
+  backgroundModal: '#ECECEC',
   animationRed: '#FD8D71',
   animationGreen: '#74B02D',
   // text0: '#000000',

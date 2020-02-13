@@ -19,6 +19,7 @@ export default class ItemTech extends Component {
             width: '100%',
             height: '100%',
             backgroundColor: Colors.bgGray,
+            borderRadius: 5,
           },
           this.props.containerStyle,
         ]}>
@@ -27,8 +28,6 @@ export default class ItemTech extends Component {
             style={{
               height: ((Metrics.appWidth * 1.2) / 8.4) * 0.35,
               width: ((Metrics.appWidth * 1.2) / 8.4) * 0.35,
-              borderRightWidth: 0.5,
-              borderRightColor: 'gray',
               alignItems: 'center',
               justifyContent: 'center',
             }}>
@@ -46,8 +45,6 @@ export default class ItemTech extends Component {
               width: ((Metrics.appWidth * 1.2) / 8.4) * 0.65,
               alignItems: 'center',
               justifyContent: 'center',
-              borderRightWidth: 0.5,
-              borderRightColor: 'gray',
             }}>
             <TextCmp style={styl.textName}>
               {this.props.nameTechnician || 'tên'}
@@ -62,7 +59,7 @@ export default class ItemTech extends Component {
             justifyContent: 'center',
             borderTopWidth: 0.5,
             borderTopColor: Colors.line,
-            borderRightWidth: 0.5,
+
             borderRightColor: 'gray',
           }}>
           <TextCmp style={styl.txtViewDetail}>View detail</TextCmp>
@@ -80,10 +77,12 @@ const styl = StyleSheet.create({
     flex: 1,
   },
   textName: {
-    alignItems: 'center',
     // color: 'black',
+    width: '100%',
+    alignItems: 'center',
     fontWeight: 'bold',
     fontSize: normalize(5),
+    marginLeft: 5,
   },
   container1: {
     backgroundColor: '#F5F5F5',

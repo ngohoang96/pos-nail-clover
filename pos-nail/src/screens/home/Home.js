@@ -24,7 +24,6 @@ import {styles} from './styles';
 import PaymentContainer from './payment-container';
 import ScrollBottom from './scroll-bottm/index';
 
-import TechnicianRepander from '../../Components/InitScreen/TechnicianRepander';
 import themes, {Colors, Metrics, TextCmp} from '../../themes';
 
 import Grid from './scroll-container/grid/index';
@@ -33,22 +32,25 @@ import Customer from './scroll-container/customer/index';
 import QuickMenu from './scroll-container/quick-menu/index';
 import FullMenu from './scroll-container/full-menu/index';
 import ModalNailsTechSignIn from './components/ModalNailsTech';
-import ModalCustomerSignIn from './components/ModalCustomerSignIn';
 import ModalEmployeesSignIn from './components/ModalEmployeesSignIn';
 import ModalManagerSystem from './components/ModalManagerSystem';
 import ModalTipsManager from './components/ModalTipsManager';
 import ModalSupportsCenter from './components/ModalSupports';
 
 import {connect} from 'react-redux';
-import {AppCheckIn_GetServices, AppCheckIn_GetStaffs} from './actions';
+import {
+  AppCheckIn_GetServices,
+  AppCheckIn_GetStaffsTakeTurn,
+  AppCheckIn_GetStafsWorking,
+} from './actions';
 import moment from 'moment';
 import {Logg} from '../../utils';
 import {actions, selectors} from '../../stores';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {homeIcon} from '../../assets';
 import {countNonUnique} from '../../utils/functions';
+import CustomerModal from './modal/customer/CustomerModal';
 
-// countNonUnique();
 class Home extends Component {
   constructor(props) {
     super();
@@ -79,7 +81,7 @@ class Home extends Component {
     this.setState({modalVisible: visible});
   };
   // đóng mở modal customer
-  setModalCustomerVisible = visible => {
+  toogleCustomerModal = visible => {
     this.setState({modalCustomerVisible: visible});
   };
 
@@ -106,15 +108,15 @@ class Home extends Component {
   // chọn vào item của scrollBottom
   onPressItem = name => {
     // alert(name);
-    if (name === 'Nails Tech Sign In') {
+    if (name === 'NAILS TECH') {
       this.setModalVisible(true);
-    } else if (name === 'Customer Sign In') {
-      this.setModalCustomerVisible(true);
-    } else if (name === 'Employees Sign In') {
+    } else if (name === 'CUSTOMER') {
+      this.toogleCustomerModal(true);
+    } else if (name === 'EMPLOYEES') {
       this.setModalEmployeesSignIn();
     } else if (name === 'Manager System') {
       this.setModalManagerSystem();
-    } else if (name === 'Tips Manager') {
+    } else if (name === 'TIPS ADJS') {
       this.setModalTipsManager();
     } else if (name === 'Support Center') {
       this.setModalSupportsCenter();
@@ -122,21 +124,30 @@ class Home extends Component {
   };
   componentDidMount() {
     // get danh sách staff và services truyền qua ModalCustomer
-    this.AppCheckIn_GetServices({storeCode: 'MAX12898'});
-    this.AppCheckIn_GetStaffs({storeCode: 'MAX12898'});
+    this.getServices({storeCode: 'MAX12898'});
+    this.getStaff({storeCode: 'MAX12898'});
+    this.getStaffWorking({storeCode: 'MAX12898'});
   }
 
-  AppCheckIn_GetStaffs(params) {
+  getStaff(params) {
     (params.date = moment(new Date()).format('YYYY-MM-DD')),
-      this.props.dispatch(AppCheckIn_GetStaffs(params)).then(result => {
+      this.props.dispatch(AppCheckIn_GetStaffsTakeTurn(params)).then(result => {
         //alert(JSON.stringify(result))
         Logg.info('Staffs  xxxx ' + JSON.stringify(result));
 
         // this.setState({dataStaffs: result});
 
         // Logg.info('Staffs  xxxx ' + JSON.stringify(this.state.dataStaffs));
-        result.map(item => (item.isSelected = false));
-        this.props.dispatch(actions.home.updateListFinish(result));
+        let dataArray = [];
+        result.map(item =>
+          dataArray.push({
+            name: item.first_name + ' ' + item.last_name,
+            idTechnician: item.id,
+            staffCode: item.staffCode,
+            clockInTime: item.clockInTime,
+          }),
+        );
+        this.props.dispatch(actions.home.getTechnician(dataArray));
         // this.props.dispatch({
         //   type: 'SAVE_DATA_Staffs',
         //   payload: {
@@ -154,9 +165,18 @@ class Home extends Component {
         }
       });
   }
-  AppCheckIn_GetServices(params) {
+
+  getStaffWorking(params) {
+    (params.date = moment(new Date()).format('YYYY-MM-DD')),
+      this.props.dispatch(AppCheckIn_GetStafsWorking(params)).then(result => {
+        Logg.info('result technician working', result);
+        this.props.dispatch(actions.cus.getTechnicianWorking(result));
+      });
+  }
+  getServices(params) {
     (params.date = moment(new Date()).format('YYYY-MM-DD')),
       this.props.dispatch(AppCheckIn_GetServices(params)).then(result => {
+        Logg.info('result services', result);
         let listserveceSearch = [{catname: 'All Services', id: -1, name: ''}];
         if (result) {
           result.map(item => {
@@ -184,7 +204,7 @@ class Home extends Component {
         this.props.dispatch(
           actions.cus.updateCatnameService('Additional Options'),
         );
-
+        this.props.dispatch(actions.home.getAllServices(listserveceSearch));
         console.log(listserveceSearch);
         this.setState({
           listserveceSearch,
@@ -199,7 +219,7 @@ class Home extends Component {
   };
 
   render() {
-    const {listserveceSearch} = this.state;
+    const {listserveceSearch, modalCustomerVisible} = this.state;
     return (
       <View
         style={[
@@ -209,21 +229,13 @@ class Home extends Component {
           },
         ]}>
         <View style={{flex: 2}}>
-          <KeyboardAvoidingView
-            contentContainerStyle={{
+          <View
+            style={{
               width: '100%',
               height: '100%',
             }}>
-            <View
-              style={{
-                width: '100%',
-                height: '100%',
-              }}>
-              <PaymentContainer
-                setDropZoneNailTech={this.setDropZoneNailTech}
-              />
-            </View>
-          </KeyboardAvoidingView>
+            <PaymentContainer setDropZoneNailTech={this.setDropZoneNailTech} />
+          </View>
         </View>
         <View style={{flex: 1.2}}>
           <TechnicianTurn
@@ -297,17 +309,10 @@ class Home extends Component {
           onPressClose={this.setModalSupportsCenter}
           onRequestClose={this.setModalSupportsCenter}
         />
-        <ModalCustomerSignIn
-          dataStaffs={this.state.dataStaffs}
-          dataSearchButton={this.state.listserveceSearch}
-          dataListSearch={this.state.dataListSearch}
-          onPressIsModal={() => {
-            this.setState({
-              modalCustomerVisible: !this.state.modalCustomerVisible,
-            });
-          }}
-          modalVisible={this.state.modalCustomerVisible}
-          onRequestClose={this.setModalCustomerVisible}
+
+        <CustomerModal
+          visible={modalCustomerVisible}
+          onClose={this.toogleCustomerModal}
         />
       </View>
     );

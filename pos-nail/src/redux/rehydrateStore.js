@@ -11,7 +11,7 @@ import {persistStore} from 'redux-persist';
 import {Logg} from '../utils';
 
 const blacklist = [
-  'home',
+  'cus',
   // Any sub-store that shouldn't be store between run time go here...
 ];
 

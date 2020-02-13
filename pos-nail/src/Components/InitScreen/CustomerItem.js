@@ -18,6 +18,8 @@ export default class CustomerItem extends Component {
       <TechnicianRepander
         style={{
           backgroundColor: this.props.index % 2 == 0 ? 'orange' : 'red',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
         updateDropZone={updateSelectedCustomer}>
         <TouchableOpacity
@@ -37,7 +39,7 @@ export default class CustomerItem extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     height: ((Metrics.appWidth * 1.2) / 8.4) * 0.5,
-    width: (Metrics.appWidth * 1.2) / 8.4,
+    width: '100%',
   },
   detail_view: {
     // flex: 1,

@@ -42,8 +42,12 @@ class QuickMenu extends Component {
                   key={index}
                   style_button={{
                     backgroundColor: Colors.bgGray,
+                    borderLeftColor: item.code,
+                    borderLeftWidth: 4,
+                    elevation: 4,
                   }}
                   lable={item.service}
+                  code={item.code}
                   textstyles={{fontWeight: '500'}}
                   onPress={() => this.selectService(item)}
                 />
