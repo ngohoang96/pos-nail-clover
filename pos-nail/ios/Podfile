@@ -40,12 +40,11 @@ target 'AwesomeProject' do
   pod 'ReactNativeNavigation', :podspec => '../node_modules/react-native-navigation/ReactNativeNavigation.podspec'
 
   pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
-
+  # pod 'RNBluetoothEscposPrinter', :path => '../node_modules/react-native-bluetooth-escpos-printer/RNBluetoothEscposPrinter.podspec'
   target 'AwesomeProjectTests' do
     inherit! :search_paths
     # Pods for testing
   end
-
   use_native_modules!
 end
 

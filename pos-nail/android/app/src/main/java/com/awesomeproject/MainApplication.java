@@ -7,10 +7,10 @@ import com.reactnativenavigation.react.NavigationReactNativeHost;
 import com.reactnativenavigation.react.ReactGateway;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
-import com.entria.views.RNViewOverflowPackage;
 import com.swmansion.reanimated.ReanimatedPackage;
 import java.util.Arrays;
 import java.util.List;
+import com.reactnativecommunity.webview.RNCWebViewPackage;
 
 public class MainApplication extends NavigationApplication {
 
@@ -35,8 +35,10 @@ public class MainApplication extends NavigationApplication {
         // No need to add RnnPackage and MainReactPackage
         return Arrays.<ReactPackage>asList(
                 // new SnackbarPackage(),
-                new AsyncStoragePackage(), new RNViewOverflowPackage(), new RNGestureHandlerPackage(),
-                new ReanimatedPackage()
+                new AsyncStoragePackage(),
+                new RNGestureHandlerPackage(),
+                new ReanimatedPackage(),
+                new RNCWebViewPackage()
         // eg. new VectorIconsPackage()
         );
     }

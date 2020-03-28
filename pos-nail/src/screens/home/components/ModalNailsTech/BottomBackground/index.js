@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, {Component} from 'react';
+import {View, Text, StyleSheet} from 'react-native';
 
-import { Colors, TextCmp } from '../../../../../themes';
-import { normalize } from '../../../../../themes/FontSize';
+import {Colors, TextCmp} from '../../../../../themes';
+import {normalize} from '../../../../../themes/FontSize';
 class index extends Component {
   constructor(props) {
     super(props);
@@ -10,21 +10,18 @@ class index extends Component {
   }
 
   render() {
-    return (
-      <View
-        style={[styles.container, this.props.containerStyles]}></View>
-    );
+    return <View style={[styles.container, this.props.containerStyles]}></View>;
   }
 }
 
 export default index;
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 0.7,
-    backgroundColor: '#397DA4',
+    backgroundColor: Colors.backgroundModal,
     paddingLeft: 10,
     justifyContent: 'center',
-  }
-})
+    borderTopWidth: 0.5,
+  },
+});

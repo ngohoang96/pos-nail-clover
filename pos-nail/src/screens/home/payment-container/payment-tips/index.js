@@ -12,13 +12,27 @@ import themes from '../../../../config/themes';
 import {normalize} from '../../../../themes/FontSize';
 import {TextCmp} from '../../../../themes';
 import {styles} from '../styles';
+import InputTips from './InputTips';
 
 export default class PaymentTips extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      value: '',
+    };
   }
+
+  onChangeValue = value => {
+    this.setState({
+      value: value + '',
+    });
+  };
+  onEndEditing = value => {
+    this.props.updateTipsPayment(value.nativeEvent.text);
+  };
   render() {
-    const {tip} = this.props;
+    const {tip, updateTipsPayment} = this.props;
+    const {value} = this.state;
     let tips = 0;
     if (!isNaN(tip)) {
       tips = tip;
@@ -29,7 +43,11 @@ export default class PaymentTips extends Component {
           <TextCmp style={styles.text}>Tips</TextCmp>
         </View>
         <View style={styles.center_view}>
-          <View style={styles.coupon}></View>
+          <InputTips
+            value={value}
+            onChangeValue={this.onChangeValue}
+            onEndEditing={this.onEndEditing}
+          />
         </View>
         <View style={styles.wrapper_cash}>
           <TextCmp style={styles.txt_cash}>$ {tips}</TextCmp>

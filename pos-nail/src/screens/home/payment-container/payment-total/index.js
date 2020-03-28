@@ -13,10 +13,11 @@ import {TextCmp} from '../../../../themes';
 import {styles} from '../styles';
 
 export default class PaymentCoupon extends Component {
-  constructor(props) {
-    super(props);
+  shouldComponentUpdate({total: newTotal}) {
+    return newTotal !== this.props.total;
   }
   render() {
+    const {total} = this.props;
     return (
       <View style={styles.wrapper}>
         <View style={styles.wrapper_type}>
@@ -26,7 +27,7 @@ export default class PaymentCoupon extends Component {
           </TextCmp>
         </View>
         <View style={styles.wrapper_cash}>
-          <TextCmp style={styles.txt_cash}>$0</TextCmp>
+          <TextCmp style={styles.txt_cash}>${total}</TextCmp>
         </View>
       </View>
     );

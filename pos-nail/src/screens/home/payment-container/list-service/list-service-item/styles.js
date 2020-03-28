@@ -3,11 +3,10 @@ import {normalize} from '../../../../../themes/FontSize';
 export const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    height: 40,
     width: '100%',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 3,
+    padding: 5,
   },
   wrapper_input: {
     width: '11%',
@@ -19,12 +18,12 @@ export const styles = StyleSheet.create({
   },
   wrapper_service: {
     width: '16%',
-    height: 40,
     justifyContent: 'center',
   },
   wrapper_technician: {
     width: '25%',
-    height: 40,
+    minHeight: 40,
+    paddingLeft: 8,
     justifyContent: 'center',
   },
 });

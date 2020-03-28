@@ -10,8 +10,9 @@ import {Navigation} from 'react-native-navigation';
 import IDs from './ScreenIDs';
 import Home from './home/Home';
 import {gestureHandlerRootHOC} from 'react-native-gesture-handler';
-import CustomerSignIn from './home/modal/customer/sign-in/index';
-import CustomerRegister from './home/modal/customer/register/index';
+import CustomerRegister from './home/modal/customer/register/';
+import CustomerSignIn from './home/modal/customer/SignIn/';
+
 const screens = {
   [IDs.Home]: Home,
   [IDs.CustomerSignIn]: CustomerSignIn,
@@ -27,7 +28,7 @@ const registerScreens = (
   Object.keys(screens).map(screenID => {
     Navigation.registerComponentWithRedux(
       screenID,
-      () => enhancers(gestureHandlerRootHOC(screens[screenID])),
+      () => enhancers(screens[screenID]),
       Provider,
       store,
     );

@@ -10,8 +10,12 @@ class ListServices extends Component {
     return newListServices !== this.props.listServices;
   }
   render() {
-    const {listServices} = this.props;
-    Logg.info('listServices xx', listServices);
+    const {
+      listServices,
+      deleteSelectedService,
+      openModalChangeTechnician,
+      openModalChangeService,
+    } = this.props;
     return (
       <ScrollView style={styles.container}>
         {listServices.map((item, index) => (
@@ -21,6 +25,11 @@ class ListServices extends Component {
             quantity={item.quantity}
             amount={item.amount}
             tip={item.tip}
+            deleteSelectedService={deleteSelectedService}
+            openModalChangeTechnician={openModalChangeTechnician}
+            idTechnician={item.idTechnician}
+            serviceId={item.serviceId}
+            openModalChangeService={openModalChangeService}
           />
         ))}
       </ScrollView>

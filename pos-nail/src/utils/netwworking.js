@@ -1,10 +1,11 @@
 import {StatusBar, Platform} from 'react-native';
 
 let url =
-  'http://webservice.nailssolutions.com/POSSystem/MaxViewWebService.asmx';
+  'https://webservice.nailssolutions.com/POSSystem/MaxViewWebService.asmx';
 
 const secret = 'max@@view@@01235';
-let storeId = 'MAX12898';
+let storeCode = 'MAX12898';
+let storeId = '100018';
 
 export function get(api, headers) {
   return fetch(api, {
@@ -65,12 +66,7 @@ export function post(api, params) {
         }
         let Data = '';
         console.log(
-          'response ' +
-            api +
-            ' ' +
-            JSON.stringify(data) +
-            ', datatype ' +
-            typeof data,
+          'response ' + api + ' ' + JSON.stringify(data) + ',' + typeof data,
         );
         if (typeof data == 'string') {
           Data = data;
@@ -79,7 +75,11 @@ export function post(api, params) {
             Data = {};
             if (data[2].Data) {
               try {
-                Data = JSON.parse(data[2].Data);
+                if (api === 'AppCheckIn_TicketAction') {
+                  Data = data;
+                } else {
+                  Data = JSON.parse(data[2].Data);
+                }
               } catch (e) {
                 Data = {};
               }
@@ -89,7 +89,6 @@ export function post(api, params) {
 
             Data.meta = data[1];
             Data.dataArray = data;
-
             // Data.data = JSON.parse(data[2].Data)
           } catch (e) {
             Data = data;

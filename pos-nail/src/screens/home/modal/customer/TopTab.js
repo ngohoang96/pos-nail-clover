@@ -40,21 +40,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
-
     borderColor: '#E4BF93',
     margin: 10,
     borderRadius: 5,
   },
   btnInactive: {
-    backgroundColor: '#FFFFFF',
     width: (((Metrics.appWidth * 70) / 100) * 30) / 100,
     height: '60%',
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#D5D6D6',
+    backgroundColor: '#FFFFFF',
+
     margin: 10,
     borderRadius: 5,
+    borderColor: '#D5D6D6',
   },
   txt: {
     textAlign: 'center',

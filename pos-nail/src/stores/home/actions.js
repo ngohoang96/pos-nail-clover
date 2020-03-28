@@ -53,6 +53,26 @@ const Types = {
 
   UPDATE_SELECTED_TECHNICIAN: 'cus@UPDATE_SELECTED_TECHNICIAN',
   UPDATE_SELECTED_TYPE_SERVICE: 'cus@UPDATE_SELECTED_TYPE_SERVICE',
+
+  GET_CUSTOMER_WAITING: 'home@GET_CUSTOMER_WAITING',
+
+  GET_CUSTOMER_INSERVICE: 'home@GET_CUSTOMER_INSERVICE',
+
+  GET_CUSTOMER_PAYMENT: 'home@GET_CUSTOMER_PAYMENT',
+
+  UNSELECTED_SERVICE: 'home@UNSELECTED_SERVICE',
+
+  UPDATE_TIPS_TOTAL: 'home@UPDATE_TIPS_TOTAL',
+
+  RESET_PAYMENT_BILL: 'home@RESET_PAYMENT_BILL',
+
+  UPDATE_LIST_SERVICE_FROM_CUSTOMER: 'home@UPDATE_LIST_SERVICE_FROM_CUSTOMER',
+
+  CANCEL_SERVICE_CARD: 'home@CANCEL_SERVICE_CARD',
+
+  EDIT_TECHNICIAN: 'home@EDIT_TECHNICIAN',
+
+  EDIT_SERVICES: 'home@EDIT_SERVICES',
 };
 
 const Actions = {
@@ -170,6 +190,45 @@ const Actions = {
   }),
   updateSelectedTechnician: data => ({
     type: Types.UPDATE_SELECTED_TECHNICIAN,
+    payload: data,
+  }),
+  getCustomerWaiting: data => ({
+    type: Types.GET_CUSTOMER_WAITING,
+    payload: data,
+  }),
+  getCustomerInservice: data => ({
+    type: Types.GET_CUSTOMER_INSERVICE,
+    payload: data,
+  }),
+  getCustomerPayment: data => ({
+    type: Types.GET_CUSTOMER_PAYMENT,
+    payload: data,
+  }),
+  unSelectedService: data => ({
+    type: Types.UNSELECTED_SERVICE,
+    payload: data,
+  }),
+  updateTipsPayment: data => ({
+    type: Types.UPDATE_TIPS_TOTAL,
+    payload: data,
+  }),
+  resetPaymentBill: () => ({
+    type: Types.RESET_PAYMENT_BILL,
+  }),
+  updateServiceFromCustomer: data => ({
+    type: Types.UPDATE_LIST_SERVICE_FROM_CUSTOMER,
+    payload: data,
+  }),
+  cancelServiceCard: () => ({
+    type: Types.CANCEL_SERVICE_CARD,
+  }),
+  editTechnician: data => ({
+    type: Types.EDIT_TECHNICIAN,
+    payload: data,
+  }),
+
+  editServices: data => ({
+    type: Types.EDIT_SERVICES,
     payload: data,
   }),
 };

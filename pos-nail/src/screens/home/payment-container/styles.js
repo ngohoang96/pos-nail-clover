@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   },
   box_fixamount: {
     width: '50%',
-    height: 28,
+    height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff',

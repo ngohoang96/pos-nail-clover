@@ -25,7 +25,8 @@ class QuickMenu extends Component {
   }
 
   selectService = service => {
-    this.props.selectService(service);
+    let params = {...service, quantity: 1};
+    this.props.selectService(params);
   };
   render() {
     return (
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.orange,
   },
   containerTxt: {
-    height: '6%',
+    height: '7%',
     justifyContent: 'center',
 
     backgroundColor: Colors.bgGray,

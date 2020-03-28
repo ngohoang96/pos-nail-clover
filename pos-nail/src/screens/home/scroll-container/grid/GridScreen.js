@@ -28,7 +28,11 @@ export default class GridScreen extends Component {
   }
 
   updateSelectedService = item => {
-    let data = {service: item.name, amount: item.price + ''};
+    let data = {
+      service: item.name,
+      amount: item.price + '',
+      idService: item.id,
+    };
     this.props.updateSelectedService(data);
   };
 

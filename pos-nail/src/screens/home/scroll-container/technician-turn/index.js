@@ -25,25 +25,47 @@ import ItemTech from '../../../../Components/InitScreen/itemTech';
 import {connect} from 'react-redux';
 import {actions, selectors} from '../../../../stores';
 import DraggableFlatList from 'react-native-draggable-dynamic-flatlist';
+import TechnicianDetail from '../../modal/technician-detail/TechnicianDetail';
 
 class TechnicianTurn extends Component {
-  selectTechnician = name => {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isShowModal: false,
+      technicianDetail: null,
+    };
+  }
+
+  toogleTechnicianDetail = (value, detail) => {
+    this.setState({
+      isShowModal: value,
+      technicianDetail: detail,
+    });
+  };
+
+  selectTechnician = item => {
     if (this.props.listTechnicianSelected.length > 0) {
       ToastLib.show('Please select services!');
     } else {
-      this.props.update(name);
+      this.props.update({name: item.name, idTechnician: item.idTechnician});
     }
   };
 
   renderItem = ({item, index}) => {
+    Logg.info('item', item);
     return (
       <TechnicianRepander
         key={index}
         name={item.name}
-        updateDropZone={() => this.selectTechnician(item.name)}
+        updateDropZone={() => this.selectTechnician(item)}
         style={{marginHorizontal: 5}}>
-        <TouchableOpacity onPress={() => this.selectTechnician(item.name)}>
-          <ItemTech nameTechnician={item.name} />
+        <TouchableOpacity onPress={() => this.selectTechnician(item)}>
+          <ItemTech
+            nameTechnician={item.name}
+            toogleTechnicianDetail={() =>
+              this.toogleTechnicianDetail(true, item.technicianDetail)
+            }
+          />
         </TouchableOpacity>
       </TechnicianRepander>
     );
@@ -51,6 +73,7 @@ class TechnicianTurn extends Component {
 
   render() {
     const {nailTechDropZone, listTechnician} = this.props;
+    const {technicianDetail, isShowModal} = this.state;
     return (
       <View style={styles.fx09}>
         <View style={styles.wrapper_title}>
@@ -63,15 +86,22 @@ class TechnicianTurn extends Component {
             renderItem={this.renderItem}
           />
         </View>
+        {isShowModal && technicianDetail && (
+          <TechnicianDetail
+            toogleModal={this.toogleTechnicianDetail}
+            isShow={isShowModal}
+            technicianDetail={technicianDetail}
+          />
+        )}
       </View>
     );
   }
 }
 const mapDispatchToProps = dispatch => {
-  const update = name => {
+  const update = params => {
     let id = new Date().getTime();
-    let data = {id, name};
-    dispatch(actions.home.updateListTechnicianSelected(data));
+    params.id = id;
+    dispatch(actions.home.updateListTechnicianSelected(params));
   };
   return {update};
 };
@@ -83,7 +113,7 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, mapDispatchToProps)(TechnicianTurn);
 const styles = StyleSheet.create({
   wrapper_title: {
-    height: '6%',
+    height: '7%',
     width: '100%',
     // paddingRight: 3,
     justifyContent: 'center',

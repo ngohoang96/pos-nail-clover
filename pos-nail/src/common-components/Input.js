@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, TextInput, StyleSheet} from 'react-native';
+import {Text, Keyboard, TextInput, StyleSheet} from 'react-native';
 import {normalize} from '../themes/FontSize';
 
 export default class Input extends Component {
@@ -11,14 +11,17 @@ export default class Input extends Component {
         keyboardType={'numeric'}
         {...inputProps}
         blurOnSubmit={false}
+        returnKeyType="done"
+        returnKeyLabel="Done"
+        onSubmitEditing={Keyboard.dismiss}
       />
     );
   }
 }
 const styles = StyleSheet.create({
   input: {
+    padding: 5,
     width: '11%',
-    height: 30,
     borderWidth: 1,
     marginHorizontal: 3,
     alignItems: 'center',

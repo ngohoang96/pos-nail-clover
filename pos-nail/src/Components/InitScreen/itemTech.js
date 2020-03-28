@@ -8,7 +8,7 @@ export default class ItemTech extends Component {
     super(props);
   }
   render() {
-    const {selectTechnician} = this.props;
+    const {selectTechnician, toogleTechnicianDetail} = this.props;
     return (
       <View
         onPress={selectTechnician}
@@ -61,7 +61,8 @@ export default class ItemTech extends Component {
             borderTopColor: Colors.line,
 
             borderRightColor: 'gray',
-          }}>
+          }}
+          onPress={toogleTechnicianDetail}>
           <TextCmp style={styl.txtViewDetail}>View detail</TextCmp>
         </TouchableOpacity>
       </View>

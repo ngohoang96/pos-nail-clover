@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, TextInput} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {connect} from 'react-redux';
 import {TextCmp} from '../../../../../themes';
 import {styles} from './styles';
 import {actions, selectors} from '../../../../../stores';
 import {Logg} from '../../../../../utils';
 import Input from '../../../../../common-components/Input';
+import {homeIcon} from '../../../../../assets';
 
 class ListServicesItem extends Component {
   shouldComponentUpdate({
@@ -13,15 +14,25 @@ class ListServicesItem extends Component {
     quantity: newQuantity,
     amount: newAmount,
     tip: newTip,
+    idTechnician: newIdTechnician,
+    serviceId: newServiceId,
   }) {
     return (
       newItem !== this.props.item ||
       newQuantity !== this.props.quantity ||
       newAmount !== this.props.amount ||
-      newTip !== this.props.tip
+      newTip !== this.props.tip ||
+      newIdTechnician !== this.props.idTechnician ||
+      newServiceId !== this.props.serviceId
     );
   }
 
+  componentDidUpdate(prevProps) {
+    const {tip} = this.props;
+    if (prevProps.tip !== this.props.tip) {
+      this.props.updateTip(tip + '');
+    }
+  }
   updateQuantity = quantity => {
     this.props.updateQuantity(quantity);
   };
@@ -35,15 +46,43 @@ class ListServicesItem extends Component {
   };
 
   render() {
-    const {quantity, item, amount, tip} = this.props;
+    const {
+      quantity,
+      item,
+      amount,
+      deleteSelectedService,
+      index,
+      openModalChangeTechnician,
+      openModalChangeService,
+    } = this.props;
+    let {tip} = this.props;
+    if (tip !== '') {
+      tip = parseFloat(tip);
+      if (parseInt(tip) === tip) {
+        tip = tip + '';
+      } else {
+        tip = tip.toFixed(2) + '';
+      }
+    }
+
     return (
       <View style={styles.container}>
         <View style={styles.wrapper_service}>
-          <TextCmp>{item.service}</TextCmp>
+          <TouchableOpacity onPress={() => openModalChangeService(index)}>
+            <TextCmp>{item.service}</TextCmp>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => deleteSelectedService(item)}
+            style={{width: 20, height: 20, alignItems: 'center'}}>
+            <Image source={homeIcon.trash} style={{width: 15, height: 15}} />
+          </TouchableOpacity>
         </View>
-        <View style={styles.wrapper_technician}>
+        <TouchableOpacity
+          style={styles.wrapper_technician}
+          onPress={() => openModalChangeTechnician(index)}>
           <TextCmp>{item.name}</TextCmp>
-        </View>
+        </TouchableOpacity>
         <Input value={quantity} onChangeText={this.updateQuantity} />
         <Input value={amount} onChangeText={this.updateAmount} />
         <Input value={tip} onChangeText={this.updateTip} />

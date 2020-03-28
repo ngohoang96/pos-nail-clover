@@ -1,10 +1,3 @@
-/**
- * @author: thai.nguyen
- * @date: 2018-11-29 16:30:37
- *
- *
- */
-// import { AsyncStorage as storage, } from 'react-native';
 import storage from '@react-native-community/async-storage';
 import {persistStore} from 'redux-persist';
 
@@ -12,6 +5,7 @@ import {Logg} from '../utils';
 
 const blacklist = [
   'cus',
+  'home',
   // Any sub-store that shouldn't be store between run time go here...
 ];
 

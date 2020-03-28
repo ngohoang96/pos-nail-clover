@@ -21,7 +21,7 @@ export default class FullMenuItem extends Component {
           styles.button,
           {
             backgroundColor:
-              item.catname === mCatName ? '#CAE5E8' : Colors.bgGray,
+              item.catname === mCatName ? Colors.orange : Colors.bgGray,
           },
         ]}
         onPress={() => onPress()}>
@@ -46,8 +46,9 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: Colors.bgGray,
-    height: (Metrics.appHeight * 6) / 100,
-    width: 80,
+    height: (Metrics.appHeight * 7) / 100,
+    minWidth: 100,
+    padding: 5,
     justifyContent: 'center',
     alignItems: 'center',
     flexWrap: 'wrap',

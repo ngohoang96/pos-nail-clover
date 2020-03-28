@@ -28,13 +28,16 @@ export default class ModalSelectTechnician extends Component {
     const {listSelectedTechnician} = this.props;
     let listTechnicianFormat = this.props.listTechnicians;
     listTechnicianFormat.map(e => {
-      let idExist = [];
-      idExist = listSelectedTechnician.filter(x => x.id === e.id);
-      if (idExist.length > 0) {
-        e.selected = true;
-      } else {
-        e.selected = false;
+      if (listSelectedTechnician) {
+        let idExist = [];
+        idExist = listSelectedTechnician.filter(x => x.id === e.id);
+        if (idExist.length > 0) {
+          e.selected = true;
+        } else {
+          e.selected = false;
+        }
       }
+
       e.name = e.first_name + ' ' + e.last_name;
     });
 
@@ -56,18 +59,26 @@ export default class ModalSelectTechnician extends Component {
 
   updateListSelected = (item, index) => {
     let {listTechnicianFormat} = this.state;
-    listTechnicianFormat[index].selected = !listTechnicianFormat[index]
-      .selected;
-    this.setState({listTechnicianFormat});
+    const {changeTechnician} = this.props;
+    if (changeTechnician) {
+      changeTechnician(item);
+      this.props.onClose(false);
+    } else {
+      listTechnicianFormat[index].selected = !listTechnicianFormat[index]
+        .selected;
+      this.setState({listTechnicianFormat});
+    }
   };
 
   _onPressFinish = () => {
     const {updateListTechnician} = this.props;
+    if (updateListTechnician) {
+      let {listTechnicianFormat} = this.state;
+      let list = [];
+      list = listTechnicianFormat.filter(e => e.selected === true);
+      updateListTechnician(list);
+    }
     this.props.onClose(false);
-    let {listTechnicianFormat} = this.state;
-    let list = [];
-    list = listTechnicianFormat.filter(e => e.selected === true);
-    updateListTechnician(list);
   };
 
   _onPressClose = () => {
@@ -108,8 +119,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.7)',
   },
   wrapper: {
-    width: (Metrics.appWidth * 65) / 100,
-    height: (Metrics.appHeight * 60) / 100,
+    width: Metrics.appWidth,
+    height: Metrics.appHeight,
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: Colors.backgroundModal,

@@ -13,32 +13,40 @@ import TechnicianRepander from './TechnicianRepander';
 
 export default class CustomerItem extends Component {
   render() {
-    const {item, updateSelectedCustomer} = this.props;
+    const {item, updateSelectedCustomer, toogleModal} = this.props;
     return (
       <TechnicianRepander
         style={{
-          backgroundColor: this.props.index % 2 == 0 ? 'orange' : 'red',
+          backgroundColor:
+            item.status === 'waiting'
+              ? Colors.orange
+              : item.status === 'pending'
+              ? 'green'
+              : 'red',
           justifyContent: 'center',
           alignItems: 'center',
         }}
         updateDropZone={updateSelectedCustomer}>
-        <TouchableOpacity
-          style={[styles.wrapper]}
-          onPress={updateSelectedCustomer}>
-          <View style={styles.name_view}>
+        <View style={[styles.wrapper]}>
+          <TouchableOpacity
+            style={styles.name_view}
+            onPress={updateSelectedCustomer}>
             <TextCmp style={styles.txtName}>{item.name}</TextCmp>
-          </View>
-          <View style={styles.detail_view}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.detail_view}
+            onPress={() => toogleModal()}>
             <TextCmp style={styles.txtDetail}>View detail</TextCmp>
-          </View>
-        </TouchableOpacity>
+          </TouchableOpacity>
+        </View>
       </TechnicianRepander>
     );
   }
 }
+let wrapperHeight = ((Metrics.appWidth * 1.2) / 8.4) * 0.5;
 const styles = StyleSheet.create({
   wrapper: {
-    height: ((Metrics.appWidth * 1.2) / 8.4) * 0.5,
+    height: wrapperHeight,
     width: '100%',
   },
   detail_view: {

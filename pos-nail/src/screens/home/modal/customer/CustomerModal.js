@@ -11,10 +11,12 @@ import {
 import {Metrics, TextCmp} from '../../../../themes';
 import {TabView} from 'react-native-tab-view';
 
-import CustomerRegister from './register/index';
+// import CustomerRegister from './SignIn/index';
 
 import TopTab from './TopTab';
-import CustomerSignIn from './sign-in/index';
+import CustomerSignIn from './SignIn/index';
+import CustomerRegister from './register/index';
+// import CustomerSignIn from './register/index';
 
 export default class CustomerModal extends Component {
   shouldComponentUpdate({visible: newVisible}, {index: newIndex}) {

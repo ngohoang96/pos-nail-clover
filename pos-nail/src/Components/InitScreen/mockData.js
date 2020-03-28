@@ -9,6 +9,7 @@ export const data = [
   {id: '11', icon: 'ios-bookmark', lable: 'TIPS ADJS'},
   {id: '19', icon: 'ios-book', lable: 'CLOSEOUT'},
   {id: '18', icon: 'ios-build', lable: 'NAILS SUPPLY'},
+  {id: '18', icon: 'ios-build', lable: 'TURN SYSTEM'},
   // { id: '1', icon: 'ios-home', lable: 'Dashboard' },
 
   // {id: '16', icon: 'ios-bug', lable: 'Manager System'},
@@ -129,3 +130,10 @@ export let dataDay = [
   {value: '30'},
   {value: '31'},
 ];
+//waiting_list, in_service, pending_payment
+
+export let CUSTOMER_STATUS = {
+  WAITING_LIST: 'waiting_list',
+  IN_SERVICE: 'in_service',
+  PENDING_PAYMENT: 'pending_payment',
+};

@@ -1,4 +1,5 @@
 import Logg from './Logg';
+import moment from 'moment';
 
 export function truncateText(text, maxChar) {
   if (!text || typeof text !== 'string') return '';
@@ -6,6 +7,16 @@ export function truncateText(text, maxChar) {
     let startString = text.slice(0, 5);
     let endString = text.slice(maxChar - 5, maxChar);
     return `${startString}...${endString}`;
+  } else {
+    return text;
+  }
+}
+
+export function truncateTextEnd(text, maxChar) {
+  if (!text || typeof text !== 'string') return '';
+  if (text.length > maxChar) {
+    let startString = text.slice(0, maxChar);
+    return `${startString}...`;
   } else {
     return text;
   }
@@ -29,3 +40,9 @@ export function countNonUnique(number) {
   }
   return res.length;
 }
+
+export const formatTime = time => {
+  let formatTime = time.replace(/[/Date()]/g, '');
+  const parseTime = moment(parseFloat(formatTime)).format('HH:mm');
+  return parseTime;
+};

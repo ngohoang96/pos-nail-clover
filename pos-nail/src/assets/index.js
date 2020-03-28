@@ -17,4 +17,5 @@ export const homeIcon = {
   left_arrow: require('./icons/left.png'),
   right_arrow: require('./icons/right.png'),
   avatar: require('./images/avatar.png'),
+  trash: require('./images/trash.png'),
 };

@@ -19,23 +19,25 @@ export default class Bottom extends Component {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: '13%',
-    borderTopWidth: 1,
-    borderColor: Colors.line,
-    backgroundColor: Colors.backgroundModal,
+    height: '10%',
+
+    backgroundColor: '#fff',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 5,
+    paddingHorizontal: 5,
+    marginTop: 5,
+    paddingVertical: 2,
   },
   btn: {
-    margin: 5,
-    padding: 15,
     borderWidth: 1,
     borderColor: Colors.line,
     backgroundColor: '#fff',
     width: '35%',
     alignItems: 'center',
+    backgroundColor: Colors.backgroundModal,
+    height: 40,
+    justifyContent: 'center',
   },
   txt: {},
 });

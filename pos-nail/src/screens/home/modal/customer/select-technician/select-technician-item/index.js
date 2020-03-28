@@ -120,8 +120,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderBottomWidth: 1,
     borderBottomColor: '#95C700',
-
-    justifyContent: 'center',
+    paddingLeft: 5,
+    justifyContent: 'flex-start',
     flexDirection: 'row',
     alignItems: 'center',
   },

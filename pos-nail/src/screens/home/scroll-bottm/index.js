@@ -24,12 +24,16 @@ export default class ScrollBottom extends Component {
       <View style={styles.container}>
         <ScrollView
           horizontal={true}
-          contentContainerStyle={styles.wrapper_list_button}>
-          {data.map(item => {
+          contentContainerStyle={[
+            styles.wrapper_list_button,
+
+            // {width: ((Metrics.appWidth * 12) / 100) * data.length},
+          ]}>
+          {data.map((item, index) => {
             return (
               <TouchableOpacity
                 onPress={() => this.props.onPressItem(item.lable)}
-                key={item.id}
+                key={index}
                 activeOpacity={0.7}
                 style={[
                   styles.button,
@@ -38,11 +42,6 @@ export default class ScrollBottom extends Component {
                       item.lable === 'PAYMENT' ? Colors.orange : Colors.bgGray,
                   },
                 ]}>
-                {/* <IonIcon
-                  name={item.icon}
-                  color={'#444444'}
-                  size={normalize(5)}
-                /> */}
                 <View style={styles.center}>
                   <TextCmp style={styles.txtLabel}>{item.lable}</TextCmp>
                 </View>
@@ -59,20 +58,22 @@ const styles = StyleSheet.create({
   header: {height: 20, paddingLeft: 15, backgroundColor: '#E6E6E6'},
   button: {
     height: 60,
-    borderRightWidth: 0.5,
+    borderWidth: 0.5,
     borderRightColor: 'gray',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: Colors.bgGray,
-    width: '10%',
+    width: (Metrics.appWidth * 12) / 100,
     // paddingVertical: 5
   },
   wrapper_list_button: {
+    // flex: 1,
+    height: 60,
+    alignSelf: 'stretch',
     // padding: 5,
     // height: 80,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    width: Metrics.appWidth,
+    // justifyContent: 'space-around',
+    // alignItems: 'center',
   },
   center: {alignItems: 'center', justifyContent: 'center'},
   txtLabel: {
@@ -81,6 +82,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 1,
     fontSize: normalize(4),
     fontWeight: 'bold',
+    flexWrap: 'wrap',
+    flex: 0,
   },
   container: {
     borderTopWidth: 1,

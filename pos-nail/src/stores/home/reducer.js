@@ -28,7 +28,9 @@ const initialState = {
   catnameFullMenu: '',
   catnameCustomerServices: '',
 
-  customer: [{name: 'Jenifer Tran'}, {name: 'Jenifer Pham'}],
+  customerWaiting: [],
+  customerInservice: [],
+  customerPayment: [],
   selectedCustomer: null,
   listTechnicianSelected: [],
   listTechnician: [],
@@ -43,7 +45,6 @@ const initialState = {
     tip: 0,
     discount: 0,
     total: 0,
-    // discount : 0,
   },
   services: null,
   listTypeServices: null,
@@ -222,6 +223,7 @@ const reducer = Helper.createReducer(initialState, {
     let newList = _.clone(state.listTechnicianSelected);
     let cloneListService = _.clone(state.listService);
     let cloneSelectedService = _.clone(state.selectedService);
+
     if (state.selectedService === null) {
       newList.push(action.payload);
     } else {
@@ -231,18 +233,28 @@ const reducer = Helper.createReducer(initialState, {
       cloneListService[0].amount = state.selectedService.amount
         ? state.selectedService.amount
         : '';
-      cloneListService[0].total = '';
-      cloneListService[0].quantity = state.selectedService.quantity
-        ? state.selectedService.quantity
-        : '';
+      cloneListService[0].total = state.selectedService.amount;
+      cloneListService[0].quantity = '1';
       cloneListService[0].tip = '';
+      cloneListService[0].serviceId = state.selectedService.idService;
       cloneSelectedService = null;
     }
+    let subTotal = 0;
+    cloneListService.map(e => {
+      if (!isNaN(e.total)) {
+        subTotal += parseFloat(e.total);
+      }
+    });
+
     return {
       ...state,
       listTechnicianSelected: newList,
       listService: cloneListService,
       selectedService: cloneSelectedService,
+      paymentBill: {
+        ...state.paymentBill,
+        subTotal: subTotal + '',
+      },
     };
   },
   [Types.UNSELECTED_TECHNICIAN]: ({state, action}) => {
@@ -257,14 +269,13 @@ const reducer = Helper.createReducer(initialState, {
   [Types.UPDATE_SERVICE_TECHNICIAN]: ({state, action}) => {
     let cloneListTechnician = _.clone(state.listTechnicianSelected);
     cloneListTechnician[0].service = action.payload.service;
-    cloneListTechnician[0].quantity = action.payload.quantity
-      ? action.payload.quantity
-      : '';
+    cloneListTechnician[0].quantity = '1';
     cloneListTechnician[0].amount = action.payload.amount
       ? action.payload.amount
       : '';
-    cloneListTechnician[0].total = '';
+    cloneListTechnician[0].total = action.payload.amount;
     cloneListTechnician[0].tip = '';
+    cloneListTechnician[0].serviceId = action.payload.idService;
     let newListTechnicianSelected = [];
     if (cloneListTechnician.length > 1) {
       newListTechnicianSelected = cloneListTechnician.splice(
@@ -274,10 +285,21 @@ const reducer = Helper.createReducer(initialState, {
     } else {
       newListTechnicianSelected = [];
     }
+    let subTotal = 0;
+    let list = cloneListTechnician.concat(state.listService);
+    list.map(e => {
+      if (!isNaN(e.total)) {
+        subTotal += parseFloat(e.total);
+      }
+    });
     return {
       ...state,
       listTechnicianSelected: newListTechnicianSelected,
-      listService: cloneListTechnician.concat(state.listService),
+      listService: list,
+      paymentBill: {
+        ...state.paymentBill,
+        subTotal: subTotal + '',
+      },
     };
   },
   [Types.UPDATE_QUANTITY_SERVICE]: ({state, action}) => {
@@ -394,6 +416,179 @@ const reducer = Helper.createReducer(initialState, {
     return {
       ...state,
       selectedTechnician: action.payload,
+    };
+  },
+  [Types.GET_CUSTOMER_WAITING]: ({state, action}) => {
+    return {
+      ...state,
+      customerWaiting: action.payload,
+    };
+  },
+  [Types.GET_CUSTOMER_INSERVICE]: ({state, action}) => {
+    return {
+      ...state,
+      customerInservice: action.payload,
+    };
+  },
+  [Types.GET_CUSTOMER_PAYMENT]: ({state, action}) => {
+    return {
+      ...state,
+      customerPayment: action.payload,
+    };
+  },
+  [Types.UNSELECTED_SERVICE]: ({state, action}) => {
+    let tempArray = _.clone(state.listService);
+    tempArray = tempArray.filter(e => e.id !== action.payload.id);
+    let payment = _.clone(state.paymentBill);
+    let tip = 0;
+    let subTotal = 0;
+    tempArray.map(e => {
+      if (!isNaN(e.total)) {
+        subTotal += parseFloat(e.total);
+      }
+      if (!isNaN(e.tip)) {
+        tip += parseFloat(e.tip);
+      }
+    });
+    if (!(subTotal === parseInt(subTotal))) {
+      subTotal = subTotal.toFixed(2);
+    }
+    if (!(tip === parseInt(tip))) {
+      tip = tip.toFixed(2);
+    }
+    payment.tip = tip;
+    payment.subTotal = subTotal;
+    return {
+      ...state,
+      listService: tempArray,
+      paymentBill: payment,
+    };
+  },
+  [Types.UPDATE_TIPS_TOTAL]: ({state, action}) => {
+    let list = _.clone(state.listService);
+    if (list.length > 0) {
+      let tips = action.payload / list.length;
+      list.map(e => {
+        e.tip = tips;
+      });
+    }
+
+    return {
+      ...state,
+      paymentBill: {
+        ...state.paymentBill,
+        tip: action.payload,
+      },
+      listService: list,
+    };
+  },
+  [Types.RESET_PAYMENT_BILL]: ({state, action}) => {
+    let defaultBill = {
+      subTotal: 0,
+      couponText: '',
+      couponPrice: 0,
+      giftCard: '',
+      giftCardPrice: 0,
+      tip: 0,
+      discount: 0,
+      total: 0,
+    };
+    return {
+      ...state,
+      paymentBill: defaultBill,
+      listService: [],
+      selectedCustomer: null,
+    };
+  },
+  [Types.UPDATE_LIST_SERVICE_FROM_CUSTOMER]: ({state, action}) => {
+    let tempArray = [];
+    let payment = _.clone(state.paymentBill);
+    let tip = 0;
+    let subTotal = 0;
+    tempArray = action.payload;
+    tempArray.map(e => {
+      if (!isNaN(e.total)) {
+        subTotal += parseFloat(e.total);
+      }
+      if (!isNaN(e.tip)) {
+        tip += parseFloat(e.tip);
+      }
+    });
+    if (!(subTotal === parseInt(subTotal))) {
+      subTotal = subTotal.toFixed(2);
+    }
+    if (!(tip === parseInt(tip))) {
+      tip = tip.toFixed(2);
+    }
+    payment.tip = tip;
+    payment.subTotal = subTotal;
+    return {
+      ...state,
+      listService: tempArray,
+      paymentBill: payment,
+    };
+  },
+  [Types.CANCEL_SERVICE_CARD]: ({state, action}) => {
+    let defaultBill = {
+      subTotal: 0,
+      couponText: '',
+      couponPrice: 0,
+      giftCard: '',
+      giftCardPrice: 0,
+      tip: 0,
+      discount: 0,
+      total: 0,
+    };
+    return {
+      ...state,
+      listService: [],
+      paymentBill: defaultBill,
+      selectedCustomer: null,
+    };
+  },
+
+  [Types.EDIT_TECHNICIAN]: ({state, action}) => {
+    const {serviceIndex, id, name} = action.payload;
+    let cloneListService = _.clone(state.listService);
+    cloneListService[serviceIndex].idTechnician = id;
+    cloneListService[serviceIndex].name = name;
+    return {
+      ...state,
+      listService: cloneListService,
+    };
+  },
+  [Types.EDIT_SERVICES]: ({state, action}) => {
+    const {serviceIndex, name, id, price} = action.payload;
+    let cloneListService = _.clone(state.listService);
+    cloneListService[serviceIndex].service = name;
+    cloneListService[serviceIndex].serviceId = id.toString();
+    cloneListService[serviceIndex].amount = price.toString();
+    cloneListService[serviceIndex].total = price.toString();
+    cloneListService[serviceIndex].quantity = '1';
+    cloneListService[serviceIndex].tip = '';
+    let payment = _.clone(state.paymentBill);
+    let tip = 0;
+    let subTotal = 0;
+    cloneListService.map(e => {
+      if (!isNaN(e.total)) {
+        subTotal += parseFloat(e.total);
+      }
+      if (!isNaN(e.tip)) {
+        tip += parseFloat(e.tip);
+      }
+    });
+    if (!(subTotal === parseInt(subTotal))) {
+      subTotal = subTotal.toFixed(2);
+    }
+    if (!(tip === parseInt(tip))) {
+      tip = tip.toFixed(2);
+    }
+    payment.tip = tip;
+    payment.subTotal = subTotal;
+    return {
+      ...state,
+      listService: cloneListService,
+      paymentBill: payment,
     };
   },
 });

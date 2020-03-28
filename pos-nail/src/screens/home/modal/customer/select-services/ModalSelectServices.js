@@ -41,6 +41,7 @@ export default class ModalSelectServices extends Component {
 
   updateSelectedType = value => {
     const {typeSelected} = this.state;
+
     if (typeSelected !== value && value === 'All Services') {
       const {listServices} = this.props;
       const {listSelected} = this.state;
@@ -82,26 +83,35 @@ export default class ModalSelectServices extends Component {
   _keyExtractor = (item, index) => index.toString();
 
   updateSeletedArray = (value, index) => {
-    let {listSelected, list} = this.state;
-    let findId = [];
-    if (listSelected.length > 0) {
-      findId = listSelected.filter(e => e.id === value.id);
-      if (findId.length > 0) {
-        let listTemp = [];
-        listTemp = listSelected.filter(x => x.id !== value.id);
-        this.setState({listSelected: listTemp});
+    const {editServices} = this.props;
+    if (editServices) {
+      editServices(value);
+      this.props.onClose();
+    } else {
+      let {listSelected, list} = this.state;
+      let findId = [];
+      if (listSelected.length > 0) {
+        findId = listSelected.filter(e => e.id === value.id);
+        if (findId.length > 0) {
+          let listTemp = [];
+          listTemp = listSelected.filter(x => x.id !== value.id);
+          this.setState({listSelected: listTemp});
+        } else {
+          listSelected.push(value);
+          this.setState({listSelected});
+        }
       } else {
         listSelected.push(value);
         this.setState({listSelected});
       }
-    } else {
-      listSelected.push(value);
-      this.setState({listSelected});
     }
   };
 
   onPressFinish = () => {
-    this.props.updateSelectedService(this.state.listSelected);
+    const {updateSelectedService} = this.props;
+    if (updateSelectedService) {
+      this.props.updateSelectedService(this.state.listSelected);
+    }
     this.props.onClose();
   };
 
@@ -153,8 +163,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.7)',
   },
   wrapper: {
-    width: (Metrics.appWidth * 70) / 100,
-    height: (Metrics.appHeight * 60) / 100,
+    width: Metrics.appWidth,
+    height: Metrics.appHeight,
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: Colors.backgroundModal,

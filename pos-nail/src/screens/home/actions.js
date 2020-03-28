@@ -251,3 +251,122 @@ export function AppCheckIn_TechnicianCloseOut(payload) {
       });
   };
 }
+
+export function AppCheckIn_GetAllCustomers(payload) {
+  return () => {
+    return post('AppCheckIn_GetAllCustomers', payload)
+      .then(({data, error}) => {
+        if (!error) {
+          return data;
+        } else {
+          return false;
+        }
+      })
+      .catch(e => {
+        return false;
+      });
+  };
+}
+
+export function AppCheckIn_GiftCardInfos(payload) {
+  return () => {
+    return post('AppCheckIn_GiftCardInfos', payload)
+      .then(({data, error}) => {
+        if (!error) {
+          return data;
+        } else {
+          return false;
+        }
+      })
+      .catch(e => {
+        return false;
+      });
+  };
+}
+
+//AppCheckIn_TicketAction
+
+export function AppCheckIn_TicketAction(payload) {
+  return () => {
+    return post('AppCheckIn_TicketAction', payload)
+      .then(({data, error}) => {
+        if (!error) {
+          return data;
+        } else {
+          return false;
+        }
+      })
+      .catch(e => {
+        return false;
+      });
+  };
+}
+
+// AppCheckIn_ApptInfo
+export function AppCheckIn_ApptInfo(payload) {
+  return () => {
+    return post('AppCheckIn_ApptInfo', payload)
+      .then(({data, error}) => {
+        if (!error) {
+          return data;
+        } else {
+          return false;
+        }
+      })
+      .catch(e => {
+        return false;
+      });
+  };
+}
+
+//AppCheckIn_TicketInfo
+export function AppCheckIn_TicketInfo(payload) {
+  return () => {
+    return post('AppCheckIn_TicketInfo', payload)
+      .then(({data, error}) => {
+        if (!error) {
+          return data;
+        } else {
+          return false;
+        }
+      })
+      .catch(e => {
+        return false;
+      });
+  };
+}
+
+//AppCheckIn_StaffDone
+export function AppCheckIn_StaffDone(payload) {
+  return () => {
+    return post('AppCheckIn_StaffDone', payload)
+      .then(({data, error}) => {
+        if (!error) {
+          return data;
+        } else {
+          return false;
+        }
+      })
+      .catch(e => {
+        return false;
+      });
+  };
+}
+
+//AppCheckIn_StaffCancel
+
+export function AppCheckIn_StaffCancel(payload) {
+  return () => {
+    return post('AppCheckIn_StaffCancel', payload)
+      .then(({data, error}) => {
+        if (!error) {
+          return data;
+        } else {
+          return false;
+        }
+      })
+      .catch(e => {
+        return false;
+      });
+  };
+}

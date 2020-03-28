@@ -14,11 +14,18 @@ export default class BottomBtn extends Component {
         <TouchableOpacity style={styles.btn} onPress={() => onClose(false)}>
           <TextCmp style={styles.txt}>Close</TextCmp>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.btn}
-          onPress={() => addCustomerCheckin(1)}>
-          <TextCmp style={styles.txt}>Sign In</TextCmp>
-        </TouchableOpacity>
+        <View style={styles.right_view}>
+          <TouchableOpacity
+            style={[styles.btn, {marginHorizontal: 10}]}
+            onPress={() => addCustomerCheckin(0)}>
+            <TextCmp style={styles.txt}>Add New</TextCmp>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.btn}
+            onPress={() => addCustomerCheckin(1)}>
+            <TextCmp style={styles.txt}>Add And CheckIn</TextCmp>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -33,11 +40,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   btn: {
-    width: '49%',
     padding: 15,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 0.5,
+    borderWidth: 1,
     borderColor: Colors.line,
     backgroundColor: '#fff',
   },
