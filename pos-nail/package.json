@@ -17,7 +17,7 @@
     "moment": "^2.24.0",
     "ramda": "^0.26.1",
     "react": "16.9.0",
-    "react-native": "0.61.2",
+    "react-native": "0.62.3",
     "react-native-draggable-dynamic-flatlist": "^1.0.2",
     "react-native-gesture-handler": "^1.5.6",
     "react-native-grid-list": "^1.1.0",
